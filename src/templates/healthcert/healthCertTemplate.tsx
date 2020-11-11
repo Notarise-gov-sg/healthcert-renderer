@@ -5,9 +5,6 @@ import styled from "@emotion/styled";
 import { Gender, Identifier } from "../../@types/healthcert";
 import mohBackground from "./moh-logo-transparent.png";
 
-const Container = styled.div`
-  margin: auto;
-`;
 const Background = styled.div`
   &::after {
     content: "";
@@ -25,6 +22,7 @@ const Background = styled.div`
   }
 `;
 const Page = styled.div`
+  margin: auto;
   width: 21cm;
   border: 1px solid black;
   box-sizing: border-box;
@@ -86,51 +84,49 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     : "N/A";
 
   return (
-    <Container>
-      <Page className={className}>
-        <Background />
-        <Logo src={document.logo} alt="healthcare provider logo" />
-        <Title>MEMO ON COVID-19 REAL TIME</Title>
-        <Title>RT-PCR SWAB TEST RESULT</Title>
-        <section>
-          <Row>
-            <FirstCol>Name of Person:</FirstCol>
-            <SecondCol>{patientName}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>NRIC/FIN Number:</FirstCol>
-            <SecondCol>{patientNricIdentifier?.value}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Passport Number:</FirstCol>
-            <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Nationality:</FirstCol>
-            <SecondCol>{patientNationality?.code?.text}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Date of Birth:</FirstCol>
-            <SecondCol>{patient?.birthDate}</SecondCol>
-          </Row>
-        </section>
-        <section>
-          <p>To whom it may concern:</p>
-          <p>
-            The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType} on {observationDate} by{" "}
-            {provider?.name} and has tested <Negative>negative</Negative>. This test result was reported by {lab?.name}{" "}
-            on [date] === NO IDEA WHERE TO GET THIS :).
-          </p>
-          <p>
-            {patient?.gender === Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative COVID-19
-            test.
-          </p>
-          <p>Thank you.</p>
-          <p>
-            Name of Doctor: {performerName} MCR No.: {performerMcr}
-          </p>
-        </section>
-      </Page>
-    </Container>
+    <Page className={className}>
+      <Background />
+      <Logo src={document.logo} alt="healthcare provider logo" />
+      <Title>MEMO ON COVID-19 REAL TIME</Title>
+      <Title>RT-PCR SWAB TEST RESULT</Title>
+      <section>
+        <Row>
+          <FirstCol>Name of Person:</FirstCol>
+          <SecondCol>{patientName}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>NRIC/FIN Number:</FirstCol>
+          <SecondCol>{patientNricIdentifier?.value}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>Passport Number:</FirstCol>
+          <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>Nationality:</FirstCol>
+          <SecondCol>{patientNationality?.code?.text}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>Date of Birth:</FirstCol>
+          <SecondCol>{patient?.birthDate}</SecondCol>
+        </Row>
+      </section>
+      <section>
+        <p>To whom it may concern:</p>
+        <p>
+          The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType} on {observationDate} by{" "}
+          {provider?.name} and has tested <Negative>negative</Negative>. This test result was reported by {lab?.name} on
+          [date] === NO IDEA WHERE TO GET THIS :).
+        </p>
+        <p>
+          {patient?.gender === Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative COVID-19
+          test.
+        </p>
+        <p>Thank you.</p>
+        <p>
+          Name of Doctor: {performerName} MCR No.: {performerMcr}
+        </p>
+      </section>
+    </Page>
   );
 };
