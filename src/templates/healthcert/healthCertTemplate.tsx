@@ -99,8 +99,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
   );
 
-  const swabType =
-    typeof specimen?.type === "object" ? specimen?.type.coding?.find(({ code }) => code === "258500001") : undefined;
+  const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
   const swabCollectionDate = specimen?.collection?.collectedDateTime
     ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
     : "";
