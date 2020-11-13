@@ -55,6 +55,7 @@ const Negative = styled.span`
 `;
 
 const isNric = (value: any): value is Identifier => value?.type?.text === "NRIC";
+const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg local
 
 export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocument> & {
   className?: string;
@@ -75,19 +76,17 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
   );
 
-  // is this correct ?
-  const performerName = observation?.performer?.name?.[0]?.text;
-  // is this correct ?
-  const performerMcr = observation?.qualification?.[0]?.identifier;
-  // is this correct ?
   const swabType =
     typeof specimen?.type === "object" ? specimen?.type.coding?.find(({ code }) => code === "258500001") : undefined;
   const swabCollectionDate = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString()
+    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
     : "";
+
+  const performerName = observation?.performer?.name?.[0]?.text;
+  const performerMcr = observation?.qualification?.[0]?.identifier;
   const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString()
-    : "N/A";
+    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
+    : "";
 
   return (
     <Page className={className}>
