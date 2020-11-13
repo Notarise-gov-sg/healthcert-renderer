@@ -61,12 +61,14 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
 }> = ({ document, className = "" }) => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient");
   const observation = document.fhirBundle.entry.find(entry => entry.resourceType === "Observation");
+  const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
     entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
   );
   const lab = document.fhirBundle.entry.find(
     entry => entry.resourceType === "Organization" && entry.type === "Accredited Laboratory"
   );
+
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const patientNricIdentifier = patient?.identifier?.find(isNric);
   const patientNationality = patient?.extension?.find(
@@ -78,7 +80,11 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   // is this correct ?
   const performerMcr = observation?.qualification?.[0]?.identifier;
   // is this correct ?
-  const swabType = observation?.code?.coding?.[0]?.display;
+  const swabType =
+    typeof specimen?.type === "object" ? specimen?.type.coding?.find(({ code }) => code === "258500001") : undefined;
+  const swabCollectionDate = specimen?.collection?.collectedDateTime
+    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString()
+    : "";
   const observationDate = observation?.effectiveDateTime
     ? new Date(observation.effectiveDateTime).toLocaleDateString()
     : "N/A";
@@ -114,18 +120,17 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       <section>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType} on {observationDate} by{" "}
-          {provider?.name} and has tested <Negative>negative</Negative>. This test result was reported by {lab?.name} on
-          [date] === NO IDEA WHERE TO GET THIS :).
+          The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType?.display} on{" "}
+          {swabCollectionDate} by {provider?.name} and has tested <Negative>negative</Negative>. This test result was
+          reported by {lab?.name} on {observationDate}.
         </p>
         <p>
           {patient?.gender === Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative COVID-19
           test.
         </p>
         <p>Thank you.</p>
-        <p>
-          Name of Doctor: {performerName} MCR No.: {performerMcr}
-        </p>
+        <p>Name of Doctor: {performerName}</p>
+        <p>MCR No.: {performerMcr}</p>
       </section>
     </Page>
   );
