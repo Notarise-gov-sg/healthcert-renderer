@@ -24,13 +24,13 @@ const Background = styled.div`
 const Page = styled.div`
   margin: auto;
   width: 21cm;
+  height: 29.7cm;
   border: 1px solid black;
   box-sizing: border-box;
   padding: 10mm 15mm 10mm 15mm;
   position: relative;
   @media print {
     padding: 30mm 45mm 30mm 45mm;
-    height: 29.7cm;
   }
 `;
 const Logo = styled.img`
