@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { HealthCertDocument } from "./types";
 import styled from "@emotion/styled";
-import { Gender, Identifier } from "../../@types/healthcert";
+import { healthcert } from "@govtechsg/oa-schemata";
 import mohBackground from "./moh-logo-transparent.png";
 import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
@@ -77,7 +77,7 @@ const Doctor = styled.section`
 const Bold = styled.span`
   font-weight: bold;
 `;
-const isNric = (value: any): value is Identifier => value?.type?.text === "NRIC";
+const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg local
 
 export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocument> & {
@@ -151,8 +151,8 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-          {patient?.gender === Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative COVID-19
-          test.
+          {patient?.gender === healthcert.Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative
+          COVID-19 test.
         </p>
         <p>Thank you.</p>
       </ResultSection>

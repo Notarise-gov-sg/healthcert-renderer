@@ -1,6 +1,17 @@
-import { AddressType, FhirBundleType, Gender, ResourceType, Status, System, Use } from "../../../@types/healthcert";
+import { healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { HealthCertDocument } from "../types";
+
+const {
+  AddressType,
+  FhirBundleType,
+  Gender,
+  FhirBundleResourceType,
+  Status,
+  System,
+  Use,
+  EntryResourceType
+} = healthcert;
 
 export const healthCertSample: HealthCertDocument = {
   id: "TEST001",
@@ -8,11 +19,11 @@ export const healthCertSample: HealthCertDocument = {
   validFrom: "2020-11-20",
   fhirVersion: "4.0.1",
   fhirBundle: {
-    resourceType: ResourceType.Bundle,
+    resourceType: FhirBundleResourceType.Bundle,
     type: FhirBundleType.Collection,
     entry: [
       {
-        resourceType: "Patient",
+        resourceType: EntryResourceType.Patient,
         extension: [
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
@@ -42,7 +53,7 @@ export const healthCertSample: HealthCertDocument = {
         birthDate: "1990-01-15"
       },
       {
-        resourceType: "Specimen",
+        resourceType: EntryResourceType.Specimen,
         type: {
           coding: [
             {
@@ -57,7 +68,7 @@ export const healthCertSample: HealthCertDocument = {
         }
       },
       {
-        resourceType: "Observation",
+        resourceType: EntryResourceType.Observation,
         identifier: [
           {
             value: "123456789",
@@ -99,7 +110,7 @@ export const healthCertSample: HealthCertDocument = {
         ]
       },
       {
-        resourceType: "Organization",
+        resourceType: EntryResourceType.Observation,
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
@@ -120,7 +131,7 @@ export const healthCertSample: HealthCertDocument = {
         }
       },
       {
-        resourceType: "Organization",
+        resourceType: EntryResourceType.Organization,
         name: "MacRitchie Laboratory",
         type: "Accredited Laboratory",
         contact: {
