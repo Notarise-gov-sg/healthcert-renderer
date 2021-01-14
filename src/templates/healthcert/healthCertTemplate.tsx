@@ -8,10 +8,8 @@ import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
-const breakpoints = [330, 420, 576, 768, 992, 1200]
-const mediaQueries = breakpoints.map(
-  bp => `@media (min-width: ${bp}px)`
-)
+const breakpoints = [330, 420, 576, 768, 992, 1200];
+const mediaQueries = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
 
 const Background = styled.div`
   &::after {
@@ -41,20 +39,18 @@ const Page = styled.div`
   ${mediaQueries[1]} {
     padding: 15mm 20mm;
   }
-  
   ${mediaQueries[2]} {
     width: 21cm;
     height: 29.7cm;
   }
 `;
 const Logo = styled.img`
-  width: 80%; 
-  height: auto;  
-
+  width: 80%;
+  height: auto;
   ${mediaQueries[2]} {
     max-width: 300px;
     max-height: 80x;
- }
+  }
 `;
 
 const Title = styled.h1`
@@ -76,8 +72,7 @@ const Row = styled.div`
   ${mediaQueries[2]} {
     flex-basis: 30%;
     justify-content: initial;
- }
-
+  }
 `;
 const FirstCol = styled.div`
   font-weight: bold;
@@ -85,15 +80,14 @@ const FirstCol = styled.div`
 
   ${mediaQueries[2]} {
     flex-basis: 30%;
- }
+  }
 `;
 const SecondCol = styled.div`
   // border: 1px solid black;
 
   ${mediaQueries[2]} {
     flex-basis: 70%;
- }
-
+  }
 `;
 
 const ResultSection = styled.section`
@@ -102,8 +96,7 @@ const ResultSection = styled.section`
 
   ${mediaQueries[1]} {
     text-align: left;
- }
-
+  }
 `;
 const Negative = styled.span`
   font-weight: bold;
