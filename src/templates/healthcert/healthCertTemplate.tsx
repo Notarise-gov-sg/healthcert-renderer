@@ -86,8 +86,6 @@ const FirstCol = styled.div`
   ${mediaQueries[2]} {
     flex-basis: 30%;
  }
-
-
 `;
 const SecondCol = styled.div`
   // border: 1px solid black;
