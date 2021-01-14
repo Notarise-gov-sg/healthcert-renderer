@@ -8,8 +8,14 @@ import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
-const breakpoints = [330, 420, 576, 768, 992, 1200];
-const mediaQueries = breakpoints.map(bp => `@media (min-width: ${bp}px)`);
+const mediaQueries: Record<string, string> = {
+  xs: `@media (min-width: ${330}px)`,
+  sm: `@media (min-width: ${420}px)`,
+  md: `@media (min-width: ${576}px)`,
+  lg: `@media (min-width: ${768}px)`,
+  xl: `@media (min-width: ${992}px)`,
+  full: `@media (min-width: ${1200}px)`
+};
 
 const Background = styled.div`
   &::after {
@@ -36,10 +42,10 @@ const Page = styled.div`
   font-size: 18px;
   line-height: 30px;
 
-  ${mediaQueries[1]} {
+  ${mediaQueries["sm"]} {
     padding: 15mm 20mm;
   }
-  ${mediaQueries[2]} {
+  ${mediaQueries["md"]} {
     width: 21cm;
     height: 29.7cm;
   }
@@ -47,7 +53,7 @@ const Page = styled.div`
 const Logo = styled.img`
   width: 80%;
   height: auto;
-  ${mediaQueries[2]} {
+  ${mediaQueries["md"]} {
     max-width: 300px;
     max-height: 80x;
   }
@@ -69,7 +75,7 @@ const Patient = styled.section``;
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mediaQueries[2]} {
+  ${mediaQueries["md"]} {
     flex-basis: 30%;
     justify-content: initial;
   }
@@ -78,14 +84,14 @@ const FirstCol = styled.div`
   font-weight: bold;
   // border: 1px solid black;
 
-  ${mediaQueries[2]} {
+  ${mediaQueries["md"]} {
     flex-basis: 30%;
   }
 `;
 const SecondCol = styled.div`
   // border: 1px solid black;
 
-  ${mediaQueries[2]} {
+  ${mediaQueries["md"]} {
     flex-basis: 70%;
   }
 `;
@@ -94,7 +100,7 @@ const ResultSection = styled.section`
   margin-top: 40px;
   text-align: justify;
 
-  ${mediaQueries[1]} {
+  ${mediaQueries["md"]} {
     text-align: left;
   }
 `;
