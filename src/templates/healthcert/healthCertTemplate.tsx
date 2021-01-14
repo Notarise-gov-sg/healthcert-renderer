@@ -8,6 +8,11 @@ import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
+const breakpoints = [330, 420, 576, 768, 992, 1200]
+const mediaQueries = breakpoints.map(
+  bp => `@media (min-width: ${bp}px)`
+)
+
 const Background = styled.div`
   &::after {
     content: "";
@@ -26,18 +31,30 @@ const Background = styled.div`
 `;
 const Page = styled.div`
   margin: auto;
-  width: 21cm;
-  height: 29.7cm;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 15mm 20mm 15mm 20mm;
+  padding: 5mm 5mm;
   position: relative;
   font-size: 18px;
   line-height: 30px;
+
+  ${mediaQueries[1]} {
+    padding: 15mm 20mm;
+  }
+  
+  ${mediaQueries[2]} {
+    width: 21cm;
+    height: 29.7cm;
+  }
 `;
 const Logo = styled.img`
-  max-width: 300px;
-  max-height: 80x;
+  width: 80%; 
+  height: auto;  
+
+  ${mediaQueries[2]} {
+    max-width: 300px;
+    max-height: 80x;
+ }
 `;
 
 const Title = styled.h1`
@@ -55,17 +72,40 @@ const SubTitle = styled.h1`
 const Patient = styled.section``;
 const Row = styled.div`
   display: flex;
+  justify-content: space-between;
+  ${mediaQueries[2]} {
+    flex-basis: 30%;
+    justify-content: initial;
+ }
+
 `;
 const FirstCol = styled.div`
   font-weight: bold;
-  flex-basis: 30%;
+  // border: 1px solid black;
+
+  ${mediaQueries[2]} {
+    flex-basis: 30%;
+ }
+
+
 `;
 const SecondCol = styled.div`
-  flex-basis: 70%;
+  // border: 1px solid black;
+
+  ${mediaQueries[2]} {
+    flex-basis: 70%;
+ }
+
 `;
 
 const ResultSection = styled.section`
   margin-top: 40px;
+  text-align: justify;
+
+  ${mediaQueries[1]} {
+    text-align: left;
+ }
+
 `;
 const Negative = styled.span`
   font-weight: bold;

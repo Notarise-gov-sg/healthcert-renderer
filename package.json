@@ -10,6 +10,7 @@
     "@govtechsg/decentralized-renderer-react-components": "3.3.0",
     "@govtechsg/oa-schemata": "^1.4.2",
     "@hot-loader/react-dom": "^16.11.0",
+    "@storybook/addon-viewport": "^5.3.2",
     "debug": "4.1.1",
     "i18n-iso-countries": "^6.2.2",
     "react": "^16.12.0",
