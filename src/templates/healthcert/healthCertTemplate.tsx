@@ -37,7 +37,7 @@ const Page = styled.div`
   margin: auto;
   border: 1px solid black;
   box-sizing: border-box;
-  padding: 5mm 5mm;
+  padding: 10px 10px;
   position: relative;
   font-size: 18px;
   line-height: 30px;
