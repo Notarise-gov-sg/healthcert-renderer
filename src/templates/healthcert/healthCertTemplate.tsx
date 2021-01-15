@@ -9,12 +9,11 @@ import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 const mediaQueries: Record<string, string> = {
-  xs: `@media (min-width: ${330}px)`,
-  sm: `@media (min-width: ${420}px)`,
-  md: `@media (min-width: ${576}px)`,
-  lg: `@media (min-width: ${768}px)`,
-  xl: `@media (min-width: ${992}px)`,
-  full: `@media (min-width: ${1200}px)`
+  sm: `@media (min-width: ${640}px)`,
+  md: `@media (min-width: ${768}px)`,
+  lg: `@media (min-width: ${1024}px)`,
+  xl: `@media (min-width: ${1280}px)`,
+  "2xl": `@media (min-width: ${1536}px)`
 };
 
 const Background = styled.div`
@@ -45,7 +44,7 @@ const Page = styled.div`
   ${mediaQueries["sm"]} {
     padding: 15mm 20mm;
   }
-  ${mediaQueries["md"]} {
+  ${mediaQueries["lg"]} {
     width: 21cm;
     height: 29.7cm;
   }
