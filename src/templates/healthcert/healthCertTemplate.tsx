@@ -1,3 +1,4 @@
+import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { HealthCertDocument } from "./types";
@@ -33,6 +34,8 @@ const Background = styled.div`
   }
 `;
 const Page = styled.div`
+  display: flex;
+  flex-direction: column;
   margin: auto;
   border: 1px solid black;
   box-sizing: border-box;
@@ -81,25 +84,22 @@ const Row = styled.div`
 `;
 const FirstCol = styled.div`
   font-weight: bold;
-  // border: 1px solid black;
 
   ${mediaQueries["md"]} {
     flex-basis: 30%;
   }
 `;
 const SecondCol = styled.div`
-  // border: 1px solid black;
-
   ${mediaQueries["md"]} {
     flex-basis: 70%;
   }
 `;
 
 const ResultSection = styled.section`
-  margin-top: 40px;
   text-align: justify;
 
   ${mediaQueries["md"]} {
+    margin-top: 40px;
     text-align: left;
   }
 `;
@@ -108,11 +108,19 @@ const Negative = styled.span`
 `;
 
 const Doctor = styled.section`
-  margin-top: 40px;
+  margin-bottom: 10px;
+  ${mediaQueries["md"]} {
+    margin-top: 40px;
+  }
 `;
 const Bold = styled.span`
   font-weight: bold;
 `;
+const QrCodeContainer = styled.div`
+  margin-top: auto;
+  text-align: center;
+`;
+
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg local
 
@@ -199,6 +207,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <Bold>MCR No.:</Bold> {performerMcr}
         </p>
       </Doctor>
+      <QrCodeContainer>
+        <QRCode value={document.notarisationMetadata?.url} level={"H"} size={200} />
+      </QrCodeContainer>
     </Page>
   );
 };
