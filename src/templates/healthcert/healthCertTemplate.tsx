@@ -208,11 +208,11 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <Bold>MCR No.:</Bold> {performerMcr}
         </p>
       </Doctor>
-      {
-        url && <QrCodeContainer>
+      {url && (
+        <QrCodeContainer>
           <QRCode value={url} level={"H"} size={200} />
         </QrCodeContainer>
-      }
+      )}
     </Page>
   );
 };
