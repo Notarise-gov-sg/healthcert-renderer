@@ -153,6 +153,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   const observationDate = observation?.effectiveDateTime
     ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
     : "";
+  const url = document.notarisationMetadata?.url;
 
   return (
     <Page className={className}>
@@ -207,9 +208,11 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <Bold>MCR No.:</Bold> {performerMcr}
         </p>
       </Doctor>
-      <QrCodeContainer>
-        <QRCode value={document.notarisationMetadata?.url} level={"H"} size={200} />
-      </QrCodeContainer>
+      {
+        url && <QrCodeContainer>
+          <QRCode value={url} level={"H"} size={200} />
+        </QrCodeContainer>
+      }
     </Page>
   );
 };
