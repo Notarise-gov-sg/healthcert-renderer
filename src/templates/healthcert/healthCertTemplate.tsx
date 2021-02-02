@@ -14,7 +14,8 @@ const mediaQueries: Record<string, string> = {
   md: `@media (min-width: ${768}px)`,
   lg: `@media (min-width: ${1024}px)`,
   xl: `@media (min-width: ${1280}px)`,
-  "2xl": `@media (min-width: ${1536}px)`
+  "2xl": `@media (min-width: ${1536}px)`,
+  print: `@media print`
 };
 
 const Background = styled.div`
@@ -51,13 +52,19 @@ const Page = styled.div`
     width: 21cm;
     height: 29.7cm;
   }
+
+  ${mediaQueries["print"]} {
+    width: 21cm;
+    height: 27cm;
+    padding-bottom: 2mm;
+  }
 `;
 const Logo = styled.img`
   width: 80%;
   height: auto;
   ${mediaQueries["md"]} {
     max-width: 300px;
-    max-height: 80x;
+    max-height: 80px;
   }
 `;
 
