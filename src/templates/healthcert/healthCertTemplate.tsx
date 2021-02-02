@@ -210,7 +210,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       </Doctor>
       {url && (
         <QrCodeContainer>
-          <QRCode value={url} level={"H"} size={200} />
+          <QRCode value={url} level={"M"} size={200} />
         </QrCodeContainer>
       )}
     </Page>
