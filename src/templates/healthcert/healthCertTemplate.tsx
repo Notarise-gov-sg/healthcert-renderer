@@ -178,7 +178,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <SecondCol>{patientNricIdentifier?.value}</SecondCol>
         </Row>
         <Row>
-          <FirstCol>Travel Document:</FirstCol>
+          <FirstCol>Travel/Document:</FirstCol>
           <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
         </Row>
         <Row>
