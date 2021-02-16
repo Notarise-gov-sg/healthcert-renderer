@@ -178,11 +178,11 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <SecondCol>{patientNricIdentifier?.value}</SecondCol>
         </Row>
         <Row>
-          <FirstCol>Passport Number:</FirstCol>
+          <FirstCol>Travel/Document:</FirstCol>
           <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
         </Row>
         <Row>
-          <FirstCol>Nationality:</FirstCol>
+          <FirstCol>Nationality/Citizenship:</FirstCol>
           <SecondCol>{countries.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
         </Row>
         <Row>
