@@ -93,7 +93,7 @@ const FirstCol = styled.div`
   font-weight: bold;
 
   ${mediaQueries["md"]} {
-    flex-basis: 30%; 
+    flex-basis: 30%;
   }
 `;
 const SecondCol = styled.div`
@@ -178,7 +178,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <SecondCol>{patientNricIdentifier?.value}</SecondCol>
         </Row>
         <Row>
-          <FirstCol style={{lineHeight: 1}}>Passport/Travel Document Number:</FirstCol>
+          <FirstCol style={{lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
         </Row>
         <Row>
