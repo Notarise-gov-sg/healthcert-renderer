@@ -1,7 +1,8 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
 import { HealthCertTemplate } from "./healthCertTemplate";
-import { healthCertSample } from "./fixtures/sample";
+import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
+import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutNric";
 
 <Meta title="MDX|HealthCertTemplate" component={HealthCertTemplate} />
 
@@ -16,7 +17,10 @@ import { healthCertSample } from "./fixtures/sample";
 # Usage
 
 <Preview>
-  <Story name="basic sample">
-    <HealthCertTemplate document={object("document", healthCertSample)} />
+  <Story name="cert with nric">
+    <HealthCertTemplate document={object("document", sampleWithNric)} />
+  </Story>
+  <Story name="cert without nric">
+    <HealthCertTemplate document={object("document", sampleWithoutNric)} />
   </Story>
 </Preview>
