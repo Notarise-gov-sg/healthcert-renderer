@@ -13,7 +13,7 @@ const {
   EntryResourceType
 } = healthcert;
 
-export const healthCertSample: HealthCertDocument = {
+export const multiMemoSample: HealthCertDocument = {
   id: "TEST001",
   name: "HealthCert",
   validFrom: "2020-11-20",
@@ -37,6 +37,12 @@ export const healthCertSample: HealthCertDocument = {
           {
             type: "PPN",
             value: "E7831177G"
+          },
+          {
+            type: {
+              text: "NRIC"
+            },
+            value: "S9098989Z"
           }
         ],
         name: [
@@ -66,6 +72,101 @@ export const healthCertSample: HealthCertDocument = {
       {
         resourceType: EntryResourceType.Observation,
         fullUrl: "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
+        specimen: {
+          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
+        },
+        performerReference: [
+          {
+            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d"
+          },
+          {
+            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d"
+          }
+        ],
+        identifier: [
+          {
+            value: "123456789",
+            type: "ACSN"
+          }
+        ],
+        code: {
+          coding: [
+            {
+              system: "http://loinc.org",
+              code: "94531-1",
+              display: "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+            }
+          ]
+        },
+        valueCodeableConcept: {
+          coding: [
+            {
+              system: "http://snomed.info/sct",
+              code: "260385009",
+              display: "Negative"
+            }
+          ]
+        },
+        effectiveDateTime: "2020-09-28T06:15:00Z",
+        status: Status.Final,
+        performer: {
+          name: [
+            {
+              text: "Dr Michael Lim"
+            }
+          ]
+        },
+        qualification: [
+          {
+            identifier: "MCR 123214",
+            issuer: "MOH"
+          }
+        ]
+      },
+      {
+        fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
+        resourceType: EntryResourceType.Organization,
+        name: "MacRitchie Medical Clinic",
+        type: "Licensed Healthcare Provider",
+        endpoint: {
+          address: "https://www.macritchieclinic.com.sg"
+        },
+        contact: {
+          telecom: [
+            {
+              system: System.Phone,
+              value: "+6563113111"
+            }
+          ],
+          address: {
+            type: AddressType.Physical,
+            use: Use.Work,
+            text: "MacRitchie Hospital Thomson Road Singapore 123000"
+          }
+        }
+      },
+      {
+        fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
+        resourceType: EntryResourceType.Organization,
+        name: "MacRitchie Laboratory",
+        type: "Accredited Laboratory",
+        contact: {
+          telecom: [
+            {
+              system: System.Phone,
+              value: "+6562711188"
+            }
+          ],
+          address: {
+            type: AddressType.Physical,
+            use: Use.Work,
+            text: "2 Thomson Avenue 4 Singapore 098888"
+          }
+        }
+      },
+      {
+        resourceType: EntryResourceType.Observation,
+        fullUrl: "urn:uuid:zzzz1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
           reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
         },

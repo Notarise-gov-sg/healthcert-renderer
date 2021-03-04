@@ -3,6 +3,7 @@ import { object } from "@storybook/addon-knobs";
 import { HealthCertTemplate } from "./healthCertTemplate";
 import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
 import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutNric";
+import { multiMemoSample } from "./fixtures/multiMemo";
 
 <Meta title="MDX|HealthCertTemplate" component={HealthCertTemplate} />
 
@@ -22,5 +23,8 @@ import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutN
   </Story>
   <Story name="cert without nric">
     <HealthCertTemplate document={object("document", sampleWithoutNric)} />
+  </Story>
+  <Story name="two memo sample">
+    <HealthCertTemplate document={object("document", multiMemoSample)} />
   </Story>
 </Preview>

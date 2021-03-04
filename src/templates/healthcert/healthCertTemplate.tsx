@@ -135,14 +135,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   className?: string;
 }> = ({ document, className = "" }) => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient");
-  const observation = document.fhirBundle.entry.find(entry => entry.resourceType === "Observation");
-  const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
-  const provider = document.fhirBundle.entry.find(
-    entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
-  );
-  const lab = document.fhirBundle.entry.find(
-    entry => entry.resourceType === "Organization" && entry.type === "Accredited Laboratory"
-  );
+  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
 
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const patientNricIdentifier = patient?.identifier?.find(isNric);
@@ -150,73 +143,100 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
   );
 
-  const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
-  const swabCollectionDate = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
-
-  const performerName = observation?.performer?.name?.[0]?.text;
-  const performerMcr = observation?.qualification?.[0]?.identifier;
-  const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
   const url = document.notarisationMetadata?.url;
+  const memoSection = [];
+  observations.forEach(observation => {
+    const specimenReference = observation?.specimen?.reference;
+    const organisationReferences = observation?.performerReference?.map(organisation => organisation?.reference);
+    const specimen = document.fhirBundle.entry.find(
+      entry => entry.resourceType === "Specimen" && entry?.fullUrl === specimenReference
+    );
+    const provider = document.fhirBundle.entry.find(
+      entry =>
+        entry.resourceType === "Organization" &&
+        entry.type === "Licensed Healthcare Provider" &&
+        entry?.fullUrl in organisationReferences
+    );
+    const lab = document.fhirBundle.entry.find(
+      entry =>
+        entry.resourceType === "Organization" &&
+        entry.type === "Accredited Laboratory" &&
+        entry?.fullUrl in organisationReferences
+    );
+    const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
+    const swabCollectionDate = specimen?.collection?.collectedDateTime
+      ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
+      : "";
 
-  return (
-    <Page className={className}>
-      <Background />
-      {document.logo && <Logo src={document.logo} alt="healthcare provider logo" />}
-      <Title>MEMO ON COVID-19 REAL TIME</Title>
-      <SubTitle>RT-PCR SWAB TEST RESULT</SubTitle>
-      <Patient>
-        <Row>
-          <FirstCol>Name of Person:</FirstCol>
-          <SecondCol>{patientName}</SecondCol>
-        </Row>
+    const performerName = observation?.performer?.name?.[0]?.text;
+    const performerMcr = observation?.qualification?.[0]?.identifier;
+    const observationDate = observation?.effectiveDateTime
+      ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
+      : "";
+
+    memoSection.push(
+      <div>
+        <Title>MEMO ON COVID-19 REAL TIME</Title>
+        <SubTitle>RT-PCR SWAB TEST RESULT</SubTitle>
+        <Patient>
+          <Row>
+            <FirstCol>Name of Person:</FirstCol>
+            <SecondCol>{patientName}</SecondCol>
+          </Row>
+          
         {patientNricIdentifier?.value && (
           <Row>
             <FirstCol>NRIC/FIN Number:</FirstCol>
             <SecondCol>{patientNricIdentifier?.value}</SecondCol>
           </Row>
         )}
-        <Row>
-          <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
-          <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
-        </Row>
-        <Row>
-          <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{countries.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
-        </Row>
-        <Row>
-          <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>
-            {patient?.birthDate
-              ?.split("-")
-              .reverse()
-              .join("/")}
-          </SecondCol>
-        </Row>
-      </Patient>
-      <ResultSection>
-        <p>To whom it may concern:</p>
-        <p>
-          The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType?.display} on{" "}
-          {swabCollectionDate} by {provider?.name} and has tested <Negative>negative</Negative>. This test result was
-          reported by {lab?.name} on {observationDate}.
-        </p>
-        <p>
-          {patient?.gender === healthcert.Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative
-          COVID-19 test.
-        </p>
-        <p>Thank you.</p>
-      </ResultSection>
-      <Doctor>
-        <p>
-          <Bold>Name of Doctor:</Bold> {performerName}
-          <br />
-          <Bold>MCR No.:</Bold> {performerMcr}
-        </p>
-      </Doctor>
+          <Row>
+            <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
+            <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Nationality/Citizenship:</FirstCol>
+            <SecondCol>{countries.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Date of Birth:</FirstCol>
+            <SecondCol>
+              {patient?.birthDate
+                ?.split("-")
+                .reverse()
+                .join("/")}
+            </SecondCol>
+          </Row>
+        </Patient>
+        <ResultSection>
+          <p>To whom it may concern:</p>
+          <p>
+            The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType?.display} on{" "}
+            {swabCollectionDate} by {provider?.name} and has tested <Negative>negative</Negative>. This test result was
+            reported by {lab?.name} on {observationDate}.
+          </p>
+          <p>
+            {patient?.gender === healthcert.Gender.Female ? "She" : "He"} is fit for travel, based solely on the
+            negative COVID-19 test.
+          </p>
+          <p>Thank you.</p>
+        </ResultSection>
+        <Doctor>
+          <p>
+            <Bold>Name of Doctor:</Bold> {performerName}
+            <br />
+            <Bold>MCR No.:</Bold> {performerMcr}
+          </p>
+        </Doctor>
+      </div>
+    );
+  });
+
+  return (
+    <Page className={className}>
+      <Background />
+      <Logo src={document.logo} alt="healthcare provider logo" />
+      {memoSection}
       {url && (
         <QrCodeContainer>
           <QRCode value={url} level={"M"} size={200} />
