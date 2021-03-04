@@ -188,8 +188,8 @@ export const multiMemoSample: HealthCertDocument = {
           coding: [
             {
               system: "http://loinc.org",
-              code: "94531-1",
-              display: "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+              code: "94661-6",
+              display: "SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma"
             }
           ]
         },

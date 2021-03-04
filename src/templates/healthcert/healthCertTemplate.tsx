@@ -50,12 +50,10 @@ const Page = styled.div`
   }
   ${mediaQueries["lg"]} {
     width: 21cm;
-    height: 29.7cm;
   }
 
   ${mediaQueries["print"]} {
     width: 21cm;
-    height: 27cm;
     padding-bottom: 2mm;
   }
 `;
@@ -163,6 +161,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         entry.type === "Accredited Laboratory" &&
         entry?.fullUrl in organisationReferences
     );
+    const testType = observation?.code?.coding?.[0]?.code;
     const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
     const swabCollectionDate = specimen?.collection?.collectedDateTime
       ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
@@ -176,8 +175,10 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
 
     memoSection.push(
       <div>
-        <Title>MEMO ON COVID-19 REAL TIME</Title>
-        <SubTitle>RT-PCR SWAB TEST RESULT</SubTitle>
+        <Title>MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}</Title>
+        <SubTitle>
+          {testType === "94531-1" ? "RT-PCR SWAB" : testType === "94661-6" ? "SEROLOGY" : ""} TEST RESULT
+        </SubTitle>
         <Patient>
           <Row>
             <FirstCol>Name of Person:</FirstCol>
@@ -211,9 +212,10 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         <ResultSection>
           <p>To whom it may concern:</p>
           <p>
-            The abovementioned has undergone RT-PCR testing for COVID-19 using a {swabType?.display} on{" "}
-            {swabCollectionDate} by {provider?.name} and has tested <Negative>negative</Negative>. This test result was
-            reported by {lab?.name} on {observationDate}.
+            The abovementioned has undergone{" "}
+            {testType === "94531-1" ? "RT-PCR" : testType === "94661-6" ? "SEROLOGY" : ""} testing for COVID-19 using a{" "}
+            {swabType?.display} on {swabCollectionDate} by {provider?.name} and has tested <Negative>negative</Negative>
+            . This test result was reported by {lab?.name} on {observationDate}.
           </p>
           <p>
             {patient?.gender === healthcert.Gender.Female ? "She" : "He"} is fit for travel, based solely on the
