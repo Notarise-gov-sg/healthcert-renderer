@@ -165,7 +165,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   return (
     <Page className={className}>
       <Background />
-      <Logo src={document.logo} alt="healthcare provider logo" />
+      {document.logo && <Logo src={document.logo} alt="healthcare provider logo" />}
       <Title>MEMO ON COVID-19 REAL TIME</Title>
       <SubTitle>RT-PCR SWAB TEST RESULT</SubTitle>
       <Patient>
