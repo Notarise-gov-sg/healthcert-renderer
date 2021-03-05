@@ -23,7 +23,6 @@ export const healthCertSample: HealthCertDocument = {
     type: FhirBundleType.Collection,
     entry: [
       {
-        fullUrl: "urn:uuid:aaaa1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Patient,
         extension: [
           {
@@ -49,7 +48,6 @@ export const healthCertSample: HealthCertDocument = {
       },
       {
         resourceType: EntryResourceType.Specimen,
-        fullUrl: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
         type: {
           coding: [
             {
@@ -65,18 +63,6 @@ export const healthCertSample: HealthCertDocument = {
       },
       {
         resourceType: EntryResourceType.Observation,
-        fullUrl: "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
-        specimen: {
-          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
-        },
-        performerReference: [
-          {
-            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d"
-          },
-          {
-            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d"
-          }
-        ],
         identifier: [
           {
             value: "123456789",
@@ -118,7 +104,6 @@ export const healthCertSample: HealthCertDocument = {
         ]
       },
       {
-        fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
@@ -140,7 +125,6 @@ export const healthCertSample: HealthCertDocument = {
         }
       },
       {
-        fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Laboratory",
         type: "Accredited Laboratory",
