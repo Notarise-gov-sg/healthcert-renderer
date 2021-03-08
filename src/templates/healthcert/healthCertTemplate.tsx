@@ -85,7 +85,7 @@ const SubTitle = styled.h1`
   text-align: center;
   font-size: 22px;
 `;
-const Patient = styled.section``;
+const PatientDetails = styled.section``;
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
@@ -165,7 +165,7 @@ const generateMemoSection = (
           : observation?.code?.coding?.[0]?.display}{" "}
         TEST RESULT
       </SubTitle>
-      <Patient>
+      <PatientDetails>
         <Row>
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{patientName}</SecondCol>
@@ -193,7 +193,7 @@ const generateMemoSection = (
               .join("/")}
           </SecondCol>
         </Row>
-      </Patient>
+      </PatientDetails>
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
