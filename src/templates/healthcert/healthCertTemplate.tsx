@@ -173,10 +173,12 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{patientName}</SecondCol>
         </Row>
-        <Row>
-          <FirstCol>NRIC/FIN Number:</FirstCol>
-          <SecondCol>{patientNricIdentifier?.value}</SecondCol>
-        </Row>
+        {patientNricIdentifier?.value && (
+          <Row>
+            <FirstCol>NRIC/FIN Number:</FirstCol>
+            <SecondCol>{patientNricIdentifier?.value}</SecondCol>
+          </Row>
+        )}
         <Row>
           <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{document.notarisationMetadata?.passportNumber}</SecondCol>

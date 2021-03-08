@@ -1,5 +1,5 @@
 import { HealthCertTemplate } from "../healthCertTemplate";
-import { healthCertSample } from "../fixtures/sample";
+import { healthCertSample } from "../fixtures/sampleWithNric";
 import { render } from "@testing-library/react";
 import React from "react";
 
