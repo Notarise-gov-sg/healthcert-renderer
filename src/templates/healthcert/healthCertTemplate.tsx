@@ -169,10 +169,12 @@ const generateMemoSection = (
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{patientName}</SecondCol>
         </Row>
-        <Row>
-          <FirstCol>NRIC/FIN Number:</FirstCol>
-          <SecondCol>{patientNricIdentifier?.value}</SecondCol>
-        </Row>
+        {patientNricIdentifier?.value && (
+          <Row>
+            <FirstCol>NRIC/FIN Number:</FirstCol>
+            <SecondCol>{patientNricIdentifier?.value}</SecondCol>
+          </Row>
+        )}
         <Row>
           <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{passportNumber}</SecondCol>
@@ -289,13 +291,13 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         entry =>
           entry.resourceType === "Organization" &&
           entry.type === "Licensed Healthcare Provider" &&
-          entry?.fullUrl in organisationReferences
+          organisationReferences.includes(entry?.fullUrl)
       );
       const lab = document.fhirBundle.entry.find(
         entry =>
           entry.resourceType === "Organization" &&
           entry.type === "Accredited Laboratory" &&
-          entry?.fullUrl in organisationReferences
+          organisationReferences.includes(entry?.fullUrl)
       );
       const testType = observation?.code?.coding?.[0]?.code;
       const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
