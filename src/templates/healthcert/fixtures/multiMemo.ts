@@ -1,3 +1,4 @@
+// TODO: remove ts-ignore after the healthcert schema is updated to include it
 import { healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { HealthCertDocument } from "../types";
@@ -23,6 +24,8 @@ export const multiMemoSample: HealthCertDocument = {
     type: FhirBundleType.Collection,
     entry: [
       {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:aaaa1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Patient,
         extension: [
@@ -55,6 +58,8 @@ export const multiMemoSample: HealthCertDocument = {
       },
       {
         resourceType: EntryResourceType.Specimen,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
         type: {
           coding: [
@@ -71,6 +76,8 @@ export const multiMemoSample: HealthCertDocument = {
       },
       {
         resourceType: EntryResourceType.Observation,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
           reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
@@ -124,6 +131,8 @@ export const multiMemoSample: HealthCertDocument = {
         ]
       },
       {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
@@ -146,6 +155,8 @@ export const multiMemoSample: HealthCertDocument = {
         }
       },
       {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Laboratory",
@@ -166,6 +177,8 @@ export const multiMemoSample: HealthCertDocument = {
       },
       {
         resourceType: EntryResourceType.Observation,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:zzzz1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
           reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
@@ -219,6 +232,8 @@ export const multiMemoSample: HealthCertDocument = {
         ]
       },
       {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
@@ -241,6 +256,8 @@ export const multiMemoSample: HealthCertDocument = {
         }
       },
       {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Laboratory",

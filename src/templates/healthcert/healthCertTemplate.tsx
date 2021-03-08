@@ -1,3 +1,4 @@
+// TODO: remove ts-ignore after the healthcert schema is updated to include it
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
@@ -9,9 +10,9 @@ import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
 import {
   Coding,
-  EntryResourceType,
   Extension,
-  Identifier
+  Identifier,
+  Patient
 } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/moh/healthcert/1.0/schema";
 countries.registerLocale(englishCountries);
 
@@ -137,21 +138,21 @@ const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg local
 
 const generateMemoSection = (
   memoSection: JSX.Element[],
-  observation: EntryResourceType.Observation,
-  specimen: EntryResourceType.Specimen,
-  provider: EntryResourceType.Organization,
-  lab: EntryResourceType.Organization,
-  swabType: Coding,
+  observation: any,
+  specimen: any,
+  provider: any,
+  lab: any,
+  swabType: Coding | undefined,
   patientName: string,
   swabCollectionDate: string,
-  performerName: string,
-  performerMcr: string,
+  performerName: string | undefined,
+  performerMcr: string | undefined,
   observationDate: string,
-  patientNricIdentifier: Identifier,
-  patientNationality: Extension,
+  patientNricIdentifier: Identifier | undefined,
+  patientNationality: Extension | undefined,
   passportNumber: string,
-  patient: EntryResourceType.Patient,
-  testType: string
+  patient: Patient | undefined,
+  testType: string | undefined
 ): void => {
   memoSection.push(
     <div>
@@ -236,7 +237,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   );
 
   const url = document.notarisationMetadata?.url;
-  const memoSection = [];
+  const memoSection: JSX.Element[] = [];
 
   // backward compatibility for healthcerts with no full url and only one test. auto resolve to first match instead
   if (observations.length === 1) {
@@ -281,22 +282,32 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     );
   } else {
     observations.forEach(observation => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       const specimenReference = observation?.specimen?.reference;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       const organisationReferences = observation?.performerReference?.map(organisation => organisation?.reference);
 
       const specimen = document.fhirBundle.entry.find(
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         entry => entry.resourceType === "Specimen" && entry?.fullUrl === specimenReference
       );
       const provider = document.fhirBundle.entry.find(
         entry =>
           entry.resourceType === "Organization" &&
           entry.type === "Licensed Healthcare Provider" &&
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
           organisationReferences.includes(entry?.fullUrl)
       );
       const lab = document.fhirBundle.entry.find(
         entry =>
           entry.resourceType === "Organization" &&
           entry.type === "Accredited Laboratory" &&
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
           organisationReferences.includes(entry?.fullUrl)
       );
       const testType = observation?.code?.coding?.[0]?.code;
