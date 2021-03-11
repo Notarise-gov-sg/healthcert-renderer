@@ -110,7 +110,7 @@ export const healthCertSample: HealthCertDocument = {
         ]
       },
       {
-        resourceType: EntryResourceType.Observation,
+        resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
