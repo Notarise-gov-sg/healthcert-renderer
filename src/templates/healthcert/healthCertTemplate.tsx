@@ -8,10 +8,9 @@ import countries from "i18n-iso-countries";
 
 import englishCountries from "i18n-iso-countries/langs/en.json";
 import { MemoSection } from "./memo/memoSection";
-import { isLegacy, extractInfoFromLegacyCert, extractInfoFromCert } from "./memo/parseInfo";
-import { Page, Background, Logo, QrCodeContainer } from "./memo/styled-components";
+import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
+import { extractInfo } from "./memo/parseInfo";
 countries.registerLocale(englishCountries);
-
 
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
@@ -31,16 +30,20 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   const url = (document.notarisationMetadata as any)?.url;
   const memoSections: JSX.Element[] = [];
 
-  // backward compatibility for healthcerts with no full url and only one test. auto resolve to first match instead
-  if (isLegacy(document)) {
-    const observation = observations[0];
-    const {specimen, provider, lab, testType, swabType, swabCollectionDate, 
-      performerName, performerMcr, observationDate} = extractInfoFromLegacyCert(observation, document);
-
+  for (const observation of observations) {
+    const {
+      provider,
+      lab,
+      testType,
+      swabType,
+      swabCollectionDate,
+      performerName,
+      performerMcr,
+      observationDate
+    } = extractInfo(observation, document);
     memoSections.push(
-      <MemoSection 
+      <MemoSection
         observation={observation}
-        specimen={specimen}
         provider={provider}
         lab={lab}
         swabType={swabType}
@@ -53,34 +56,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         patientNationality={patientNationality}
         passportNumber={passportNumber}
         patient={patient}
-        testType={testType}      
+        testType={testType}
       />
-    )
-  } else {
-    observations.forEach(observation => {
-      const {specimen, provider, lab, testType, swabType, swabCollectionDate, 
-        performerName, performerMcr, observationDate} = extractInfoFromCert(observation, document);
-
-        memoSections.push(
-          <MemoSection 
-            observation={observation}
-            specimen={specimen}
-            provider={provider}
-            lab={lab}
-            swabType={swabType}
-            patientName={patientName}
-            swabCollectionDate={swabCollectionDate}
-            performerName={performerName}
-            performerMcr={performerMcr}
-            observationDate={observationDate}
-            patientNricIdentifier={patientNricIdentifier}
-            patientNationality={patientNationality}
-            passportNumber={passportNumber}
-            patient={patient}
-            testType={testType}      
-          />
-        )
-    });
+    );
   }
 
   return (
