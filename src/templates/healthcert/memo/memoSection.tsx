@@ -109,8 +109,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <Negative>negative</Negative>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-          {patient?.gender === healthcert.Gender.Female ? "She" : "He"} is fit for travel, based solely on the negative
-          COVID-19 test.
+          {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,
+          based solely on the negative COVID-19 test.
         </p>
         <p>Thank you.</p>
       </ResultSection>
