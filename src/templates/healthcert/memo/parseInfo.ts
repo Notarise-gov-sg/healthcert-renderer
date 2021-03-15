@@ -7,24 +7,23 @@ const isLegacy = (document: HealthCertDocument): boolean => {
   return observations.length === 1;
 };
 
-type PartialMemoInfo = Pick<
+type ParsedInfo = Pick<
   MemoInfo,
+  | "specimen"
   | "provider"
   | "lab"
+  | "testType"
   | "swabType"
   | "swabCollectionDate"
+  | "swabCollectionTime"
   | "performerName"
   | "performerMcr"
   | "observationDate"
-  | "testType"
-  | "specimen"
+  | "observationTime"
 >;
 
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
-const extractInfoFromLegacyCert = (
-  observation: healthcert.Patient,
-  document: HealthCertDocument
-): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
+const extractInfoFromLegacyCert = (document: HealthCertDocument): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
     entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
@@ -80,9 +79,9 @@ const extractInfoFromCert = (
   };
 };
 
-export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): PartialMemoInfo => {
+export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): ParsedInfo => {
   const { specimen, provider, lab } = isLegacy(document)
-    ? extractInfoFromLegacyCert(observation, document)
+    ? extractInfoFromLegacyCert(document)
     : extractInfoFromCert(observation, document);
 
   const testType = observation?.code?.coding?.[0]?.code;
@@ -91,12 +90,17 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
     ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
     : "";
 
+  const swabCollectionTime = specimen?.collection?.collectedDateTime
+    ? new Date(specimen.collection.collectedDateTime).toLocaleTimeString(DATE_LOCALE)
+    : "";
+
   const performerName = observation?.performer?.name?.[0]?.text;
   const performerMcr = observation?.qualification?.[0]?.identifier;
   const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE) +
-      " " +
-      new Date(observation.effectiveDateTime).toLocaleTimeString(DATE_LOCALE)
+    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
+    : "";
+  const observationTime = observation?.effectiveDateTime
+    ? new Date(observation.effectiveDateTime).toLocaleTimeString(DATE_LOCALE)
     : "";
 
   return {
@@ -106,8 +110,10 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
     testType,
     swabType,
     swabCollectionDate,
+    swabCollectionTime,
     performerName,
     performerMcr,
-    observationDate
+    observationDate,
+    observationTime
   };
 };
