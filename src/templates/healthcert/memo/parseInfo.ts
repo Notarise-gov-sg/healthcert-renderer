@@ -31,7 +31,10 @@ const getDateTime = (dateString: string | undefined): string => {
     : "";
 };
 
-const extractInfoFromLegacyCert = (document: HealthCertDocument): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
+/* eslint-disable @typescript-eslint/camelcase */
+const extract_Specimen_Provier_Lab_FromLegacyCert = (
+  document: HealthCertDocument
+): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
     entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
@@ -47,7 +50,8 @@ const extractInfoFromLegacyCert = (document: HealthCertDocument): Pick<MemoInfo,
   };
 };
 
-const extractInfoFromCert = (
+/* eslint-disable @typescript-eslint/camelcase */
+const extract_Specimen_Provier_Lab_FromCert = (
   observation: healthcert.Patient,
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
@@ -89,8 +93,8 @@ const extractInfoFromCert = (
 
 export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): ParsedInfo => {
   const { specimen, provider, lab } = isLegacy(document)
-    ? extractInfoFromLegacyCert(document)
-    : extractInfoFromCert(observation, document);
+    ? extract_Specimen_Provier_Lab_FromLegacyCert(document)
+    : extract_Specimen_Provier_Lab_FromCert(observation, document);
 
   const testType = observation?.code?.coding?.[0]?.code;
   const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
@@ -99,8 +103,6 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
   const performerName = observation?.performer?.name?.[0]?.text;
   const performerMcr = observation?.qualification?.[0]?.identifier;
   const observationDate = getDateTime(observation?.effectiveDateTime);
-
-  console.log("DATE", swabCollectionDate, observationDate);
 
   return {
     specimen,
