@@ -7,21 +7,33 @@ const isLegacy = (document: HealthCertDocument): boolean => {
   return observations.length === 1;
 };
 
-type PartialMemoInfo = Pick<
+type ParsedInfo = Pick<
   MemoInfo,
+  | "specimen"
   | "provider"
   | "lab"
+  | "testType"
   | "swabType"
   | "swabCollectionDate"
   | "performerName"
   | "performerMcr"
   | "observationDate"
-  | "testType"
-  | "specimen"
 >;
 
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
-const extractInfoFromLegacyCert = (observation: healthcert.Patient, document: HealthCertDocument): PartialMemoInfo => {
+
+const getDateTime = (dateString: string | undefined): string => {
+  return dateString
+    ? new Date(dateString).toLocaleString(DATE_LOCALE, {
+        timeZone: "UTC",
+        timeZoneName: "short"
+      })
+    : "";
+};
+
+const extractSpecimenProvierLabFromLegacyCert = (
+  document: HealthCertDocument
+): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
     entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
@@ -30,32 +42,17 @@ const extractInfoFromLegacyCert = (observation: healthcert.Patient, document: He
     entry => entry.resourceType === "Organization" && entry.type === "Accredited Laboratory"
   );
 
-  const testType = observation?.code?.coding?.[0]?.code;
-  const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
-  const swabCollectionDate = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
-
-  const performerName = observation?.performer?.name?.[0]?.text;
-  const performerMcr = observation?.qualification?.[0]?.identifier;
-  const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
-
   return {
     specimen,
     provider,
-    lab,
-    testType,
-    swabType,
-    swabCollectionDate,
-    performerName,
-    performerMcr,
-    observationDate
+    lab
   };
 };
 
-const extractInfoFromCert = (observation: healthcert.Patient, document: HealthCertDocument): PartialMemoInfo => {
+const extractSpecimenProvierLabFromCert = (
+  observation: healthcert.Patient,
+  document: HealthCertDocument
+): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const specimenReference = observation?.specimen?.reference;
@@ -84,17 +81,26 @@ const extractInfoFromCert = (observation: healthcert.Patient, document: HealthCe
       // @ts-ignore
       organisationReferences.includes(entry?.fullUrl)
   );
+
+  return {
+    specimen,
+    provider,
+    lab
+  };
+};
+
+export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): ParsedInfo => {
+  const { specimen, provider, lab } = isLegacy(document)
+    ? extractSpecimenProvierLabFromLegacyCert(document)
+    : extractSpecimenProvierLabFromCert(observation, document);
+
   const testType = observation?.code?.coding?.[0]?.code;
   const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
-  const swabCollectionDate = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
+  const swabCollectionDate = getDateTime(specimen?.collection?.collectedDateTime);
 
   const performerName = observation?.performer?.name?.[0]?.text;
   const performerMcr = observation?.qualification?.[0]?.identifier;
-  const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
+  const observationDate = getDateTime(observation?.effectiveDateTime);
 
   return {
     specimen,
@@ -107,12 +113,4 @@ const extractInfoFromCert = (observation: healthcert.Patient, document: HealthCe
     performerMcr,
     observationDate
   };
-};
-
-export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): PartialMemoInfo => {
-  if (isLegacy(document)) {
-    return extractInfoFromLegacyCert(observation, document);
-  } else {
-    return extractInfoFromCert(observation, document);
-  }
 };

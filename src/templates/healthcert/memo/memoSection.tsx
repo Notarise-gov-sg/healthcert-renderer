@@ -23,6 +23,7 @@ import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 export interface MemoInfo {
+  specimen?: healthcert.Patient | undefined;
   observation: any;
   provider: any;
   lab: any;
@@ -37,7 +38,6 @@ export interface MemoInfo {
   passportNumber: string;
   patient: Patient | undefined;
   testType: string | undefined;
-  specimen?: healthcert.Patient | undefined;
 }
 
 export const MemoSection: React.FC<MemoInfo> = ({
@@ -105,7 +105,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
             : testType === "94661-6"
             ? "SEROLOGY"
             : observation?.code?.coding?.[0]?.display}{" "}
-          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate} by {provider?.name} and has tested{" "}
+          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
           <Negative>negative</Negative>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
