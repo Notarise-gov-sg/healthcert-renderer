@@ -31,8 +31,7 @@ const getDateTime = (dateString: string | undefined): string => {
     : "";
 };
 
-/* eslint-disable @typescript-eslint/camelcase */
-const extract_Specimen_Provier_Lab_FromLegacyCert = (
+const extractSpecimenProvierLabFromLegacyCert = (
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
@@ -50,8 +49,7 @@ const extract_Specimen_Provier_Lab_FromLegacyCert = (
   };
 };
 
-/* eslint-disable @typescript-eslint/camelcase */
-const extract_Specimen_Provier_Lab_FromCert = (
+const extractSpecimenProvierLabFromCert = (
   observation: healthcert.Patient,
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
@@ -93,8 +91,8 @@ const extract_Specimen_Provier_Lab_FromCert = (
 
 export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): ParsedInfo => {
   const { specimen, provider, lab } = isLegacy(document)
-    ? extract_Specimen_Provier_Lab_FromLegacyCert(document)
-    : extract_Specimen_Provier_Lab_FromCert(observation, document);
+    ? extractSpecimenProvierLabFromLegacyCert(document)
+    : extractSpecimenProvierLabFromCert(observation, document);
 
   const testType = observation?.code?.coding?.[0]?.code;
   const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
