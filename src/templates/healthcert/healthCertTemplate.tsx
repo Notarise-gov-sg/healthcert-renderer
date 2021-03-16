@@ -37,11 +37,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       testType,
       swabType,
       swabCollectionDate,
-      swabCollectionTime,
       performerName,
       performerMcr,
-      observationDate,
-      observationTime
+      observationDate
     } = extractInfo(observation, document);
     memoSections.push(
       <MemoSection
@@ -51,11 +49,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         swabType={swabType}
         patientName={patientName}
         swabCollectionDate={swabCollectionDate}
-        swabCollectionTime={swabCollectionTime}
         performerName={performerName}
         performerMcr={performerMcr}
         observationDate={observationDate}
-        observationTime={observationTime}
         patientNricIdentifier={patientNricIdentifier}
         patientNationality={patientNationality}
         passportNumber={passportNumber}

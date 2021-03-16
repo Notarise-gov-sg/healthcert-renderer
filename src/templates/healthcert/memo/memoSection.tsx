@@ -30,11 +30,9 @@ export interface MemoInfo {
   swabType: Coding | undefined;
   patientName: string;
   swabCollectionDate: string;
-  swabCollectionTime: string;
   performerName: string | undefined;
   performerMcr: string | undefined;
   observationDate: string;
-  observationTime: string;
   patientNricIdentifier: Identifier | undefined;
   patientNationality: Extension | undefined;
   passportNumber: string;
@@ -48,12 +46,10 @@ export const MemoSection: React.FC<MemoInfo> = ({
   lab,
   swabType,
   swabCollectionDate,
-  swabCollectionTime,
   testType,
   performerName,
   performerMcr,
   observationDate,
-  observationTime,
   patientName,
   patientNationality,
   passportNumber,
@@ -109,9 +105,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
             : testType === "94661-6"
             ? "SEROLOGY"
             : observation?.code?.coding?.[0]?.display}{" "}
-          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate} <b>({swabCollectionTime})</b> by{" "}
-          {provider?.name} and has tested <Negative>negative</Negative>. This test result was reported by {lab?.name} on{" "}
-          {observationDate} <b>({observationTime})</b>.
+          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
+          <Negative>negative</Negative>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
           {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,

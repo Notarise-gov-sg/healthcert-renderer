@@ -15,14 +15,22 @@ type ParsedInfo = Pick<
   | "testType"
   | "swabType"
   | "swabCollectionDate"
-  | "swabCollectionTime"
   | "performerName"
   | "performerMcr"
   | "observationDate"
-  | "observationTime"
 >;
 
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
+
+const getDateTime = (dateString: string | undefined): string => {
+  return dateString
+    ? new Date(dateString).toLocaleString(DATE_LOCALE, {
+      timeZone: "UTC",
+      timeZoneName: "short"
+    })
+    : "";
+};
+
 const extractInfoFromLegacyCert = (document: HealthCertDocument): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
@@ -86,22 +94,13 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
 
   const testType = observation?.code?.coding?.[0]?.code;
   const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
-  const swabCollectionDate = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
-
-  const swabCollectionTime = specimen?.collection?.collectedDateTime
-    ? new Date(specimen.collection.collectedDateTime).toLocaleTimeString(DATE_LOCALE)
-    : "";
+  const swabCollectionDate = getDateTime(specimen?.collection?.collectedDateTime);
 
   const performerName = observation?.performer?.name?.[0]?.text;
   const performerMcr = observation?.qualification?.[0]?.identifier;
-  const observationDate = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleDateString(DATE_LOCALE)
-    : "";
-  const observationTime = observation?.effectiveDateTime
-    ? new Date(observation.effectiveDateTime).toLocaleTimeString(DATE_LOCALE)
-    : "";
+  const observationDate = getDateTime(observation?.effectiveDateTime);
+
+  console.log("DATE", swabCollectionDate, observationDate);
 
   return {
     specimen,
@@ -110,10 +109,8 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
     testType,
     swabType,
     swabCollectionDate,
-    swabCollectionTime,
     performerName,
     performerMcr,
-    observationDate,
-    observationTime
+    observationDate
   };
 };
