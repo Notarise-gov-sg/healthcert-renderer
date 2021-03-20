@@ -24,10 +24,7 @@ const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
 
 const getDateTime = (dateString: string | undefined): string => {
   return dateString
-    ? new Date(dateString).toLocaleString(DATE_LOCALE, {
-        timeZone: "UTC",
-        timeZoneName: "short"
-      })
+    ? new Date(dateString).toLocaleString(DATE_LOCALE) + " GMT+08:00"
     : "";
 };
 
