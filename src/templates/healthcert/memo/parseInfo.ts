@@ -30,7 +30,7 @@ const getDateTime = (dateString: string | undefined): string => {
 const getTestResult = (observation: healthcert.Patient): string => {
   let testResult = observation?.valueCodeableConcept?.coding[0]?.display;
   const codesDict: Record<string, string> = {
-    "260385009": "Negative"
+    "260385009": "negative"
   };
   const code = observation?.valueCodeableConcept?.coding[0]?.code;
   if (code && code in codesDict) {
