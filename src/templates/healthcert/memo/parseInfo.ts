@@ -27,10 +27,11 @@ const getDateTime = (dateString: string | undefined): string => {
   return dateString ? new Date(dateString).toLocaleString(DATE_LOCALE) + " GMT+08:00" : "";
 };
 
-const getTestResult = (observation: healthcert.Patient): string => {
+export const getTestResult = (observation: healthcert.Patient): string => {
   let testResult = observation?.valueCodeableConcept?.coding[0]?.display;
   const codesDict: Record<string, string> = {
-    "260385009": "negative"
+    "260385009": "Negative",
+    "10828004": "Positive"
   };
   const code = observation?.valueCodeableConcept?.coding[0]?.code;
   if (code && code in codesDict) {
