@@ -15,4 +15,9 @@ describe("customTemplate", () => {
     // eslint-disable-next-line jest/no-truthy-falsy
     expect(queryByText("MEMO ON COVID-19")).toBeTruthy();
   });
+  it("should render testresult as 'negative' based on the valueCodeableConcept code", () => {
+    const { queryByText } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    // eslint-disable-next-line jest/no-truthy-falsy
+    expect(queryByText("negative")).toBeTruthy();
+  });
 });

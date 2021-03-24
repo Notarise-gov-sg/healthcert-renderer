@@ -30,7 +30,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   const url = (document.notarisationMetadata as any)?.url;
   const memoSections: JSX.Element[] = [];
 
-  for (const observation of observations) {
+  for (let i = 0; i < observations.length; i++) {
+    const observation = observations[i];
+
     const {
       provider,
       lab,
@@ -42,8 +44,10 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       observationDate,
       testResult
     } = extractInfo(observation, document);
+
     memoSections.push(
       <MemoSection
+        key={i}
         observation={observation}
         provider={provider}
         lab={lab}

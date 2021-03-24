@@ -14,7 +14,7 @@ import {
   FirstCol,
   SecondCol,
   ResultSection,
-  Negative,
+  TestResult,
   Doctor,
   Bold
 } from "../styled-components";
@@ -108,7 +108,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
             ? "SEROLOGY"
             : observation?.code?.coding?.[0]?.display}{" "}
           testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-          <Negative>{testResult}</Negative>. This test result was reported by {lab?.name} on {observationDate}.
+          <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
           {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,
