@@ -14,7 +14,7 @@ import {
   FirstCol,
   SecondCol,
   ResultSection,
-  Negative,
+  TestResult,
   Doctor,
   Bold
 } from "../styled-components";
@@ -38,6 +38,7 @@ export interface MemoInfo {
   passportNumber: string;
   patient: Patient | undefined;
   testType: string | undefined;
+  testResult: string;
 }
 
 export const MemoSection: React.FC<MemoInfo> = ({
@@ -54,7 +55,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
   patientNationality,
   passportNumber,
   patient,
-  patientNricIdentifier
+  patientNricIdentifier,
+  testResult
 }) => {
   return (
     <div>
@@ -106,7 +108,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
             ? "SEROLOGY"
             : observation?.code?.coding?.[0]?.display}{" "}
           testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-          <Negative>negative</Negative>. This test result was reported by {lab?.name} on {observationDate}.
+          <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
           {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,

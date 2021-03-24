@@ -104,7 +104,7 @@ export const ResultSection = styled.section`
     text-align: left;
   }
 `;
-export const Negative = styled.span`
+export const TestResult = styled.span`
   font-weight: bold;
 `;
 

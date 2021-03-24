@@ -18,14 +18,26 @@ type ParsedInfo = Pick<
   | "performerName"
   | "performerMcr"
   | "observationDate"
+  | "testResult"
 >;
 
 const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
 
 const getDateTime = (dateString: string | undefined): string => {
-  return dateString
-    ? new Date(dateString).toLocaleString(DATE_LOCALE) + " GMT+08:00"
-    : "";
+  return dateString ? new Date(dateString).toLocaleString(DATE_LOCALE) + " GMT+08:00" : "";
+};
+
+export const getTestResult = (observation: healthcert.Patient): string => {
+  let testResult = observation?.valueCodeableConcept?.coding[0]?.display;
+  const codesDict: Record<string, string> = {
+    "260385009": "Negative",
+    "10828004": "Positive"
+  };
+  const code = observation?.valueCodeableConcept?.coding[0]?.code;
+  if (code && code in codesDict) {
+    testResult = codesDict[code];
+  }
+  return testResult as string;
 };
 
 const extractSpecimenProvierLabFromLegacyCert = (
@@ -99,6 +111,8 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
   const performerMcr = observation?.qualification?.[0]?.identifier;
   const observationDate = getDateTime(observation?.effectiveDateTime);
 
+  const testResult = getTestResult(observation);
+
   return {
     specimen,
     provider,
@@ -108,6 +122,7 @@ export const extractInfo = (observation: healthcert.Patient, document: HealthCer
     swabCollectionDate,
     performerName,
     performerMcr,
-    observationDate
+    observationDate,
+    testResult
   };
 };
