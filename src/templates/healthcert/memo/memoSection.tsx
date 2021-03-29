@@ -18,9 +18,9 @@ import {
   Doctor,
   Bold
 } from "../styled-components";
-import countries from "i18n-iso-countries";
-import englishCountries from "i18n-iso-countries/langs/en.json";
-countries.registerLocale(englishCountries);
+import nationalities from "i18n-nationality";
+import englishNationalities from "i18n-nationality/langs/en.json";
+nationalities.registerLocale(englishNationalities);
 
 export interface MemoInfo {
   specimen?: healthcert.Patient | undefined;
@@ -86,7 +86,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{countries.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
+          <SecondCol>{nationalities.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
