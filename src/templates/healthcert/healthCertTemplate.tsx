@@ -4,13 +4,10 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { HealthCertDocument } from "./types";
 import { healthcert } from "@govtechsg/oa-schemata";
-import countries from "i18n-iso-countries";
 
-import englishCountries from "i18n-iso-countries/langs/en.json";
 import { MemoSection } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 import { extractInfo } from "./memo/parseInfo";
-countries.registerLocale(englishCountries);
 
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
