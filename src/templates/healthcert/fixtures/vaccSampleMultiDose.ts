@@ -1,9 +1,7 @@
 import { healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
-import mohHeader from "raw-loader!./moh-header.base64.txt";
+import mohHeader from "./moh-header.base64.txt";
 
 const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } = healthcert;
 
