@@ -3,10 +3,16 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { NotarisedHealthCert, Immunization, ImmunizationRecommendation } from "./types";
 import { healthcert } from "@govtechsg/oa-schemata";
-import { VaccinationMemoSection } from "./memo/memoSection";
+import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
-const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
+const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
+
+const simplifyImmunizationObjects = (immunization: Immunization): SimpleImmunizationObject => ({
+  vaccineName: immunization.vaccineCode.coding[0].display,
+  vaccineLot: immunization.lotNumber,
+  vaccinationDate: immunization.occurrenceDateTime
+});
 
 export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
@@ -21,10 +27,12 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
-  const patientNricIdentifier = patient?.identifier?.find(isNric);
-  const patientNationality = patient?.extension?.find(
-    extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
-  );
+  const patientNric = patient?.identifier?.find(isNric)?.value || "";
+  const patientNationalityCode =
+    patient?.extension?.find(
+      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+    )?.code?.text || "";
+  const patientBirthDate = patient.birthDate || "";
   const effectiveDate = recommendation?.recommendation?.[0]?.dateCriterion?.[0]?.value;
 
   const url = (document.notarisationMetadata as any)?.url;
@@ -32,13 +40,13 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   memoSections.push(
     <VaccinationMemoSection
-      immunizations={immunizations}
+      immunizations={immunizations.map(simplifyImmunizationObjects)}
       effectiveDate={effectiveDate}
       patientName={patientName}
-      patientNricIdentifier={patientNricIdentifier}
-      patientNationality={patientNationality}
+      patientNric={patientNric}
+      patientNationalityCode={patientNationalityCode}
+      patientBirthDate={patientBirthDate}
       passportNumber={passportNumber}
-      patient={patient}
     />
   );
 

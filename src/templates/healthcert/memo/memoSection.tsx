@@ -1,6 +1,5 @@
 import React from "react";
 import { healthcert } from "@govtechsg/oa-schemata";
-import { Immunization } from "../types";
 import {
   Title,
   SubTitle,
@@ -128,24 +127,30 @@ export const MemoSection: React.FC<MemoInfo> = ({
   );
 };
 
+export interface SimpleImmunizationObject {
+  vaccineName: string;
+  vaccineLot: string;
+  vaccinationDate: string;
+}
+
 export interface VaccinationMemoInfo {
-  patient: Patient;
   patientName: string;
-  patientNricIdentifier: Identifier | undefined;
-  patientNationality: Extension | undefined;
+  patientNric: string;
+  patientNationalityCode: string;
+  patientBirthDate: string;
   passportNumber: string;
-  immunizations: Immunization[];
+  immunizations: SimpleImmunizationObject[];
   effectiveDate: string;
 }
 
 const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "short", year: "numeric" });
-const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "NA");
+const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N//A");
 
 export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
-  patient,
   patientName,
-  patientNricIdentifier,
-  patientNationality,
+  patientNric,
+  patientNationalityCode,
+  patientBirthDate,
   passportNumber,
   immunizations,
   effectiveDate
@@ -158,23 +163,22 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{patientName}</SecondCol>
         </Row>
-        {patientNricIdentifier?.value && (
-          <Row>
-            <FirstCol>NRIC/FIN Number:</FirstCol>
-            <SecondCol>{patientNricIdentifier?.value}</SecondCol>
-          </Row>
-        )}
+        <Row>
+          <FirstCol>NRIC/FIN Number:</FirstCol>
+          <SecondCol>{patientNric}</SecondCol>
+        </Row>
         <Row>
           <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{passportNumber}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{nationalities.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
+          // <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
+          <SecondCol>{nationalities.getName("", "en")}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>{formatDate(patient.birthDate)}</SecondCol>
+          <SecondCol>{formatDate(patientBirthDate)}</SecondCol>
         </Row>
       </PatientDetails>
       {immunizations.map((immunization, i) => (
@@ -182,15 +186,15 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <p>
             <Row>
               <FirstCol style={{ lineHeight: 1 }}>Vaccine Name:</FirstCol>
-              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineCode?.coding?.[0]?.display}</SecondCol>
+              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineName}</SecondCol>
             </Row>
             <Row>
               <FirstCol>Batch Number:</FirstCol>
-              <SecondCol>{immunization.lotNumber}</SecondCol>
+              <SecondCol>{immunization.vaccineLot}</SecondCol>
             </Row>
             <Row>
               <FirstCol>Vaccination Date:</FirstCol>
-              <SecondCol>{formatDate(immunization.occurrenceDateTime)}</SecondCol>
+              <SecondCol>{formatDate(immunization.vaccinationDate)}</SecondCol>
             </Row>
           </p>
         </ImmunizationDetails>
