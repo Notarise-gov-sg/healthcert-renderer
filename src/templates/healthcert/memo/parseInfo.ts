@@ -21,10 +21,11 @@ type ParsedInfo = Pick<
   | "testResult"
 >;
 
-const DATE_LOCALE = "en-sg"; // let's force the display of dates using sg locals
+const SG_LOCALE = "en-sg";
 
 const getDateTime = (dateString: string | undefined): string => {
-  return dateString ? new Date(dateString).toLocaleString(DATE_LOCALE) + " GMT+08:00" : "";
+  // locale is fixed to always show day/month/year, in this order
+  return dateString ? new Date(dateString).toLocaleString(SG_LOCALE, { timeZoneName: "short" }) : "";
 };
 
 export const getTestResult = (observation: healthcert.Patient): string => {
