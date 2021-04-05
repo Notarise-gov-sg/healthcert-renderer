@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
@@ -30,11 +31,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: "file-loader"
-          }
-        ]
+        use: "file-loader"
+      },
+      {
+        test: /\.txt$/i,
+        use: "raw-loader"
       }
     ]
   },

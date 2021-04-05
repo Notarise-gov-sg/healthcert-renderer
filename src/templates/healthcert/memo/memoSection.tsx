@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  Coding,
-  Extension,
-  Identifier,
-  Patient
-} from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/moh/healthcert/1.0/schema";
 import { healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
   SubTitle,
   PatientDetails,
+  ImmunizationDetails,
   Row,
   FirstCol,
   SecondCol,
@@ -21,6 +16,11 @@ import {
 import nationalities from "i18n-nationality";
 import englishNationalities from "i18n-nationality/langs/en.json";
 nationalities.registerLocale(englishNationalities);
+
+type Coding = healthcert.Coding;
+type Extension = healthcert.Extension;
+type Identifier = healthcert.Identifier;
+type Patient = healthcert.Patient;
 
 export interface MemoInfo {
   specimen?: healthcert.Patient | undefined;
@@ -123,6 +123,90 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <Bold>MCR No.:</Bold> {performerMcr}
         </p>
       </Doctor>
+    </div>
+  );
+};
+
+export interface SimpleImmunizationObject {
+  vaccineName: string;
+  vaccineLot: string;
+  vaccinationDate: string;
+}
+
+export interface VaccinationMemoInfo {
+  patientName: string;
+  patientNric: string;
+  patientNationalityCode: string;
+  patientBirthDate: string;
+  passportNumber: string;
+  immunizations: SimpleImmunizationObject[];
+  effectiveDate: string;
+}
+
+const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "short", year: "numeric" });
+const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N//A");
+
+export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
+  patientName,
+  patientNric,
+  patientNationalityCode,
+  patientBirthDate,
+  passportNumber,
+  immunizations,
+  effectiveDate
+}) => {
+  return (
+    <div>
+      <Title>Vaccination Certificate</Title>
+      <PatientDetails>
+        <Row>
+          <FirstCol>Name of Person:</FirstCol>
+          <SecondCol>{patientName}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>NRIC/FIN Number:</FirstCol>
+          <SecondCol>{patientNric}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
+          <SecondCol>{passportNumber}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>Nationality/Citizenship:</FirstCol>
+          // <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
+          <SecondCol>{nationalities.getName("", "en")}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>Date of Birth:</FirstCol>
+          <SecondCol>{formatDate(patientBirthDate)}</SecondCol>
+        </Row>
+      </PatientDetails>
+      {immunizations.map((immunization, i) => (
+        <ImmunizationDetails key={i}>
+          <p>
+            <Row>
+              <FirstCol style={{ lineHeight: 1 }}>Vaccine Name:</FirstCol>
+              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineName}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Batch Number:</FirstCol>
+              <SecondCol>{immunization.vaccineLot}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Vaccination Date:</FirstCol>
+              <SecondCol>{formatDate(immunization.vaccinationDate)}</SecondCol>
+            </Row>
+          </p>
+        </ImmunizationDetails>
+      ))}
+      <ResultSection>
+        <p>To whom it may concern:</p>
+        <p>
+          The abovementioned has successfully completed COVID-19 vaccination, effective from {formatDate(effectiveDate)}
+          .
+        </p>
+        <p>Thank you.</p>
+      </ResultSection>
     </div>
   );
 };

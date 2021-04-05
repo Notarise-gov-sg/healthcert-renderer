@@ -58,7 +58,6 @@ export const Logo = styled.img`
   height: auto;
   ${mediaQueries["md"]} {
     max-width: 300px;
-    max-height: 80px;
   }
 `;
 
@@ -75,6 +74,7 @@ export const SubTitle = styled.h1`
   font-size: 22px;
 `;
 export const PatientDetails = styled.section``;
+export const ImmunizationDetails = styled.section``;
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;

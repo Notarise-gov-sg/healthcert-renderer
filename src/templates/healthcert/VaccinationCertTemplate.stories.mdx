@@ -1,0 +1,26 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { object } from "@storybook/addon-knobs";
+import { VaccinationCertTemplate } from "./vaccinationCertTemplate";
+import { vaccinationCertSample as sampleWithNric } from "./fixtures/vaccSampleWithNric";
+import { vaccinationCertSample as sampleWithMultipleDoses } from "./fixtures/vaccSampleMultiDose.ts";
+
+<Meta title="MDX|VaccinationCertTemplate" component={VaccinationCertTemplate} />
+
+# VaccinationCertTemplate component
+
+<Description of={VaccinationCertTemplate} />
+
+# Props
+
+<Props of={VaccinationCertTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="cert with multi-dose">
+    <VaccinationCertTemplate document={object("document", sampleWithMultipleDoses)} />
+  </Story>
+  <Story name="cert with nric">
+    <VaccinationCertTemplate document={object("document", sampleWithNric)} />
+  </Story>
+</Preview>
