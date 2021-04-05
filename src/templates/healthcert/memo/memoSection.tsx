@@ -173,8 +173,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          // <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
-          <SecondCol>{nationalities.getName("", "en")}</SecondCol>
+          <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
