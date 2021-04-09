@@ -120,6 +120,7 @@ export const Bold = styled.span`
 export const QrCodeContainer = styled.div`
   margin-top: auto;
   text-align: center;
+  page-break-inside: avoid;
 `;
 
 export const StyledMemoSection = styled.div`
