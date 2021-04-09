@@ -30,8 +30,6 @@ export const Background = styled.div`
   }
 `;
 export const Page = styled.div`
-  display: flex;
-  flex-direction: column;
   margin: auto;
   border: 1px solid black;
   box-sizing: border-box;
@@ -49,7 +47,7 @@ export const Page = styled.div`
 
   ${mediaQueries["print"]} {
     width: 21cm;
-    max-height: 27cm;
+    min-height: 27cm;
     padding-bottom: 2mm;
   }
 `;
@@ -63,7 +61,7 @@ export const Logo = styled.img`
 
 export const Title = styled.h1`
   margin-bottom: 0;
-  margin-top: 40px;
+  padding-top: 40px;
   text-align: center;
   font-size: 22px;
 `;
@@ -114,10 +112,16 @@ export const Doctor = styled.section`
     margin-top: 40px;
   }
 `;
+
 export const Bold = styled.span`
   font-weight: bold;
 `;
+
 export const QrCodeContainer = styled.div`
   margin-top: auto;
   text-align: center;
+`;
+
+export const StyledMemoSection = styled.div`
+  page-break-inside: avoid;
 `;
