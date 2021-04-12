@@ -1,23 +1,30 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { NotarisedHealthCert, Immunization, ImmunizationRecommendation } from "./types";
+import { NotarisedHealthCert, Immunization, ImmunizationRecommendation, Location } from "./types";
 import { healthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
 const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
 
-const simplifyImmunizationObjects = (immunization: Immunization): SimpleImmunizationObject => ({
-  vaccineName: immunization.vaccineCode.coding[0].display,
-  vaccineLot: immunization.lotNumber,
-  vaccinationDate: immunization.occurrenceDateTime
-});
+const simplifyImmunizationObjectWithLocation: (
+  locations: Location[]
+) => (i: Immunization) => SimpleImmunizationObject = locations => {
+  return (immunization: Immunization): SimpleImmunizationObject => ({
+    vaccineName: immunization.vaccineCode.coding[0].display,
+    vaccineLot: immunization.lotNumber,
+    vaccinationDate: immunization.occurrenceDateTime,
+    vaccinationLocation: locations.find(l => l.fullUrl === immunization.location.reference)?.name || "",
+    vaccinationCountry: locations.find(l => l.fullUrl === immunization.location.reference)?.address.country || ""
+  });
+};
 
 export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
+  const locations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Location") as Location[];
   const immunizations = document.fhirBundle.entry.filter(
     entry => entry.resourceType === "Immunization"
   ) as Immunization[];
@@ -40,7 +47,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   memoSections.push(
     <VaccinationMemoSection
-      immunizations={immunizations.map(simplifyImmunizationObjects)}
+      immunizations={immunizations.map(simplifyImmunizationObjectWithLocation(locations))}
       effectiveDate={effectiveDate}
       patientName={patientName}
       patientNric={patientNric}

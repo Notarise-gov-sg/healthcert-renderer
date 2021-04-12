@@ -46,6 +46,24 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         birthDate: "1990-01-15"
       },
       {
+        fullUrl: "urn:uuid:a9453181-6682-47f6-afef-8faa299d6e7f",
+        resourceType: "Location",
+        id: "HCI000",
+        name: "Vaccination site approved by Ministry of Health, Singapore [HCI000]",
+        address: {
+          country: "SG"
+        }
+      },
+      {
+        fullUrl: "urn:uuid:830f6633-4ef5-441d-966d-777ca67af9d7",
+        resourceType: "Location",
+        id: "HCI111",
+        name: "Vaccination site approved by Ministry of Health, Singapore [HCI111]",
+        address: {
+          country: "SG"
+        }
+      },
+      {
         fullUrl: "urn:uuid:fad2b583-e1ae-4bd9-864b-4f009bff826b",
         resourceType: "Immunization",
         vaccineCode: {
@@ -61,6 +79,9 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         occurrenceDateTime: "2021-02-02",
         patient: {
           reference: "urn:uuid:c01d556a-caba-44e8-9ca9-811e8fcbf7ee"
+        },
+        location: {
+          reference: "urn:uuid:a9453181-6682-47f6-afef-8faa299d6e7f"
         }
       },
       {
@@ -79,6 +100,9 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         occurrenceDateTime: "2021-03-03",
         patient: {
           reference: "urn:uuid:c01d556a-caba-44e8-9ca9-811e8fcbf7ee"
+        },
+        location: {
+          reference: "urn:uuid:830f6633-4ef5-441d-966d-777ca67af9d7"
         }
       }
     ]
