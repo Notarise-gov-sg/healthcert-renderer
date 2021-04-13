@@ -11,7 +11,8 @@ import {
   ResultSection,
   TestResult,
   Doctor,
-  Bold
+  Bold,
+  StyledMemoSection
 } from "../styled-components";
 import nationalities from "i18n-nationality";
 import englishNationalities from "i18n-nationality/langs/en.json";
@@ -59,7 +60,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
   testResult
 }) => {
   return (
-    <div>
+    <StyledMemoSection>
       <Title>MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}</Title>
       <SubTitle>
         {testType === "94531-1"
@@ -123,7 +124,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <Bold>MCR No.:</Bold> {performerMcr}
         </p>
       </Doctor>
-    </div>
+    </StyledMemoSection>
   );
 };
 
@@ -156,7 +157,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
   effectiveDate
 }) => {
   return (
-    <div>
+    <StyledMemoSection>
       <Title>Vaccination Certificate</Title>
       <PatientDetails>
         <Row>
@@ -206,6 +207,6 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </p>
         <p>Thank you.</p>
       </ResultSection>
-    </div>
+    </StyledMemoSection>
   );
 };
