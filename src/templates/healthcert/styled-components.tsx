@@ -75,23 +75,21 @@ export const PatientDetails = styled.section``;
 export const ImmunizationDetails = styled.section``;
 export const Row = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  ${mediaQueries["md"]} {
-    flex-basis: 30%;
-    justify-content: initial;
-  }
 `;
 export const FirstCol = styled.div`
   font-weight: bold;
-
+  flex-basis: 100%;
   ${mediaQueries["md"]} {
-    flex-basis: 30%;
+    flex-basis: 50%;
   }
 `;
 export const SecondCol = styled.div`
-  text-align: right;
+  display: inline-block
+  flex-basis: 100%;
   ${mediaQueries["md"]} {
-    flex-basis: 70%;
+    flex-basis: 50%;
   }
 `;
 

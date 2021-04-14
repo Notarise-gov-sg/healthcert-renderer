@@ -165,7 +165,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <SecondCol>{patientName}</SecondCol>
         </Row>
         <Row>
-          <FirstCol style={{ lineHeight: 1, flexBasis: "70%" }}>Passport/Travel Document Number:</FirstCol>
+          <FirstCol>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{passportNumber}</SecondCol>
         </Row>
         <Row>
@@ -181,12 +181,12 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         <ImmunizationDetails key={i}>
           <p>
             <Row>
-              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Vaccination Name/Brand/Type:</FirstCol>
-              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineName}</SecondCol>
+              <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+              <SecondCol>{immunization.vaccineName}</SecondCol>
             </Row>
             <Row>
-              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Clinic/Vaccination Centre:</FirstCol>
-              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccinationLocation}</SecondCol>
+              <FirstCol>Clinic/Vaccination Centre:</FirstCol>
+              <SecondCol>{immunization.vaccinationLocation}</SecondCol>
             </Row>
             <Row>
               <FirstCol>Date of Vaccination:</FirstCol>
