@@ -35,11 +35,12 @@ export const Page = styled.div`
   box-sizing: border-box;
   padding: 10px 10px;
   position: relative;
-  font-size: 18px;
-  line-height: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 
   ${mediaQueries["sm"]} {
-    padding: 15mm 20mm;
+    padding: 15mm ;
   }
   ${mediaQueries["lg"]} {
     width: 21cm;
@@ -52,24 +53,22 @@ export const Page = styled.div`
   }
 `;
 export const Logo = styled.img`
-  width: 80%;
-  height: auto;
-  ${mediaQueries["md"]} {
-    max-width: 300px;
-  }
+    max-width: 260px;
 `;
 
 export const Title = styled.h1`
-  margin-bottom: 0;
-  padding-top: 40px;
+  padding: 30px 0 20px 0;
+  margin: 0;
   text-align: center;
   font-size: 22px;
+  line-height: 1.2;
 `;
 export const SubTitle = styled.h1`
-  margin-top: 0;
-  margin-bottom: 40px;
+  padding-bottom: 20px;
+  margin: 0;
   text-align: center;
   font-size: 22px;
+  line-height: 1.2;
 `;
 export const PatientDetails = styled.section``;
 export const ImmunizationDetails = styled.section``;
@@ -86,7 +85,6 @@ export const FirstCol = styled.div`
   }
 `;
 export const SecondCol = styled.div`
-  display: inline-block
   flex-basis: 100%;
   ${mediaQueries["md"]} {
     flex-basis: 50%;

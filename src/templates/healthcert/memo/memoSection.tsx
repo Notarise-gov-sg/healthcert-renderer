@@ -179,7 +179,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
-          <p>
+          <p style={{paddingTop:"20px"}}>
             <Row>
               <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
               <SecondCol>{immunization.vaccineName}</SecondCol>
@@ -204,11 +204,12 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </ImmunizationDetails>
       ))}
       <ResultSection>
-        <p>To whom it may concern:</p>
-        <p>
-          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
-        </p>
-        <p>Thank you.</p>
+        <p style={{lineHeight:"1.5", paddingTop:"10px"}}>To whom it may concern:
+          <br/>
+          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from{" "}
+          {formatDate(effectiveDate)}.
+          <br/><br/>
+        Thank you.</p>
       </ResultSection>
     </StyledMemoSection>
   );
