@@ -16,7 +16,10 @@ import {
 } from "../styled-components";
 import nationalities from "i18n-nationality";
 import englishNationalities from "i18n-nationality/langs/en.json";
+import countries from "i18n-iso-countries";
+import englishCountries from "i18n-iso-countries/langs/en.json";
 nationalities.registerLocale(englishNationalities);
+countries.registerLocale(englishCountries);
 
 type Coding = healthcert.Coding;
 type Extension = healthcert.Extension;
@@ -132,6 +135,8 @@ export interface SimpleImmunizationObject {
   vaccineName: string;
   vaccineLot: string;
   vaccinationDate: string;
+  vaccinationLocation: string;
+  vaccinationCountry: string;
 }
 
 export interface VaccinationMemoInfo {
@@ -169,7 +174,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <SecondCol>{patientNric}</SecondCol>
         </Row>
         <Row>
-          <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
+          <FirstCol style={{ lineHeight: 1, flexBasis: "70%" }}>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{passportNumber}</SecondCol>
         </Row>
         <Row>
@@ -185,16 +190,24 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         <ImmunizationDetails key={i}>
           <p>
             <Row>
-              <FirstCol style={{ lineHeight: 1 }}>Vaccine Name:</FirstCol>
+              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Vaccination Name/Brand/Type:</FirstCol>
               <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineName}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Clinic/Vaccination Centre:</FirstCol>
+              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccinationLocation}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Date of Vaccination:</FirstCol>
+              <SecondCol>{formatDate(immunization.vaccinationDate)}</SecondCol>
             </Row>
             <Row>
               <FirstCol>Batch Number:</FirstCol>
               <SecondCol>{immunization.vaccineLot}</SecondCol>
             </Row>
             <Row>
-              <FirstCol>Vaccination Date:</FirstCol>
-              <SecondCol>{formatDate(immunization.vaccinationDate)}</SecondCol>
+              <FirstCol>Country of Vaccination:</FirstCol>
+              <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
             </Row>
           </p>
         </ImmunizationDetails>
@@ -202,8 +215,8 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned has successfully completed COVID-19 vaccination, effective from {formatDate(effectiveDate)}
-          .
+          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from{" "}
+          {formatDate(effectiveDate)}.
         </p>
         <p>Thank you.</p>
       </ResultSection>

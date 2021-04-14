@@ -4,7 +4,9 @@ import { healthcert, notarise } from "@govtechsg/oa-schemata";
 export type HealthCertDocument = v2.OpenAttestationDocument & healthcert.HealthCert & notarise.Notarise;
 
 interface FhirBundleWithImmunization extends Omit<HealthCertDocument["fhirBundle"], "entry"> {
-  entry: Array<HealthCertDocument["fhirBundle"]["entry"][number] | Immunization | ImmunizationRecommendation>;
+  entry: Array<
+    HealthCertDocument["fhirBundle"]["entry"][number] | Immunization | ImmunizationRecommendation | Location
+  >;
 }
 
 export interface NotarisedHealthCert extends Omit<HealthCertDocument, "fhirBundle"> {
@@ -15,6 +17,16 @@ export interface CodeableConcept {
   coding: Array<{ system: string; code: string; display: string }>;
 }
 
+export interface Location {
+  fullUrl: string;
+  resourceType: "Location";
+  id: string;
+  name: string;
+  address: {
+    country: string;
+  };
+}
+
 export interface Immunization {
   fullUrl?: string;
   resourceType: "Immunization"; // EntryResourceType.Immunization;
@@ -22,6 +34,9 @@ export interface Immunization {
   lotNumber: string;
   occurrenceDateTime: string;
   patient: {
+    reference: string;
+  };
+  location: {
     reference: string;
   };
 }

@@ -89,6 +89,7 @@ export const FirstCol = styled.div`
   }
 `;
 export const SecondCol = styled.div`
+  text-align: right;
   ${mediaQueries["md"]} {
     flex-basis: 70%;
   }
