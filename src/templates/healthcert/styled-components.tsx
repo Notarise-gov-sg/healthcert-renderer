@@ -57,7 +57,7 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.h1`
-  padding: 30px 0 20px 0;
+  padding: 40px 0;
   margin: 0;
   text-align: center;
   font-size: 22px;
