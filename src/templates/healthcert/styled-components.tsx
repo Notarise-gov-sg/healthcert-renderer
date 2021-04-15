@@ -121,6 +121,7 @@ export const Bold = styled.span`
 export const QrCodeContainer = styled.div`
   margin-top: auto;
   text-align: center;
+  font-weight: bold;
   page-break-inside: avoid;
 `;
 

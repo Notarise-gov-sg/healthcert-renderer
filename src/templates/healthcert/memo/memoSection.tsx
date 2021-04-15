@@ -148,9 +148,6 @@ export interface VaccinationMemoInfo {
   effectiveDate: string;
 }
 
-const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "short", year: "numeric" });
-const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N//A");
-
 export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
   patientName,
   patientNationalityCode,
@@ -177,7 +174,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>{formatDate(patientBirthDate)}</SecondCol>
+          <SecondCol>{patientBirthDate}</SecondCol>
         </Row>
       </PatientDetails>
       {immunizations.map((immunization, i) => (
@@ -193,7 +190,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             </Row>
             <Row>
               <FirstCol>Date of Vaccination:</FirstCol>
-              <SecondCol>{formatDate(immunization.vaccinationDate)}</SecondCol>
+              <SecondCol>{immunization.vaccinationDate}</SecondCol>
             </Row>
             <Row>
               <FirstCol>Batch Number:</FirstCol>
@@ -209,8 +206,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from{" "}
-          {formatDate(effectiveDate)}.
+          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
         </p>
         <p>Thank you.</p>
       </ResultSection>
