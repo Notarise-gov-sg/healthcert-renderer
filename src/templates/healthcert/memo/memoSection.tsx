@@ -2,7 +2,6 @@ import React from "react";
 import { healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
-  SubTitle,
   PatientDetails,
   ImmunizationDetails,
   Row,
@@ -64,15 +63,16 @@ export const MemoSection: React.FC<MemoInfo> = ({
 }) => {
   return (
     <StyledMemoSection>
-      <Title>MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}</Title>
-      <SubTitle>
+      <Title>
+        MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}
+        <br />
         {testType === "94531-1"
           ? "RT-PCR SWAB"
           : testType === "94661-6"
           ? "SEROLOGY"
           : observation?.code?.coding?.[0]?.display}{" "}
         TEST RESULT
-      </SubTitle>
+      </Title>
       <PatientDetails>
         <Row>
           <FirstCol>Name of Person:</FirstCol>
@@ -165,7 +165,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <SecondCol>{patientName}</SecondCol>
         </Row>
         <Row>
-          <FirstCol style={{ lineHeight: 1, flexBasis: "70%" }}>Passport/Travel Document Number:</FirstCol>
+          <FirstCol>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{passportNumber}</SecondCol>
         </Row>
         <Row>
@@ -179,36 +179,37 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
-          <p>
-            <Row>
-              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Vaccination Name/Brand/Type:</FirstCol>
-              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccineName}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol style={{ lineHeight: 1, flexBasis: "50%" }}>Clinic/Vaccination Centre:</FirstCol>
-              <SecondCol style={{ lineHeight: 1 }}>{immunization.vaccinationLocation}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Date of Vaccination:</FirstCol>
-              <SecondCol>{immunization.vaccinationDate}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Batch Number:</FirstCol>
-              <SecondCol>{immunization.vaccineLot}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Country of Vaccination:</FirstCol>
-              <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
-            </Row>
-          </p>
+          <Row>
+            <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+            <SecondCol>{immunization.vaccineName}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Clinic/Vaccination Centre:</FirstCol>
+            <SecondCol>{immunization.vaccinationLocation}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Date of Vaccination:</FirstCol>
+            <SecondCol>{immunization.vaccinationDate}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Batch Number:</FirstCol>
+            <SecondCol>{immunization.vaccineLot}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Country of Vaccination:</FirstCol>
+            <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
+          </Row>
         </ImmunizationDetails>
       ))}
       <ResultSection>
-        <p>To whom it may concern:</p>
         <p>
+          To whom it may concern:
+          <br />
           The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
+          <br />
+          <br />
+          Thank you.
         </p>
-        <p>Thank you.</p>
       </ResultSection>
     </StyledMemoSection>
   );
