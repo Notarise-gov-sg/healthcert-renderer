@@ -63,13 +63,6 @@ export const Title = styled.h1`
   font-size: 22px;
   line-height: 1.2;
 `;
-export const SubTitle = styled.h1`
-  padding-bottom: 20px;
-  margin: 0;
-  text-align: center;
-  font-size: 22px;
-  line-height: 1.2;
-`;
 export const PatientDetails = styled.section``;
 export const ImmunizationDetails = styled.section`
   padding-top: 20px;

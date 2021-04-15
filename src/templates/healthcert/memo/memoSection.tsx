@@ -2,7 +2,6 @@ import React from "react";
 import { healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
-  SubTitle,
   PatientDetails,
   ImmunizationDetails,
   Row,
@@ -64,15 +63,16 @@ export const MemoSection: React.FC<MemoInfo> = ({
 }) => {
   return (
     <StyledMemoSection>
-      <Title>MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}</Title>
-      <SubTitle>
+      <Title>
+        MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}
+        <br />
         {testType === "94531-1"
           ? "RT-PCR SWAB"
           : testType === "94661-6"
           ? "SEROLOGY"
           : observation?.code?.coding?.[0]?.display}{" "}
         TEST RESULT
-      </SubTitle>
+      </Title>
       <PatientDetails>
         <Row>
           <FirstCol>Name of Person:</FirstCol>
