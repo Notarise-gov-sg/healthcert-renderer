@@ -6,8 +6,6 @@ import { healthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
-const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
-
 const simplifyImmunizationObjectWithLocation: (
   locations: Location[]
 ) => (i: Immunization) => SimpleImmunizationObject = locations => {
@@ -34,7 +32,6 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
-  const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
@@ -50,7 +47,6 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
       immunizations={immunizations.map(simplifyImmunizationObjectWithLocation(locations))}
       effectiveDate={effectiveDate}
       patientName={patientName}
-      patientNric={patientNric}
       patientNationalityCode={patientNationalityCode}
       patientBirthDate={patientBirthDate}
       passportNumber={passportNumber}
