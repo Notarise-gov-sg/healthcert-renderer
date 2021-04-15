@@ -179,37 +179,37 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
-          <p style={{paddingTop:"20px"}}>
-            <Row>
-              <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
-              <SecondCol>{immunization.vaccineName}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Clinic/Vaccination Centre:</FirstCol>
-              <SecondCol>{immunization.vaccinationLocation}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Date of Vaccination:</FirstCol>
-              <SecondCol>{immunization.vaccinationDate}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Batch Number:</FirstCol>
-              <SecondCol>{immunization.vaccineLot}</SecondCol>
-            </Row>
-            <Row>
-              <FirstCol>Country of Vaccination:</FirstCol>
-              <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
-            </Row>
-          </p>
+          <Row>
+            <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+            <SecondCol>{immunization.vaccineName}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Clinic/Vaccination Centre:</FirstCol>
+            <SecondCol>{immunization.vaccinationLocation}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Date of Vaccination:</FirstCol>
+            <SecondCol>{immunization.vaccinationDate}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Batch Number:</FirstCol>
+            <SecondCol>{immunization.vaccineLot}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Country of Vaccination:</FirstCol>
+            <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
+          </Row>
         </ImmunizationDetails>
       ))}
       <ResultSection>
-        <p style={{lineHeight:"1.5", paddingTop:"10px"}}>To whom it may concern:
-          <br/>
-          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from{" "}
-          {formatDate(effectiveDate)}.
-          <br/><br/>
-        Thank you.</p>
+        <p>
+          To whom it may concern:
+          <br />
+          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
+          <br />
+          <br />
+          Thank you.
+        </p>
       </ResultSection>
     </StyledMemoSection>
   );

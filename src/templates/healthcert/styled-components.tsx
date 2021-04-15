@@ -37,10 +37,10 @@ export const Page = styled.div`
   position: relative;
   font-size: 16px;
   line-height: 1.5;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
   ${mediaQueries["sm"]} {
-    padding: 15mm ;
+    padding: 15mm;
   }
   ${mediaQueries["lg"]} {
     width: 21cm;
@@ -53,7 +53,7 @@ export const Page = styled.div`
   }
 `;
 export const Logo = styled.img`
-    max-width: 260px;
+  max-width: 260px;
 `;
 
 export const Title = styled.h1`
@@ -71,7 +71,9 @@ export const SubTitle = styled.h1`
   line-height: 1.2;
 `;
 export const PatientDetails = styled.section``;
-export const ImmunizationDetails = styled.section``;
+export const ImmunizationDetails = styled.section`
+  padding-top: 20px;
+`;
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
