@@ -50,6 +50,7 @@ export const Page = styled.div`
     width: 21cm;
     min-height: 27cm;
     padding-bottom: 2mm;
+    border: none;
   }
 `;
 export const Logo = styled.img`
@@ -75,13 +76,19 @@ export const Row = styled.div`
 export const FirstCol = styled.div`
   font-weight: bold;
   flex-basis: 100%;
+  ${mediaQueries["print"]} {
+    flex-basis: 50%;
+  }
   ${mediaQueries["md"]} {
     flex-basis: 50%;
   }
 `;
 export const SecondCol = styled.div`
   flex-basis: 100%;
-  ${mediaQueries["md"]} {
+  ${mediaQueries["md"]}  {
+    flex-basis: 50%;
+  }
+  ${mediaQueries["print"]} {
     flex-basis: 50%;
   }
 `;
