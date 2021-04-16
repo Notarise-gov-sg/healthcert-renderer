@@ -50,6 +50,7 @@ export const Page = styled.div`
     width: 21cm;
     min-height: 27cm;
     padding-bottom: 2mm;
+    border: none;
   }
 `;
 export const Logo = styled.img`
