@@ -188,7 +188,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             <SecondCol>{immunization.vaccinationLocation}</SecondCol>
           </Row>
           <Row>
-            <FirstCol>Date of Vaccination:</FirstCol>
+            <FirstCol>Date of Vaccination {i + 1}:</FirstCol>
             <SecondCol>{immunization.vaccinationDate}</SecondCol>
           </Row>
           <Row>
