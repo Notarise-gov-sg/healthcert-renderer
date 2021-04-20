@@ -85,7 +85,7 @@ export const FirstCol = styled.div`
 `;
 export const SecondCol = styled.div`
   flex-basis: 100%;
-  ${mediaQueries["md"]}  {
+  ${mediaQueries["md"]} {
     flex-basis: 50%;
   }
   ${mediaQueries["print"]} {
