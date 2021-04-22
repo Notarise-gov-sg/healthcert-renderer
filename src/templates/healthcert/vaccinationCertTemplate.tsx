@@ -72,7 +72,11 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
           <QRCode value={url} level={"M"} size={200} />
           <div>This QR is valid till {validTill}.</div>
           <div>
-            Please visit <a href="https://notarise.gov.sg/">Notαrise</a> to re-issue your HealthCert.
+            Please visit{" "}
+            <a href="https://notarise.gov.sg/" target="_blank" rel="noopener noreferrer">
+              Notαrise
+            </a>{" "}
+            to re-issue your HealthCert.
           </div>
         </QrCodeContainer>
       )}
