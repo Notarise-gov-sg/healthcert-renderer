@@ -126,3 +126,7 @@ export const QrCodeContainer = styled.div`
 export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
 `;
+
+export const DoseNumber = styled.p`
+  font-weight: bold;
+`;

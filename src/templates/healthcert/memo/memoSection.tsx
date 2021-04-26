@@ -11,7 +11,8 @@ import {
   TestResult,
   Doctor,
   Bold,
-  StyledMemoSection
+  StyledMemoSection,
+  DoseNumber
 } from "../styled-components";
 import nationalities from "i18n-nationality";
 import englishNationalities from "i18n-nationality/langs/en.json";
@@ -179,6 +180,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
+          <DoseNumber>Dose {i}</DoseNumber>
           <Row>
             <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
             <SecondCol>{immunization.vaccineName}</SecondCol>
@@ -188,7 +190,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             <SecondCol>{immunization.vaccinationLocation}</SecondCol>
           </Row>
           <Row>
-            <FirstCol>Date of Vaccination {i + 1}:</FirstCol>
+            <FirstCol>Date of Vaccination:</FirstCol>
             <SecondCol>{immunization.vaccinationDate}</SecondCol>
           </Row>
           <Row>
