@@ -35,7 +35,7 @@ export interface MemoInfo {
   performerMcr: string | undefined;
   observationDate: string;
   patientNricIdentifier: Identifier | undefined;
-  patientNationality: Extension | undefined;
+  patientNationalityCode: string;
   passportNumber: string;
   patient: Patient | undefined;
   testType: string | undefined;
@@ -53,7 +53,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
   performerMcr,
   observationDate,
   patientName,
-  patientNationality,
+  patientNationalityCode,
   passportNumber,
   patient,
   patientNricIdentifier,
@@ -88,7 +88,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{getNationality(patientNationality?.code?.text)}</SecondCol>
+          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
