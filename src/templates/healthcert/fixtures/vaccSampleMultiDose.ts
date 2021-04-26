@@ -82,7 +82,14 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         },
         location: {
           reference: "urn:uuid:a9453181-6682-47f6-afef-8faa299d6e7f"
-        }
+        },
+        performer: [
+          {
+            actor: {
+              display: "Designated vaccinator by MOH-approved vaccination site [HCI000]"
+            }
+          }
+        ]
       },
       {
         fullUrl: "urn:uuid:6950a14f-3560-456a-92d3-5f4da7d052f0",
@@ -103,7 +110,14 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         },
         location: {
           reference: "urn:uuid:830f6633-4ef5-441d-966d-777ca67af9d7"
-        }
+        },
+        performer: [
+          {
+            actor: {
+              display: "Designated vaccinator by MOH-approved vaccination site [HCI111]"
+            }
+          }
+        ]
       },
       {
         fullUrl: "urn:uuid:184fd491-26f4-47bd-aaff-4864dfe0a12c",
