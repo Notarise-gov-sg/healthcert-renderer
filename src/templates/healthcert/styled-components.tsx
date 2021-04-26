@@ -129,4 +129,5 @@ export const StyledMemoSection = styled.div`
 
 export const DoseNumber = styled.p`
   font-weight: bold;
+  text-decoration: underline;
 `;

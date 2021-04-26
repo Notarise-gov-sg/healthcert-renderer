@@ -180,9 +180,13 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
-          <DoseNumber>Dose {i}</DoseNumber>
+          <DoseNumber>Dose {i + 1}</DoseNumber>
           <Row>
-            <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+            <FirstCol>
+              Manufacturer/Vaccination
+              <br />
+              Name/Brand/Type:
+            </FirstCol>
             <SecondCol>{immunization.vaccineName}</SecondCol>
           </Row>
           <Row>
