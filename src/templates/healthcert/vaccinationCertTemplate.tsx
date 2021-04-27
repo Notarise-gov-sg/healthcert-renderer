@@ -22,7 +22,8 @@ const simplifyImmunizationObjectWithLocation: (
     vaccineLot: immunization.lotNumber,
     vaccinationDate: formatDate(immunization.occurrenceDateTime),
     vaccinationLocation: locations.find(l => l.fullUrl === immunization.location.reference)?.name || "",
-    vaccinationCountry: locations.find(l => l.fullUrl === immunization.location.reference)?.address.country || ""
+    vaccinationCountry: locations.find(l => l.fullUrl === immunization.location.reference)?.address.country || "",
+    performer: immunization.performer[0].actor.display
   });
 };
 

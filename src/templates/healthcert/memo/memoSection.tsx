@@ -5,6 +5,7 @@ import {
   PatientDetails,
   ImmunizationDetails,
   Row,
+  UnderlinedFirstCol,
   FirstCol,
   SecondCol,
   ResultSection,
@@ -137,6 +138,7 @@ export interface SimpleImmunizationObject {
   vaccinationDate: string;
   vaccinationLocation: string;
   vaccinationCountry: string;
+  performer: string;
 }
 
 export interface VaccinationMemoInfo {
@@ -180,7 +182,10 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
           <Row>
-            <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+            <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
+          </Row>
+          <Row>
+            <FirstCol>Manufacturer/Vaccination Name/Brand/Type:</FirstCol>
             <SecondCol>{immunization.vaccineName}</SecondCol>
           </Row>
           <Row>
@@ -188,7 +193,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             <SecondCol>{immunization.vaccinationLocation}</SecondCol>
           </Row>
           <Row>
-            <FirstCol>Date of Vaccination {i + 1}:</FirstCol>
+            <FirstCol>Date of Vaccination:</FirstCol>
             <SecondCol>{immunization.vaccinationDate}</SecondCol>
           </Row>
           <Row>
@@ -198,6 +203,10 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <Row>
             <FirstCol>Country of Vaccination:</FirstCol>
             <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Health Worker:</FirstCol>
+            <SecondCol>{immunization.performer}</SecondCol>
           </Row>
         </ImmunizationDetails>
       ))}

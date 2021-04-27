@@ -27,6 +27,12 @@ export interface Location {
   };
 }
 
+export interface ImmunizationPerformer {
+  actor: {
+    display: string;
+  };
+}
+
 export interface Immunization {
   fullUrl?: string;
   resourceType: "Immunization"; // EntryResourceType.Immunization;
@@ -39,6 +45,7 @@ export interface Immunization {
   location: {
     reference: string;
   };
+  performer: Array<ImmunizationPerformer>;
 }
 
 export interface ImmunizationRecommendation {
