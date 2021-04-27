@@ -73,6 +73,17 @@ export const Row = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 `;
+export const UnderlinedFirstCol = styled.div`
+  text-decoration: underline;
+  font-weight: bold;
+  flex-basis: 100%;
+  ${mediaQueries["print"]} {
+    flex-basis: 50%;
+  }
+  ${mediaQueries["md"]} {
+    flex-basis: 50%;
+  }
+`;
 export const FirstCol = styled.div`
   font-weight: bold;
   flex-basis: 100%;

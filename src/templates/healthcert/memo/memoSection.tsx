@@ -5,6 +5,7 @@ import {
   PatientDetails,
   ImmunizationDetails,
   Row,
+  UnderlinedFirstCol,
   FirstCol,
   SecondCol,
   ResultSection,
@@ -14,11 +15,9 @@ import {
   StyledMemoSection,
   DoseNumber
 } from "../styled-components";
-import nationalities from "i18n-nationality";
-import englishNationalities from "i18n-nationality/langs/en.json";
+import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
-nationalities.registerLocale(englishNationalities);
 countries.registerLocale(englishCountries);
 
 type Coding = healthcert.Coding;
@@ -38,7 +37,7 @@ export interface MemoInfo {
   performerMcr: string | undefined;
   observationDate: string;
   patientNricIdentifier: Identifier | undefined;
-  patientNationality: Extension | undefined;
+  patientNationalityCode: string;
   passportNumber: string;
   patient: Patient | undefined;
   testType: string | undefined;
@@ -56,7 +55,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
   performerMcr,
   observationDate,
   patientName,
-  patientNationality,
+  patientNationalityCode,
   passportNumber,
   patient,
   patientNricIdentifier,
@@ -91,7 +90,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{nationalities.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
+          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
@@ -138,6 +137,7 @@ export interface SimpleImmunizationObject {
   vaccinationDate: string;
   vaccinationLocation: string;
   vaccinationCountry: string;
+  performer: string;
 }
 
 export interface VaccinationMemoInfo {
@@ -171,7 +171,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
+          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
@@ -182,7 +182,10 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         <ImmunizationDetails key={i}>
           <DoseNumber>Dose {i}</DoseNumber>
           <Row>
-            <FirstCol>Vaccination Name/Brand/Type:</FirstCol>
+            <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
+          </Row>
+          <Row>
+            <FirstCol>Manufacturer/Vaccination Name/Brand/Type:</FirstCol>
             <SecondCol>{immunization.vaccineName}</SecondCol>
           </Row>
           <Row>
@@ -200,6 +203,10 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           <Row>
             <FirstCol>Country of Vaccination:</FirstCol>
             <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
+          </Row>
+          <Row>
+            <FirstCol>Health Worker:</FirstCol>
+            <SecondCol>{immunization.performer}</SecondCol>
           </Row>
         </ImmunizationDetails>
       ))}

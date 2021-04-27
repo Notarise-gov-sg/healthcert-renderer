@@ -22,7 +22,8 @@ const simplifyImmunizationObjectWithLocation: (
     vaccineLot: immunization.lotNumber,
     vaccinationDate: formatDate(immunization.occurrenceDateTime),
     vaccinationLocation: locations.find(l => l.fullUrl === immunization.location.reference)?.name || "",
-    vaccinationCountry: locations.find(l => l.fullUrl === immunization.location.reference)?.address.country || ""
+    vaccinationCountry: locations.find(l => l.fullUrl === immunization.location.reference)?.address.country || "",
+    performer: immunization.performer?.[0].actor.display || ""
   });
 };
 
@@ -40,13 +41,13 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
   ) as ImmunizationRecommendation;
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
-  const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
+  const patientName = typeof patient?.name?.[0] === "object" ? patient.name[0].text : "";
   const patientNationalityCode =
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
-    )?.code?.text || "";
+    )?.code.text || "";
   const patientBirthDate = formatDate(patient.birthDate || "");
-  const effectiveDate = formatDate(recommendation?.recommendation?.[0]?.dateCriterion?.[0]?.value);
+  const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const url = (document.notarisationMetadata as any)?.url;
   const memoSections: JSX.Element[] = [];
