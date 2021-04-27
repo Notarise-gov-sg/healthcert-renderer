@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
@@ -115,8 +115,12 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-          {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,
-          based solely on the negative COVID-19 test.
+          {testResult.toLowerCase() === "negative" && (
+            <Fragment>
+              {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for
+              travel, based solely on the negative COVID-19 test.
+            </Fragment>
+          )}
         </p>
         <p>Thank you.</p>
       </ResultSection>
