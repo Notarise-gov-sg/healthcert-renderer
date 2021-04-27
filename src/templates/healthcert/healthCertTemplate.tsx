@@ -20,9 +20,10 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const patientNricIdentifier = patient?.identifier?.find(isNric);
-  const patientNationality = patient?.extension?.find(
-    extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
-  );
+  const patientNationalityCode =
+    patient?.extension?.find(
+      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+    )?.code?.text || "";
 
   const url = (document.notarisationMetadata as any)?.url;
   const memoSections: JSX.Element[] = [];
@@ -55,7 +56,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         performerMcr={performerMcr}
         observationDate={observationDate}
         patientNricIdentifier={patientNricIdentifier}
-        patientNationality={patientNationality}
+        patientNationalityCode={patientNationalityCode}
         passportNumber={passportNumber}
         patient={patient}
         testType={testType}

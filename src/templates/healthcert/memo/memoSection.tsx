@@ -14,11 +14,9 @@ import {
   Bold,
   StyledMemoSection
 } from "../styled-components";
-import nationalities from "i18n-nationality";
-import englishNationalities from "i18n-nationality/langs/en.json";
+import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
 import englishCountries from "i18n-iso-countries/langs/en.json";
-nationalities.registerLocale(englishNationalities);
 countries.registerLocale(englishCountries);
 
 type Coding = healthcert.Coding;
@@ -38,7 +36,7 @@ export interface MemoInfo {
   performerMcr: string | undefined;
   observationDate: string;
   patientNricIdentifier: Identifier | undefined;
-  patientNationality: Extension | undefined;
+  patientNationalityCode: string;
   passportNumber: string;
   patient: Patient | undefined;
   testType: string | undefined;
@@ -56,7 +54,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
   performerMcr,
   observationDate,
   patientName,
-  patientNationality,
+  patientNationalityCode,
   passportNumber,
   patient,
   patientNricIdentifier,
@@ -91,7 +89,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{nationalities.getName(patientNationality?.code?.text ?? "", "en")}</SecondCol>
+          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
@@ -172,7 +170,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{nationalities.getName(patientNationalityCode, "en")}</SecondCol>
+          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
