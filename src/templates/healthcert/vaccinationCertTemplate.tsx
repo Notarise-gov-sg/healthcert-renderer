@@ -6,7 +6,7 @@ import { healthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
-const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "short", year: "numeric" });
+const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "long", year: "numeric" });
 const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N/A");
 const incrementDateString = (date: string, days: number): string => {
   const d = new Date(date);
