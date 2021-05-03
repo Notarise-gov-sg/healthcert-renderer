@@ -8,7 +8,7 @@ const Root: React.FC = () => (
   <>
     <Helmet>
       {/* To allow verify.gov.sg to access the dom rendered through iframe */}
-      <meta httpEquiv="Access-Control-Allow-Origin" content="https://www.verify.gov.sg/" />
+      <meta httpEquiv="Access-Control-Allow-Origin" content="http://localhost:3000/" />
     </Helmet>
     <FramedDocumentRenderer templateRegistry={registry} />
   </>

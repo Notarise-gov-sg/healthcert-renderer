@@ -30,7 +30,7 @@
     "test": "jest --ci",
     "test:coverage": "npm run test -- --coverage",
     "test:watch": "npm run test -- --watch",
-    "start": "webpack-dev-server --hot --mode development"
+    "start": "webpack-dev-server --hot --mode development --port 5000"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
