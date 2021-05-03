@@ -6,13 +6,9 @@ import { healthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
-const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "short", year: "numeric" });
+const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "long", year: "numeric" });
 const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N/A");
-const incrementDateString = (date: string, days: number): string => {
-  const d = new Date(date);
-  d.setDate(d.getDate() + days);
-  return formatDate(d.toISOString());
-};
+const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
 
 const simplifyImmunizationObjectWithLocation: (
   locations: Location[]
@@ -30,7 +26,6 @@ const simplifyImmunizationObjectWithLocation: (
 export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
-  const validTill = incrementDateString(document.validFrom.substring(0, 10), 14);
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
   const locations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Location") as Location[];
   const immunizations = document.fhirBundle.entry.filter(
@@ -42,6 +37,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient.name[0].text : "";
+  const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
@@ -57,6 +53,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
       immunizations={immunizations.map(simplifyImmunizationObjectWithLocation(locations))}
       effectiveDate={effectiveDate}
       patientName={patientName}
+      patientNric={patientNric}
       patientNationalityCode={patientNationalityCode}
       patientBirthDate={patientBirthDate}
       passportNumber={passportNumber}
@@ -71,14 +68,6 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
       {url && (
         <QrCodeContainer>
           <QRCode value={url} level={"M"} size={200} />
-          <div>This QR is valid till {validTill}.</div>
-          <div>
-            Please visit{" "}
-            <a href="https://notarise.gov.sg/" target="_blank" rel="noopener noreferrer">
-              Notαrise
-            </a>{" "}
-            to re-issue your HealthCert.
-          </div>
         </QrCodeContainer>
       )}
     </Page>

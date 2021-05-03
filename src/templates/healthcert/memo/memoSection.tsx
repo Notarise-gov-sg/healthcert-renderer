@@ -142,6 +142,7 @@ export interface SimpleImmunizationObject {
 
 export interface VaccinationMemoInfo {
   patientName: string;
+  patientNric: string;
   patientNationalityCode: string;
   patientBirthDate: string;
   passportNumber: string;
@@ -151,6 +152,7 @@ export interface VaccinationMemoInfo {
 
 export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
   patientName,
+  patientNric,
   patientNationalityCode,
   patientBirthDate,
   passportNumber,
@@ -164,6 +166,10 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         <Row>
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{patientName}</SecondCol>
+        </Row>
+        <Row>
+          <FirstCol>NRIC/FIN Number:</FirstCol>
+          <SecondCol>{patientNric}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Passport/Travel Document Number:</FirstCol>
