@@ -8,6 +8,7 @@ import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
 const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "long", year: "numeric" });
 const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N/A");
+const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
 
 const simplifyImmunizationObjectWithLocation: (
   locations: Location[]
@@ -36,6 +37,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const patientName = typeof patient?.name?.[0] === "object" ? patient.name[0].text : "";
+  const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
@@ -51,6 +53,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
       immunizations={immunizations.map(simplifyImmunizationObjectWithLocation(locations))}
       effectiveDate={effectiveDate}
       patientName={patientName}
+      patientNric={patientNric}
       patientNationalityCode={patientNationalityCode}
       patientBirthDate={patientBirthDate}
       passportNumber={passportNumber}
