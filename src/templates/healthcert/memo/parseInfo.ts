@@ -30,7 +30,9 @@ export const getDateTime = (dateString: string | undefined): string => {
         timeZoneName: "short",
         month: "long",
         day: "numeric",
-        year: "numeric"
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric"
       })
     : "";
 };
