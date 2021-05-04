@@ -23,9 +23,16 @@ type ParsedInfo = Pick<
 
 const SG_LOCALE = "en-sg";
 
-const getDateTime = (dateString: string | undefined): string => {
+export const getDateTime = (dateString: string | undefined): string => {
   // locale is fixed to always show day/month/year, in this order
-  return dateString ? new Date(dateString).toLocaleString(SG_LOCALE, { timeZoneName: "short" }) : "";
+  return dateString
+    ? new Date(dateString).toLocaleString(SG_LOCALE, {
+        timeZoneName: "short",
+        month: "long",
+        day: "numeric",
+        year: "numeric"
+      })
+    : "";
 };
 
 export const getTestResult = (observation: healthcert.Patient): string => {
