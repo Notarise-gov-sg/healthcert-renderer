@@ -41,6 +41,7 @@ export interface MemoInfo {
   patient: Patient | undefined;
   testType: string | undefined;
   testResult: string;
+  birthdate: string | undefined;
 }
 
 export const MemoSection: React.FC<MemoInfo> = ({
@@ -58,7 +59,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
   passportNumber,
   patient,
   patientNricIdentifier,
-  testResult
+  testResult,
+  birthdate
 }) => {
   return (
     <StyledMemoSection>
@@ -93,12 +95,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>
-            {patient?.birthDate
-              ?.split("-")
-              .reverse()
-              .join("/")}
-          </SecondCol>
+          <SecondCol>{birthdate}</SecondCol>
         </Row>
       </PatientDetails>
       <ResultSection>

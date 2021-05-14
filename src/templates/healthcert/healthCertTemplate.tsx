@@ -24,6 +24,14 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code?.text || "";
+  let birthdate = patient?.birthDate;
+  if (birthdate != null) {
+    birthdate = new Date(birthdate).toLocaleString(undefined, {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    });
+  }
 
   const url = (document.notarisationMetadata as any)?.url;
   const memoSections: JSX.Element[] = [];
@@ -61,6 +69,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
         patient={patient}
         testType={testType}
         testResult={testResult}
+        birthdate={birthdate}
       />
     );
   }
