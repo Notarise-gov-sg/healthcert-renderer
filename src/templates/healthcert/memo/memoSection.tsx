@@ -64,7 +64,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
 }) => {
   return (
     <StyledMemoSection>
-      <Title>
+      <Title data-testid="memo-title">
         MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}
         <br />
         {observation?.code?.coding?.[0]?.display.toUpperCase()} TEST RESULT

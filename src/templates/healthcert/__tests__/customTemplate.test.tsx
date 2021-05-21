@@ -8,14 +8,18 @@ import { Coding } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/m
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    const { getByTestId } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19 REAL TIME")).toBeTruthy();
+    expect(getByTestId("memo-title").textContent).toContain("MEMO ON COVID-19 REAL TIME");
   });
   it("should render with title provided by the multi result document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />);
+    const { getAllByTestId } = render(
+      <HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19")).toBeTruthy();
+    getAllByTestId("memo-title").forEach(title => {
+      expect(title.textContent).toContain("MEMO ON COVID-19");
+    });
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
