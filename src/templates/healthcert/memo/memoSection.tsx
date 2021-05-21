@@ -67,12 +67,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
       <Title>
         MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}
         <br />
-        {testType === "94531-1"
-          ? "RT-PCR SWAB"
-          : testType === "94661-6"
-          ? "SEROLOGY"
-          : observation?.code?.coding?.[0]?.display}{" "}
-        TEST RESULT
+        {observation?.code?.coding?.[0]?.display.toUpperCase()} TEST RESULT
       </Title>
       <PatientDetails>
         <Row>
@@ -101,13 +96,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned has undergone{" "}
-          {testType === "94531-1"
-            ? "RT-PCR"
-            : testType === "94661-6"
-            ? "SEROLOGY"
-            : observation?.code?.coding?.[0]?.display}{" "}
-          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
+          The abovementioned has undergone {observation?.code?.coding?.[0]?.display} testing for COVID-19 using a{" "}
+          {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
