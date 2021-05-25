@@ -50,7 +50,6 @@ export const MemoSection: React.FC<MemoInfo> = ({
   lab,
   swabType,
   swabCollectionDate,
-  testType,
   performerName,
   performerMcr,
   observationDate,

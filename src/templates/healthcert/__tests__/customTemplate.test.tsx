@@ -20,7 +20,7 @@ describe("customTemplate", () => {
     );
     // eslint-disable-next-line jest/no-truthy-falsy
     const titles = getAllByTestId("memo-title");
-    expect(titles.length).toEqual(2);
+    expect(titles).toHaveLength(2);
     titles.forEach(title => expect(title.textContent).toContain("MEMO ON"));
     expect(titles[0].textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
     expect(titles[1].textContent).toContain("SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT");
