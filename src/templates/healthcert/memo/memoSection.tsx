@@ -96,7 +96,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned has undergone {observation?.code?.coding?.[0]?.display} testing for COVID-19 using a{" "}
+          The abovementioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
           {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
