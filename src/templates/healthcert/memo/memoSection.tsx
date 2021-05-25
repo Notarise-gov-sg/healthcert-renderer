@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
@@ -12,7 +12,8 @@ import {
   TestResult,
   Doctor,
   Bold,
-  StyledMemoSection
+  StyledMemoSection,
+  DoseNumber
 } from "../styled-components";
 import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
@@ -100,8 +101,12 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-          {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,
-          based solely on the negative COVID-19 test.
+          {testResult.toLowerCase() === "negative" && (
+            <Fragment>
+              {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for
+              travel, based solely on the negative COVID-19 test.
+            </Fragment>
+          )}
         </p>
         <p>Thank you.</p>
       </ResultSection>
@@ -171,6 +176,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
       </PatientDetails>
       {immunizations.map((immunization, i) => (
         <ImmunizationDetails key={i}>
+          <DoseNumber>Dose {i}</DoseNumber>
           <Row>
             <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
           </Row>
