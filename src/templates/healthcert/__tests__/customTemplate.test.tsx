@@ -10,16 +10,20 @@ describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
     const { getByTestId } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(getByTestId("memo-title").textContent).toContain("MEMO ON COVID-19 REAL TIME");
+    const title = getByTestId("memo-title");
+    expect(title.textContent).toContain("MEMO ON");
+    expect(title.textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
   });
   it("should render with title provided by the multi result document", () => {
     const { getAllByTestId } = render(
       <HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />
     );
     // eslint-disable-next-line jest/no-truthy-falsy
-    getAllByTestId("memo-title").forEach(title => {
-      expect(title.textContent).toContain("MEMO ON COVID-19");
-    });
+    const titles = getAllByTestId("memo-title");
+    expect(titles.length).toEqual(2);
+    titles.forEach(title => expect(title.textContent).toContain("MEMO ON"));
+    expect(titles[0].textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
+    expect(titles[1].textContent).toContain("SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT");
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
