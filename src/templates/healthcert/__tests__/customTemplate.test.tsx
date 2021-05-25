@@ -8,14 +8,22 @@ import { Coding } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/m
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    const { getByTestId } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19 REAL TIME")).toBeTruthy();
+    const title = getByTestId("memo-title");
+    expect(title.textContent).toContain("MEMO ON");
+    expect(title.textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
   });
   it("should render with title provided by the multi result document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />);
+    const { getAllByTestId } = render(
+      <HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19")).toBeTruthy();
+    const titles = getAllByTestId("memo-title");
+    expect(titles).toHaveLength(2);
+    titles.forEach(title => expect(title.textContent).toContain("MEMO ON"));
+    expect(titles[0].textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
+    expect(titles[1].textContent).toContain("SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT");
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
