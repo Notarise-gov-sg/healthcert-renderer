@@ -1,6 +1,6 @@
 import { HealthCertTemplate } from "../healthCertTemplate";
 import { healthCertSample } from "../fixtures/sampleWithNric";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import React from "react";
 import { multiMemoSample } from "../fixtures/multiMemo";
 import cloneDeep from "lodash.clonedeep";
@@ -8,14 +8,16 @@ import { Coding } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/m
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    console.log(screen);
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19 REAL TIME")).toBeTruthy();
+    // "MEMO ON COVID-19 REAL TIME"
+    expect(screen.queryByText(/MEMO ON COVID-19\s+REAL TIME/)).toBeTruthy();
   });
   it("should render with title provided by the multi result document", () => {
-    const { queryByText } = render(<HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />);
+    render(<HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />);
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(queryByText("MEMO ON COVID-19")).toBeTruthy();
+    expect(screen.getAllByText(/MEMO ON COVID-19\s+/)).toBeTruthy();
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
