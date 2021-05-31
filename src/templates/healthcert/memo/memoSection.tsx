@@ -191,7 +191,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             <SecondCol>{immunization.vaccineLot}</SecondCol>
           </Row>
           <Row>
-            <FirstCol>Country of Vaccination:</FirstCol>
+            <FirstCol>Country/Region of Vaccination:</FirstCol>
             <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
           </Row>
           <Row>
