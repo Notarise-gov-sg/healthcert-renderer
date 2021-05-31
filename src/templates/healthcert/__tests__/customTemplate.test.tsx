@@ -1,6 +1,6 @@
 import { HealthCertTemplate } from "../healthCertTemplate";
 import { healthCertSample } from "../fixtures/sampleWithNric";
-import { render, screen} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import React from "react";
 import { multiMemoSample } from "../fixtures/multiMemo";
 import cloneDeep from "lodash.clonedeep";
@@ -8,16 +8,22 @@ import { Coding } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/m
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
-    render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
-    console.log(screen);
+    const { getByTestId } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
     // eslint-disable-next-line jest/no-truthy-falsy
-    // "MEMO ON COVID-19 REAL TIME"
-    expect(screen.queryByText(/MEMO ON COVID-19\s+REAL TIME/)).toBeTruthy();
+    const title = getByTestId("memo-title");
+    expect(title.textContent).toContain("MEMO ON");
+    expect(title.textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
   });
   it("should render with title provided by the multi result document", () => {
-    render(<HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />);
+    const { getAllByTestId } = render(
+      <HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
-    expect(screen.getAllByText(/MEMO ON COVID-19\s+/)).toBeTruthy();
+    const titles = getAllByTestId("memo-title");
+    expect(titles).toHaveLength(2);
+    titles.forEach(title => expect(title.textContent).toContain("MEMO ON"));
+    expect(titles[0].textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
+    expect(titles[1].textContent).toContain("SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT");
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);

@@ -50,7 +50,6 @@ export const MemoSection: React.FC<MemoInfo> = ({
   lab,
   swabType,
   swabCollectionDate,
-  testType,
   performerName,
   performerMcr,
   observationDate,
@@ -64,15 +63,10 @@ export const MemoSection: React.FC<MemoInfo> = ({
 }) => {
   return (
     <StyledMemoSection>
-      <Title>
-        MEMO ON COVID-19 {testType === "94531-1" ? "REAL TIME" : ""}
+      <Title data-testid="memo-title">
+        MEMO ON
         <br />
-        {testType === "94531-1"
-          ? "RT-PCR SWAB"
-          : testType === "94661-6"
-          ? "SEROLOGY"
-          : observation?.code?.coding?.[0]?.display}{" "}
-        TEST RESULT
+        {observation?.code?.coding?.[0]?.display.toUpperCase()} RESULT
       </Title>
       <PatientDetails>
         <Row>
@@ -101,13 +95,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
       <ResultSection>
         <p>To whom it may concern:</p>
         <p>
-          The abovementioned has undergone{" "}
-          {testType === "94531-1"
-            ? "RT-PCR"
-            : testType === "94661-6"
-            ? "SEROLOGY"
-            : observation?.code?.coding?.[0]?.display}{" "}
-          testing for COVID-19 using a {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
+          The abovementioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
+          {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
@@ -201,7 +190,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
             <SecondCol>{immunization.vaccineLot}</SecondCol>
           </Row>
           <Row>
-            <FirstCol>Country of Vaccination:</FirstCol>
+            <FirstCol>Country/Region of Vaccination:</FirstCol>
             <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
           </Row>
           <Row>
