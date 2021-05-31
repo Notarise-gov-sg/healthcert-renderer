@@ -56,7 +56,6 @@ export const MemoSection: React.FC<MemoInfo> = ({
   patientName,
   patientNationalityCode,
   passportNumber,
-  patient,
   patientNricIdentifier,
   testResult,
   birthdate
@@ -100,7 +99,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-        Travellers should note that they are subject to the country or region's requirements prior to travel.
+          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
         </p>
         <p>Thank you.</p>
       </ResultSection>
