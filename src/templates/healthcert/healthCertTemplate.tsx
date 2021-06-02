@@ -30,7 +30,7 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
   if (birthdate) {
     birthdate = new Date(birthdate).toLocaleString(SG_LOCALE, {
       /**
-       * Should not respect browser locale but rather,
+       * Should not respect browser timezone but rather,
        * force "UTC" timezone because time (in birthdate) is always going to be ...T00:00:00.000Z
        **/
       timeZone: "UTC",

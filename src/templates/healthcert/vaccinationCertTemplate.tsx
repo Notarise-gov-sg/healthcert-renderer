@@ -6,7 +6,16 @@ import { healthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 
-const dateFormatter = new Intl.DateTimeFormat("en-SG", { day: "numeric", month: "long", year: "numeric" });
+const dateFormatter = new Intl.DateTimeFormat("en-SG", {
+  /**
+   * Should not respect browser timezone but rather,
+   * force "UTC" timezone because dates in vacc certs do not have time
+   **/
+  timeZone: "UTC",
+  month: "long",
+  day: "numeric",
+  year: "numeric"
+});
 const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N/A");
 const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
 
@@ -42,7 +51,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code.text || "";
-  const patientBirthDate = formatDate(patient.birthDate || "");
+  const patientBirthDate = formatDate(patient.birthDate || "") + " = " + patient.birthDate;
   const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const url = (document.notarisationMetadata as any)?.url;
