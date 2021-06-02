@@ -51,7 +51,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code.text || "";
-  const patientBirthDate = formatDate(patient.birthDate || "") + " = " + patient.birthDate;
+  const patientBirthDate = formatDate(patient.birthDate || "");
   const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const url = (document.notarisationMetadata as any)?.url;
