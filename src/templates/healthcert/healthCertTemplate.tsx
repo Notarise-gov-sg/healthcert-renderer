@@ -9,6 +9,8 @@ import { MemoSection } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 import { extractInfo } from "./memo/parseInfo";
 
+const SG_LOCALE = "en-sg";
+
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
 export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocument> & {
@@ -25,8 +27,13 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocum
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code?.text || "";
   let birthdate = patient?.birthDate;
-  if (birthdate != null) {
-    birthdate = new Date(birthdate).toLocaleString(undefined, {
+  if (birthdate) {
+    birthdate = new Date(birthdate).toLocaleString(SG_LOCALE, {
+      /**
+       * Should not respect browser locale but rather,
+       * force "UTC" timezone because time (in birthdate) is always going to be ...T00:00:00.000Z
+       **/
+      timeZone: "UTC",
       month: "long",
       day: "numeric",
       year: "numeric"
