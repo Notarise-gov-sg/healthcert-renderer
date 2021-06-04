@@ -20,7 +20,6 @@ import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 type Coding = healthcert.Coding;
-type Extension = healthcert.Extension;
 type Identifier = healthcert.Identifier;
 type Patient = healthcert.Patient;
 
@@ -56,7 +55,6 @@ export const MemoSection: React.FC<MemoInfo> = ({
   patientName,
   patientNationalityCode,
   passportNumber,
-  patient,
   patientNricIdentifier,
   testResult,
   birthdate
