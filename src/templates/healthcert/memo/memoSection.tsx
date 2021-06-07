@@ -204,7 +204,7 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
         <p>
           To whom it may concern:
           <br />
-          The abovementioned have been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
+          The abovementioned has been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
           <br />
           <br />
           Thank you.
