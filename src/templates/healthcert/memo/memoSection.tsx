@@ -20,7 +20,6 @@ import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 type Coding = healthcert.Coding;
-type Extension = healthcert.Extension;
 type Identifier = healthcert.Identifier;
 type Patient = healthcert.Patient;
 
@@ -56,7 +55,6 @@ export const MemoSection: React.FC<MemoInfo> = ({
   patientName,
   patientNationalityCode,
   passportNumber,
-  patient,
   patientNricIdentifier,
   testResult,
   birthdate
@@ -100,8 +98,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
           <TestResult>{testResult}</TestResult>. This test result was reported by {lab?.name} on {observationDate}.
         </p>
         <p>
-          {patient?.gender?.toLowerCase() === healthcert.Gender.Female.toLowerCase() ? "She" : "He"} is fit for travel,
-          based solely on the negative COVID-19 test.
+          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
         </p>
         <p>Thank you.</p>
       </ResultSection>

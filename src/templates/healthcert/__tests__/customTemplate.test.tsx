@@ -5,6 +5,7 @@ import React from "react";
 import { multiMemoSample } from "../fixtures/multiMemo";
 import cloneDeep from "lodash.clonedeep";
 import { Coding } from "@govtechsg/oa-schemata/dist/types/__generated__/sg/gov/moh/healthcert/1.0/schema";
+import "jest-canvas-mock";
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
