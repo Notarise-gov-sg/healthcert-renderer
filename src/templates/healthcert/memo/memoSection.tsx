@@ -95,12 +95,8 @@ export const MemoSection: React.FC<MemoInfo> = ({
         <p>
           The above-mentioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
           {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-          <TestResult>{testResult}</TestResult>.{" "}
-          {lab && (
-            <>
-              This test result was reported by {lab?.name} on {observationDate}.
-            </>
-          )}
+          <TestResult>{testResult}</TestResult>.
+          {lab && ` This test result was reported by ${lab?.name} on ${observationDate}.`}
         </p>
         <p>
           Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
