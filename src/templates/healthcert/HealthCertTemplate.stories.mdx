@@ -2,6 +2,7 @@ import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/
 import { object } from "@storybook/addon-knobs";
 import { HealthCertTemplate } from "./healthCertTemplate";
 import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
+import { healthCertSample as sampleArtWithNric } from "./fixtures/sampleArtWithNric";
 import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutNric";
 import { multiMemoSample } from "./fixtures/multiMemo";
 
@@ -20,6 +21,9 @@ import { multiMemoSample } from "./fixtures/multiMemo";
 <Preview>
   <Story name="cert with nric">
     <HealthCertTemplate document={object("document", sampleWithNric)} />
+  </Story>
+  <Story name="art cert with nric">
+    <HealthCertTemplate document={object("document", sampleArtWithNric)} />
   </Story>
   <Story name="cert without nric">
     <HealthCertTemplate document={object("document", sampleWithoutNric)} />
