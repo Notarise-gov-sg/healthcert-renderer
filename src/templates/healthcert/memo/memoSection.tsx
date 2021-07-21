@@ -1,5 +1,5 @@
 import React from "react";
-import { healthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
   PatientDetails,

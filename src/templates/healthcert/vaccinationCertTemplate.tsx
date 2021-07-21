@@ -10,7 +10,7 @@ import {
   Logo,
   Row,
   Bold,
-  QrCodeContainer,
+  QrCodeContainerWithBorder,
   TravellerInfoSection,
   QrCol,
   QrInfoCol,
@@ -107,9 +107,9 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedH
               authorities when required.
             </QrInfoCol>
             <QrCol>
-              <QrCodeContainer>
+              <QrCodeContainerWithBorder>
                 <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
-              </QrCodeContainer>
+              </QrCodeContainerWithBorder>
             </QrCol>
           </Row>
           <QrBreakLine />
@@ -118,9 +118,9 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedH
       {url && (
         <Row>
           <QrCol>
-            <QrCodeContainer>
+            <QrCodeContainerWithBorder>
               <QRCode value={url} level={"M"} size={200} />
-            </QrCodeContainer>
+            </QrCodeContainerWithBorder>
           </QrCol>
           <QrInfoCol>
             <br />

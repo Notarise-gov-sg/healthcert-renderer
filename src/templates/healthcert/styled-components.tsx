@@ -132,12 +132,19 @@ export const QrCodeContainer = styled.div`
   text-align: center;
   font-weight: bold;
   page-break-inside: avoid;
-  border: 1px solid #e2e8f0;
-  padding: 10px;
 `;
 
 export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
+`;
+
+export const QrCodeContainerWithBorder = styled.div`
+  margin-top: auto;
+  text-align: center;
+  font-weight: bold;
+  page-break-inside: avoid;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
 `;
 
 export const TravellerInfoSection = styled.section`
