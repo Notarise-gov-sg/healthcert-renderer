@@ -12,7 +12,9 @@ import {
   TestResult,
   Doctor,
   Bold,
-  StyledMemoSection
+  StyledMemoSection,
+  ProposeCutoffBorder,
+  ProposeCutoffText
 } from "../styled-components";
 import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
@@ -198,14 +200,13 @@ export const VaccinationMemoSection: React.FC<VaccinationMemoInfo> = ({
           </Row>
         </ImmunizationDetails>
       ))}
+      <br />
+      <ProposeCutoffBorder>
+        <ProposeCutoffText>Proposed page cut-off</ProposeCutoffText>
+      </ProposeCutoffBorder>
       <ResultSection>
         <p>
-          To whom it may concern:
-          <br />
-          The above-mentioned has been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
-          <br />
-          <br />
-          Thank you.
+          {patientName} has been vaccinated with {immunizations[0].vaccineName} effective from {effectiveDate}.
         </p>
       </ResultSection>
     </StyledMemoSection>

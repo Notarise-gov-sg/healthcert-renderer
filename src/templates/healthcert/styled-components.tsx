@@ -132,8 +132,56 @@ export const QrCodeContainer = styled.div`
   text-align: center;
   font-weight: bold;
   page-break-inside: avoid;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
 `;
 
 export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
+`;
+
+export const TravellerInfoSection = styled.section`
+  text-align: justify;
+  background-color: #f1f5f9;
+  margin: 24px 0px;
+  padding: 8px 16px;
+`;
+
+export const QrBreakLine = styled.hr`
+  border: 1px solid #cfd8e3;
+  margin: 20px 0px;
+`;
+
+export const QrCol = styled.div`
+  flex-basis: 100%;
+  ${mediaQueries["md"]} {
+    flex-basis: 30%;
+  }
+  ${mediaQueries["print"]} {
+    flex-basis: 30%;
+  }
+`;
+
+export const QrInfoCol = styled.div`
+  flex-basis: 100%;
+  ${mediaQueries["md"]} {
+    flex-basis: 65%;
+  }
+  ${mediaQueries["print"]} {
+    flex-basis: 65%;
+  }
+`;
+
+export const ProposeCutoffBorder = styled.h4`
+  flex-basis: 100%;
+  text-align: center;
+  border-bottom: 1px dashed #c53030;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+`;
+
+export const ProposeCutoffText = styled.span`
+  background: #fff;
+  padding: 0 10px;
+  color: #c53030;
 `;
