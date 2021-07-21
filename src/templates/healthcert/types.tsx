@@ -1,16 +1,24 @@
 import { v2 } from "@govtechsg/decentralized-renderer-react-components";
-import { healthcert, notarise } from "@govtechsg/oa-schemata";
+import { pdtHealthcert as healthcert, notarise } from "@govtechsg/oa-schemata";
 
-export type HealthCertDocument = v2.OpenAttestationDocument & healthcert.HealthCert & notarise.Notarise;
-
-interface FhirBundleWithImmunization extends Omit<HealthCertDocument["fhirBundle"], "entry"> {
-  entry: Array<
-    HealthCertDocument["fhirBundle"]["entry"][number] | Immunization | ImmunizationRecommendation | Location
-  >;
-}
-
-export interface NotarisedHealthCert extends Omit<HealthCertDocument, "fhirBundle"> {
-  fhirBundle: FhirBundleWithImmunization;
+export interface Patient {
+  fullUrl?: string;
+  resourceType: string;
+  extension: Array<{
+    url: string;
+    code: {
+      text: string;
+    };
+  }>;
+  identifier: Array<{
+    type: "PPN" | { text: "NRIC" };
+    value: string;
+  }>;
+  name: Array<{
+    text: string;
+  }>;
+  gender: string;
+  birthDate: string;
 }
 
 export interface CodeableConcept {
@@ -35,7 +43,7 @@ export interface ImmunizationPerformer {
 
 export interface Immunization {
   fullUrl?: string;
-  resourceType: "Immunization"; // EntryResourceType.Immunization;
+  resourceType: "Immunization"; // healthcert.ResourceType.Immunization;
   vaccineCode: CodeableConcept;
   lotNumber: string;
   occurrenceDateTime: string;
@@ -62,4 +70,19 @@ export interface ImmunizationRecommendation {
   patient: {
     reference: string;
   };
+}
+
+export interface HealthCertDocument extends v2.OpenAttestationDocument {
+  name: string;
+  validFrom: string;
+  fhirVersion: string;
+  logo: string;
+  fhirBundle: {
+    resourceType: healthcert.FhirBundleResourceType.Bundle;
+    type: healthcert.FhirBundleType.Collection;
+    entry: Array<any>;
+  };
+}
+export interface NotarizedHealthCert extends HealthCertDocument {
+  notarisationMetadata: notarise.NotarisationMetadata;
 }

@@ -1,8 +1,8 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { NotarisedHealthCert, Immunization, ImmunizationRecommendation, Location } from "./types";
-import { healthcert } from "@govtechsg/oa-schemata";
+import { Immunization, Location, NotarizedHealthCert, ImmunizationRecommendation, Patient } from "./types";
+import { pdtHealthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
 import {
   Page,
@@ -28,7 +28,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-SG", {
   year: "numeric"
 });
 const formatDate = (iso?: string): string => (iso ? dateFormatter.format(new Date(iso)) : "N/A");
-const isNric = (value: healthcert.Identifier): boolean => typeof value.type !== "string" && value.type.text === "NRIC";
+const isNric = (value: pdtHealthcert.Identifier): boolean =>
+  typeof value.type !== "string" && value.type.text === "NRIC";
 
 const simplifyImmunizationObjectWithLocation: (
   locations: Location[]
@@ -43,10 +44,10 @@ const simplifyImmunizationObjectWithLocation: (
   });
 };
 
-export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
+export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
+  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as Patient;
   const locations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Location") as Location[];
   const immunizations = document.fhirBundle.entry.filter(
     entry => entry.resourceType === "Immunization"
@@ -56,13 +57,13 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
   ) as ImmunizationRecommendation;
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
-  const patientName = typeof patient?.name?.[0] === "object" ? patient.name[0].text : "";
+  const patientName = typeof patient?.name?.[0] === "object" ? patient?.name[0]?.text : "";
   const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code.text || "";
-  const patientBirthDate = formatDate(patient.birthDate || "");
+  const patientBirthDate = formatDate(patient?.birthDate || "");
   const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const url = (document.notarisationMetadata as any)?.url;
