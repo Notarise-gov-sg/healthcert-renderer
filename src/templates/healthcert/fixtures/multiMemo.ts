@@ -1,7 +1,7 @@
 // TODO: remove ts-ignore after the healthcert schema is updated to include it
 import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
-import { NotarizedHealthCert } from "../types";
+import { NotarisedHealthCert } from "../types";
 
 const {
   AddressType,
@@ -14,7 +14,7 @@ const {
   EntryResourceType
 } = healthcert;
 
-export const multiMemoSample: NotarizedHealthCert = {
+export const multiMemoSample: NotarisedHealthCert = {
   id: "TEST001",
   name: "HealthCert",
   validFrom: "2020-11-20",

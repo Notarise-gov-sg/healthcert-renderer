@@ -1,11 +1,11 @@
 import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
-import { NotarizedHealthCert } from "../types";
+import { NotarisedHealthCert } from "../types";
 import mohHeader from "./moh-header.base64.txt";
 
 const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } = healthcert;
 
-export const vaccinationCertSampleV2: NotarizedHealthCert = {
+export const vaccinationCertSampleV2: NotarisedHealthCert = {
   id: "3749314a-0f99-432d-9b9e-4d9446bff38c",
   name: "HealthCert",
   validFrom: "2021-03-30T03:22:06.031Z",

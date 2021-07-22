@@ -1,7 +1,7 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { Immunization, Location, NotarizedHealthCert, ImmunizationRecommendation, Patient } from "./types";
+import { Immunization, Location, NotarisedHealthCert, ImmunizationRecommendation, Patient } from "./types";
 import { pdtHealthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject, VaccinationV2MemoSection } from "./memo/memoSection";
 import {
@@ -46,7 +46,7 @@ const simplifyImmunizationObjectWithLocation: (
   });
 };
 
-export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedHealthCert> & {
+export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as Patient;
@@ -105,28 +105,24 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedH
             The QR code used for verification is based on your <u>destination country</u>.
           </TravellerInfoSection>
           <br />
-          {encryptedEuHealthCert && (
-            <>
-              <Row>
-                <QrInfoCol>
-                  <Bold>Offline QR Verification</Bold>
-                  <br />
-                  This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
-                  supports this option of verification.
-                  <br />
-                  <br />
-                  This may also be used for public health measures beyond travel within the EU and should be produced to
-                  authorities when required.
-                </QrInfoCol>
-                <QrCol>
-                  <QrCodeContainerWithBorder>
-                    <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
-                  </QrCodeContainerWithBorder>
-                </QrCol>
-              </Row>
-              <QrBreakLine />
-            </>
-          )}
+          <Row>
+            <QrInfoCol>
+              <Bold>Offline QR Verification</Bold>
+              <br />
+              This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
+              supports this option of verification.
+              <br />
+              <br />
+              This may also be used for public health measures beyond travel within the EU and should be produced to
+              authorities when required.
+            </QrInfoCol>
+            <QrCol>
+              <QrCodeContainerWithBorder>
+                <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
+              </QrCodeContainerWithBorder>
+            </QrCol>
+          </Row>
+          <QrBreakLine />
           {url && (
             <Row>
               <QrCol>

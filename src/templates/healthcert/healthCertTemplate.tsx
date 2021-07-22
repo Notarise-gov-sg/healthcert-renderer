@@ -2,7 +2,7 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { NotarizedHealthCert } from "./types";
+import { NotarisedHealthCert } from "./types";
 import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 
 import { MemoSection } from "./memo/memoSection";
@@ -13,7 +13,7 @@ const SG_LOCALE = "en-sg";
 
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
-export const HealthCertTemplate: FunctionComponent<TemplateProps<NotarizedHealthCert> & {
+export const HealthCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;

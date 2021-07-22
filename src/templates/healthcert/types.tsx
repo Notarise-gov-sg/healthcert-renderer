@@ -83,6 +83,6 @@ export interface HealthCertDocument extends v2.OpenAttestationDocument {
     entry: Array<any>;
   };
 }
-export interface NotarizedHealthCert extends HealthCertDocument {
+export interface NotarisedHealthCert extends HealthCertDocument {
   notarisationMetadata: notarise.NotarisationMetadata;
 }
