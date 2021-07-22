@@ -1,6 +1,6 @@
-import { healthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
-import { HealthCertDocument } from "../types";
+import { NotarisedHealthCert } from "../types";
 
 const {
   AddressType,
@@ -13,7 +13,7 @@ const {
   EntryResourceType
 } = healthcert;
 
-export const healthCertSample: HealthCertDocument = {
+export const healthCertSample: NotarisedHealthCert = {
   id: "TEST001",
   name: "HealthCert",
   validFrom: "2020-11-20",

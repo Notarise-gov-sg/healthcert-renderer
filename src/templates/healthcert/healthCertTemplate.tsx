@@ -2,8 +2,8 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { HealthCertDocument } from "./types";
-import { healthcert } from "@govtechsg/oa-schemata";
+import { NotarisedHealthCert } from "./types";
+import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
 
 import { MemoSection } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
@@ -13,10 +13,10 @@ const SG_LOCALE = "en-sg";
 
 const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
 
-export const HealthCertTemplate: FunctionComponent<TemplateProps<HealthCertDocument> & {
+export const HealthCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
   className?: string;
 }> = ({ document, className = "" }) => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient");
+  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
   const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
