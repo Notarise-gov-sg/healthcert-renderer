@@ -178,17 +178,3 @@ export const QrInfoCol = styled.div`
     flex-basis: 65%;
   }
 `;
-
-export const ProposeCutoffBorder = styled.h4`
-  flex-basis: 100%;
-  text-align: center;
-  border-bottom: 1px dashed #c53030;
-  line-height: 0.1em;
-  margin: 10px 0 20px;
-`;
-
-export const ProposeCutoffText = styled.span`
-  background: #fff;
-  padding: 0 10px;
-  color: #c53030;
-`;

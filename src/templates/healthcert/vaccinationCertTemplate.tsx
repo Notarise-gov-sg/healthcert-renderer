@@ -3,18 +3,20 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { Immunization, Location, NotarizedHealthCert, ImmunizationRecommendation, Patient } from "./types";
 import { pdtHealthcert } from "@govtechsg/oa-schemata";
-import { VaccinationMemoSection, SimpleImmunizationObject } from "./memo/memoSection";
+import { VaccinationMemoSection, SimpleImmunizationObject, VaccinationV2MemoSection } from "./memo/memoSection";
 import {
   Page,
   Background,
   Logo,
   Row,
   Bold,
-  QrCodeContainerWithBorder,
+  QrCodeContainer,
   TravellerInfoSection,
   QrCol,
   QrInfoCol,
-  QrBreakLine
+  QrBreakLine,
+  QrCodeContainerWithBorder,
+  ResultSection
 } from "./styled-components";
 
 const dateFormatter = new Intl.DateTimeFormat("en-SG", {
@@ -70,68 +72,104 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarizedH
   const encryptedEuHealthCert = (document.notarisationMetadata as any)?.encryptedEuHealthCert;
   const memoSections: JSX.Element[] = [];
 
-  memoSections.push(
-    <VaccinationMemoSection
-      immunizations={immunizations.map(simplifyImmunizationObjectWithLocation(locations))}
-      effectiveDate={effectiveDate}
-      patientName={patientName}
-      patientNric={patientNric}
-      patientNationalityCode={patientNationalityCode}
-      patientBirthDate={patientBirthDate}
-      passportNumber={passportNumber}
-    />
-  );
+  const mappedImmunizations = immunizations.map(simplifyImmunizationObjectWithLocation(locations));
+  if (encryptedEuHealthCert) {
+    memoSections.push(
+      <VaccinationV2MemoSection
+        immunizations={mappedImmunizations}
+        patientName={patientName}
+        patientNric={patientNric}
+        patientNationalityCode={patientNationalityCode}
+        patientBirthDate={patientBirthDate}
+        passportNumber={passportNumber}
+      />
+    );
 
-  return (
-    <Page className={className}>
-      <Background />
-      <Logo src={document.logo} alt="healthcare provider logo" />
-      {memoSections}
-      <TravellerInfoSection>
-        Note: Travellers are subject to the country or region&apos;s requirements prior to travel.
-        <br />
-        The QR code used for verification is based on your <u>destination country</u>.
-      </TravellerInfoSection>
-      <br />
-      {encryptedEuHealthCert && (
-        <>
-          <Row>
-            <QrInfoCol>
-              <Bold>Offline QR Verification</Bold>
-              <br />
-              This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
-              supports this option of verification.
-              <br />
-              <br />
-              This may also be used for public health measures beyond travel within the EU and should be produced to
-              authorities when required.
-            </QrInfoCol>
-            <QrCol>
-              <QrCodeContainerWithBorder>
-                <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
-              </QrCodeContainerWithBorder>
-            </QrCol>
-          </Row>
-          <QrBreakLine />
-        </>
-      )}
-      {url && (
-        <Row>
-          <QrCol>
-            <QrCodeContainerWithBorder>
-              <QRCode value={url} level={"M"} size={200} />
-            </QrCodeContainerWithBorder>
-          </QrCol>
-          <QrInfoCol>
+    return (
+      <>
+        <Page className={className}>
+          <Background />
+          <Logo src={document.logo} alt="healthcare provider logo" />
+          {memoSections}
+        </Page>
+        <Page className={className}>
+          <ResultSection>
+            <p>
+              {patientName} has been vaccinated with {mappedImmunizations[0]?.vaccineName} effective from{" "}
+              {effectiveDate}.
+            </p>
+          </ResultSection>
+          <TravellerInfoSection>
+            Note: Travellers are subject to the country or region&apos;s requirements prior to travel.
             <br />
-            <br />
-            <br />
-            <Bold>Online QR verification</Bold>
-            <br />
-            This QR Code requires an internet connection to verify.
-          </QrInfoCol>
-        </Row>
-      )}
-    </Page>
-  );
+            The QR code used for verification is based on your <u>destination country</u>.
+          </TravellerInfoSection>
+          <br />
+          {encryptedEuHealthCert && (
+            <>
+              <Row>
+                <QrInfoCol>
+                  <Bold>Offline QR Verification</Bold>
+                  <br />
+                  This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
+                  supports this option of verification.
+                  <br />
+                  <br />
+                  This may also be used for public health measures beyond travel within the EU and should be produced to
+                  authorities when required.
+                </QrInfoCol>
+                <QrCol>
+                  <QrCodeContainerWithBorder>
+                    <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
+                  </QrCodeContainerWithBorder>
+                </QrCol>
+              </Row>
+              <QrBreakLine />
+            </>
+          )}
+          {url && (
+            <Row>
+              <QrCol>
+                <QrCodeContainerWithBorder>
+                  <QRCode value={url} level={"M"} size={200} />
+                </QrCodeContainerWithBorder>
+              </QrCol>
+              <QrInfoCol>
+                <br />
+                <br />
+                <br />
+                <Bold>Online QR verification</Bold>
+                <br />
+                This QR Code requires an internet connection to verify.
+              </QrInfoCol>
+            </Row>
+          )}
+        </Page>
+      </>
+    );
+  } else {
+    memoSections.push(
+      <VaccinationMemoSection
+        immunizations={mappedImmunizations}
+        effectiveDate={effectiveDate}
+        patientName={patientName}
+        patientNric={patientNric}
+        patientNationalityCode={patientNationalityCode}
+        patientBirthDate={patientBirthDate}
+        passportNumber={passportNumber}
+      />
+    );
+    return (
+      <Page className={className}>
+        <Background />
+        <Logo src={document.logo} alt="healthcare provider logo" />
+        {memoSections}
+        {url && (
+          <QrCodeContainer>
+            <QRCode value={url} level={"M"} size={200} />
+          </QrCodeContainer>
+        )}
+      </Page>
+    );
+  }
 };
