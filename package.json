@@ -40,7 +40,7 @@
     "@babel/preset-typescript": "^7.7.2",
     "@emotion/babel-preset-css-prop": "^10.0.23",
     "@storybook/addon-actions": "^6.2.5",
-    "@storybook/addon-docs": "^6.2.5",
+    "@storybook/addon-docs": "^6.3.7",
     "@storybook/addon-knobs": "^6.2.5",
     "@storybook/addon-viewport": "^6.2.5",
     "@storybook/addons": "^6.2.5",
