@@ -2,6 +2,11 @@ import { v2 } from "@govtechsg/decentralized-renderer-react-components";
 import { pdtHealthcert as healthcert, notarise } from "@govtechsg/oa-schemata";
 import { PDTHealthCertV2 } from "./tempTypes";
 
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
 export interface Patient {
   fullUrl?: string;
   resourceType: string;
@@ -22,6 +27,11 @@ export interface Patient {
   birthDate: string;
 }
 
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
 export interface CodeableConcept {
   coding: Array<{ system: string; code: string; display: string }>;
 }
@@ -73,6 +83,11 @@ export interface ImmunizationRecommendation {
   };
 }
 
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
 export interface HealthCertDocument extends v2.OpenAttestationDocument {
   name: string;
   validFrom: string;
@@ -85,8 +100,16 @@ export interface HealthCertDocument extends v2.OpenAttestationDocument {
   };
 }
 
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
 export interface NotarisedHealthCert extends HealthCertDocument {
   notarisationMetadata: notarise.NotarisationMetadata;
 }
 
 export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument & PDTHealthCertV2 & notarise.Notarise;
+
+// TODO: Add NotarisedVaccinationHealthCertUnwrappedV2 type and deprecate the above manually defined types
+// export type NotarisedVaccinationHealthCertUnwrappedV2 = v2.OpenAttestationDocument & VaccinationHealthCertV2 & notarise.Notarise;
