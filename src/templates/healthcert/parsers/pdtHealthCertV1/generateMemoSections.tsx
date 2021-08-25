@@ -7,7 +7,7 @@ import { extractInfo } from "./parseInfo";
 const SG_LOCALE = "en-sg";
 const isNric = (value: any): value is pdtHealthcert.Identifier => value?.type?.text === "NRIC";
 
-export const generateMemoSections = (document: NotarisedHealthCert) => {
+export const generateMemoSections = (document: NotarisedHealthCert): JSX.Element[] => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as pdtHealthcert.Patient;
   const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
 

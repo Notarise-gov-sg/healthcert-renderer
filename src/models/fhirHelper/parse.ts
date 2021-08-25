@@ -22,6 +22,7 @@ const fhir = new Fhir();
  * @param resource Raw FHIR resource
  * @returns Parsed FHIR resource (simplified)
  */
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const parsers = (resource: R4.IResourceList | undefined) => {
   if (!resource) return undefined; // Skip parsing an undefined resource
 

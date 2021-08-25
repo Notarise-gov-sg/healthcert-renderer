@@ -5,7 +5,7 @@ import { NotarisedPDTHealthCertUnwrappedV2 } from "../../types";
 import fhirHelper from "../../../../models/fhirHelper";
 import { MemoSection } from "../../memo/pdtMemo";
 
-export const generateMemoSections = (document: NotarisedPDTHealthCertUnwrappedV2) => {
+export const generateMemoSections = (document: NotarisedPDTHealthCertUnwrappedV2): JSX.Element[] => {
   const { patient, observations } = fhirHelper.parse(document.fhirBundle as R4.IBundle);
 
   return observations.map(({ observation, organization, practitioner, specimen }, i) => (
