@@ -1,5 +1,6 @@
 import { v2 } from "@govtechsg/decentralized-renderer-react-components";
 import { pdtHealthcert as healthcert, notarise } from "@govtechsg/oa-schemata";
+import { PDTHealthCertV2 } from "./tempTypes";
 
 export interface Patient {
   fullUrl?: string;
@@ -83,6 +84,9 @@ export interface HealthCertDocument extends v2.OpenAttestationDocument {
     entry: Array<any>;
   };
 }
+
 export interface NotarisedHealthCert extends HealthCertDocument {
   notarisationMetadata: notarise.NotarisationMetadata;
 }
+
+export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument & PDTHealthCertV2 & notarise.Notarise;
