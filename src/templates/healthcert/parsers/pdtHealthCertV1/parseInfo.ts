@@ -1,6 +1,6 @@
 import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
-import { HealthCertDocument } from "../types";
-import { MemoInfo } from "./memoSection";
+import { HealthCertDocument } from "../../types";
+import { MemoInfo } from "../../memo/memoSection";
 
 const isLegacy = (document: HealthCertDocument): boolean => {
   const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
