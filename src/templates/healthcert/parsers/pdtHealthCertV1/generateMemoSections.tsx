@@ -1,7 +1,7 @@
 import React from "react";
 import { pdtHealthcert } from "@govtechsg/oa-schemata";
 import { NotarisedHealthCert } from "../../types";
-import { MemoSection } from "../../memo/memoSection";
+import { MemoSection } from "../../memo/pdtV1Memo";
 import { extractInfo } from "./parseInfo";
 
 const SG_LOCALE = "en-sg";

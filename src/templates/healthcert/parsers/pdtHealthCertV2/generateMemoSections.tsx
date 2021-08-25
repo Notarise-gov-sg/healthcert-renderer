@@ -3,7 +3,7 @@ import { R4 } from "@ahryman40k/ts-fhir-types";
 
 import { NotarisedPDTHealthCertUnwrappedV2 } from "../../types";
 import fhirHelper from "../../../../models/fhirHelper";
-import { MemoSection } from "../../memo/pdtMemo";
+import { MemoSection } from "../../memo/pdtV2Memo";
 
 export const generateMemoSections = (document: NotarisedPDTHealthCertUnwrappedV2): JSX.Element[] => {
   const { patient, observations } = fhirHelper.parse(document.fhirBundle as R4.IBundle);
