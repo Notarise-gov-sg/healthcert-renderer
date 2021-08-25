@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@ahryman40k/ts-fhir-types": "^4.0.36",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@govtechsg/decentralized-renderer-react-components": "3.3.0",
