@@ -13,6 +13,7 @@
     "@hot-loader/react-dom": "^16.11.0",
     "@notarise-gov-sg/i18n-nationality": "~1.2.0",
     "debug": "4.1.1",
+    "fhir": "^4.9.0",
     "i18n-iso-countries": "6.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
