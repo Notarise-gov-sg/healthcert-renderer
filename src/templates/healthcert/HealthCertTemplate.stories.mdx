@@ -7,7 +7,7 @@ import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutN
 import { multiMemoSample } from "./fixtures/multiMemo";
 import sampleV2WithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_nric_unwrapped.json";
 
-<Meta title="MDX|HealthCertTemplate" component={HealthCertTemplate} />
+<Meta title="HEALTH_CERT" component={HealthCertTemplate} />
 
 # HealthCertTemplate component
 
@@ -20,16 +20,16 @@ import sampleV2WithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_
 # Usage
 
 <Preview>
-  <Story name="cert with nric">
+  <Story name="PDT v1.0 PCR with NRIC">
     <HealthCertTemplate document={object("document", sampleWithNric)} />
   </Story>
-  <Story name="art cert with nric">
+  <Story name="PDT v1.0 ART with NRIC">
     <HealthCertTemplate document={object("document", sampleArtWithNric)} />
   </Story>
-  <Story name="cert without nric">
+  <Story name="PDT v1.0 PCR without NRIC">
     <HealthCertTemplate document={object("document", sampleWithoutNric)} />
   </Story>
-  <Story name="two memo sample">
+  <Story name="PDT v1.0 multi memo sample">
     <HealthCertTemplate document={object("document", multiMemoSample)} />
   </Story>
   <Story name="PDT v2.0 PCR with NRIC">
