@@ -22,7 +22,7 @@ type Identifier = healthcert.Identifier;
 type Patient = healthcert.Patient;
 
 export interface MemoInfo {
-  specimen?: healthcert.Patient | undefined;
+  specimen?: any;
   observation: any;
   provider: any;
   lab: any;
