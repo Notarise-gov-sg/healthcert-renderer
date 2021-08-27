@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@ahryman40k/ts-fhir-types": "^4.0.36",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@govtechsg/decentralized-renderer-react-components": "3.3.0",
@@ -12,6 +13,7 @@
     "@hot-loader/react-dom": "^16.11.0",
     "@notarise-gov-sg/i18n-nationality": "~1.2.0",
     "debug": "4.1.1",
+    "fhir": "^4.9.0",
     "i18n-iso-countries": "6.7.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { Immunization, Location, NotarisedHealthCert, ImmunizationRecommendation, Patient } from "./types";
 import { pdtHealthcert } from "@govtechsg/oa-schemata";
-import { VaccinationMemoSection, SimpleImmunizationObject, VaccinationV2MemoSection } from "./memo/memoSection";
+import { VaccinationMemoSection, SimpleImmunizationObject, VaccinationV2MemoSection } from "./memo/vaccinationMemo";
 import {
   Page,
   Background,

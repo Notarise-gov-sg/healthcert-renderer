@@ -2,84 +2,20 @@
 import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { NotarisedHealthCert } from "./types";
-import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
-
-import { MemoSection } from "./memo/memoSection";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
-import { extractInfo } from "./memo/parseInfo";
+import { NotarisedHealthCert, NotarisedPDTHealthCertUnwrappedV2 } from "./types";
 
-const SG_LOCALE = "en-sg";
+import { generateMemoSections as generateMemoSectionsV1 } from "./parsers/pdtHealthCertV1";
+import { generateMemoSections as generateMemoSectionsV2 } from "./parsers/pdtHealthCertV2";
 
-const isNric = (value: any): value is healthcert.Identifier => value?.type?.text === "NRIC";
+const isV2 = (i: any): i is NotarisedPDTHealthCertUnwrappedV2 => i.version === "pdt-healthcert-v2.0";
 
-export const HealthCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
+type HC = NotarisedHealthCert | NotarisedPDTHealthCertUnwrappedV2;
+export const HealthCertTemplate: FunctionComponent<TemplateProps<HC> & {
   className?: string;
 }> = ({ document, className = "" }) => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as healthcert.Patient;
-  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
-
-  const passportNumber = document.notarisationMetadata?.passportNumber;
-  const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
-  const patientNricIdentifier = patient?.identifier?.find(isNric);
-  const patientNationalityCode =
-    patient?.extension?.find(
-      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
-    )?.code?.text || "";
-  let birthdate = patient?.birthDate;
-  if (birthdate) {
-    birthdate = new Date(birthdate).toLocaleString(SG_LOCALE, {
-      /**
-       * Should not respect browser timezone but rather,
-       * force "UTC" timezone because time (in birthdate) is always going to be ...T00:00:00.000Z
-       **/
-      timeZone: "UTC",
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    });
-  }
-
   const url = (document.notarisationMetadata as any)?.url;
-  const memoSections: JSX.Element[] = [];
-
-  for (let i = 0; i < observations.length; i++) {
-    const observation = observations[i];
-
-    const {
-      provider,
-      lab,
-      testType,
-      swabType,
-      swabCollectionDate,
-      performerName,
-      performerMcr,
-      observationDate,
-      testResult
-    } = extractInfo(observation, document);
-
-    memoSections.push(
-      <MemoSection
-        key={i}
-        observation={observation}
-        provider={provider}
-        lab={lab}
-        swabType={swabType}
-        patientName={patientName}
-        swabCollectionDate={swabCollectionDate}
-        performerName={performerName}
-        performerMcr={performerMcr}
-        observationDate={observationDate}
-        patientNricIdentifier={patientNricIdentifier}
-        patientNationalityCode={patientNationalityCode}
-        passportNumber={passportNumber}
-        patient={patient}
-        testType={testType}
-        testResult={testResult}
-        birthdate={birthdate}
-      />
-    );
-  }
+  const memoSections = isV2(document) ? generateMemoSectionsV2(document) : generateMemoSectionsV1(document);
 
   return (
     <Page className={className}>

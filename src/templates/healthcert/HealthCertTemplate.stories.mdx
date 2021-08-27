@@ -5,8 +5,12 @@ import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
 import { healthCertSample as sampleArtWithNric } from "./fixtures/sampleArtWithNric";
 import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutNric";
 import { multiMemoSample } from "./fixtures/multiMemo";
+import v2PcrWithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_nric_unwrapped.json";
+import v2PcrWithoutNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_without_nric_unwrapped.json";
+import v2ArtWithNric from "./fixtures/pdtHealthCertV2/pdt_art_notarised_with_nric_unwrapped.json";
+import v2SerMultiMemo from "./fixtures/pdtHealthCertV2/pdt_ser_notarised_multi_memo_unwrapped.json";
 
-<Meta title="MDX|HealthCertTemplate" component={HealthCertTemplate} />
+<Meta title="HEALTH_CERT" component={HealthCertTemplate} />
 
 # HealthCertTemplate component
 
@@ -19,16 +23,28 @@ import { multiMemoSample } from "./fixtures/multiMemo";
 # Usage
 
 <Preview>
-  <Story name="cert with nric">
+  <Story name="PDT v1.0 PCR with NRIC">
     <HealthCertTemplate document={object("document", sampleWithNric)} />
   </Story>
-  <Story name="art cert with nric">
-    <HealthCertTemplate document={object("document", sampleArtWithNric)} />
-  </Story>
-  <Story name="cert without nric">
+  <Story name="PDT v1.0 PCR without NRIC">
     <HealthCertTemplate document={object("document", sampleWithoutNric)} />
   </Story>
-  <Story name="two memo sample">
+  <Story name="PDT v1.0 ART with NRIC">
+    <HealthCertTemplate document={object("document", sampleArtWithNric)} />
+  </Story>
+  <Story name="PDT v1.0 multi-memo">
     <HealthCertTemplate document={object("document", multiMemoSample)} />
+  </Story>
+  <Story name="PDT v2.0 PCR with NRIC">
+    <HealthCertTemplate document={v2PcrWithNric} />
+  </Story>
+  <Story name="PDT v2.0 PCR without NRIC">
+    <HealthCertTemplate document={v2PcrWithoutNric} />
+  </Story>
+  <Story name="PDT v2.0 ART with NRIC">
+    <HealthCertTemplate document={v2ArtWithNric} />
+  </Story>
+  <Story name="PDT v2.0 SER multi-memo">
+    <HealthCertTemplate document={v2SerMultiMemo} />
   </Story>
 </Preview>
