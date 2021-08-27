@@ -65,7 +65,7 @@ export const MemoSection: React.FC<MemoInfo> = ({
           </Row>
         )}
         <Row>
-          <FirstCol style={{ lineHeight: 1 }}>Passport/Travel Document Number:</FirstCol>
+          <FirstCol>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{patientPassportNumber}</SecondCol>
         </Row>
         <Row>
