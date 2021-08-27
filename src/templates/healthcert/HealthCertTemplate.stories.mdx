@@ -8,6 +8,7 @@ import { multiMemoSample } from "./fixtures/multiMemo";
 import v2PcrWithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_nric_unwrapped.json";
 import v2PcrWithoutNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_without_nric_unwrapped.json";
 import v2ArtWithNric from "./fixtures/pdtHealthCertV2/pdt_art_notarised_with_nric_unwrapped.json";
+import v2SerMultiMemo from "./fixtures/pdtHealthCertV2/pdt_ser_notarised_multi_memo_unwrapped.json";
 
 <Meta title="HEALTH_CERT" component={HealthCertTemplate} />
 
@@ -31,7 +32,7 @@ import v2ArtWithNric from "./fixtures/pdtHealthCertV2/pdt_art_notarised_with_nri
   <Story name="PDT v1.0 ART with NRIC">
     <HealthCertTemplate document={object("document", sampleArtWithNric)} />
   </Story>
-  <Story name="PDT v1.0 multi memo sample">
+  <Story name="PDT v1.0 multi-memo sample">
     <HealthCertTemplate document={object("document", multiMemoSample)} />
   </Story>
   <Story name="PDT v2.0 PCR with NRIC">
@@ -42,5 +43,8 @@ import v2ArtWithNric from "./fixtures/pdtHealthCertV2/pdt_art_notarised_with_nri
   </Story>
   <Story name="PDT v2.0 ART with NRIC">
     <HealthCertTemplate document={v2ArtWithNric} />
+  </Story>
+  <Story name="PDT v2.0 SER multi-memo">
+    <HealthCertTemplate document={v2SerMultiMemo} />
   </Story>
 </Preview>
