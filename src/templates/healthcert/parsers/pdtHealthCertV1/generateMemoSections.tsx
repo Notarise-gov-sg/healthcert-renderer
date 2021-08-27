@@ -1,7 +1,7 @@
 import React from "react";
 import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import { NotarisedHealthCert } from "../../types";
-import { MultiQrMemoSection, MemoSection } from "../../memo/pdtV1Memo";
+import { MemoSection } from "../../memo/pdtV1Memo";
 import { extractInfo } from "./parseInfo";
 
 const SG_LOCALE = "en-sg";
@@ -49,51 +49,25 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
       testResult
     } = extractInfo(observation, document);
 
-    if (multiQr) {
-      memoSections.push(
-        <MultiQrMemoSection
-          key={i}
-          observation={observation}
-          provider={provider}
-          lab={lab}
-          swabType={swabType}
-          patientName={patientName}
-          swabCollectionDate={swabCollectionDate}
-          performerName={performerName}
-          performerMcr={performerMcr}
-          observationDate={observationDate}
-          patientNricIdentifier={patientNricIdentifier}
-          patientNationalityCode={patientNationalityCode}
-          passportNumber={passportNumber}
-          patient={patient}
-          testType={testType}
-          testResult={testResult}
-          birthdate={birthdate}
-        />
-      );
-    } else {
-      memoSections.push(
-        <MemoSection
-          key={i}
-          observation={observation}
-          provider={provider}
-          lab={lab}
-          swabType={swabType}
-          patientName={patientName}
-          swabCollectionDate={swabCollectionDate}
-          performerName={performerName}
-          performerMcr={performerMcr}
-          observationDate={observationDate}
-          patientNricIdentifier={patientNricIdentifier}
-          patientNationalityCode={patientNationalityCode}
-          passportNumber={passportNumber}
-          patient={patient}
-          testType={testType}
-          testResult={testResult}
-          birthdate={birthdate}
-        />
-      );
-    }
+    const memoInfo = {
+      observation,
+      provider,
+      lab,
+      swabType,
+      patientName,
+      swabCollectionDate,
+      performerName,
+      performerMcr,
+      observationDate,
+      patientNricIdentifier,
+      patientNationalityCode,
+      passportNumber,
+      patient,
+      testType,
+      testResult,
+      birthdate
+    };
+    memoSections.push(<MemoSection key={i} memoInfo={memoInfo} multiQr={multiQr} />);
   }
 
   return memoSections;

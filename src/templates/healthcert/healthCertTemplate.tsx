@@ -7,7 +7,6 @@ import {
   Background,
   Logo,
   QrCodeContainer,
-  ResultSection,
   TravellerInfoSection,
   Row,
   Bold,
@@ -18,12 +17,14 @@ import {
 } from "./styled-components";
 import { NotarisedHealthCert, NotarisedPDTHealthCertUnwrappedV2 } from "./types";
 
-import { extractInfo, generateMemoSections as generateMemoSectionsV1 } from "./parsers/pdtHealthCertV1";
-import { generateMemoSections as generateMemoSectionsV2 } from "./parsers/pdtHealthCertV2";
-import fhirHelper from "../../models/fhirHelper";
-import { R4 } from "@ahryman40k/ts-fhir-types";
-import { isoToLocaleString } from "../../util/datetime";
-import { pdtHealthCertV1 } from "@govtechsg/oa-schemata";
+import {
+  generateMemoSections as generateMemoSectionsV1,
+  generateResultSection as generateResultSectionV1
+} from "./parsers/pdtHealthCertV1";
+import {
+  generateMemoSections as generateMemoSectionsV2,
+  generateResultSection as generateResultSectionV2
+} from "./parsers/pdtHealthCertV2";
 
 const isV2 = (i: any): i is NotarisedPDTHealthCertUnwrappedV2 => i.version === "pdt-healthcert-v2.0";
 
@@ -33,48 +34,25 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HC> & {
 }> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
   const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
+  const multiQr = signedEuHealthCert ? true : false;
+  const memoSections = isV2(document)
+    ? generateMemoSectionsV2(document, multiQr)
+    : generateMemoSectionsV1(document, multiQr);
+  const headerAndMemoSection = (
+    <>
+      <Background />
+      <Logo src={document.logo} alt="healthcare provider logo" />
+      {memoSections}
+    </>
+  );
 
-  if (signedEuHealthCert) {
-    const memoSections = isV2(document)
-      ? generateMemoSectionsV2(document, true)
-      : generateMemoSectionsV1(document, true);
-
-    let patientName: string,
-      observationTestTypeDisplay: string,
-      specimenSwabTypeDisplay: string,
-      specimenCollectionDateTime: string;
-    if (isV2(document)) {
-      const { patient, observations } = fhirHelper.parse(document.fhirBundle as R4.IBundle);
-      patientName = patient.fullName || "";
-      observationTestTypeDisplay = observations[0]?.observation?.testType?.display || "";
-      specimenSwabTypeDisplay = observations[0]?.specimen.swabType.display || "";
-      specimenCollectionDateTime = isoToLocaleString(observations[0]?.specimen.collectionDateTime);
-    } else {
-      const patient = document.fhirBundle.entry.find(
-        entry => entry.resourceType === "Patient"
-      ) as pdtHealthCertV1.Patient;
-      const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
-      const { swabType, swabCollectionDate } = extractInfo(observations[0], document);
-      patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
-      observationTestTypeDisplay = observations[0]?.code?.coding?.[0]?.display || "";
-      specimenSwabTypeDisplay = swabType?.display || "";
-      specimenCollectionDateTime = swabCollectionDate;
-    }
-
+  if (multiQr) {
+    const resultSection = isV2(document) ? generateResultSectionV2(document) : generateResultSectionV1(document);
     return (
       <>
+        <Page className={className}>{headerAndMemoSection}</Page>
         <Page className={className}>
-          <Background />
-          <Logo src={document.logo} alt="healthcare provider logo" />
-          {memoSections}
-        </Page>
-        <Page className={className}>
-          <ResultSection>
-            <p>
-              {patientName} has undergone {observationTestTypeDisplay} for COVID-19 using a {specimenSwabTypeDisplay} on{" "}
-              {specimenCollectionDateTime}
-            </p>
-          </ResultSection>
+          {resultSection}
           <TravellerInfoSection>
             Note: Travellers are subject to the country or region&apos;s requirements prior to travel.
             <br />
@@ -120,12 +98,9 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HC> & {
       </>
     );
   } else {
-    const memoSections = isV2(document) ? generateMemoSectionsV2(document) : generateMemoSectionsV1(document);
     return (
       <Page className={className}>
-        <Background />
-        <Logo src={document.logo} alt="healthcare provider logo" />
-        {memoSections}
+        {headerAndMemoSection}
         {url && (
           <QrCodeContainer>
             <QRCode value={url} level={"M"} size={200} />
