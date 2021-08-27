@@ -1,7 +1,10 @@
 name: OWASP Dependency Check
 on:
-  schedule:
-    - cron:  '15 18 * * 2'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: reference to a commit to deploy
+        required: true
 
 jobs:
   dependency-check:
