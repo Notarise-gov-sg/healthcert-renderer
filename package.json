@@ -9,7 +9,7 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@govtechsg/decentralized-renderer-react-components": "3.3.0",
-    "@govtechsg/oa-schemata": "^1.10.0",
+    "@govtechsg/oa-schemata": "^1.13.0",
     "@hot-loader/react-dom": "^16.11.0",
     "@notarise-gov-sg/i18n-nationality": "~1.2.0",
     "debug": "4.1.1",

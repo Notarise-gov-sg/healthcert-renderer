@@ -1,4 +1,4 @@
-import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { HealthCertDocument } from "../../types";
 import { MemoInfo } from "../../memo/pdtV1Memo";
 

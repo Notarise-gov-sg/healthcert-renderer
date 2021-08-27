@@ -1,5 +1,5 @@
 // TODO: remove ts-ignore after the healthcert schema is updated to include it
-import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 

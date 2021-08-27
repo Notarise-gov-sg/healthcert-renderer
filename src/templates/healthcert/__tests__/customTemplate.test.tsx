@@ -4,7 +4,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { multiMemoSample } from "../fixtures/multiMemo";
 import cloneDeep from "lodash.clonedeep";
-import { pdtHealthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import "jest-canvas-mock";
 
 describe("customTemplate", () => {

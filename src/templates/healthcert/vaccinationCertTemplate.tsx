@@ -2,7 +2,7 @@ import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { Immunization, Location, NotarisedHealthCert, ImmunizationRecommendation, Patient } from "./types";
-import { pdtHealthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import { VaccinationMemoSection, SimpleImmunizationObject, VaccinationV2MemoSection } from "./memo/vaccinationMemo";
 import {
   Page,
@@ -69,11 +69,11 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
   const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const url = (document.notarisationMetadata as any)?.url;
-  const encryptedEuHealthCert = (document.notarisationMetadata as any)?.encryptedEuHealthCert;
+  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
   const memoSections: JSX.Element[] = [];
 
   const mappedImmunizations = immunizations.map(simplifyImmunizationObjectWithLocation(locations));
-  if (encryptedEuHealthCert) {
+  if (signedEuHealthCert) {
     memoSections.push(
       <VaccinationV2MemoSection
         immunizations={mappedImmunizations}
@@ -118,7 +118,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
             </QrInfoCol>
             <QrCol>
               <QrCodeContainerWithBorder>
-                <QRCode value={encryptedEuHealthCert} level={"M"} size={200} />
+                <QRCode value={signedEuHealthCert} level={"M"} size={200} />
               </QrCodeContainerWithBorder>
             </QrCol>
           </Row>
