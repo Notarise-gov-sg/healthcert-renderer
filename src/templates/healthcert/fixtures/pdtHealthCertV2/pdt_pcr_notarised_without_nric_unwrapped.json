@@ -1,0 +1,245 @@
+{
+  "id": "7ccd1f66-9336-4c5f-a626-d9ad8a3e0fa9",
+  "version": "pdt-healthcert-v2.0",
+  "type": "PCR",
+  "validFrom": "2021-08-24T04:22:36.062Z",
+  "fhirVersion": "4.0.1",
+  "fhirBundle": {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "fullUrl": "urn:uuid:ba7b7c8d-c509-4d9d-be4e-f99b6de29e23",
+        "resource": {
+          "resourceType": "Patient",
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/patient-nationality",
+              "extension": [
+                {
+                  "url": "code",
+                  "valueCodeableConcept": {
+                    "text": "Patient Nationality",
+                    "coding": [{ "system": "urn:iso:std:iso:3166", "code": "SG" }]
+                  }
+                }
+              ]
+            }
+          ],
+          "identifier": [
+            {
+              "id": "PPN",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "PPN",
+                    "display": "Passport Number"
+                  }
+                ]
+              },
+              "value": "E7831177G"
+            }
+          ],
+          "name": [{ "text": "Tan Chen Chen" }],
+          "gender": "female",
+          "birthDate": "1990-01-15"
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:7729970e-ab26-469f-b3e5-36a42ec24146",
+        "resource": {
+          "resourceType": "Observation",
+          "specimen": { "type": "Specimen", "reference": "urn:uuid:0275bfaf-48fb-44e0-80cd-9c504f80e6ae" },
+          "performer": [
+            { "type": "Practitioner", "reference": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b" },
+            { "id": "LHP", "type": "Organization", "reference": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1" },
+            { "id": "AL", "type": "Organization", "reference": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77" }
+          ],
+          "identifier": [
+            {
+              "id": "ACSN",
+              "type": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "ACSN",
+                    "display": "Accession ID"
+                  }
+                ]
+              },
+              "value": "123456789"
+            }
+          ],
+          "category": [
+            { "coding": [{ "system": "http://snomed.info/sct", "code": "840539006", "display": "COVID-19" }] }
+          ],
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "94531-1",
+                "display": "SARS-CoV-2 (COVID-19) RNA panel - Respiratory specimen by NAA with probe detection"
+              }
+            ]
+          },
+          "valueCodeableConcept": {
+            "coding": [{ "system": "http://snomed.info/sct", "code": "260385009", "display": "Negative" }]
+          },
+          "effectiveDateTime": "2020-09-28T06:15:00Z",
+          "status": "final"
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:0275bfaf-48fb-44e0-80cd-9c504f80e6ae",
+        "resource": {
+          "resourceType": "Specimen",
+          "type": {
+            "coding": [{ "system": "http://snomed.info/sct", "code": "258500001", "display": "Nasopharyngeal swab" }]
+          },
+          "collection": { "collectedDateTime": "2020-09-27T06:15:00Z" }
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:3dbff0de-d4a4-4e1d-98bf-af7428b8a04b",
+        "resource": {
+          "resourceType": "Practitioner",
+          "name": [{ "text": "Dr Michael Lim" }],
+          "qualification": [
+            {
+              "code": {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                    "code": "MCR",
+                    "display": "Practitioner Medicare number"
+                  }
+                ]
+              },
+              "identifier": [{ "id": "MCR", "value": "123456" }],
+              "issuer": { "type": "Organization", "reference": "urn:uuid:bc7065ee-42aa-473a-a614-afd8a7b30b1e" }
+            }
+          ]
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:bc7065ee-42aa-473a-a614-afd8a7b30b1e",
+        "resource": {
+          "resourceType": "Organization",
+          "name": "Ministry of Health (MOH)",
+          "type": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                  "code": "govt",
+                  "display": "Government"
+                }
+              ]
+            }
+          ],
+          "contact": [
+            {
+              "telecom": [
+                { "system": "url", "value": "https://www.moh.gov.sg" },
+                { "system": "phone", "value": "+6563259220" }
+              ],
+              "address": {
+                "type": "physical",
+                "use": "work",
+                "text": "Ministry of Health, 16 College Road, College of Medicine Building, Singapore 169854"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:fa2328af-4882-4eaa-8c28-66dab46950f1",
+        "resource": {
+          "resourceType": "Organization",
+          "name": "MacRitchie Medical Clinic",
+          "type": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                  "code": "prov",
+                  "display": "Healthcare Provider"
+                }
+              ],
+              "text": "Licensed Healthcare Provider"
+            }
+          ],
+          "contact": [
+            {
+              "telecom": [
+                { "system": "url", "value": "https://www.macritchieclinic.com.sg" },
+                { "system": "phone", "value": "+6561234567" }
+              ],
+              "address": {
+                "type": "physical",
+                "use": "work",
+                "text": "MacRitchie Hospital, Thomson Road, Singapore 123000"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "fullUrl": "urn:uuid:839a7c54-6b40-41cb-b10d-9295d7e75f77",
+        "resource": {
+          "resourceType": "Organization",
+          "name": "MacRitchie Laboratory",
+          "type": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                  "code": "prov",
+                  "display": "Healthcare Provider"
+                }
+              ],
+              "text": "Accredited Laboratory"
+            }
+          ],
+          "contact": [
+            {
+              "telecom": [
+                { "system": "url", "value": "https://www.macritchielaboratory.com.sg" },
+                { "system": "phone", "value": "+6567654321" }
+              ],
+              "address": { "type": "physical", "use": "work", "text": "2 Thomson Avenue 4, Singapore 098888" }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "issuers": [
+    {
+      "name": "SAMPLE ISSUER (DO NOT VERIFY)",
+      "id": "did:ethr:0xE39479928Cc4EfFE50774488780B9f616bd4B830",
+      "revocation": { "type": "NONE" },
+      "identityProof": {
+        "type": "DNS-DID",
+        "location": "donotverify.testing.verify.gov.sg",
+        "key": "did:ethr:0xE39479928Cc4EfFE50774488780B9f616bd4B830#controller"
+      }
+    }
+  ],
+  "$template": { "name": "HEALTH_CERT", "type": "EMBEDDED_RENDERER", "url": "https://healthcert.renderer.moh.gov.sg/" },
+  "notarisationMetadata": {
+    "reference": "7ccd1f66-9336-4c5f-a626-d9ad8a3e0fa9",
+    "notarisedOn": "2021-08-27T02:09:30.751Z",
+    "passportNumber": "E7831177G",
+    "url": "https://action.openattestation.com/?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fapi-vaccine.storage.staging.notarise.io%2Fdocument%2Fcaa6ab8a-990e-4e77-ac7b-a7280fcd6a3a%22%2C%22permittedActions%22%3A%5B%22VIEW%22%2C%22STORE%22%5D%2C%22redirect%22%3A%22https%3A%2F%2Fwww.verify.gov.sg%2Fverify%22%7D%7D#%7B%22key%22%3A%22a27e744ade0766d125dcb1a3eca9c567db758ea3fc767b614210c842930fdd34%22%7D"
+  },
+  "logo": "data:image/png;base64,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",
+  "attachments": [
+    {
+      "filename": "healthcert.txt",
+      "type": "text/open-attestation",
+      "data": "eyJ2ZXJzaW9uIjoiaHR0cHM6Ly9zY2hlbWEub3BlbmF0dGVzdGF0aW9uLmNvbS8yLjAvc2NoZW1hLmpzb24iLCJkYXRhIjp7ImlkIjoiNDY0NTRlYmYtYTk0MS00YjI4LTkwYmQtYTdmMjM0NDBkNWQyOnN0cmluZzo5ODY3ODkwZS02YWQ4LTQ3MzUtYjcwNS0xY2NkNDQxOTg0ZjgiLCJ2ZXJzaW9uIjoiYTA5N2Y0YjgtYWJkZi00NjAxLWFlZjAtMWU2YzhmMmRlMTQ2OnN0cmluZzpwZHQtaGVhbHRoY2VydC12Mi4wIiwidHlwZSI6IjRmOTg5ZDE5LWUxY2ItNGVjZi05MTAxLTNkYjA3ODA2MTI0NTpzdHJpbmc6UENSIiwidmFsaWRGcm9tIjoiZGE4M2ZiNTYtZjcxNS00OTgyLWI4MmMtOTYxZTE4MTZiMWE4OnN0cmluZzoyMDIxLTA4LTI0VDA0OjIyOjM2LjA2MloiLCJmaGlyVmVyc2lvbiI6ImE4Mjk1MzFhLTcxOGEtNGQxYS04Y2QyLTAzNjUzMTQxNGJhNjpzdHJpbmc6NC4wLjEiLCJmaGlyQnVuZGxlIjp7InJlc291cmNlVHlwZSI6IjllYzcyMTg2LTM2NTAtNDhjZi05NmMwLThlNzc4MDQwNDE1MjpzdHJpbmc6QnVuZGxlIiwidHlwZSI6ImI1ZjYyZTg3LTNiYzctNGZkZS1iMTgxLTYyMGY5OGMyMDllMDpzdHJpbmc6Y29sbGVjdGlvbiIsImVudHJ5IjpbeyJmdWxsVXJsIjoiYTM4YjBhMWUtYjdlZC00N2EzLWI1OGMtNjdkMTc5NTVmMjUwOnN0cmluZzp1cm46dXVpZDpiYTdiN2M4ZC1jNTA5LTRkOWQtYmU0ZS1mOTliNmRlMjllMjMiLCJyZXNvdXJjZSI6eyJyZXNvdXJjZVR5cGUiOiJlZTU2Y2JiYi01ZmVjLTQ5NmMtYjUyZS1lMDBjNTRiMTNmYzg6c3RyaW5nOlBhdGllbnQiLCJleHRlbnNpb24iOlt7InVybCI6IjI0MWI3ZjY5LWMyYjMtNDJmMC04OTczLTQ3ZmM4MTdhYzIzODpzdHJpbmc6aHR0cDovL2hsNy5vcmcvZmhpci9TdHJ1Y3R1cmVEZWZpbml0aW9uL3BhdGllbnQtbmF0aW9uYWxpdHkiLCJleHRlbnNpb24iOlt7InVybCI6ImNlY2UxYjBmLTFlNzItNDIyMC1hZGQ0LThhZDRiY2FhYzNmMzpzdHJpbmc6Y29kZSIsInZhbHVlQ29kZWFibGVDb25jZXB0Ijp7InRleHQiOiIyNWRjNDU0MS1iODU0LTQxZTktOTViMC03OWY3NzFiZDYxOWM6c3RyaW5nOlBhdGllbnQgTmF0aW9uYWxpdHkiLCJjb2RpbmciOlt7InN5c3RlbSI6IjJjZGUxNjk0LTA5NDMtNDEzNy05ZDZjLWNkOGQ2YjNlOThkYzpzdHJpbmc6dXJuOmlzbzpzdGQ6aXNvOjMxNjYiLCJjb2RlIjoiYmFiMDk4Y2ItMDczNC00MTczLWJjNzItYjY1YjA2ZDgzODliOnN0cmluZzpTRyJ9XX19XX1dLCJpZGVudGlmaWVyIjpbeyJpZCI6IjgzMDUwNjRmLTYyZTItNDM4NS04N2ZiLTAwZDM5MGZiYjcxODpzdHJpbmc6UFBOIiwidHlwZSI6eyJjb2RpbmciOlt7InN5c3RlbSI6IjMxNDA3MjMzLWE2YjktNGM0MS1iODAzLTVmNjkzY2RiYmNhZjpzdHJpbmc6aHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS92Mi0wMjAzIiwiY29kZSI6IjYyNjU3NzczLTI4YzAtNGY4Ny05NGFiLTk4ZmJmYTU1OWQwZTpzdHJpbmc6UFBOIiwiZGlzcGxheSI6ImEzMWY0NjRmLWM3OWYtNDQyOC05ZmFjLTYxM2ZlYjAxM2IwYTpzdHJpbmc6UGFzc3BvcnQgTnVtYmVyIn1dfSwidmFsdWUiOiIxOTNkMzA2Zi02OWQ3LTRlNTgtOWE0ZC0xYzMzYWYyMWJlYjQ6c3RyaW5nOkU3ODMxMTc3RyJ9XSwibmFtZSI6W3sidGV4dCI6IjY1Y2ZkNjQxLTYwZGItNDgzZS04M2JlLWEwMmNmN2I1ODliOTpzdHJpbmc6VGFuIENoZW4gQ2hlbiJ9XSwiZ2VuZGVyIjoiOTJmNmNiNTAtMTAwNy00NGVjLTk1NTgtY2Q0NjY5YmE5M2IxOnN0cmluZzpmZW1hbGUiLCJiaXJ0aERhdGUiOiIyOTA4MjdiYi0zMjNiLTQzZmItOTI5OS05NjAyMzAwNGQ5Njk6c3RyaW5nOjE5OTAtMDEtMTUifX0seyJmdWxsVXJsIjoiZDQzZmQ2ZTgtNjE3OS00ZGQ4LTk4YTctYzYzNjI5OWNmNjFlOnN0cmluZzp1cm46dXVpZDo3NzI5OTcwZS1hYjI2LTQ2OWYtYjNlNS0zNmE0MmVjMjQxNDYiLCJyZXNvdXJjZSI6eyJyZXNvdXJjZVR5cGUiOiJhNTliMWE0YS02YTY1LTQyOWMtYmFlNy00Y2I3MDhjM2I0ODM6c3RyaW5nOk9ic2VydmF0aW9uIiwic3BlY2ltZW4iOnsidHlwZSI6IjZkNDU4ZDg5LWY1OWQtNGJjZi1hNTJjLWE1YzdkM2Y0MjA3MDpzdHJpbmc6U3BlY2ltZW4iLCJyZWZlcmVuY2UiOiI2MTc4MWI1ZC01OTAzLTRmZWMtOGY3MC1kY2ExNzFhNzJiNzM6c3RyaW5nOnVybjp1dWlkOjAyNzViZmFmLTQ4ZmItNDRlMC04MGNkLTljNTA0ZjgwZTZhZSJ9LCJwZXJmb3JtZXIiOlt7InR5cGUiOiJkMmZjZmZiOC0yN2RhLTQ4YjQtOTkxMi02MmNkZTY5YjlmNTM6c3RyaW5nOlByYWN0aXRpb25lciIsInJlZmVyZW5jZSI6IjFlNDA1OGI4LWE5YjUtNDJiMC05NGFmLThjZGNlNDRjYWNlYzpzdHJpbmc6dXJuOnV1aWQ6M2RiZmYwZGUtZDRhNC00ZTFkLTk4YmYtYWY3NDI4YjhhMDRiIn0seyJpZCI6IjgwY2ZiMGZkLTg2NDEtNGMzYS1hYWRiLTEyNDkyMjRiZjc5NTpzdHJpbmc6TEhQIiwidHlwZSI6ImFiYzNmNWQyLTg5MjktNDNjOC05ZDVjLTNhYWZjMWE0NjA4YjpzdHJpbmc6T3JnYW5pemF0aW9uIiwicmVmZXJlbmNlIjoiYzU2YjFkMWQtZGQ3Mi00ODViLThjZTItNTJhZThlMjJlNDg4OnN0cmluZzp1cm46dXVpZDpmYTIzMjhhZi00ODgyLTRlYWEtOGMyOC02NmRhYjQ2OTUwZjEifSx7ImlkIjoiMWM1MTQ2MzUtNGJiMi00NjZlLTg2OTItY2FlMjFlYzcwN2UxOnN0cmluZzpBTCIsInR5cGUiOiJhOTY0ZTc2Zi0xMWFlLTRkMDktOTVkNS03ZmNhOWNiZmI0YzM6c3RyaW5nOk9yZ2FuaXphdGlvbiIsInJlZmVyZW5jZSI6IjAyYjhkNjU4LTE5N2YtNGEwMi05ZjM5LTU1MDQzNGQyYzFmZDpzdHJpbmc6dXJuOnV1aWQ6ODM5YTdjNTQtNmI0MC00MWNiLWIxMGQtOTI5NWQ3ZTc1Zjc3In1dLCJpZGVudGlmaWVyIjpbeyJpZCI6IjU3ZDE2ODU5LTg3MzEtNGQwNC1iNGYxLWVmYmUzNjNlN2EzZDpzdHJpbmc6QUNTTiIsInR5cGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiI0MzE1ODEyMi02YWE3LTQwYWQtOWExNC0xOGI2MjY5YzAxY2Y6c3RyaW5nOmh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vdjItMDIwMyIsImNvZGUiOiI1MWYxZWRlOS0xNmY4LTRmYzctOGNmYy1jZjMzNWI4M2JlZWQ6c3RyaW5nOkFDU04iLCJkaXNwbGF5IjoiMTBkMGY0YzAtY2ZmZS00Zjg3LWFlNDgtOWE3ZjliMjRlMmQxOnN0cmluZzpBY2Nlc3Npb24gSUQifV19LCJ2YWx1ZSI6IjBiMTlkOWE4LTRmZmQtNDcyOS1hOTk5LTZlYjJjM2Y0ZTc4NTpzdHJpbmc6MTIzNDU2Nzg5In1dLCJjYXRlZ29yeSI6W3siY29kaW5nIjpbeyJzeXN0ZW0iOiIxOGNmZWVmNC02MTAzLTQ1NmEtODczYS03YmQ0MjZjMGQyODc6c3RyaW5nOmh0dHA6Ly9zbm9tZWQuaW5mby9zY3QiLCJjb2RlIjoiNTA1ZjEwM2QtOGEyMC00ZjlmLWIwNzAtYjA5NDg5MWEwMGQ5OnN0cmluZzo4NDA1MzkwMDYiLCJkaXNwbGF5IjoiZTFiNjYxODUtZWNhYi00ODVmLWJmYzMtYzM4NDg5MzMxNmE5OnN0cmluZzpDT1ZJRC0xOSJ9XX1dLCJjb2RlIjp7ImNvZGluZyI6W3sic3lzdGVtIjoiYmFmYTQ5MTItNTk2MC00N2Y5LWI1NDQtYjcwMjZlMzE5YWYwOnN0cmluZzpodHRwOi8vbG9pbmMub3JnIiwiY29kZSI6ImQyNmNiZDZjLTFhYmQtNDVmYS04OTI0LTI1ZGQ0Y2Y3NDJmYjpzdHJpbmc6OTQ1MzEtMSIsImRpc3BsYXkiOiI5NTAzNTgyZS0zMzNjLTQ4ZmItODRjNy1lNThjNTU1N2Q2ZTQ6c3RyaW5nOlNBUlMtQ29WLTIgKENPVklELTE5KSBSTkEgcGFuZWwgLSBSZXNwaXJhdG9yeSBzcGVjaW1lbiBieSBOQUEgd2l0aCBwcm9iZSBkZXRlY3Rpb24ifV19LCJ2YWx1ZUNvZGVhYmxlQ29uY2VwdCI6eyJjb2RpbmciOlt7InN5c3RlbSI6IjA0ODMzMzdmLWEyM2EtNGYxZC1hOTY0LTM3ZGExYWI3MDQyYzpzdHJpbmc6aHR0cDovL3Nub21lZC5pbmZvL3NjdCIsImNvZGUiOiJmYzQzNGRhNS1lOWM1LTQ2Y2QtOTZkMS0yNDFlMzRiNTc2ZWU6c3RyaW5nOjI2MDM4NTAwOSIsImRpc3BsYXkiOiI0YmVlZjNiOS1jMTk0LTQyZmYtOGU1MS03YWEzM2I5ZWJjZWI6c3RyaW5nOk5lZ2F0aXZlIn1dfSwiZWZmZWN0aXZlRGF0ZVRpbWUiOiJjMzdjYWFjOS1jNWQ4LTRhYTAtYmViMy1jYzJkZWExMzVlYjg6c3RyaW5nOjIwMjAtMDktMjhUMDY6MTU6MDBaIiwic3RhdHVzIjoiYzEzNjg3NTQtZmVkZC00NGZiLTk2NDEtMzZiYTNkY2IwOGUwOnN0cmluZzpmaW5hbCJ9fSx7ImZ1bGxVcmwiOiJhOTk3NGU0Ny01ZWVmLTQ3YTYtYWU2Mi1mMGYyNjMxZGMwZWQ6c3RyaW5nOnVybjp1dWlkOjAyNzViZmFmLTQ4ZmItNDRlMC04MGNkLTljNTA0ZjgwZTZhZSIsInJlc291cmNlIjp7InJlc291cmNlVHlwZSI6IjEwYjEwMTRmLThiNjUtNDRlMi1iNjJlLWIwZmQzMTlmYjNmMTpzdHJpbmc6U3BlY2ltZW4iLCJ0eXBlIjp7ImNvZGluZyI6W3sic3lzdGVtIjoiOTI5YjEzZDktZDkwZS00YmI2LWE3MzEtMzgxMWRhYzc5OTBmOnN0cmluZzpodHRwOi8vc25vbWVkLmluZm8vc2N0IiwiY29kZSI6IjgxZDg0MGM0LTM4ODgtNGU3Yy04NzQ3LWQxNWNiM2JiMmJjZTpzdHJpbmc6MjU4NTAwMDAxIiwiZGlzcGxheSI6Ijg2ZDNjNWFlLTZhMWUtNDc2My05NGQyLWIxOTA1ZjFkNmM1NzpzdHJpbmc6TmFzb3BoYXJ5bmdlYWwgc3dhYiJ9XX0sImNvbGxlY3Rpb24iOnsiY29sbGVjdGVkRGF0ZVRpbWUiOiJhY2YzOWZkMy1lZDczLTRmZWUtYjg4ZC1mMTkxMzVhN2VmMzM6c3RyaW5nOjIwMjAtMDktMjdUMDY6MTU6MDBaIn19fSx7ImZ1bGxVcmwiOiI0ZmRjOTljMC01NDUwLTRhMzktYWI3MS1mYTRlYWU1YWI2NTM6c3RyaW5nOnVybjp1dWlkOjNkYmZmMGRlLWQ0YTQtNGUxZC05OGJmLWFmNzQyOGI4YTA0YiIsInJlc291cmNlIjp7InJlc291cmNlVHlwZSI6IjcxOWQ0YTQyLTIyZTUtNDQ1YS1iMzcyLTM3M2UzYmZlODEyZTpzdHJpbmc6UHJhY3RpdGlvbmVyIiwibmFtZSI6W3sidGV4dCI6ImFmNDkzMDlhLTQxNTItNDM0OC05MTkyLTllZGQyYzJlNTg2MjpzdHJpbmc6RHIgTWljaGFlbCBMaW0ifV0sInF1YWxpZmljYXRpb24iOlt7ImNvZGUiOnsiY29kaW5nIjpbeyJzeXN0ZW0iOiJiOGI0NjI3Yi1mYjY4LTQwNGMtYjkzZS02OTllZDEzMWNjM2I6c3RyaW5nOmh0dHA6Ly90ZXJtaW5vbG9neS5obDcub3JnL0NvZGVTeXN0ZW0vdjItMDIwMyIsImNvZGUiOiI2MjAwOWUzMS0yMzUxLTQ2MmEtOGE5NC1jYWVjZTBkNTVkZmY6c3RyaW5nOk1DUiIsImRpc3BsYXkiOiIzOGVmOTFlZi0xNjk4LTQzYjUtYmMxMS1hOGIwMmZlMWFlOTY6c3RyaW5nOlByYWN0aXRpb25lciBNZWRpY2FyZSBudW1iZXIifV19LCJpZGVudGlmaWVyIjpbeyJpZCI6ImJjZDhmYjlmLWNiNDUtNDM4MC05MjMzLTliNjRkZDEwYzg5ZTpzdHJpbmc6TUNSIiwidmFsdWUiOiI5MTkzMmZmNS05YmYwLTQyYWUtYmVlZS0yMDlhNTA1OTQxNGQ6c3RyaW5nOjEyMzQ1NiJ9XSwiaXNzdWVyIjp7InR5cGUiOiI2M2QzZDlmYS0zMDMwLTQ5MGUtODljMS0xZjNlOGEwNjI0NjE6c3RyaW5nOk9yZ2FuaXphdGlvbiIsInJlZmVyZW5jZSI6ImYzOGE2Yjg3LWU0ZWItNDY2ZC1iODNkLTNmOTY3ZGY1YTBhZjpzdHJpbmc6dXJuOnV1aWQ6YmM3MDY1ZWUtNDJhYS00NzNhLWE2MTQtYWZkOGE3YjMwYjFlIn19XX19LHsiZnVsbFVybCI6IjJmNDEwOGZjLTFlNDctNDU5Yi04NzUzLWYxYzJlN2I0YzQ0NzpzdHJpbmc6dXJuOnV1aWQ6YmM3MDY1ZWUtNDJhYS00NzNhLWE2MTQtYWZkOGE3YjMwYjFlIiwicmVzb3VyY2UiOnsicmVzb3VyY2VUeXBlIjoiZDIxZDY0ZTItNTBhZC00MmVjLTljNjItMWI4YThkYmZkZmMzOnN0cmluZzpPcmdhbml6YXRpb24iLCJuYW1lIjoiYWYxNjczZmUtNzZkYi00N2Y3LTkxM2EtM2QyMTQ3ZjhmNDIwOnN0cmluZzpNaW5pc3RyeSBvZiBIZWFsdGggKE1PSCkiLCJ0eXBlIjpbeyJjb2RpbmciOlt7InN5c3RlbSI6ImNlMTY1YmM1LTI5YzAtNDU5NC1iMzg5LTdmYzdmNjM5M2U2NDpzdHJpbmc6aHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9vcmdhbml6YXRpb24tdHlwZSIsImNvZGUiOiIzYWZhNzdjMC02ODM2LTQ0NTgtYTEyZC00Y2E3YjU2NzNmZTc6c3RyaW5nOmdvdnQiLCJkaXNwbGF5IjoiOGRhNjFlZGEtMzhiYy00ZjMxLTg2ZGQtMmZhNDdlNWZlY2EyOnN0cmluZzpHb3Zlcm5tZW50In1dfV0sImNvbnRhY3QiOlt7InRlbGVjb20iOlt7InN5c3RlbSI6ImRiODJiODM3LTMyNDUtNGYzOC04MDQyLWQwMmJiNzg1MWMxZTpzdHJpbmc6dXJsIiwidmFsdWUiOiIwMDc3YTQ0Zi1lZjhjLTRjMzItYmYzMC1mZDc0NWZjYzU0OWE6c3RyaW5nOmh0dHBzOi8vd3d3Lm1vaC5nb3Yuc2cifSx7InN5c3RlbSI6IjkwYjJjMWNmLWQ0OTktNGQxZC04ZjI2LWNlOGZjZjkyZTVkNjpzdHJpbmc6cGhvbmUiLCJ2YWx1ZSI6ImNmZWI3OTQ0LTU5ZjctNGY2ZC1hMmI5LWE2YjNiNDIxMzhkYjpzdHJpbmc6KzY1NjMyNTkyMjAifV0sImFkZHJlc3MiOnsidHlwZSI6ImNiMWU5YTM5LTdkZDAtNGE0Ny1hOTg3LTdmMmViODI0NjFmMTpzdHJpbmc6cGh5c2ljYWwiLCJ1c2UiOiJmNDU3M2ZiMC00NmIwLTQzZmYtYWI2MC1kNzgwZTg3YThlNTQ6c3RyaW5nOndvcmsiLCJ0ZXh0IjoiNDg3NTM5YmQtN2VkNS00ZmJjLWI4MjUtZWI4MGU4YTA3YmE5OnN0cmluZzpNaW5pc3RyeSBvZiBIZWFsdGgsIDE2IENvbGxlZ2UgUm9hZCwgQ29sbGVnZSBvZiBNZWRpY2luZSBCdWlsZGluZywgU2luZ2Fwb3JlIDE2OTg1NCJ9fV19fSx7ImZ1bGxVcmwiOiIzYzUzZDc0Zi04ZGQxLTRmYzgtOTJkYy0xOTkyYTU5MTVlN2Q6c3RyaW5nOnVybjp1dWlkOmZhMjMyOGFmLTQ4ODItNGVhYS04YzI4LTY2ZGFiNDY5NTBmMSIsInJlc291cmNlIjp7InJlc291cmNlVHlwZSI6ImMwOTM0MzhhLTYxN2QtNDQ5Yy04YWE0LWVkMGZmYThlZDA4ODpzdHJpbmc6T3JnYW5pemF0aW9uIiwibmFtZSI6IjIzMWRjZWEyLWMxNDAtNGYzYS1iMzQxLWNhMjY4YzE4NzIwYTpzdHJpbmc6TWFjUml0Y2hpZSBNZWRpY2FsIENsaW5pYyIsInR5cGUiOlt7ImNvZGluZyI6W3sic3lzdGVtIjoiNjMwNjJiNzUtZDNhYy00MjIyLWI3ZTAtNjQwZTE0MmUyZmYwOnN0cmluZzpodHRwOi8vdGVybWlub2xvZ3kuaGw3Lm9yZy9Db2RlU3lzdGVtL29yZ2FuaXphdGlvbi10eXBlIiwiY29kZSI6Ijg4NWRkZjU4LTY0NWUtNDc0ZS1hOWY4LWFmNjhlNDVkYWM2YjpzdHJpbmc6cHJvdiIsImRpc3BsYXkiOiJmMGExN2ZlYy1kYzllLTQ5NWEtOGY0ZS01YzZiNGU4YzZiZTU6c3RyaW5nOkhlYWx0aGNhcmUgUHJvdmlkZXIifV0sInRleHQiOiJjMGU5NjVhNC00ZjhhLTQ5NDAtYjg1Ni03YmIwYzYyNjI3OWE6c3RyaW5nOkxpY2Vuc2VkIEhlYWx0aGNhcmUgUHJvdmlkZXIifV0sImNvbnRhY3QiOlt7InRlbGVjb20iOlt7InN5c3RlbSI6ImI0NjIyN2M5LTY1YWMtNGE1ZC04MTA5LTliMGQ4NjY3NTlhZjpzdHJpbmc6dXJsIiwidmFsdWUiOiI4MjhlNTZmMS0xYjExLTQyMzUtYWY0ZS1kZTI1ZmQwNjVjYjg6c3RyaW5nOmh0dHBzOi8vd3d3Lm1hY3JpdGNoaWVjbGluaWMuY29tLnNnIn0seyJzeXN0ZW0iOiJhMTkzODI5NC1lZjZiLTQwMGMtOTBmYy0xMTNiMGRiZjE5MjI6c3RyaW5nOnBob25lIiwidmFsdWUiOiIxZGRmMzlkMy03OTI1LTRkMzktODgyMS00YTczOGYyMzQ2NTM6c3RyaW5nOis2NTYxMjM0NTY3In1dLCJhZGRyZXNzIjp7InR5cGUiOiJkOGEyYmU4Zi05OTMyLTQwODctYWJiMS1iYTlkZDE5NWQ1MDU6c3RyaW5nOnBoeXNpY2FsIiwidXNlIjoiNjIzNmZhYjYtMmUxMi00YTY2LWIwMGMtNjEyZmQ2YmJiMTY5OnN0cmluZzp3b3JrIiwidGV4dCI6ImU5OWY1NjYyLTZjM2ItNGQ0NS05M2M4LTA2N2U5OTQ2MjEyZTpzdHJpbmc6TWFjUml0Y2hpZSBIb3NwaXRhbCwgVGhvbXNvbiBSb2FkLCBTaW5nYXBvcmUgMTIzMDAwIn19XX19LHsiZnVsbFVybCI6IjdiMjhiN2NkLTQ1ZDQtNDQ4Yi1iN2U2LWQwYzQzNmU3N2FiYjpzdHJpbmc6dXJuOnV1aWQ6ODM5YTdjNTQtNmI0MC00MWNiLWIxMGQtOTI5NWQ3ZTc1Zjc3IiwicmVzb3VyY2UiOnsicmVzb3VyY2VUeXBlIjoiZWM2MTU3NDYtMGRiMi00ZWMyLTlhMDAtMmQ4ODQxMTdlZTdjOnN0cmluZzpPcmdhbml6YXRpb24iLCJuYW1lIjoiNzQ2NjY2MzMtNDU2Mi00YTZlLThlOGItMGVlMWM5ZThkNzE2OnN0cmluZzpNYWNSaXRjaGllIExhYm9yYXRvcnkiLCJ0eXBlIjpbeyJjb2RpbmciOlt7InN5c3RlbSI6IjM0MjQ1MWRiLWRiNGEtNDBkNi1hOGViLTcwM2MwOWViODBhMzpzdHJpbmc6aHR0cDovL3Rlcm1pbm9sb2d5LmhsNy5vcmcvQ29kZVN5c3RlbS9vcmdhbml6YXRpb24tdHlwZSIsImNvZGUiOiIwM2I4OTk0Mi01MDZmLTRlNWEtYjE1My03ZTBiNjZmMWU1ZTg6c3RyaW5nOnByb3YiLCJkaXNwbGF5IjoiNmNhY2Q0NWItZTE4MS00NTJhLThmNWMtM2Y4YTUxMjQwMDJjOnN0cmluZzpIZWFsdGhjYXJlIFByb3ZpZGVyIn1dLCJ0ZXh0IjoiMGZiZTVmNTQtNzBjNC00NjAwLWI0MDAtZDllNzI5NDIyYmVkOnN0cmluZzpBY2NyZWRpdGVkIExhYm9yYXRvcnkifV0sImNvbnRhY3QiOlt7InRlbGVjb20iOlt7InN5c3RlbSI6IjliZjlhNTQ3LTI4NmQtNGQ3NS1hZjc5LWY2YWJkMzA3OWIyMDpzdHJpbmc6dXJsIiwidmFsdWUiOiJhZDdkN2YyYi1iZjRkLTQ1MWQtOGZjZi01Yzg4YmYyNzI2MWY6c3RyaW5nOmh0dHBzOi8vd3d3Lm1hY3JpdGNoaWVsYWJvcmF0b3J5LmNvbS5zZyJ9LHsic3lzdGVtIjoiNjBlMDJjODctOWM0OC00ZWUxLTg0NWUtYTVjMzNkYjM2ZTE3OnN0cmluZzpwaG9uZSIsInZhbHVlIjoiMWM1NjgxZjAtNDE4YS00MzExLTlhZWEtNGY2ZTUzZmM2NTI1OnN0cmluZzorNjU2NzY1NDMyMSJ9XSwiYWRkcmVzcyI6eyJ0eXBlIjoiODhjYmU5ODEtZTgxYS00OGI1LThjMjctMjFiZDNlZmYwZTQ3OnN0cmluZzpwaHlzaWNhbCIsInVzZSI6IjA4MzkxMjcwLTk4MmItNGVlNC05N2QyLWIzMTVkZmVmMWY2ODpzdHJpbmc6d29yayIsInRleHQiOiIzNzIxYWVkNi1jOGExLTQ1MjYtYTJmMC03YWYwZTliZjQ2N2M6c3RyaW5nOjIgVGhvbXNvbiBBdmVudWUgNCwgU2luZ2Fwb3JlIDA5ODg4OCJ9fV19fV19LCJsb2dvIjoiNzZmMTg0ZTktMmVlMy00MDViLThhMWUtZmUzMDkyMDQxMjgxOnN0cmluZzpkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWZRQUFBRElDQU1BQUFBcHgrUGFBQUFBTTFCTVZFVUFBQURNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16TXpNek16ZUNtaUFBQUFBRUhSU1RsTUFRTCtBN3hBZ24yRFAzekJ3cjFDUEVsK0kvUUFBQndkSlJFRlVlTnJzbmQxMjJ5b1FSdmtISVNITit6L3R5VWs5b1RFQ1ExYlRCYzIzYnlOczBCNUdJREFSQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWsrSWsrSWR4NGc1TjRCOUdRL3JQQTlKL0lQZlNnd0wvTUVFQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUR3UDVaUG9QNXI3RkpLQWY3Y3VmQmloUE5Ta1g1aGxBOXUrRHNQN2RYL0pLMVAyVlBpU0lvZWJFckx3Vmg1WngrOEMxWTIyWXRQMEZwZjZoZGVhK21xMVdsaXhmZWo2UmNEeGowOXN3WGJiZUJRcGlqdWcyMGFqL1NFOGJ2bzVoRXVhdkF1U0twUWZKeFRHOTFnVXJDVjZqU1FFMG9Qa2U0d3VrZTcwNUVxcExOV3h0TXRTazRqdlhHbGQrdExseHZWTU5uYWtEN21FbmRZVFZXU25WODYwV1VYbDM0Uk15N0JlbXB5R3pON3BBYm1YRUE2YmZ2SzB1MzJ1VEZLS1ZNMHIwWXcxTVRjRnZwOGlWTFBEMCs5Z0hReSs3clNmM2VlanAySHVGY3NtbGRpRXowRnpLWGZTUnczcWUwOFhxZDlkUDZRS09Obmt1NGxHM05TYi9SQnRLdEt0MXR0ZEJKaVliMlZJN2JyYzd0YzhJWW90SnpIVUIwYytPK1QzclRRdUxLc1pScXB6a1RTN2RaSTR2bytxSm5kRUdPOEV6ZWN5amFjNi9JVE4yS09XYVVMSVQvYUxkZVVucXBkaTdWVzIrS3ljMjlGTDNzN2UzaGk1TFRTaGVXV3B5V2xINFh6bXZXam5pT2lGTjNZV0RpdldJOTJXdWs1Y3QyQzBwM0p6bDlZTjY2V0k1SVYvVnlGODZyMWExN3BINVVNQzBwWC9Ed1hWVTUyNEtzNVlnRFptTDR6R3oxdzgwcDMzUGoxcE12Y2krdGMyY0ZJam1oSDJkV1ZmdWFWTHVMank5ZVR6Z3FPcnFld3YwdnVtLzFLUjQrMmE2RGg1cFhPN1Y5TytzNEtSSlBBRHV4Tmp0akZDQ2svQ2x0RXpnZnpTdGVyU3ZkWlFaZURveXlxeFFndVIxbFhtQmxJLzlQU2ViWnBiT2U4Yml2dDJiRks5WWFLNGVIZTdOTE5hdExQM3FHWUxmTDcxUm9NdkI2WHU5NkozVFd0OUxUb1FNNXptOFlmeGJISUVTUFpYWFcvdG92VFNvK1BxRnhOZXN3WnFqTy9YMDlPdkJnaTlPY0h3N2xsVXVrY3YrZGkwcm5lcWY5OXVYb0tnbE1Nd2FsbDd4L215MG1sUDVwaVZudjNmdVorMTkzeG5wVFlMejNTamVqUExYcE82VHRYYnpYcGZJVWNlSkhtUHNYQUpzYkkrYUw3ZnZzcHBWc09YN3VhZEo5RnZ1VDYzUHhzWkFRM1VNeHlnTHlXdnNrNi9sdWt1NDBmYjh0dG9sREZGYjFaUVE2L21Sa3YxaVc5aTFKNkMvMWFlakFjdlFQVm1VdDZGQjJjbjI2SnpETzRUc2FMY1dlYVRibzdJbjA0WDA4Njk2WHhUbnJrbXpHQ0hpbW1KcEx1TmFQaTcxZitLT2t0ZTVJSzlPclM3NGluZ1BTZkpkMW9JU0Q5WjBtL2hQaEIwbysvTGQzTU1HVXJTVTY4czl5VXpYU08zc3VoVytCaCtKajBveXoyc25acWdwY3pkNWl3cHZSdm1LZlhwWS9QMHllU2ZzZ0hPaGxpd3RMUzdjQlNpUjFhWkZQMzBxK0J0M2ZYYks5aFEyVHIrNHJTYys4ZGZsWENPMmw2cFkrUElzNXBGMXhzNGttYlhWQjZ6MEpXUlJkSCs2QjB3OFZlb3lkZVdsVjg0eGFVTG52WDA4dkV6Tm4rSEpPdSt0ZlQxY1NiS1BMZXd2V2tjL2MxL1l0czRTbEorREhwdW5zRjMwNjlYU3J3N1ZoUWVsNGdITjNRdUhPOGpFay9POGNDK1VvL3BYUit2RzBMU24vWlh4bFh5SW9jNjBQU2hlbGR3dmR6YjRIVzNJNzFwTy8wd0hZcU9JcDh2NDFKVDUyVE5qZjVqeDI0Zm1FOTZXTHJHNy9ic29NNmVoQ0dwSjhzMC9aVjNrOHFuVE9kWDFCNjZIT2diNGI1S1JmdGw1NGZDN292eXZaWnBYdDZKeTRvM1pxZWRPdk1UZHNsUFVoRDBybFd4dlZNRnRTMFAxVU9uUHZXazg0WGRiMERJWFcva0hpTVNMZW03ck1NS0RtdDlKMEhtZ3RLLzNCZzdHaGdPR0xDZ1BUOGFmcDFwZFRFeDQ4ODZuZ3RLRjJjOU9wc2dWRGJPS0NKT1Fha2krMVZyRmkrd3JpSnBmTmEvb3JTaGNyVzI4NmpMWXN5eWZaTGw4U0V0bk02NWoxU0xIK3dYVkc2amMwRFlJOTg2RnVqS0puUUxWMGMxTXJ3N3NPNW4vZnd3RGZrb2o5Z2ZENG96aHlGQVVWTXFCUmxZckNkMG9VblJya2l5RXpPUEZOTEZ6VHpUNVZsQlhkM09tOG96a0J0T09kRFBaa1U5azkvUENwTGtIYXJuWlVmSWhYT3YwLzZJU3YwU09jdmovMWI5dHpma041RzN4N2ViZEloMzRXZkY2dHBEcnJZSzZQVXBkLzRmSlMzYnBYYXJ0T0pOK1NSREJYT3YwbDZtNkV6WjF6MzVsdzlrM1JPMDFXTUZCVTRINCsyMWxNYmI4WHMwdmx2WVZIcDNQVXFLQ2NhT0RVc25iTkxTUjVjVEMrZForcHBWZWxDbkthMTE3ZU5UTlFrU1ZGaVUydFArUXJTT1Z2WlphVUxxd3Z0UENoL2pkTWIzUk45OVFPa29qdjhMc1FTMGsvTzcrdEtmK05NVDk2TlAwVXZMdmluUm05Sm4yNHdWcmJEQ2JHSWRGNHhWQk5KL3hKU2U2VWVvL0JqLzlJLzdEeTBQdnJuSnk1b3BTSVJSWlgwYVFVQUFQelgzaDNVQUFDQVFBeDdZQUQvYW5GQkNOZGFtSUFCQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFEQW1tb2VLOUh6aUI1STlFQlhueDhBQUFBQUFBQUFBTEJtQUlaS216V0lueHlPQUFBQUFFbEZUa1N1UW1DQyIsImlzc3VlcnMiOlt7ImlkIjoiZDBlY2ZmYjctN2NmMy00NDM5LWE4MGQtZDExOGVjZWU1OTliOnN0cmluZzpkaWQ6ZXRocjoweEUzOTQ3OTkyOENjNEVmRkU1MDc3NDQ4ODc4MEI5ZjYxNmJkNEI4MzAiLCJyZXZvY2F0aW9uIjp7InR5cGUiOiI5NjIyNjc5ZS1jY2YxLTRjMGMtYWZlZS0zOTFlNDczMzI0YzU6c3RyaW5nOk5PTkUifSwibmFtZSI6IjQzY2IzMmNlLWQ5ZTEtNGFjMS1iODc2LTA4MWRhOGQ5NTg4NzpzdHJpbmc6U0FNUExFIENMSU5JQyIsImlkZW50aXR5UHJvb2YiOnsidHlwZSI6ImNmMDliYzFjLTU1YWUtNDY1Zi05YWEzLTdhOWM3ZTEyMTI1NzpzdHJpbmc6RE5TLURJRCIsImxvY2F0aW9uIjoiNWQ4MWQ1YzctN2IyYS00MjNhLTg5YjEtNjNkNGFkOTI4MzU3OnN0cmluZzpkb25vdHZlcmlmeS50ZXN0aW5nLnZlcmlmeS5nb3Yuc2ciLCJrZXkiOiJjMzU1NDg2ZS04MjE1LTQxNTMtYTUxYy0yYjA2OGExYzdjY2M6c3RyaW5nOmRpZDpldGhyOjB4RTM5NDc5OTI4Q2M0RWZGRTUwNzc0NDg4NzgwQjlmNjE2YmQ0QjgzMCNjb250cm9sbGVyIn19XSwiJHRlbXBsYXRlIjp7Im5hbWUiOiJiY2ZiOGE2Ny1lNGY1LTRkYWItYTVmMC1lYTljYjA3ZDg4M2I6c3RyaW5nOkhFQUxUSF9DRVJUIiwidHlwZSI6ImQxZTVhYWJjLTExOTktNDA4My05OGFmLTA4YWViYzBjZWI3YTpzdHJpbmc6RU1CRURERURfUkVOREVSRVIiLCJ1cmwiOiIzNjE3NTI4ZC02ZjJlLTRlOTYtYWNmNS04YThkMjk4NDNiNDk6c3RyaW5nOmh0dHBzOi8vaGVhbHRoY2VydC5yZW5kZXJlci5tb2guZ292LnNnLyJ9fSwic2lnbmF0dXJlIjp7InR5cGUiOiJTSEEzTWVya2xlUHJvb2YiLCJ0YXJnZXRIYXNoIjoiNWI3MTU3YWIxZDhiYWM4MmNkMzUwNGYzMTJhZGY1ODM3OGM5Y2IwM2ZhNjM1OTRlYjgwZjQ3Y2IxYTJjMDFkZCIsInByb29mIjpbXSwibWVya2xlUm9vdCI6IjViNzE1N2FiMWQ4YmFjODJjZDM1MDRmMzEyYWRmNTgzNzhjOWNiMDNmYTYzNTk0ZWI4MGY0N2NiMWEyYzAxZGQifSwicHJvb2YiOlt7InR5cGUiOiJPcGVuQXR0ZXN0YXRpb25TaWduYXR1cmUyMDE4IiwiY3JlYXRlZCI6IjIwMjEtMDgtMjRUMDQ6MjQ6MTYuMDU0WiIsInByb29mUHVycG9zZSI6ImFzc2VydGlvbk1ldGhvZCIsInZlcmlmaWNhdGlvbk1ldGhvZCI6ImRpZDpldGhyOjB4RTM5NDc5OTI4Q2M0RWZGRTUwNzc0NDg4NzgwQjlmNjE2YmQ0QjgzMCNjb250cm9sbGVyIiwic2lnbmF0dXJlIjoiMHgwYWZiYzU4MTBmZmM0ZWI1ZWUyYjI0NjNiNTU1M2NkNDIwNWJiYWIwNjljM2QwZTQxOTliYzNiMDNhNWQ0OGM3NDBmOTNiOWNiMDY5OTgyOTIyMjk0NDc4MTk1YTliODFjOTZiZWNiNWNjZDdiM2ZkYzhmYTg4MTA4ZjA4NmNlNDFjIn1dfQ=="
+    }
+  ]
+}

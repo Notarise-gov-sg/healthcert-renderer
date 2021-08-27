@@ -5,7 +5,9 @@ import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
 import { healthCertSample as sampleArtWithNric } from "./fixtures/sampleArtWithNric";
 import { healthCertSample as sampleWithoutNric } from "./fixtures/sampleWithoutNric";
 import { multiMemoSample } from "./fixtures/multiMemo";
-import sampleV2WithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_nric_unwrapped.json";
+import v2PcrWithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_nric_unwrapped.json";
+import v2PcrWithoutNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_without_nric_unwrapped.json";
+import v2ArtWithNric from "./fixtures/pdtHealthCertV2/pdt_art_notarised_with_nric_unwrapped.json";
 
 <Meta title="HEALTH_CERT" component={HealthCertTemplate} />
 
@@ -23,16 +25,22 @@ import sampleV2WithNric from "./fixtures/pdtHealthCertV2/pdt_pcr_notarised_with_
   <Story name="PDT v1.0 PCR with NRIC">
     <HealthCertTemplate document={object("document", sampleWithNric)} />
   </Story>
-  <Story name="PDT v1.0 ART with NRIC">
-    <HealthCertTemplate document={object("document", sampleArtWithNric)} />
-  </Story>
   <Story name="PDT v1.0 PCR without NRIC">
     <HealthCertTemplate document={object("document", sampleWithoutNric)} />
+  </Story>
+  <Story name="PDT v1.0 ART with NRIC">
+    <HealthCertTemplate document={object("document", sampleArtWithNric)} />
   </Story>
   <Story name="PDT v1.0 multi memo sample">
     <HealthCertTemplate document={object("document", multiMemoSample)} />
   </Story>
   <Story name="PDT v2.0 PCR with NRIC">
-    <HealthCertTemplate document={sampleV2WithNric} />
+    <HealthCertTemplate document={v2PcrWithNric} />
+  </Story>
+  <Story name="PDT v2.0 PCR without NRIC">
+    <HealthCertTemplate document={v2PcrWithoutNric} />
+  </Story>
+  <Story name="PDT v2.0 ART with NRIC">
+    <HealthCertTemplate document={v2ArtWithNric} />
   </Story>
 </Preview>
