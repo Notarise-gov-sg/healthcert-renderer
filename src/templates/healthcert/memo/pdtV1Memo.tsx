@@ -1,5 +1,5 @@
 import React from "react";
-import { pdtHealthcert as healthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
   PatientDetails,
@@ -22,7 +22,7 @@ type Identifier = healthcert.Identifier;
 type Patient = healthcert.Patient;
 
 export interface MemoInfo {
-  specimen?: healthcert.Patient | undefined;
+  specimen?: any;
   observation: any;
   provider: any;
   lab: any;
@@ -41,73 +41,94 @@ export interface MemoInfo {
   birthdate: string | undefined;
 }
 
-export const MemoSection: React.FC<MemoInfo> = ({
-  observation,
-  provider,
-  lab,
-  swabType,
-  swabCollectionDate,
-  performerName,
-  performerMcr,
-  observationDate,
-  patientName,
-  patientNationalityCode,
-  passportNumber,
-  patientNricIdentifier,
-  testResult,
-  birthdate
-}) => {
+const MemoResultSection: React.FC<{
+  memoInfo: MemoInfo;
+  multiQr?: boolean;
+}> = ({ memoInfo, multiQr = false }) => {
+  return (
+    <ResultSection>
+      <p>To whom it may concern:</p>
+      <p>
+        The above-mentioned has undergone {memoInfo.observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
+        {memoInfo.swabType?.display} on {memoInfo.swabCollectionDate}, by {memoInfo.provider?.name} and has tested{" "}
+        <TestResult>{memoInfo.testResult}</TestResult>.
+        {memoInfo.lab && ` This test result was reported by ${memoInfo.lab?.name} on ${memoInfo.observationDate}.`}
+      </p>
+      {!multiQr && (
+        <p>
+          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
+        </p>
+      )}
+      <p>Thank you.</p>
+    </ResultSection>
+  );
+};
+
+const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({ performerName, performerMcr }) => {
+  return (
+    <Doctor>
+      <p>
+        <Bold>Name of Doctor:</Bold> {performerName}
+        <br />
+        <Bold>MCR No.:</Bold> {performerMcr}
+      </p>
+    </Doctor>
+  );
+};
+
+const MultiQrMemoDoctorSection: React.FC<MemoInfo> = ({ performerName, performerMcr }) => {
+  return (
+    <Row>
+      <SecondCol>
+        <Bold>Name of Doctor:</Bold> {performerName}
+      </SecondCol>
+      <SecondCol>
+        <Bold>MCR No.:</Bold> {performerMcr}
+      </SecondCol>
+    </Row>
+  );
+};
+
+export const MemoSection: React.FC<{
+  memoInfo: MemoInfo;
+  multiQr?: boolean;
+}> = ({ memoInfo, multiQr = false }) => {
+  const memoDoctorSection = multiQr ? MultiQrMemoDoctorSection(memoInfo) : SingleQrMemoDoctorSection(memoInfo);
+  const memoResultSection = MemoResultSection({ memoInfo, multiQr });
+
   return (
     <StyledMemoSection>
       <Title data-testid="memo-title">
         MEMO ON
         <br />
-        {observation?.code?.coding?.[0]?.display.toUpperCase()} RESULT
+        {memoInfo.observation?.code?.coding?.[0]?.display.toUpperCase()} RESULT
       </Title>
       <PatientDetails>
         <Row>
           <FirstCol>Name of Person:</FirstCol>
-          <SecondCol>{patientName}</SecondCol>
+          <SecondCol>{memoInfo.patientName}</SecondCol>
         </Row>
-        {patientNricIdentifier?.value && (
+        {memoInfo.patientNricIdentifier?.value && (
           <Row>
             <FirstCol>NRIC/FIN Number:</FirstCol>
-            <SecondCol>{patientNricIdentifier?.value}</SecondCol>
+            <SecondCol>{memoInfo.patientNricIdentifier?.value}</SecondCol>
           </Row>
         )}
         <Row>
           <FirstCol>Passport/Travel Document Number:</FirstCol>
-          <SecondCol>{passportNumber}</SecondCol>
+          <SecondCol>{memoInfo.passportNumber}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{getNationality(patientNationalityCode)}</SecondCol>
+          <SecondCol>{getNationality(memoInfo.patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
-          <SecondCol>{birthdate}</SecondCol>
+          <SecondCol>{memoInfo.birthdate}</SecondCol>
         </Row>
       </PatientDetails>
-      <ResultSection>
-        <p>To whom it may concern:</p>
-        <p>
-          The above-mentioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
-          {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-          <TestResult>{testResult}</TestResult>.
-          {lab && ` This test result was reported by ${lab?.name} on ${observationDate}.`}
-        </p>
-        <p>
-          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
-        </p>
-        <p>Thank you.</p>
-      </ResultSection>
-      <Doctor>
-        <p>
-          <Bold>Name of Doctor:</Bold> {performerName}
-          <br />
-          <Bold>MCR No.:</Bold> {performerMcr}
-        </p>
-      </Doctor>
+      {memoResultSection}
+      {memoDoctorSection}
     </StyledMemoSection>
   );
 };

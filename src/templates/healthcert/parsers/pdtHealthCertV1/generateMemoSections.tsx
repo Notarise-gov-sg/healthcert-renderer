@@ -1,5 +1,5 @@
 import React from "react";
-import { pdtHealthcert } from "@govtechsg/oa-schemata";
+import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import { NotarisedHealthCert } from "../../types";
 import { MemoSection } from "../../memo/pdtV1Memo";
 import { extractInfo } from "./parseInfo";
@@ -7,7 +7,7 @@ import { extractInfo } from "./parseInfo";
 const SG_LOCALE = "en-sg";
 const isNric = (value: any): value is pdtHealthcert.Identifier => value?.type?.text === "NRIC";
 
-export const generateMemoSections = (document: NotarisedHealthCert): JSX.Element[] => {
+export const generateMemoSections = (document: NotarisedHealthCert, multiQr = false): JSX.Element[] => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as pdtHealthcert.Patient;
   const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
 
@@ -49,27 +49,25 @@ export const generateMemoSections = (document: NotarisedHealthCert): JSX.Element
       testResult
     } = extractInfo(observation, document);
 
-    memoSections.push(
-      <MemoSection
-        key={i}
-        observation={observation}
-        provider={provider}
-        lab={lab}
-        swabType={swabType}
-        patientName={patientName}
-        swabCollectionDate={swabCollectionDate}
-        performerName={performerName}
-        performerMcr={performerMcr}
-        observationDate={observationDate}
-        patientNricIdentifier={patientNricIdentifier}
-        patientNationalityCode={patientNationalityCode}
-        passportNumber={passportNumber}
-        patient={patient}
-        testType={testType}
-        testResult={testResult}
-        birthdate={birthdate}
-      />
-    );
+    const memoInfo = {
+      observation,
+      provider,
+      lab,
+      swabType,
+      patientName,
+      swabCollectionDate,
+      performerName,
+      performerMcr,
+      observationDate,
+      patientNricIdentifier,
+      patientNationalityCode,
+      passportNumber,
+      patient,
+      testType,
+      testResult,
+      birthdate
+    };
+    memoSections.push(<MemoSection key={i} memoInfo={memoInfo} multiQr={multiQr} />);
   }
 
   return memoSections;

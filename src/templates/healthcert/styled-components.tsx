@@ -159,22 +159,32 @@ export const QrBreakLine = styled.hr`
   margin: 20px 0px;
 `;
 
-export const QrCol = styled.div`
-  flex-basis: 100%;
+export const QrRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
   ${mediaQueries["md"]} {
-    flex-basis: 30%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
   }
+
   ${mediaQueries["print"]} {
-    flex-basis: 30%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
   }
 `;
 
-export const QrInfoCol = styled.div`
-  flex-basis: 100%;
+export const QrCol = styled.div<{ rightAlign?: boolean; info?: boolean }>`
+  margin: 10px;
+  flex-grow: ${props => (props.info ? 1 : 0)};
+
   ${mediaQueries["md"]} {
-    flex-basis: 65%;
+    order: ${props => (props.rightAlign ? 1 : 0)};
   }
+
   ${mediaQueries["print"]} {
-    flex-basis: 65%;
+    order: ${props => (props.rightAlign ? 1 : 0)};
   }
 `;
