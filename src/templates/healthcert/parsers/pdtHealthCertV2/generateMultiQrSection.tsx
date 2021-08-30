@@ -5,10 +5,9 @@ import {
   Bold,
   QrBreakLine,
   QrCodeContainerWithBorder,
+  QrRow,
   QrCol,
-  QrInfoCol,
   ResultSection,
-  Row,
   TravellerInfoSection
 } from "../../styled-components";
 import fhirHelper from "../../../../models/fhirHelper";
@@ -37,8 +36,8 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
         The QR code used for verification is based on your <u>destination country</u>.
       </TravellerInfoSection>
       <br />
-      <Row>
-        <QrInfoCol>
+      <QrRow>
+        <QrCol info>
           <Bold>Offline QR Verification</Bold>
           <br />
           This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
@@ -47,30 +46,27 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
           <br />
           This may also be used for public health measures beyond travel within the EU and should be produced to
           authorities when required.
-        </QrInfoCol>
+        </QrCol>
         <QrCol>
           <QrCodeContainerWithBorder>
             <QRCode value={signedEuHealthCert} level={"M"} size={200} />
           </QrCodeContainerWithBorder>
         </QrCol>
-      </Row>
+      </QrRow>
       <QrBreakLine />
       {url && (
-        <Row>
+        <QrRow>
+          <QrCol info rightAlign>
+            <Bold>Online QR verification</Bold>
+            <br />
+            This QR Code requires an internet connection to verify.
+          </QrCol>
           <QrCol>
             <QrCodeContainerWithBorder>
               <QRCode value={url} level={"M"} size={200} />
             </QrCodeContainerWithBorder>
           </QrCol>
-          <QrInfoCol>
-            <br />
-            <br />
-            <br />
-            <Bold>Online QR verification</Bold>
-            <br />
-            This QR Code requires an internet connection to verify.
-          </QrInfoCol>
-        </Row>
+        </QrRow>
       )}
     </>
   );
