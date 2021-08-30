@@ -1,2 +1,2 @@
 export * from "./generateMemoSections";
-export * from "./generateResultSection";
+export * from "./generateMultiQrSection";
