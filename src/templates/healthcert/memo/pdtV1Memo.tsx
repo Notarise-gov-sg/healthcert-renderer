@@ -41,25 +41,24 @@ export interface MemoInfo {
   birthdate: string | undefined;
 }
 
-const SingleQrMemoResultSection: React.FC<MemoInfo> = ({
-  observation,
-  provider,
-  lab,
-  swabType,
-  swabCollectionDate,
-  observationDate,
-  testResult
-}) => {
+const MemoResultSection: React.FC<{
+  memoInfo: MemoInfo;
+  multiQr?: boolean;
+}> = ({ memoInfo, multiQr = false }) => {
   return (
     <ResultSection>
       <p>To whom it may concern:</p>
       <p>
-        The above-mentioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
-        {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-        <TestResult>{testResult}</TestResult>.
-        {lab && ` This test result was reported by ${lab?.name} on ${observationDate}.`}
+        The above-mentioned has undergone {memoInfo.observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
+        {memoInfo.swabType?.display} on {memoInfo.swabCollectionDate}, by {memoInfo.provider?.name} and has tested{" "}
+        <TestResult>{memoInfo.testResult}</TestResult>.
+        {memoInfo.lab && ` This test result was reported by ${memoInfo.lab?.name} on ${memoInfo.observationDate}.`}
       </p>
-      <p>Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.</p>
+      {!multiQr && (
+        <p>
+          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
+        </p>
+      )}
       <p>Thank you.</p>
     </ResultSection>
   );
@@ -74,29 +73,6 @@ const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({ performerName, performe
         <Bold>MCR No.:</Bold> {performerMcr}
       </p>
     </Doctor>
-  );
-};
-
-const MultiQrMemoResultSection: React.FC<MemoInfo> = ({
-  observation,
-  provider,
-  lab,
-  swabType,
-  swabCollectionDate,
-  observationDate,
-  testResult
-}) => {
-  return (
-    <ResultSection>
-      <p>To whom it may concern:</p>
-      <p>
-        The above-mentioned has undergone {observation?.code?.coding?.[0]?.display} for COVID-19 using a{" "}
-        {swabType?.display} on {swabCollectionDate}, by {provider?.name} and has tested{" "}
-        <TestResult>{testResult}</TestResult>.
-        {lab && ` This test result was reported by ${lab?.name} on ${observationDate}.`}
-      </p>
-      <p>Thank you.</p>
-    </ResultSection>
   );
 };
 
@@ -118,7 +94,7 @@ export const MemoSection: React.FC<{
   multiQr?: boolean;
 }> = ({ memoInfo, multiQr = false }) => {
   const memoDoctorSection = multiQr ? MultiQrMemoDoctorSection(memoInfo) : SingleQrMemoDoctorSection(memoInfo);
-  const memoResultSection = multiQr ? MultiQrMemoResultSection(memoInfo) : SingleQrMemoResultSection(memoInfo);
+  const memoResultSection = MemoResultSection({ memoInfo, multiQr });
 
   return (
     <StyledMemoSection>
