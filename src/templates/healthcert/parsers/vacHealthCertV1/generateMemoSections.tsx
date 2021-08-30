@@ -2,7 +2,8 @@ import React from "react";
 import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import { NotarisedHealthCert, Patient, Immunization, ImmunizationRecommendation, Location } from "../../types";
 import { MemoSection } from "../../memo/vacV1Memo";
-import { formatDate, simplifyImmunizationObjectWithLocation } from "./parseInfo";
+import { simplifyImmunizationObjectWithLocation } from "./parseInfo";
+import { isoToDateOnlyString } from "../../../../util/datetime";
 
 const isNric = (value: pdtHealthcert.Identifier): boolean =>
   typeof value.type !== "string" && value.type.text === "NRIC";
@@ -24,8 +25,8 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
     patient?.extension?.find(
       extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code.text || "";
-  const patientBirthDate = formatDate(patient?.birthDate || "");
-  const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
+  const patientBirthDate = isoToDateOnlyString(patient?.birthDate || "");
+  const effectiveDate = isoToDateOnlyString(recommendation?.recommendation[0].dateCriterion[0].value);
 
   const mappedImmunizations = immunizations.map(simplifyImmunizationObjectWithLocation(locations));
   const memoSections: JSX.Element[] = [];

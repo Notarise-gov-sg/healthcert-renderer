@@ -10,7 +10,8 @@ import {
   ResultSection,
   TravellerInfoSection
 } from "../../styled-components";
-import { formatDate, simplifyImmunizationObjectWithLocation } from "./parseInfo";
+import { simplifyImmunizationObjectWithLocation } from "./parseInfo";
+import { isoToDateOnlyString } from "../../../../util/datetime";
 
 export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Element => {
   const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as Patient;
@@ -23,7 +24,7 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
   ) as ImmunizationRecommendation;
 
   const mappedImmunizations = immunizations.map(simplifyImmunizationObjectWithLocation(locations));
-  const effectiveDate = formatDate(recommendation?.recommendation[0].dateCriterion[0].value);
+  const effectiveDate = isoToDateOnlyString(recommendation?.recommendation[0].dateCriterion[0].value);
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name[0]?.text : "";
   const url = (document.notarisationMetadata as any)?.url;
   const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
