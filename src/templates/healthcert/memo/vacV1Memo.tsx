@@ -43,7 +43,7 @@ const MemoResultSection: React.FC<{
       {!multiQr && (
         <ResultSection>
           <p>
-            Based on singapore&apos;s requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against
+            Based on Singapore&apos;s requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against
             COVID-19.
             <br />
             <br />

@@ -20,7 +20,7 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
   return (
     <>
       <ResultSection>
-        <p>Based on singapore&apos;s requirement, {patientName} has been fully vaccinated against COVID-19.</p>
+        <p>Based on Singapore&apos;s requirement, {patientName} has been fully vaccinated against COVID-19.</p>
       </ResultSection>
       <TravellerInfoSection>
         Note: Travellers are subject to the country or region&apos;s requirements prior to travel.
