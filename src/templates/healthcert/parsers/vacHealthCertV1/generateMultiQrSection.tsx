@@ -33,7 +33,7 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
     <>
       <ResultSection>
         <p>
-          {patientName} has been vaccinated with {mappedImmunizations[0]?.vaccineName} effective from {effectiveDate}.
+          Based on singapore's requirement, {patientName} has been fully vaccinated against COVID-19.
         </p>
       </ResultSection>
       <TravellerInfoSection>

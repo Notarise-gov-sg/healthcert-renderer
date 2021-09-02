@@ -43,10 +43,7 @@ const MemoResultSection: React.FC<{
       {!multiQr && (
         <ResultSection>
           <p>
-            To whom it may concern:
-            <br />
-            The above-mentioned has been vaccinated with {vaccinationMemoInfo.immunizations[0].vaccineName} effective
-            from {vaccinationMemoInfo.effectiveDate}.
+            Based on singapore's requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against COVID-19.
             <br />
             <br />
             Thank you.
