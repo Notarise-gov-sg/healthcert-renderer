@@ -1,4 +1,6 @@
 import React from "react";
+import QRCode from "qrcode.react";
+import { groupBy } from "lodash";
 import {
   Title,
   PatientDetails,
@@ -8,7 +10,11 @@ import {
   FirstCol,
   SecondCol,
   ResultSection,
-  StyledMemoSection
+  StyledMemoSection,
+  TravellerInfoSection,
+  Bold,
+  QrCodeContainerWithBorder,
+  QrRowCenter
 } from "../styled-components";
 import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
@@ -16,6 +22,7 @@ import englishCountries from "i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 export interface SimpleImmunizationObject {
+  vaccineCode: string;
   vaccineName: string;
   vaccineLot: string;
   vaccinationDate: string;
@@ -32,6 +39,7 @@ export interface VaccinationMemoInfo {
   passportNumber: string;
   immunizations: SimpleImmunizationObject[];
   effectiveDate?: string;
+  onlineUrl: string;
 }
 
 const MemoResultSection: React.FC<{
@@ -40,16 +48,38 @@ const MemoResultSection: React.FC<{
 }> = ({ vaccinationMemoInfo, multiQr = false }) => {
   return (
     <>
-      {!multiQr && (
-        <ResultSection>
-          <p>
-            Based on Singapore&apos;s requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against
-            COVID-19.
-            <br />
-            <br />
-            Thank you.
-          </p>
-        </ResultSection>
+      <ResultSection>
+        <p>
+          Based on Singapore&apos;s requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against
+          COVID-19.
+          {!multiQr && (
+            <>
+              <br />
+              <br />
+              Thank you.
+            </>
+          )}
+        </p>
+        {multiQr && (
+          <TravellerInfoSection>
+            Note: Travellers are subject to the country or region&apos;s requirements prior to travel. The QR code used
+            for verification is based on your <u>destination country</u>.
+          </TravellerInfoSection>
+        )}
+      </ResultSection>
+      {multiQr && (
+        <>
+          <ResultSection>
+            <Bold>Online QR verification</Bold>
+            <p>This QR Code requires an internet connection to verify.</p>
+          </ResultSection>
+          <br />
+          <QrRowCenter>
+            <QrCodeContainerWithBorder>
+              <QRCode value={vaccinationMemoInfo.onlineUrl} level={"M"} size={200} />
+            </QrCodeContainerWithBorder>
+          </QrRowCenter>
+        </>
       )}
     </>
   );
@@ -60,6 +90,8 @@ export const MemoSection: React.FC<{
   multiQr?: boolean;
 }> = ({ vaccinationMemoInfo, multiQr = false }) => {
   const memoResultSection = MemoResultSection({ vaccinationMemoInfo, multiQr });
+  const groupedImmunizations = groupBy(vaccinationMemoInfo.immunizations, "vaccineCode");
+  const groupedVaccineCode = Object.keys(groupedImmunizations);
   return (
     <StyledMemoSection>
       <Title>Vaccination Certificate</Title>
@@ -85,37 +117,39 @@ export const MemoSection: React.FC<{
           <SecondCol>{vaccinationMemoInfo.patientBirthDate}</SecondCol>
         </Row>
       </PatientDetails>
-      {vaccinationMemoInfo.immunizations.map((immunization, i) => (
-        <ImmunizationDetails key={i}>
-          <Row>
-            <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
-          </Row>
-          <Row>
-            <FirstCol>Manufacturer/Vaccination Name/Brand/Type:</FirstCol>
-            <SecondCol>{immunization.vaccineName}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Clinic/Vaccination Centre:</FirstCol>
-            <SecondCol>{immunization.vaccinationLocation}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Date of Vaccination:</FirstCol>
-            <SecondCol>{immunization.vaccinationDate}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Batch Number:</FirstCol>
-            <SecondCol>{immunization.vaccineLot}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Country/Region of Vaccination:</FirstCol>
-            <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
-          </Row>
-          <Row>
-            <FirstCol>Health Worker:</FirstCol>
-            <SecondCol>{immunization.performer}</SecondCol>
-          </Row>
-        </ImmunizationDetails>
-      ))}
+      {groupedVaccineCode.map(vaccineCode =>
+        groupedImmunizations[vaccineCode].map((immunization, i) => (
+          <ImmunizationDetails key={i}>
+            <Row>
+              <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
+            </Row>
+            <Row>
+              <FirstCol>Manufacturer/Vaccination Name/Brand/Type:</FirstCol>
+              <SecondCol>{immunization.vaccineName}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Clinic/Vaccination Centre:</FirstCol>
+              <SecondCol>{immunization.vaccinationLocation}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Date of Vaccination:</FirstCol>
+              <SecondCol>{immunization.vaccinationDate}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Batch Number:</FirstCol>
+              <SecondCol>{immunization.vaccineLot}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Country/Region of Vaccination:</FirstCol>
+              <SecondCol>{countries.getName(immunization.vaccinationCountry, "en")}</SecondCol>
+            </Row>
+            <Row>
+              <FirstCol>Health Worker:</FirstCol>
+              <SecondCol>{immunization.performer}</SecondCol>
+            </Row>
+          </ImmunizationDetails>
+        ))
+      )}
       {memoResultSection}
     </StyledMemoSection>
   );

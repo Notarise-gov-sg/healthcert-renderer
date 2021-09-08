@@ -9,10 +9,9 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
   className?: string;
 }> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
-  const multiQr = signedEuHealthCert ? true : false;
+  const signedEuHealthCerts = (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
+  const multiQr = signedEuHealthCerts.length > 0 ? true : false;
   const memoSections = generateMemoSections(document, multiQr);
-  const multiQrSection = generateMultiQrSection(document);
 
   return (
     <>
@@ -26,7 +25,7 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
           </QrCodeContainer>
         )}
       </Page>
-      {multiQr && <Page className={className}>{multiQrSection}</Page>}
+      {multiQr && <Page className={className}>{generateMultiQrSection(document)}</Page>}
     </>
   );
 };
