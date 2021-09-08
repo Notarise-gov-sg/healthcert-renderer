@@ -6,6 +6,7 @@ export const simplifyImmunizationObjectWithLocation: (
   locations: Location[]
 ) => (i: Immunization) => SimpleImmunizationObject = locations => {
   return (immunization: Immunization): SimpleImmunizationObject => ({
+    vaccineCode: immunization.vaccineCode.coding[0].code,
     vaccineName: immunization.vaccineCode.coding[0].display,
     vaccineLot: immunization.lotNumber,
     vaccinationDate: isoToDateOnlyString(immunization.occurrenceDateTime),

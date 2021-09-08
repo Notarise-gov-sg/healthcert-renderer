@@ -19,6 +19,7 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
   ) as ImmunizationRecommendation;
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
+  const onlineUrl = document.notarisationMetadata?.url;
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name[0]?.text : "";
   const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
@@ -38,7 +39,8 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
     patientNric,
     patientNationalityCode,
     patientBirthDate,
-    passportNumber
+    passportNumber,
+    onlineUrl
   };
 
   memoSections.push(<MemoSection vaccinationMemoInfo={vaccinationMemoInfo} multiQr={multiQr} />);

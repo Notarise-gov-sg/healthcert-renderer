@@ -188,3 +188,16 @@ export const QrCol = styled.div<{ rightAlign?: boolean; info?: boolean }>`
     order: ${props => (props.rightAlign ? 1 : 0)};
   }
 `;
+
+export const QrRowCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const QrColCenter = styled.div`
+  text-align: center;
+  margin: 10px;
+  padding: 0px 30px;
+`;

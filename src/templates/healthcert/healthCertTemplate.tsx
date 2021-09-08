@@ -21,8 +21,8 @@ export const HealthCertTemplate: FunctionComponent<TemplateProps<HC> & {
   className?: string;
 }> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
-  const multiQr = signedEuHealthCert ? true : false;
+  const signedEuHealthCerts = (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
+  const multiQr = signedEuHealthCerts.length > 0 ? true : false;
 
   const memoSections = isV2(document)
     ? generateMemoSectionsV2(document, multiQr)

@@ -22,7 +22,7 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
   const specimenSwabTypeDisplay = observations[0]?.specimen.swabType.display || "";
   const specimenCollectionDateTime = isoToLocaleString(observations[0]?.specimen.collectionDateTime);
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
+  const signedEuHealthCert = document.notarisationMetadata.signedEuHealthCerts?.[0];
 
   return (
     <>
@@ -39,18 +39,21 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
       <QrRow>
         <QrCol info>
           <Bold>Offline QR Verification</Bold>
-          <br />
-          This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
-          supports this option of verification.
-          <br />
-          <br />
-          This may also be used for public health measures beyond travel within the EU and should be produced to
-          authorities when required.
+          <p>
+            This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
+            supports this option of verification.
+          </p>
+          <p>
+            This may also be used for public health measures beyond travel within the EU and should be produced to
+            authorities when required.
+          </p>
         </QrCol>
         <QrCol>
-          <QrCodeContainerWithBorder>
-            <QRCode value={signedEuHealthCert} level={"M"} size={200} />
-          </QrCodeContainerWithBorder>
+          {signedEuHealthCert && (
+            <QrCodeContainerWithBorder>
+              <QRCode value={signedEuHealthCert?.qr} level={"M"} size={200} />
+            </QrCodeContainerWithBorder>
+          )}
         </QrCol>
       </QrRow>
       <QrBreakLine />
@@ -58,8 +61,7 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
         <QrRow>
           <QrCol info rightAlign>
             <Bold>Online QR verification</Bold>
-            <br />
-            This QR Code requires an internet connection to verify.
+            <p>This QR Code requires an internet connection to verify.</p>
           </QrCol>
           <QrCol>
             <QrCodeContainerWithBorder>
