@@ -56,8 +56,8 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
         <p>
           This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
           supports this option of verification.
-          <br />
-          <br />
+        </p>
+        <p>
           This may also be used for public health measures beyond travel within the EU and should be produced to
           authorities when required.
         </p>

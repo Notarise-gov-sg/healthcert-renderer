@@ -52,14 +52,8 @@ const MemoResultSection: React.FC<{
         <p>
           Based on Singapore&apos;s requirement, {vaccinationMemoInfo.patientName} has been fully vaccinated against
           COVID-19.
-          {!multiQr && (
-            <>
-              <br />
-              <br />
-              Thank you.
-            </>
-          )}
         </p>
+        {!multiQr && <p>Thank you.</p>}
         {multiQr && (
           <TravellerInfoSection>
             Note: Travellers are subject to the country or region&apos;s requirements prior to travel. The QR code used

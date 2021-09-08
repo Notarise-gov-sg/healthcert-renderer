@@ -39,13 +39,14 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
       <QrRow>
         <QrCol info>
           <Bold>Offline QR Verification</Bold>
-          <br />
-          This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
-          supports this option of verification.
-          <br />
-          <br />
-          This may also be used for public health measures beyond travel within the EU and should be produced to
-          authorities when required.
+          <p>
+            This QR Code does not require an internet connection to verify. Currently only the European Union (EU)
+            supports this option of verification.
+          </p>
+          <p>
+            This may also be used for public health measures beyond travel within the EU and should be produced to
+            authorities when required.
+          </p>
         </QrCol>
         <QrCol>
           {signedEuHealthCert && (
@@ -60,8 +61,7 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
         <QrRow>
           <QrCol info rightAlign>
             <Bold>Online QR verification</Bold>
-            <br />
-            This QR Code requires an internet connection to verify.
+            <p>This QR Code requires an internet connection to verify.</p>
           </QrCol>
           <QrCol>
             <QrCodeContainerWithBorder>
