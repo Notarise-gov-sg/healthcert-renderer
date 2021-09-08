@@ -22,7 +22,7 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
   const specimenSwabTypeDisplay = observations[0]?.specimen.swabType.display || "";
   const specimenCollectionDateTime = isoToLocaleString(observations[0]?.specimen.collectionDateTime);
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
+  const signedEuHealthCert = document.notarisationMetadata.signedEuHealthCerts?.[0];
 
   return (
     <>
@@ -48,9 +48,11 @@ export const generateMultiQrSection = (document: NotarisedPDTHealthCertUnwrapped
           authorities when required.
         </QrCol>
         <QrCol>
-          <QrCodeContainerWithBorder>
-            <QRCode value={signedEuHealthCert} level={"M"} size={200} />
-          </QrCodeContainerWithBorder>
+          {signedEuHealthCert && (
+            <QrCodeContainerWithBorder>
+              <QRCode value={signedEuHealthCert?.qr} level={"M"} size={200} />
+            </QrCodeContainerWithBorder>
+          )}
         </QrCol>
       </QrRow>
       <QrBreakLine />

@@ -22,7 +22,7 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
   const specimenSwabTypeDisplay = swabType?.display || "";
   const specimenCollectionDateTime = swabCollectionDate;
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCert = (document.notarisationMetadata as any)?.signedEuHealthCert;
+  const signedEuHealthCert = document.notarisationMetadata.signedEuHealthCerts?.[0];
 
   return (
     <>
@@ -48,9 +48,11 @@ export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Eleme
           authorities when required.
         </QrCol>
         <QrCol>
-          <QrCodeContainerWithBorder>
-            <QRCode value={signedEuHealthCert} level={"M"} size={200} />
-          </QrCodeContainerWithBorder>
+          {signedEuHealthCert && (
+            <QrCodeContainerWithBorder>
+              <QRCode value={signedEuHealthCert?.qr} level={"M"} size={200} />
+            </QrCodeContainerWithBorder>
+          )}
         </QrCol>
       </QrRow>
       <QrBreakLine />
