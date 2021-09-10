@@ -24,7 +24,7 @@ export const multiMemoSample: NotarisedHealthCert = {
     type: FhirBundleType.Collection,
     entry: [
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:aaaa1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Patient,
@@ -58,7 +58,7 @@ export const multiMemoSample: NotarisedHealthCert = {
       },
       {
         resourceType: EntryResourceType.Specimen,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
         type: {
@@ -76,7 +76,7 @@ export const multiMemoSample: NotarisedHealthCert = {
       },
       {
         resourceType: EntryResourceType.Observation,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
@@ -132,7 +132,7 @@ export const multiMemoSample: NotarisedHealthCert = {
         ],
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
@@ -156,7 +156,7 @@ export const multiMemoSample: NotarisedHealthCert = {
         },
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
@@ -178,7 +178,7 @@ export const multiMemoSample: NotarisedHealthCert = {
       },
       {
         resourceType: EntryResourceType.Observation,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:zzzz1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
@@ -234,7 +234,7 @@ export const multiMemoSample: NotarisedHealthCert = {
         ],
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
@@ -258,7 +258,7 @@ export const multiMemoSample: NotarisedHealthCert = {
         },
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,

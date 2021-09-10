@@ -87,7 +87,7 @@ export const App: React.FunctionComponent<AppProps> = ({
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   window.renderDocument = (document) => {
     if (toFrame && document) {

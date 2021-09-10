@@ -80,17 +80,17 @@ const extractSpecimenProvierLabFromCert = (
   observation: healthcert.Patient,
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const specimenReference = observation?.specimen?.reference;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const organisationReferences = observation?.performerReference?.map(
     (organisation) => organisation?.reference
   );
 
   const specimen = document.fhirBundle.entry.find(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     (entry) =>
       entry.resourceType === "Specimen" && entry?.fullUrl === specimenReference
@@ -99,7 +99,7 @@ const extractSpecimenProvierLabFromCert = (
     (entry) =>
       entry.resourceType === "Organization" &&
       entry.type === "Licensed Healthcare Provider" &&
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       organisationReferences.includes(entry?.fullUrl)
   );
@@ -107,7 +107,7 @@ const extractSpecimenProvierLabFromCert = (
     (entry) =>
       entry.resourceType === "Organization" &&
       entry.type === "Accredited Laboratory" &&
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       organisationReferences.includes(entry?.fullUrl)
   );
