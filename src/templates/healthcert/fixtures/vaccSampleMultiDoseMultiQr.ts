@@ -3,7 +3,8 @@ import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 import mohHeader from "./moh-header.base64.txt";
 
-const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } = healthcert;
+const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } =
+  healthcert;
 
 export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
   id: "3749314a-0f99-432d-9b9e-4d9446bff38c",
@@ -71,7 +72,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "3440141000133104",
-              display: "CORONAVAC COVID-19 Vaccine (SINOVAC) [SARS-CoV-2 Virus (inactivated, CZ02 strain)] Injection",
+              display:
+                "CORONAVAC COVID-19 Vaccine (SINOVAC) [SARS-CoV-2 Virus (inactivated, CZ02 strain)] Injection",
             },
           ],
         },
@@ -86,7 +88,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI000]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI000]",
             },
           },
         ],
@@ -99,7 +102,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "3339641000133109",
-              display: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+              display:
+                "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
             },
           ],
         },
@@ -114,7 +118,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI000]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI000]",
             },
           },
         ],
@@ -127,7 +132,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "3339641000133109",
-              display: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+              display:
+                "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
             },
           ],
         },
@@ -142,7 +148,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI111]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI111]",
             },
           },
         ],
@@ -155,7 +162,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "3339641000133109",
-              display: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+              display:
+                "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
             },
           ],
         },
@@ -170,7 +178,8 @@ export const vaccinationMultiQrCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI111]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI111]",
             },
           },
         ],

@@ -1,5 +1,8 @@
 import { v2 } from "@govtechsg/open-attestation";
-import { pdtHealthCertV1 as healthcert, notarise } from "@govtechsg/oa-schemata";
+import {
+  pdtHealthCertV1 as healthcert,
+  notarise,
+} from "@govtechsg/oa-schemata";
 import { PDTHealthCertV2 } from "./tempTypes";
 
 /**
@@ -109,7 +112,9 @@ export interface NotarisedHealthCert extends HealthCertDocument {
   notarisationMetadata: notarise.NotarisationMetadata;
 }
 
-export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument & PDTHealthCertV2 & notarise.Notarise;
+export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument &
+  PDTHealthCertV2 &
+  notarise.Notarise;
 
 // TODO: Add NotarisedVaccinationHealthCertUnwrappedV2 type and deprecate the above manually defined types
 // export type NotarisedVaccinationHealthCertUnwrappedV2 = v2.OpenAttestationDocument & VaccinationHealthCertV2 & notarise.Notarise;

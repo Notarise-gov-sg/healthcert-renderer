@@ -2,8 +2,16 @@ import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 
-const { AddressType, FhirBundleType, Gender, FhirBundleResourceType, Status, System, Use, EntryResourceType } =
-  healthcert;
+const {
+  AddressType,
+  FhirBundleType,
+  Gender,
+  FhirBundleResourceType,
+  Status,
+  System,
+  Use,
+  EntryResourceType,
+} = healthcert;
 
 export const healthCertSample: NotarisedHealthCert = {
   id: "TEST001",
@@ -72,7 +80,8 @@ export const healthCertSample: NotarisedHealthCert = {
             {
               system: "http://loinc.org",
               code: "97097-0",
-              display: "SARS-CoV-2 (COVID-19) Ag [Presence] in Upper respiratory specimen by Rapid immunoassay",
+              display:
+                "SARS-CoV-2 (COVID-19) Ag [Presence] in Upper respiratory specimen by Rapid immunoassay",
             },
           ],
         },

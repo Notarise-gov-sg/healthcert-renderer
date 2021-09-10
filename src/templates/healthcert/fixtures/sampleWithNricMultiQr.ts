@@ -2,8 +2,16 @@ import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 
-const { AddressType, FhirBundleType, Gender, FhirBundleResourceType, Status, System, Use, EntryResourceType } =
-  healthcert;
+const {
+  AddressType,
+  FhirBundleType,
+  Gender,
+  FhirBundleResourceType,
+  Status,
+  System,
+  Use,
+  EntryResourceType,
+} = healthcert;
 
 export const healthCertMultiQrSample: NotarisedHealthCert = {
   id: "TEST001",
@@ -72,7 +80,8 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
             {
               system: "http://loinc.org",
               code: "94531-1",
-              display: "Reverse transcription polymerase chain reaction (rRT-PCR) test",
+              display:
+                "Reverse transcription polymerase chain reaction (rRT-PCR) test",
             },
           ],
         },

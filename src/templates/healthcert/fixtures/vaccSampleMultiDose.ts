@@ -3,7 +3,8 @@ import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 import mohHeader from "./moh-header.base64.txt";
 
-const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } = healthcert;
+const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } =
+  healthcert;
 
 export const vaccinationCertSample: NotarisedHealthCert = {
   id: "3749314a-0f99-432d-9b9e-4d9446bff38c",
@@ -71,7 +72,8 @@ export const vaccinationCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "1234567890123456",
-              display: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+              display:
+                "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
             },
           ],
         },
@@ -86,7 +88,8 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI000]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI000]",
             },
           },
         ],
@@ -99,7 +102,8 @@ export const vaccinationCertSample: NotarisedHealthCert = {
             {
               system: "http://standards.ihis.com.sg",
               code: "1234567890123456",
-              display: "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
+              display:
+                "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection",
             },
           ],
         },
@@ -114,7 +118,8 @@ export const vaccinationCertSample: NotarisedHealthCert = {
         performer: [
           {
             actor: {
-              display: "Designated vaccinator by MOH-approved vaccination site [HCI111]",
+              display:
+                "Designated vaccinator by MOH-approved vaccination site [HCI111]",
             },
           },
         ],

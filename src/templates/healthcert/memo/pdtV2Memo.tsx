@@ -38,15 +38,18 @@ const MemoResultSection: React.FC<{
     <ResultSection>
       <p>To whom it may concern:</p>
       <p>
-        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay} for COVID-19 using a{" "}
-        {memoInfo.specimenSwabTypeDisplay} on {memoInfo.specimenCollectionDateTime}, by {memoInfo.organizationLhpName}{" "}
-        and has tested <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
+        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay}{" "}
+        for COVID-19 using a {memoInfo.specimenSwabTypeDisplay} on{" "}
+        {memoInfo.specimenCollectionDateTime}, by {memoInfo.organizationLhpName}{" "}
+        and has tested{" "}
+        <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
         {memoInfo.organizationAlName &&
           ` This test result was reported by ${memoInfo.organizationAlName} on ${memoInfo.observationEffectiveDateTime}.`}
       </p>
       {!multiQr && (
         <p>
-          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
+          Travellers should note that they are subject to the country or
+          region&apos;s requirements prior to travel.
         </p>
       )}
       <p>Thank you.</p>
@@ -54,7 +57,10 @@ const MemoResultSection: React.FC<{
   );
 };
 
-const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({ practitionerName, practitionerMcr }) => {
+const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({
+  practitionerName,
+  practitionerMcr,
+}) => {
   return (
     <Doctor>
       <p>
@@ -66,7 +72,10 @@ const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({ practitionerName, pract
   );
 };
 
-const MultiQrMemoDoctorSection: React.FC<MemoInfo> = ({ practitionerName, practitionerMcr }) => {
+const MultiQrMemoDoctorSection: React.FC<MemoInfo> = ({
+  practitionerName,
+  practitionerMcr,
+}) => {
   return (
     <Row>
       <SecondCol>
@@ -83,7 +92,9 @@ export const MemoSection: React.FC<{
   memoInfo: MemoInfo;
   multiQr?: boolean;
 }> = ({ memoInfo, multiQr = false }) => {
-  const memoDoctorSection = multiQr ? MultiQrMemoDoctorSection(memoInfo) : SingleQrMemoDoctorSection(memoInfo);
+  const memoDoctorSection = multiQr
+    ? MultiQrMemoDoctorSection(memoInfo)
+    : SingleQrMemoDoctorSection(memoInfo);
   const memoResultSection = MemoResultSection({ memoInfo, multiQr });
   return (
     <StyledMemoSection>
@@ -109,7 +120,9 @@ export const MemoSection: React.FC<{
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{getNationality(memoInfo.patientNationalityCode)}</SecondCol>
+          <SecondCol>
+            {getNationality(memoInfo.patientNationalityCode)}
+          </SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>

@@ -9,42 +9,72 @@ import "jest-canvas-mock";
 
 describe("customTemplate", () => {
   it("should render with title provided by the document", () => {
-    const { getByTestId } = render(<HealthCertTemplate document={healthCertSample} handleObfuscation={() => void 0} />);
+    const { getByTestId } = render(
+      <HealthCertTemplate
+        document={healthCertSample}
+        handleObfuscation={() => void 0}
+      />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
     const title = getByTestId("memo-title");
     expect(title.textContent).toContain("MEMO ON");
-    expect(title.textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
+    expect(title.textContent).toContain(
+      "REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT"
+    );
   });
   it("should render with title provided by the multi result document", () => {
     const { getAllByTestId } = render(
-      <HealthCertTemplate document={multiMemoSample} handleObfuscation={() => void 0} />
+      <HealthCertTemplate
+        document={multiMemoSample}
+        handleObfuscation={() => void 0}
+      />
     );
     // eslint-disable-next-line jest/no-truthy-falsy
     const titles = getAllByTestId("memo-title");
     expect(titles).toHaveLength(2);
     titles.forEach((title) => expect(title.textContent).toContain("MEMO ON"));
-    expect(titles[0].textContent).toContain("REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT");
-    expect(titles[1].textContent).toContain("SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT");
+    expect(titles[0].textContent).toContain(
+      "REVERSE TRANSCRIPTION POLYMERASE CHAIN REACTION (RRT-PCR) TEST RESULT"
+    );
+    expect(titles[1].textContent).toContain(
+      "SARS-COV-2 (COVID-19) AB [INTERPRETATION] IN SERUM OR PLASMA RESULT"
+    );
   });
   it("should render testresult as 'Negative' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
-    const observationEntry = certCopy.fhirBundle.entry.find((ent) => ent.valueCodeableConcept);
-    const coding = observationEntry?.valueCodeableConcept?.coding[0] as pdtHealthcert.Coding;
+    const observationEntry = certCopy.fhirBundle.entry.find(
+      (ent) => ent.valueCodeableConcept
+    );
+    const coding = observationEntry?.valueCodeableConcept
+      ?.coding[0] as pdtHealthcert.Coding;
     coding.code = "260385009";
     coding.display = "Not Detected";
 
-    const { queryByText } = render(<HealthCertTemplate document={certCopy} handleObfuscation={() => void 0} />);
+    const { queryByText } = render(
+      <HealthCertTemplate
+        document={certCopy}
+        handleObfuscation={() => void 0}
+      />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
     expect(queryByText("Negative")).toBeTruthy();
   });
   it("should render testresult as 'Positive' based on the valueCodeableConcept code", () => {
     const certCopy = cloneDeep(healthCertSample);
-    const observationEntry = certCopy.fhirBundle.entry.find((ent) => ent.valueCodeableConcept);
-    const coding = observationEntry?.valueCodeableConcept?.coding[0] as pdtHealthcert.Coding;
+    const observationEntry = certCopy.fhirBundle.entry.find(
+      (ent) => ent.valueCodeableConcept
+    );
+    const coding = observationEntry?.valueCodeableConcept
+      ?.coding[0] as pdtHealthcert.Coding;
     coding.code = "10828004";
     coding.display = "Not Detected";
 
-    const { queryByText } = render(<HealthCertTemplate document={certCopy} handleObfuscation={() => void 0} />);
+    const { queryByText } = render(
+      <HealthCertTemplate
+        document={certCopy}
+        handleObfuscation={() => void 0}
+      />
+    );
     // eslint-disable-next-line jest/no-truthy-falsy
     expect(queryByText("Positive")).toBeTruthy();
   });

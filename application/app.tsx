@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { FrameActions, FrameConnector, HostActionsHandler } from "@govtechsg/decentralized-renderer-react-components";
+import {
+  FrameActions,
+  FrameConnector,
+  HostActionsHandler,
+} from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -49,7 +53,8 @@ const DocumentsContainer = styled.div`
     background-color: #ebf8ff;
     border-top: 4px solid #4299e2;
     margin-bottom: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   .document.active {
     border-top-color: #38b2ac;
@@ -57,10 +62,14 @@ const DocumentsContainer = styled.div`
   }
 `;
 
-export const App: React.FunctionComponent<AppProps> = ({ documents }): React.ReactElement => {
+export const App: React.FunctionComponent<AppProps> = ({
+  documents,
+}): React.ReactElement => {
   const [toFrame, setToFrame] = useState<HostActionsHandler>();
   const [height, setHeight] = useState(50);
-  const [templates, setTemplates] = useState<{ id: string; label: string }[]>([]);
+  const [templates, setTemplates] = useState<{ id: string; label: string }[]>(
+    []
+  );
   const [document, setDocument] = useState<{ name: string; document: any }>();
   const [selectedTemplate, setSelectedTemplate] = useState<string>("");
   const fn = useCallback((toFrame: HostActionsHandler) => {
@@ -134,10 +143,18 @@ export const App: React.FunctionComponent<AppProps> = ({ documents }): React.Rea
           >
             Documents
           </div>
-          {documents.length === 0 && <div>Please configure the application and provide at least one document</div>}
+          {documents.length === 0 && (
+            <div>
+              Please configure the application and provide at least one document
+            </div>
+          )}
           {documents.map((d, index) => {
             return (
-              <div key={index} className={`document ${document === d ? "active" : ""}`} onClick={() => setDocument(d)}>
+              <div
+                key={index}
+                className={`document ${document === d ? "active" : ""}`}
+                onClick={() => setDocument(d)}
+              >
                 {d.name}
               </div>
             );
@@ -206,7 +223,9 @@ export const App: React.FunctionComponent<AppProps> = ({ documents }): React.Rea
               {templates.map((template) => (
                 <li
                   key={template.id}
-                  className={`tab ${selectedTemplate === template.id ? "selected" : ""}`}
+                  className={`tab ${
+                    selectedTemplate === template.id ? "selected" : ""
+                  }`}
                   onClick={() => setSelectedTemplate(template.id)}
                 >
                   <a href="#">{template.label}</a>

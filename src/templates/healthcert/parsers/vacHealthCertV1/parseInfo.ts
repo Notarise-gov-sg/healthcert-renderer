@@ -10,8 +10,12 @@ export const simplifyImmunizationObjectWithLocation: (
     vaccineName: immunization.vaccineCode.coding[0].display,
     vaccineLot: immunization.lotNumber,
     vaccinationDate: isoToDateOnlyString(immunization.occurrenceDateTime),
-    vaccinationLocation: locations.find((l) => l.fullUrl === immunization.location.reference)?.name || "",
-    vaccinationCountry: locations.find((l) => l.fullUrl === immunization.location.reference)?.address.country || "",
+    vaccinationLocation:
+      locations.find((l) => l.fullUrl === immunization.location.reference)
+        ?.name || "",
+    vaccinationCountry:
+      locations.find((l) => l.fullUrl === immunization.location.reference)
+        ?.address.country || "",
     performer: immunization.performer?.[0].actor.display || "",
   });
 };

@@ -6,22 +6,22 @@ module.exports = ({ config }) => {
   config.module.rules[0].use[0].options.presets = [
     require.resolve("@babel/preset-env", {
       targets: {
-        node: "current"
-      }
+        node: "current",
+      },
     }),
     require.resolve("@babel/preset-typescript"),
     require.resolve("@babel/preset-react"),
-    require.resolve("@emotion/babel-preset-css-prop")
+    require.resolve("@emotion/babel-preset-css-prop"),
   ];
 
   config.module.rules.push(
     {
       test: /\.(ts|tsx)$/,
-      use: [require.resolve("babel-loader")]
+      use: [require.resolve("babel-loader")],
     },
     {
       test: /\.txt$/i,
-      use: "raw-loader"
+      use: "raw-loader",
     }
   );
   config.resolve.extensions.push(".ts", ".tsx");

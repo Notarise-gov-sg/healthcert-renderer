@@ -29,7 +29,9 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
   const validator = fhir.validate(resource, { errorOnUnexpected: true });
   if (!validator.valid) {
     throw new Error(
-      `Validation against FHIR base spec has failed for ${resource.resourceType}: ${JSON.stringify(validator.messages)}`
+      `Validation against FHIR base spec has failed for ${
+        resource.resourceType
+      }: ${JSON.stringify(validator.messages)}`
     );
   }
 
@@ -42,8 +44,9 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
         fullName: resource.name?.[0].text,
         gender: resource.gender,
         birthDate: resource.birthDate,
-        nationality: resource.extension?.[0].extension?.find((e) => e.url === "code")?.valueCodeableConcept
-          ?.coding?.[0],
+        nationality: resource.extension?.[0].extension?.find(
+          (e) => e.url === "code"
+        )?.valueCodeableConcept?.coding?.[0],
         passportNumber: resource.identifier?.find((i) => i.id === "PPN")?.value,
         nricFin: resource.identifier?.find((i) => i.id === "NRIC-FIN")?.value,
       } as Patient;
@@ -58,11 +61,15 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
     case "Observation":
       return {
         specimenResourceUuid: resource.specimen?.reference,
-        practitionerResourceUuid: resource.performer?.find((p) => p.type === "Practitioner")?.reference,
-        organizationLhpResourceUuid: resource.performer?.find((p) => p.type === "Organization" && p.id === "LHP")
-          ?.reference,
-        organizationAlResourceUuid: resource.performer?.find((p) => p.type === "Organization" && p.id === "AL")
-          ?.reference,
+        practitionerResourceUuid: resource.performer?.find(
+          (p) => p.type === "Practitioner"
+        )?.reference,
+        organizationLhpResourceUuid: resource.performer?.find(
+          (p) => p.type === "Organization" && p.id === "LHP"
+        )?.reference,
+        organizationAlResourceUuid: resource.performer?.find(
+          (p) => p.type === "Organization" && p.id === "AL"
+        )?.reference,
         acsn: resource.identifier?.find((i) => i.id === "ACSN")?.value,
         targetDisease: resource.category?.[0].coding?.[0],
         testType: resource.code?.coding?.[0],
@@ -74,16 +81,20 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
     case "Practitioner":
       return {
         fullName: resource.name?.[0].text,
-        mcr: resource.qualification?.[0].identifier?.find((i) => i.id === "MCR")?.value,
-        organizationMohResourceUuid: resource.qualification?.[0].issuer?.reference,
+        mcr: resource.qualification?.[0].identifier?.find((i) => i.id === "MCR")
+          ?.value,
+        organizationMohResourceUuid:
+          resource.qualification?.[0].issuer?.reference,
       } as Practitioner;
 
     case "Organization":
       return {
         fullName: resource.name,
         type: resource.type?.[0].coding?.[0],
-        url: resource.contact?.[0].telecom?.find((t) => t.system === "url")?.value,
-        phone: resource.contact?.[0].telecom?.find((t) => t.system === "phone")?.value,
+        url: resource.contact?.[0].telecom?.find((t) => t.system === "url")
+          ?.value,
+        phone: resource.contact?.[0].telecom?.find((t) => t.system === "phone")
+          ?.value,
         address: resource.contact?.[0].address,
       } as Organization;
 
@@ -108,7 +119,9 @@ export const parse = (fhirBundle: R4.IBundle): Bundle => {
   parsers(fhirBundle);
 
   // 1. Patient resource
-  const fhirPatient = fhirBundle.entry?.find((entry) => entry.resource?.resourceType === "Patient")?.resource;
+  const fhirPatient = fhirBundle.entry?.find(
+    (entry) => entry.resource?.resourceType === "Patient"
+  )?.resource;
   const patient = parsers(fhirPatient) as Patient;
 
   // 2. Observation resource(s)
@@ -142,7 +155,9 @@ export const parse = (fhirBundle: R4.IBundle): Bundle => {
       const al = parsers(fhirOrganizationAl) as Organization;
 
       // 2e. Device resource [Only for ART]
-      const fhirDevice = fhirBundle.entry?.find((entry) => entry.fullUrl === specimen.deviceResourceUuid)?.resource;
+      const fhirDevice = fhirBundle.entry?.find(
+        (entry) => entry.fullUrl === specimen.deviceResourceUuid
+      )?.resource;
       const device = parsers(fhirDevice) as Device;
 
       return {
@@ -156,7 +171,9 @@ export const parse = (fhirBundle: R4.IBundle): Bundle => {
 
   // 3. Organization (MOH) resource
   const fhirOrganizationMoh = fhirBundle.entry?.find(
-    (entry) => entry.fullUrl === observations?.[0].practitioner.organizationMohResourceUuid
+    (entry) =>
+      entry.fullUrl ===
+      observations?.[0].practitioner.organizationMohResourceUuid
   )?.resource;
   const moh = parsers(fhirOrganizationMoh) as Organization;
 
