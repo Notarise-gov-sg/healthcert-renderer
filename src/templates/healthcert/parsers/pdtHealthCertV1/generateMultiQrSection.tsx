@@ -10,12 +10,14 @@ import {
   QrRow,
   QrCol,
   ResultSection,
-  TravellerInfoSection
+  TravellerInfoSection,
 } from "../../styled-components";
 
 export const generateMultiQrSection = (document: NotarisedHealthCert): JSX.Element => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as pdtHealthCertV1.Patient;
-  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
+  const patient = document.fhirBundle.entry.find(
+    (entry) => entry.resourceType === "Patient"
+  ) as pdtHealthCertV1.Patient;
+  const observations = document.fhirBundle.entry.filter((entry) => entry.resourceType === "Observation");
   const { swabType, swabCollectionDate } = extractInfo(observations[0], document);
   const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const observationTestTypeDisplay = observations[0]?.code?.coding?.[0]?.display || "";

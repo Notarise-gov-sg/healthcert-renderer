@@ -7,19 +7,21 @@ import { NotarisedHealthCert, NotarisedPDTHealthCertUnwrappedV2 } from "./types"
 
 import {
   generateMemoSections as generateMemoSectionsV1,
-  generateMultiQrSection as generateMultiQrSectionV1
+  generateMultiQrSection as generateMultiQrSectionV1,
 } from "./parsers/pdtHealthCertV1";
 import {
   generateMemoSections as generateMemoSectionsV2,
-  generateMultiQrSection as generateMultiQrSectionV2
+  generateMultiQrSection as generateMultiQrSectionV2,
 } from "./parsers/pdtHealthCertV2";
 
 const isV2 = (i: any): i is NotarisedPDTHealthCertUnwrappedV2 => i.version === "pdt-healthcert-v2.0";
 
 type HC = NotarisedHealthCert | NotarisedPDTHealthCertUnwrappedV2;
-export const HealthCertTemplate: FunctionComponent<TemplateProps<HC> & {
-  className?: string;
-}> = ({ document, className = "" }) => {
+export const HealthCertTemplate: FunctionComponent<
+  TemplateProps<HC> & {
+    className?: string;
+  }
+> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
   const signedEuHealthCerts = (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
   const multiQr = signedEuHealthCerts.length > 0 ? true : false;

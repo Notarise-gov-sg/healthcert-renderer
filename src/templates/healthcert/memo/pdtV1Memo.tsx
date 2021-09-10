@@ -10,7 +10,7 @@ import {
   TestResult,
   Doctor,
   Bold,
-  StyledMemoSection
+  StyledMemoSection,
 } from "../styled-components";
 import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";

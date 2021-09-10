@@ -10,7 +10,7 @@ import {
   TestResult,
   Doctor,
   Bold,
-  StyledMemoSection
+  StyledMemoSection,
 } from "../styled-components";
 
 interface MemoInfo {

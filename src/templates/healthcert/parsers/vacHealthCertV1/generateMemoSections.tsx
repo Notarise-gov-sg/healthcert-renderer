@@ -9,13 +9,13 @@ const isNric = (value: pdtHealthcert.Identifier): boolean =>
   typeof value.type !== "string" && value.type.text === "NRIC";
 
 export const generateMemoSections = (document: NotarisedHealthCert, multiQr = false): JSX.Element[] => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as Patient;
-  const locations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Location") as Location[];
+  const patient = document.fhirBundle.entry.find((entry) => entry.resourceType === "Patient") as Patient;
+  const locations = document.fhirBundle.entry.filter((entry) => entry.resourceType === "Location") as Location[];
   const immunizations = document.fhirBundle.entry.filter(
-    entry => entry.resourceType === "Immunization"
+    (entry) => entry.resourceType === "Immunization"
   ) as Immunization[];
   const recommendation = document.fhirBundle.entry.find(
-    entry => entry.resourceType === "ImmunizationRecommendation"
+    (entry) => entry.resourceType === "ImmunizationRecommendation"
   ) as ImmunizationRecommendation;
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
@@ -24,7 +24,7 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
   const patientNric = patient?.identifier?.find(isNric)?.value || "";
   const patientNationalityCode =
     patient?.extension?.find(
-      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+      (extension) => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code.text || "";
   const patientBirthDate = isoToDateOnlyString(patient?.birthDate || "");
   const effectiveDate = isoToDateOnlyString(recommendation?.recommendation[0].dateCriterion[0].value);
@@ -40,7 +40,7 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
     patientNationalityCode,
     patientBirthDate,
     passportNumber,
-    onlineUrl
+    onlineUrl,
   };
 
   memoSections.push(<MemoSection vaccinationMemoInfo={vaccinationMemoInfo} multiQr={multiQr} />);

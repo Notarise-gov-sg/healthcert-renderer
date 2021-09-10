@@ -14,7 +14,7 @@ import {
   TravellerInfoSection,
   Bold,
   QrCodeContainerWithBorder,
-  QrRowCenter
+  QrRowCenter,
 } from "../styled-components";
 import { getNationality } from "../../../util/nationality";
 import countries from "i18n-iso-countries";
@@ -111,7 +111,7 @@ export const MemoSection: React.FC<{
           <SecondCol>{vaccinationMemoInfo.patientBirthDate}</SecondCol>
         </Row>
       </PatientDetails>
-      {groupedVaccineCode.map(vaccineCode =>
+      {groupedVaccineCode.map((vaccineCode) =>
         groupedImmunizations[vaccineCode].map((immunization, i) => (
           <ImmunizationDetails key={i}>
             <Row>

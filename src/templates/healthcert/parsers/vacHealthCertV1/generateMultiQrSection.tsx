@@ -37,11 +37,11 @@ const generateOfflineQrSection = (document: NotarisedHealthCert): JSX.Element[] 
 
   return groupedEuHealthCertKeys.map((vaccineCode, i) => {
     const immunization = document.fhirBundle.entry.find(
-      entry => entry.resourceType === "Immunization" && entry.vaccineCode.coding[0]?.code === vaccineCode
+      (entry) => entry.resourceType === "Immunization" && entry.vaccineCode.coding[0]?.code === vaccineCode
     ) as Immunization;
     const groupedOfflineQr = {
       manufacturer: immunization?.vaccineCode?.coding[0]?.display || "",
-      signedEuHealthCerts: groupedEuHealthCerts[vaccineCode]
+      signedEuHealthCerts: groupedEuHealthCerts[vaccineCode],
     };
     return <OfflineQrGroup key={i} groupedOfflineQr={groupedOfflineQr} />;
   });

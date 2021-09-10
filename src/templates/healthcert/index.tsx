@@ -5,14 +5,14 @@ export const templates = [
   {
     id: "main",
     label: "Memo",
-    template: HealthCertTemplate
-  }
+    template: HealthCertTemplate,
+  },
 ];
 
 export const vaccinationCertTemplates = [
   {
     id: "main",
     label: "Memo",
-    template: VaccinationCertTemplate
-  }
+    template: VaccinationCertTemplate,
+  },
 ];

@@ -24,7 +24,7 @@ export const generateMemoSections = (document: NotarisedPDTHealthCertUnwrappedV2
       organizationLhpName: organization.lhp.fullName,
       organizationAlName: organization.al?.fullName,
       practitionerName: practitioner.fullName,
-      practitionerMcr: practitioner.mcr
+      practitionerMcr: practitioner.mcr,
     };
 
     return <MemoSection key={i} memoInfo={memoInfo} multiQr={multiQr} />;

@@ -2731,7 +2731,7 @@ export enum TriggerDefinitionType {
   DataModified = "data-modified",
   DataRemoved = "data-removed",
   NamedEvent = "named-event",
-  Periodic = "periodic"
+  Periodic = "periodic",
 }
 
 /**
@@ -2745,7 +2745,7 @@ export enum RelatedArtifactType {
   Documentation = "documentation",
   Justification = "justification",
   Predecessor = "predecessor",
-  Successor = "successor"
+  Successor = "successor",
 }
 
 /**
@@ -2758,7 +2758,7 @@ export enum HumanNameUse {
   Official = "official",
   Old = "old",
   Temp = "temp",
-  Usual = "usual"
+  Usual = "usual",
 }
 
 /**
@@ -2767,7 +2767,7 @@ export enum HumanNameUse {
 export enum Language {
   ApplicationXFhirQuery = "application/x-fhir-query",
   TextCql = "text/cql",
-  TextFhirpath = "text/fhirpath"
+  TextFhirpath = "text/fhirpath",
 }
 
 /**
@@ -2782,7 +2782,7 @@ export enum Unit {
   Min = "min",
   Mo = "mo",
   S = "s",
-  Wk = "wk"
+  Wk = "wk",
 }
 
 export enum When {
@@ -2811,7 +2811,7 @@ export enum When {
   Pcd = "PCD",
   Pcv = "PCV",
   Phs = "PHS",
-  Wake = "WAKE"
+  Wake = "WAKE",
 }
 
 /**
@@ -2823,7 +2823,7 @@ export enum Comparator {
   Comparator = "<=",
   Empty = "<",
   Fluffy = ">",
-  Purple = ">="
+  Purple = ">=",
 }
 
 /**
@@ -2831,7 +2831,7 @@ export enum Comparator {
  */
 export enum Direction {
   Ascending = "ascending",
-  Descending = "descending"
+  Descending = "descending",
 }
 
 /**
@@ -2841,7 +2841,7 @@ export enum ContributorType {
   Author = "author",
   Editor = "editor",
   Endorser = "endorser",
-  Reviewer = "reviewer"
+  Reviewer = "reviewer",
 }
 
 /**
@@ -2855,7 +2855,7 @@ export enum System {
   Pager = "pager",
   Phone = "phone",
   Sms = "sms",
-  Url = "url"
+  Url = "url",
 }
 
 /**
@@ -2866,7 +2866,7 @@ export enum ContactPointUse {
   Mobile = "mobile",
   Old = "old",
   Temp = "temp",
-  Work = "work"
+  Work = "work",
 }
 
 /**
@@ -2877,7 +2877,7 @@ export enum IdentifierUse {
   Old = "old",
   Secondary = "secondary",
   Temp = "temp",
-  Usual = "usual"
+  Usual = "usual",
 }
 
 /**
@@ -2887,7 +2887,7 @@ export enum IdentifierUse {
 export enum AddressType {
   Both = "both",
   Physical = "physical",
-  Postal = "postal"
+  Postal = "postal",
 }
 
 /**
@@ -2898,7 +2898,7 @@ export enum AddressUse {
   Home = "home",
   Old = "old",
   Temp = "temp",
-  Work = "work"
+  Work = "work",
 }
 
 export interface SpecimenCollectionClass {
@@ -3295,7 +3295,7 @@ export enum Gender {
   Female = "female",
   Male = "male",
   Other = "other",
-  Unknown = "unknown"
+  Unknown = "unknown",
 }
 
 export interface SpecimenContainerClass {
@@ -3409,7 +3409,7 @@ export enum DeviceDeviceNameType {
   Other = "other",
   PatientReportedName = "patient-reported-name",
   UdiLabelName = "udi-label-name",
-  UserFriendlyName = "user-friendly-name"
+  UserFriendlyName = "user-friendly-name",
 }
 
 export interface LinkClass {
@@ -3466,7 +3466,7 @@ export enum LinkType {
   Refer = "refer",
   ReplacedBy = "replaced-by",
   Replaces = "replaces",
-  Seealso = "seealso"
+  Seealso = "seealso",
 }
 
 export interface SpecimenProcessingClass {
@@ -3667,7 +3667,7 @@ export enum ResourceListStatus {
   Registered = "registered",
   Unavailable = "unavailable",
   Unknown = "unknown",
-  Unsatisfactory = "unsatisfactory"
+  Unsatisfactory = "unsatisfactory",
 }
 
 export interface NarrativeClass {
@@ -3703,7 +3703,7 @@ export enum NarrativeStatus {
   Additional = "additional",
   Empty = "empty",
   Extensions = "extensions",
-  Generated = "generated"
+  Generated = "generated",
 }
 
 export interface DeviceUdiCarrierClass {
@@ -3786,7 +3786,7 @@ export enum EntryType {
   Manual = "manual",
   Rfid = "rfid",
   SelfReported = "self-reported",
-  Unknown = "unknown"
+  Unknown = "unknown",
 }
 
 export interface DeviceVersionClass {
@@ -3941,7 +3941,7 @@ export enum Method {
   Head = "HEAD",
   Patch = "PATCH",
   Post = "POST",
-  Put = "PUT"
+  Put = "PUT",
 }
 
 export interface BundleSearchClass {
@@ -3992,7 +3992,7 @@ export interface BundleSearchClass {
 export enum Mode {
   Include = "include",
   Match = "match",
-  Outcome = "outcome"
+  Outcome = "outcome",
 }
 
 /**
@@ -4007,15 +4007,15 @@ export enum BundleType {
   Message = "message",
   Searchset = "searchset",
   Transaction = "transaction",
-  TransactionResponse = "transaction-response"
+  TransactionResponse = "transaction-response",
 }
 
 export enum PDTHealthCertV2Type {
   Art = "ART",
   Pcr = "PCR",
-  Ser = "SER"
+  Ser = "SER",
 }
 
 export enum Version {
-  PdtHealthcertV20 = "pdt-healthcert-v2.0"
+  PdtHealthcertV20 = "pdt-healthcert-v2.0",
 }

@@ -10,7 +10,7 @@ const IS_PROD = !IS_DEV;
 
 module.exports = {
   entry: {
-    app: ["./src/index.tsx"]
+    app: ["./src/index.tsx"],
   },
   context: path.resolve(__dirname),
   mode: IS_DEV ? "development" : "production",
@@ -18,7 +18,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[hash:7].js",
-    publicPath: "/"
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -26,28 +26,28 @@ module.exports = {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
-        use: "file-loader"
+        use: "file-loader",
       },
       {
         test: /\.txt$/i,
-        use: "raw-loader"
-      }
-    ]
+        use: "raw-loader",
+      },
+    ],
   },
   plugins: [
     new webpack.EnvironmentPlugin(["NODE_ENV", "NET"]),
     new HtmlWebpackPlugin({
       filename: "index.html",
-      template: `${__dirname}/static/index.html`
+      template: `${__dirname}/static/index.html`,
     }),
     ...(IS_PROD
       ? [new CompressionPlugin({ test: /\.(js|css|html|svg)$/ }), new BrotliPlugin({ test: /\.(js|css|html|svg)$/ })]
-      : [])
+      : []),
   ],
   optimization: {
     splitChunks: {
@@ -55,10 +55,10 @@ module.exports = {
         vendors: {
           test: /\/node_modules\//,
           name: "vendor",
-          chunks: "all"
-        }
-      }
-    }
+          chunks: "all",
+        },
+      },
+    },
   },
 
   // Using cheap-eval-source-map for build times
@@ -74,16 +74,16 @@ module.exports = {
     port: 3000,
     stats: {
       colors: true,
-      progress: true
-    }
+      progress: true,
+    },
   },
 
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
     modules: ["node_modules", path.resolve(__dirname, "src")],
     alias: {
-      "react-dom": "@hot-loader/react-dom"
-    }
+      "react-dom": "@hot-loader/react-dom",
+    },
   },
-  bail: true
+  bail: true,
 };

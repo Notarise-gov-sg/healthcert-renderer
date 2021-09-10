@@ -8,7 +8,7 @@ import {
   QrRow,
   QrCol,
   ResultSection,
-  TravellerInfoSection
+  TravellerInfoSection,
 } from "../../styled-components";
 import fhirHelper from "../../../../models/fhirHelper";
 import { isoToLocaleString } from "../../../../util/datetime";

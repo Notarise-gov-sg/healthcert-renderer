@@ -5,9 +5,11 @@ import { NotarisedHealthCert } from "./types";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 import { generateMemoSections, generateMultiQrSection } from "./parsers/vacHealthCertV1";
 
-export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
-  className?: string;
-}> = ({ document, className = "" }) => {
+export const VaccinationCertTemplate: FunctionComponent<
+  TemplateProps<NotarisedHealthCert> & {
+    className?: string;
+  }
+> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
   const signedEuHealthCerts = (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
   const multiQr = signedEuHealthCerts.length > 0 ? true : false;
