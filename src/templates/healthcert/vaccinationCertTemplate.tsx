@@ -3,13 +3,19 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { NotarisedHealthCert } from "./types";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
-import { generateMemoSections, generateMultiQrSection } from "./parsers/vacHealthCertV1";
+import {
+  generateMemoSections,
+  generateMultiQrSection,
+} from "./parsers/vacHealthCertV1";
 
-export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedHealthCert> & {
-  className?: string;
-}> = ({ document, className = "" }) => {
+export const VaccinationCertTemplate: FunctionComponent<
+  TemplateProps<NotarisedHealthCert> & {
+    className?: string;
+  }
+> = ({ document, className = "" }) => {
   const url = (document.notarisationMetadata as any)?.url;
-  const signedEuHealthCerts = (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
+  const signedEuHealthCerts =
+    (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
   const multiQr = signedEuHealthCerts.length > 0 ? true : false;
   const memoSections = generateMemoSections(document, multiQr);
 
@@ -25,7 +31,9 @@ export const VaccinationCertTemplate: FunctionComponent<TemplateProps<NotarisedH
           </QrCodeContainer>
         )}
       </Page>
-      {multiQr && <Page className={className}>{generateMultiQrSection(document)}</Page>}
+      {multiQr && (
+        <Page className={className}>{generateMultiQrSection(document)}</Page>
+      )}
     </>
   );
 };

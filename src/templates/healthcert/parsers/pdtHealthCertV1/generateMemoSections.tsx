@@ -5,18 +5,29 @@ import { MemoSection } from "../../memo/pdtV1Memo";
 import { extractInfo } from "./parseInfo";
 
 const SG_LOCALE = "en-sg";
-const isNric = (value: any): value is pdtHealthcert.Identifier => value?.type?.text === "NRIC";
+const isNric = (value: any): value is pdtHealthcert.Identifier =>
+  value?.type?.text === "NRIC";
 
-export const generateMemoSections = (document: NotarisedHealthCert, multiQr = false): JSX.Element[] => {
-  const patient = document.fhirBundle.entry.find(entry => entry.resourceType === "Patient") as pdtHealthcert.Patient;
-  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
+export const generateMemoSections = (
+  document: NotarisedHealthCert,
+  multiQr = false
+): JSX.Element[] => {
+  const patient = document.fhirBundle.entry.find(
+    (entry) => entry.resourceType === "Patient"
+  ) as pdtHealthcert.Patient;
+  const observations = document.fhirBundle.entry.filter(
+    (entry) => entry.resourceType === "Observation"
+  );
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
-  const patientName = typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
+  const patientName =
+    typeof patient?.name?.[0] === "object" ? patient?.name?.[0].text : "";
   const patientNricIdentifier = patient?.identifier?.find(isNric);
   const patientNationalityCode =
     patient?.extension?.find(
-      extension => extension.url === "http://hl7.org/fhir/StructureDefinition/patient-nationality"
+      (extension) =>
+        extension.url ===
+        "http://hl7.org/fhir/StructureDefinition/patient-nationality"
     )?.code?.text || "";
   let birthdate = patient?.birthDate;
   if (birthdate) {
@@ -28,7 +39,7 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
       timeZone: "UTC",
       month: "long",
       day: "numeric",
-      year: "numeric"
+      year: "numeric",
     });
   }
 
@@ -46,7 +57,7 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
       performerName,
       performerMcr,
       observationDate,
-      testResult
+      testResult,
     } = extractInfo(observation, document);
 
     const memoInfo = {
@@ -65,9 +76,11 @@ export const generateMemoSections = (document: NotarisedHealthCert, multiQr = fa
       patient,
       testType,
       testResult,
-      birthdate
+      birthdate,
     };
-    memoSections.push(<MemoSection key={i} memoInfo={memoInfo} multiQr={multiQr} />);
+    memoSections.push(
+      <MemoSection key={i} memoInfo={memoInfo} multiQr={multiQr} />
+    );
   }
 
   return memoSections;
