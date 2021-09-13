@@ -14,7 +14,7 @@ export const isoToLocaleString = (iso = ""): string =>
     day: "numeric",
     year: "numeric",
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   });
 
 /**
@@ -34,5 +34,5 @@ export const isoToDateOnlyString = (iso = ""): string =>
     timeZone: "UTC",
     month: "long",
     day: "numeric",
-    year: "numeric"
+    year: "numeric",
   });
