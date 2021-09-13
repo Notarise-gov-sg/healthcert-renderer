@@ -10,7 +10,7 @@ export const mediaQueries: Record<string, string> = {
   lg: `@media (min-width: ${1024}px)`,
   xl: `@media (min-width: ${1280}px)`,
   "2xl": `@media (min-width: ${1536}px)`,
-  print: `@media print`,
+  print: `@media print`
 };
 
 export const Background = styled.div`
@@ -178,14 +178,14 @@ export const QrRow = styled.div`
 
 export const QrCol = styled.div<{ rightAlign?: boolean; info?: boolean }>`
   margin: 10px;
-  flex-grow: ${(props) => (props.info ? 1 : 0)};
+  flex-grow: ${props => (props.info ? 1 : 0)};
 
   ${mediaQueries["md"]} {
-    order: ${(props) => (props.rightAlign ? 1 : 0)};
+    order: ${props => (props.rightAlign ? 1 : 0)};
   }
 
   ${mediaQueries["print"]} {
-    order: ${(props) => (props.rightAlign ? 1 : 0)};
+    order: ${props => (props.rightAlign ? 1 : 0)};
   }
 `;
 

@@ -3,9 +3,7 @@ import { HealthCertDocument } from "../../types";
 import { MemoInfo } from "../../memo/pdtV1Memo";
 
 const isLegacy = (document: HealthCertDocument): boolean => {
-  const observations = document.fhirBundle.entry.filter(
-    (entry) => entry.resourceType === "Observation"
-  );
+  const observations = document.fhirBundle.entry.filter(entry => entry.resourceType === "Observation");
   return observations.length === 1;
 };
 
@@ -34,7 +32,7 @@ export const getDateTime = (dateString: string | undefined): string => {
         day: "numeric",
         year: "numeric",
         hour: "numeric",
-        minute: "numeric",
+        minute: "numeric"
       })
     : "";
 };
@@ -43,7 +41,7 @@ export const getTestResult = (observation: healthcert.Patient): string => {
   let testResult = observation?.valueCodeableConcept?.coding[0]?.display;
   const codesDict: Record<string, string> = {
     "260385009": "Negative",
-    "10828004": "Positive",
+    "10828004": "Positive"
   };
   const code = observation?.valueCodeableConcept?.coding[0]?.code;
   if (code && code in codesDict) {
@@ -55,24 +53,18 @@ export const getTestResult = (observation: healthcert.Patient): string => {
 const extractSpecimenProvierLabFromLegacyCert = (
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
-  const specimen = document.fhirBundle.entry.find(
-    (entry) => entry.resourceType === "Specimen"
-  );
+  const specimen = document.fhirBundle.entry.find(entry => entry.resourceType === "Specimen");
   const provider = document.fhirBundle.entry.find(
-    (entry) =>
-      entry.resourceType === "Organization" &&
-      entry.type === "Licensed Healthcare Provider"
+    entry => entry.resourceType === "Organization" && entry.type === "Licensed Healthcare Provider"
   );
   const lab = document.fhirBundle.entry.find(
-    (entry) =>
-      entry.resourceType === "Organization" &&
-      entry.type === "Accredited Laboratory"
+    entry => entry.resourceType === "Organization" && entry.type === "Accredited Laboratory"
   );
 
   return {
     specimen,
     provider,
-    lab,
+    lab
   };
 };
 
@@ -80,34 +72,31 @@ const extractSpecimenProvierLabFromCert = (
   observation: healthcert.Patient,
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   const specimenReference = observation?.specimen?.reference;
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
-  const organisationReferences = observation?.performerReference?.map(
-    (organisation) => organisation?.reference
-  );
+  const organisationReferences = observation?.performerReference?.map(organisation => organisation?.reference);
 
   const specimen = document.fhirBundle.entry.find(
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
-    (entry) =>
-      entry.resourceType === "Specimen" && entry?.fullUrl === specimenReference
+    entry => entry.resourceType === "Specimen" && entry?.fullUrl === specimenReference
   );
   const provider = document.fhirBundle.entry.find(
-    (entry) =>
+    entry =>
       entry.resourceType === "Organization" &&
       entry.type === "Licensed Healthcare Provider" &&
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       organisationReferences.includes(entry?.fullUrl)
   );
   const lab = document.fhirBundle.entry.find(
-    (entry) =>
+    entry =>
       entry.resourceType === "Organization" &&
       entry.type === "Accredited Laboratory" &&
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       organisationReferences.includes(entry?.fullUrl)
   );
@@ -115,24 +104,18 @@ const extractSpecimenProvierLabFromCert = (
   return {
     specimen,
     provider,
-    lab,
+    lab
   };
 };
 
-export const extractInfo = (
-  observation: healthcert.Patient,
-  document: HealthCertDocument
-): ParsedInfo => {
+export const extractInfo = (observation: healthcert.Patient, document: HealthCertDocument): ParsedInfo => {
   const { specimen, provider, lab } = isLegacy(document)
     ? extractSpecimenProvierLabFromLegacyCert(document)
     : extractSpecimenProvierLabFromCert(observation, document);
 
   const testType = observation?.code?.coding?.[0]?.code;
-  const swabType =
-    typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
-  const swabCollectionDate = getDateTime(
-    specimen?.collection?.collectedDateTime
-  );
+  const swabType = typeof specimen?.type === "object" ? specimen?.type.coding?.[0] : undefined;
+  const swabCollectionDate = getDateTime(specimen?.collection?.collectedDateTime);
 
   const performerName = observation?.performer?.name?.[0]?.text;
   const performerMcr = observation?.qualification?.[0]?.identifier;
@@ -150,6 +133,6 @@ export const extractInfo = (
     performerName,
     performerMcr,
     observationDate,
-    testResult,
+    testResult
   };
 };

@@ -11,7 +11,7 @@ const {
   Status,
   System,
   Use,
-  EntryResourceType,
+  EntryResourceType
 } = healthcert;
 
 export const multiMemoSample: NotarisedHealthCert = {
@@ -24,7 +24,7 @@ export const multiMemoSample: NotarisedHealthCert = {
     type: FhirBundleType.Collection,
     entry: [
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:aaaa1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Patient,
@@ -32,33 +32,33 @@ export const multiMemoSample: NotarisedHealthCert = {
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
             code: {
-              text: "SG",
-            },
-          },
+              text: "SG"
+            }
+          }
         ],
         identifier: [
           {
             type: "PPN",
-            value: "E7831177G",
+            value: "E7831177G"
           },
           {
             type: {
-              text: "NRIC",
+              text: "NRIC"
             },
-            value: "S9098989Z",
-          },
+            value: "S9098989Z"
+          }
         ],
         name: [
           {
-            text: "Tan Chen Chen",
-          },
+            text: "Tan Chen Chen"
+          }
         ],
         gender: Gender.Female,
-        birthDate: "1990-01-15",
+        birthDate: "1990-01-15"
       },
       {
         resourceType: EntryResourceType.Specimen,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
         type: {
@@ -66,97 +66,96 @@ export const multiMemoSample: NotarisedHealthCert = {
             {
               system: "http://snomed.info/sct",
               code: "258500001",
-              display: "Nasopharyngeal swab",
-            },
-          ],
+              display: "Nasopharyngeal swab"
+            }
+          ]
         },
         collection: {
-          collectedDateTime: "2020-09-27T06:15:00Z",
-        },
+          collectedDateTime: "2020-09-27T06:15:00Z"
+        }
       },
       {
         resourceType: EntryResourceType.Observation,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:cccc1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
-          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
+          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
         },
         performerReference: [
           {
-            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
+            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d"
           },
           {
-            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
-          },
+            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d"
+          }
         ],
         identifier: [
           {
             value: "123456789",
-            type: "ACSN",
-          },
+            type: "ACSN"
+          }
         ],
         code: {
           coding: [
             {
               system: "http://loinc.org",
               code: "94531-1",
-              display:
-                "Reverse transcription polymerase chain reaction (rRT-PCR) test",
-            },
-          ],
+              display: "Reverse transcription polymerase chain reaction (rRT-PCR) test"
+            }
+          ]
         },
         valueCodeableConcept: {
           coding: [
             {
               system: "http://snomed.info/sct",
               code: "260385009",
-              display: "Negative",
-            },
-          ],
+              display: "Negative"
+            }
+          ]
         },
         effectiveDateTime: "2020-09-28T06:15:00Z",
         status: Status.Final,
         performer: {
           name: [
             {
-              text: "Dr Michael Lim",
-            },
-          ],
+              text: "Dr Michael Lim"
+            }
+          ]
         },
         qualification: [
           {
             identifier: "MCR 123214",
-            issuer: "MOH",
-          },
-        ],
+            issuer: "MOH"
+          }
+        ]
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
-          address: "https://www.macritchieclinic.com.sg",
+          address: "https://www.macritchieclinic.com.sg"
         },
         contact: {
           telecom: [
             {
               system: System.Phone,
-              value: "+6563113111",
-            },
+              value: "+6563113111"
+            }
           ],
           address: {
             type: AddressType.Physical,
             use: Use.Work,
-            text: "MacRitchie Hospital Thomson Road Singapore 123000",
-          },
-        },
+            text: "MacRitchie Hospital Thomson Road Singapore 123000"
+          }
+        }
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
@@ -166,99 +165,98 @@ export const multiMemoSample: NotarisedHealthCert = {
           telecom: [
             {
               system: System.Phone,
-              value: "+6562711188",
-            },
+              value: "+6562711188"
+            }
           ],
           address: {
             type: AddressType.Physical,
             use: Use.Work,
-            text: "2 Thomson Avenue 4 Singapore 098888",
-          },
-        },
+            text: "2 Thomson Avenue 4 Singapore 098888"
+          }
+        }
       },
       {
         resourceType: EntryResourceType.Observation,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:zzzz1321-4af5-424c-a0e1-ed3aab1c349d",
         specimen: {
-          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d",
+          reference: "urn:uuid:bbbb1321-4af5-424c-a0e1-ed3aab1c349d"
         },
         performerReference: [
           {
-            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
+            reference: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d"
           },
           {
-            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
-          },
+            reference: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d"
+          }
         ],
         identifier: [
           {
             value: "123456789",
-            type: "ACSN",
-          },
+            type: "ACSN"
+          }
         ],
         code: {
           coding: [
             {
               system: "http://loinc.org",
               code: "94661-6",
-              display:
-                "SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma",
-            },
-          ],
+              display: "SARS-CoV-2 (COVID-19) Ab [Interpretation] in Serum or Plasma"
+            }
+          ]
         },
         valueCodeableConcept: {
           coding: [
             {
               system: "http://snomed.info/sct",
               code: "260385009",
-              display: "Negative",
-            },
-          ],
+              display: "Negative"
+            }
+          ]
         },
         effectiveDateTime: "2020-09-28T06:15:00Z",
         status: Status.Final,
         performer: {
           name: [
             {
-              text: "Dr Michael Lim",
-            },
-          ],
+              text: "Dr Michael Lim"
+            }
+          ]
         },
         qualification: [
           {
             identifier: "MCR 123214",
-            issuer: "MOH",
-          },
-        ],
+            issuer: "MOH"
+          }
+        ]
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:dddd1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
-          address: "https://www.macritchieclinic.com.sg",
+          address: "https://www.macritchieclinic.com.sg"
         },
         contact: {
           telecom: [
             {
               system: System.Phone,
-              value: "+6563113111",
-            },
+              value: "+6563113111"
+            }
           ],
           address: {
             type: AddressType.Physical,
             use: Use.Work,
-            text: "MacRitchie Hospital Thomson Road Singapore 123000",
-          },
-        },
+            text: "MacRitchie Hospital Thomson Road Singapore 123000"
+          }
+        }
       },
       {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
         fullUrl: "urn:uuid:eeee1321-4af5-424c-a0e1-ed3aab1c349d",
         resourceType: EntryResourceType.Organization,
@@ -268,17 +266,17 @@ export const multiMemoSample: NotarisedHealthCert = {
           telecom: [
             {
               system: System.Phone,
-              value: "+6562711188",
-            },
+              value: "+6562711188"
+            }
           ],
           address: {
             type: AddressType.Physical,
             use: Use.Work,
-            text: "2 Thomson Avenue 4 Singapore 098888",
-          },
-        },
-      },
-    ],
+            text: "2 Thomson Avenue 4 Singapore 098888"
+          }
+        }
+      }
+    ]
   },
   issuers: [
     {
@@ -286,20 +284,21 @@ export const multiMemoSample: NotarisedHealthCert = {
       documentStore: "0x8Fc57204c35fb9317D91285eF52D6b892EC08cD3",
       identityProof: {
         type: v2.IdentityProofType.DNSTxt,
-        location: "example.openattestation.com",
-      },
-    },
+        location: "example.openattestation.com"
+      }
+    }
   ],
   $template: {
     name: "HEALTH_CERT",
     type: v2.TemplateType.EmbeddedRenderer,
-    url: "https://healthcert.renderer.moh.gov.sg/",
+    url: "https://healthcert.renderer.moh.gov.sg/"
   },
   notarisationMetadata: {
     reference: "ABC-123-XYZ",
     notarisedOn: "2020-09-27T06:15:00Z",
     passportNumber: "E7831177G",
-    url: "https://action.openattestation.com/?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fgallery.openattestation.com%2Fstatic%2Fdocuments%2Fhealthcerts-memo-notarised.json%22%2C%22permittedActions%22%3A%5B%22VIEW%22%5D%2C%22redirect%22%3A%22https%3A%2F%2Fdev.opencerts.io%22%7D%7D",
+    url:
+      "https://action.openattestation.com/?q=%7B%22type%22%3A%22DOCUMENT%22%2C%22payload%22%3A%7B%22uri%22%3A%22https%3A%2F%2Fgallery.openattestation.com%2Fstatic%2Fdocuments%2Fhealthcerts-memo-notarised.json%22%2C%22permittedActions%22%3A%5B%22VIEW%22%5D%2C%22redirect%22%3A%22https%3A%2F%2Fdev.opencerts.io%22%7D%7D"
   },
-  logo: "",
+  logo: ""
 };

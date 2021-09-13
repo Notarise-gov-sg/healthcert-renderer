@@ -29,9 +29,7 @@ export interface BundleClass {
    * An entry in a bundle resource - will either contain a resource or information about a
    * resource (transactions and history only).
    */
-  entry?: Array<
-    any[] | boolean | BundleEntryClass | number | number | null | string
-  >;
+  entry?: Array<any[] | boolean | BundleEntryClass | number | number | null | string>;
   /**
    * The logical id of the resource, as used in the URL for the resource. Once assigned, this
    * value never changes.
@@ -41,14 +39,7 @@ export interface BundleClass {
    * A persistent identifier for the bundle that won't change as a bundle is copied from
    * server to server.
    */
-  identifier?:
-    | any[]
-    | boolean
-    | IdentifierClass
-    | number
-    | number
-    | null
-    | string;
+  identifier?: any[] | boolean | IdentifierClass | number | number | null | string;
   /**
    * A reference to a set of rules that were followed when the resource was constructed, and
    * which must be understood when processing the content. Often, this is a reference to an
@@ -62,9 +53,7 @@ export interface BundleClass {
   /**
    * A series of links that provide context to this bundle.
    */
-  link?: Array<
-    any[] | boolean | BundleLinkClass | number | number | null | string
-  >;
+  link?: Array<any[] | boolean | BundleLinkClass | number | number | null | string>;
   /**
    * The metadata about the resource. This is content that is maintained by the
    * infrastructure. Changes to the content might not always be associated with version
@@ -78,14 +67,7 @@ export interface BundleClass {
   /**
    * Digital Signature - base64 encoded. XML-DSig or a JWT.
    */
-  signature?:
-    | any[]
-    | boolean
-    | SignatureClass
-    | number
-    | number
-    | null
-    | string;
+  signature?: any[] | boolean | SignatureClass | number | number | null | string;
   /**
    * The date/time that the bundle was assembled - i.e. when the resources were placed in the
    * bundle.
@@ -117,9 +99,7 @@ export interface BundleResponseClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -147,9 +127,7 @@ export interface BundleResponseClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * An OperationOutcome containing hints and warnings produced as part of processing this
    * entry in a batch or transaction.
@@ -168,9 +146,7 @@ export interface ResourceListClass {
    * An entry in a bundle resource - will either contain a resource or information about a
    * resource (transactions and history only).
    */
-  entry?: Array<
-    any[] | boolean | BundleEntryClass | number | number | null | string
-  >;
+  entry?: Array<any[] | boolean | BundleEntryClass | number | number | null | string>;
   /**
    * The logical id of the resource, as used in the URL for the resource. Once assigned, this
    * value never changes.
@@ -236,14 +212,7 @@ export interface ResourceListClass {
   /**
    * Digital Signature - base64 encoded. XML-DSig or a JWT.
    */
-  signature?:
-    | any[]
-    | boolean
-    | SignatureClass
-    | number
-    | number
-    | null
-    | string;
+  signature?: any[] | boolean | SignatureClass | number | number | null | string;
   /**
    * The date/time that the bundle was assembled - i.e. when the resources were placed in the
    * bundle.
@@ -279,29 +248,18 @@ export interface ResourceListClass {
    * contains them - they cannot be identified independently, and nor can they have their own
    * independent transaction scope.
    */
-  contained?: Array<
-    any[] | boolean | ResourceListClass | number | null | string
-  >;
+  contained?: Array<any[] | boolean | ResourceListClass | number | null | string>;
   /**
    * The reference to the definition for the device.
    */
-  definition?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  definition?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * This represents the manufacturer's name of the device as provided by the device, from a
    * UDI label, or by a person describing the Device.  This typically would be used when a
    * person provides the name(s) or when the device represents one of the names available from
    * DeviceDefinition.
    */
-  deviceName?: Array<
-    any[] | boolean | DeviceDeviceNameClass | number | number | null | string
-  >;
+  deviceName?: Array<any[] | boolean | DeviceDeviceNameClass | number | number | null | string>;
   /**
    * The distinct identification string as required by regulation for a human cell, tissue, or
    * cellular and tissue-based product.
@@ -319,9 +277,7 @@ export interface ResourceListClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The place where the device can be found.
    */
@@ -355,9 +311,7 @@ export interface ResourceListClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Descriptive information, usage information or implantation information that is not
    * captured in an existing element.
@@ -367,9 +321,7 @@ export interface ResourceListClass {
    * To communicate any details or issues about the specimen or during the specimen
    * collection. (for example: broken vial, sent with patient, frozen).
    */
-  note?: Array<
-    any[] | boolean | AnnotationClass | number | number | null | string
-  >;
+  note?: Array<any[] | boolean | AnnotationClass | number | number | null | string>;
   /**
    * An organization that is responsible for the provision and ongoing maintenance of the
    * device.
@@ -394,16 +346,12 @@ export interface ResourceListClass {
    * The actual configuration settings of a device as it actually operates, e.g., regulation
    * status, time properties.
    */
-  property?: Array<
-    any[] | boolean | DevicePropertyClass | number | number | null | string
-  >;
+  property?: Array<any[] | boolean | DevicePropertyClass | number | number | null | string>;
   /**
    * Provides additional safety characteristics about a medical device.  For example devices
    * containing latex.
    */
-  safety?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  safety?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * The serial number assigned by the organization when the device was manufactured.
    */
@@ -412,15 +360,7 @@ export interface ResourceListClass {
    * The capabilities supported on a  device, the standards to which the device conforms for a
    * particular purpose, and used for the communication.
    */
-  specialization?: Array<
-    | any[]
-    | boolean
-    | DeviceSpecializationClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  specialization?: Array<any[] | boolean | DeviceSpecializationClass | number | number | null | string>;
   /**
    * Status of the Device availability.
    *
@@ -432,9 +372,7 @@ export interface ResourceListClass {
   /**
    * Reason for the dtatus of the Device availability.
    */
-  statusReason?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  statusReason?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * A human-readable narrative that contains a summary of the resource and can be used to
    * represent the content of the resource to a human. The narrative need not encode all the
@@ -448,9 +386,7 @@ export interface ResourceListClass {
    * may include multiple udiCarriers as it either may include just the udiCarrier for the
    * jurisdiction it is sold, or for multiple jurisdictions it could have been sold.
    */
-  udiCarrier?: Array<
-    any[] | boolean | DeviceUdiCarrierClass | number | number | null | string
-  >;
+  udiCarrier?: Array<any[] | boolean | DeviceUdiCarrierClass | number | number | null | string>;
   /**
    * A network address on which the device may be contacted directly.
    */
@@ -458,80 +394,43 @@ export interface ResourceListClass {
   /**
    * The actual design of the device or software version running on the device.
    */
-  version?: Array<
-    any[] | boolean | DeviceVersionClass | number | number | null | string
-  >;
+  version?: Array<any[] | boolean | DeviceVersionClass | number | number | null | string>;
   /**
    * A plan, proposal or order that is fulfilled in whole or in part by this event.  For
    * example, a MedicationRequest may require a patient to have laboratory test performed
    * before  it is dispensed.
    */
-  basedOn?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  basedOn?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * Indicates the site on the subject's body where the observation was made (i.e. the target
    * site).
    */
-  bodySite?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  bodySite?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * A code that classifies the general type of observation being made.
    */
-  category?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  category?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * Describes what was observed. Sometimes this is called the observation "name".
    */
-  code?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  code?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Some observations have multiple component observations.  These component observations are
    * expressed as separate code value pairs that share the same attributes.  Examples include
    * systolic and diastolic component observations for blood pressure measurement and multiple
    * component observations for genetics observations.
    */
-  component?: Array<
-    | any[]
-    | boolean
-    | ObservationComponentClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  component?: Array<any[] | boolean | ObservationComponentClass | number | number | null | string>;
   /**
    * Provides a reason why the expected value in the element Observation.value[x] is missing.
    */
-  dataAbsentReason?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  dataAbsentReason?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The target resource that represents a measurement from which this observation value is
    * derived. For example, a calculated anion gap or a fetal measurement based on an
    * ultrasound image.
    */
-  derivedFrom?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  derivedFrom?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * The device used to generate the observation data.
    */
@@ -556,40 +455,19 @@ export interface ResourceListClass {
    * time". This is usually either the time of the procedure or of specimen collection, but
    * very often the source of the date/time is not known, only the date/time itself.
    */
-  effectivePeriod?:
-    | any[]
-    | boolean
-    | PeriodClass
-    | number
-    | number
-    | null
-    | string;
+  effectivePeriod?: any[] | boolean | PeriodClass | number | number | null | string;
   /**
    * The time or time-period the observed value is asserted as being true. For biological
    * subjects - e.g. human patients - this is usually called the "physiologically relevant
    * time". This is usually either the time of the procedure or of specimen collection, but
    * very often the source of the date/time is not known, only the date/time itself.
    */
-  effectiveTiming?:
-    | any[]
-    | boolean
-    | TimingClass
-    | number
-    | number
-    | null
-    | string;
+  effectiveTiming?: any[] | boolean | TimingClass | number | number | null | string;
   /**
    * The healthcare event  (e.g. a patient and healthcare provider interaction) during which
    * this observation is made.
    */
-  encounter?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  encounter?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The actual focus of an observation when it is not the patient of record representing
    * something or someone associated with the patient such as a spouse, parent, fetus, or
@@ -600,22 +478,16 @@ export interface ResourceListClass {
    * trained to change her child's tracheostomy tube. In this example, the child is the
    * patient of record and the mother is the focus.
    */
-  focus?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  focus?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * This observation is a group observation (e.g. a battery, a panel of tests, a set of vital
    * sign measurements) that includes the target as a member of the group.
    */
-  hasMember?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  hasMember?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * A categorical assessment of an observation value.  For example, high, low, normal.
    */
-  interpretation?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  interpretation?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * The date and time this version of the observation was made available to providers,
    * typically after the results have been reviewed and verified.
@@ -624,14 +496,7 @@ export interface ResourceListClass {
   /**
    * Indicates the mechanism used to perform the observation.
    */
-  method?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  method?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * A larger event of which this particular Observation is a component or step.  For
    * example,  an observation as part of a procedure.
@@ -642,23 +507,13 @@ export interface ResourceListClass {
   /**
    * Who was responsible for asserting the observed value as "true".
    */
-  performer?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  performer?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * Guidance on how to interpret the value by comparison to a normal or recommended range.
    * Multiple reference ranges are interpreted as an "OR".   In other words, to represent two
    * distinct target populations, two `referenceRange` elements would be used.
    */
-  referenceRange?: Array<
-    | any[]
-    | boolean
-    | ObservationReferenceRangeClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  referenceRange?: Array<any[] | boolean | ObservationReferenceRangeClass | number | number | null | string>;
   /**
    * The specimen that was used when this observation was made.
    */
@@ -682,14 +537,7 @@ export interface ResourceListClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  valueCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -709,14 +557,7 @@ export interface ResourceListClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  valueQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -731,14 +572,7 @@ export interface ResourceListClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueSampledData?:
-    | any[]
-    | boolean
-    | SampledDataClass
-    | number
-    | number
-    | null
-    | string;
+  valueSampledData?: any[] | boolean | SampledDataClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -773,9 +607,7 @@ export interface ResourceListClass {
    * Work addresses are not typically entered in this property as they are usually role
    * dependent.
    */
-  address?: Array<
-    any[] | boolean | AddressClass | number | number | null | string
-  >;
+  address?: Array<any[] | boolean | AddressClass | number | number | null | string>;
   /**
    * A list of alternate names that the organization is known as, or was known as in the past.
    */
@@ -783,9 +615,7 @@ export interface ResourceListClass {
   /**
    * Technical endpoints providing access to services operated for the organization.
    */
-  endpoint?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  endpoint?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * A name associated with the organization.
    *
@@ -793,9 +623,7 @@ export interface ResourceListClass {
    *
    * The name(s) associated with the practitioner.
    */
-  name?:
-    | Array<any[] | boolean | HumanNameClass | number | number | null | string>
-    | string;
+  name?: Array<any[] | boolean | HumanNameClass | number | number | null | string> | string;
   /**
    * A contact detail for the organization.
    *
@@ -804,9 +632,7 @@ export interface ResourceListClass {
    *
    * A contact detail for the practitioner, e.g. a telephone number or an email address.
    */
-  telecom?: Array<
-    any[] | boolean | ContactPointClass | number | number | null | string
-  >;
+  telecom?: Array<any[] | boolean | ContactPointClass | number | number | null | string>;
   /**
    * The date of birth for the individual.
    *
@@ -818,9 +644,7 @@ export interface ResourceListClass {
    *
    * A language the practitioner can use in patient communication.
    */
-  communication?: Array<
-    any[] | boolean | CommunicationClass | number | null | string
-  >;
+  communication?: Array<any[] | boolean | CommunicationClass | number | null | string>;
   /**
    * Indicates if the individual is deceased or not.
    */
@@ -840,31 +664,15 @@ export interface ResourceListClass {
   /**
    * Patient's nominated care provider.
    */
-  generalPractitioner?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  generalPractitioner?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * Organization that is the custodian of the patient record.
    */
-  managingOrganization?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  managingOrganization?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * This field contains a patient's most recent marital (civil) status.
    */
-  maritalStatus?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  maritalStatus?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Indicates whether the patient is part of a multiple (boolean) or indicates the actual
    * birth order (integer).
@@ -880,65 +688,35 @@ export interface ResourceListClass {
    *
    * Image of the person.
    */
-  photo?: Array<
-    any[] | boolean | AttachmentClass | number | number | null | string
-  >;
+  photo?: Array<any[] | boolean | AttachmentClass | number | number | null | string>;
   /**
    * The official certifications, training, and licenses that authorize or otherwise pertain
    * to the provision of care by the practitioner.  For example, a medical license issued by a
    * medical board authorizing the practitioner to practice medicine within a certian locality.
    */
-  qualification?: Array<
-    | any[]
-    | boolean
-    | PractitionerQualificationClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  qualification?: Array<any[] | boolean | PractitionerQualificationClass | number | number | null | string>;
   /**
    * The identifier assigned by the lab when accessioning specimen(s). This is not necessarily
    * the same as the specimen identifier, depending on local lab procedures.
    */
-  accessionIdentifier?:
-    | any[]
-    | boolean
-    | IdentifierClass
-    | number
-    | number
-    | null
-    | string;
+  accessionIdentifier?: any[] | boolean | IdentifierClass | number | number | null | string;
   /**
    * Details concerning the specimen collection.
    */
-  collection?:
-    | any[]
-    | boolean
-    | SpecimenCollectionClass
-    | number
-    | number
-    | null
-    | string;
+  collection?: any[] | boolean | SpecimenCollectionClass | number | number | null | string;
   /**
    * A mode or state of being that describes the nature of the specimen.
    */
-  condition?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  condition?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * The container holding the specimen.  The recursive nature of containers; i.e. blood in
    * tube in tray in rack is not addressed here.
    */
-  container?: Array<
-    any[] | boolean | SpecimenContainerClass | number | number | null | string
-  >;
+  container?: Array<any[] | boolean | SpecimenContainerClass | number | number | null | string>;
   /**
    * Details concerning processing and processing steps for the specimen.
    */
-  processing?: Array<
-    any[] | boolean | SpecimenProcessingClass | number | number | null | string
-  >;
+  processing?: Array<any[] | boolean | SpecimenProcessingClass | number | number | null | string>;
   /**
    * Time when specimen was received for processing or testing.
    */
@@ -946,9 +724,7 @@ export interface ResourceListClass {
   /**
    * Details concerning a service request that required a specimen to be collected.
    */
-  request?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  request?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
 }
 
 export interface BundleEntryClass {
@@ -959,9 +735,7 @@ export interface BundleEntryClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The Absolute URL for the resource.  The fullUrl SHALL NOT disagree with the id in the
    * resource - i.e. if the fullUrl is not a urn:uuid, the URL shall be version-independent
@@ -980,9 +754,7 @@ export interface BundleEntryClass {
   /**
    * A series of links that provide context to this entry.
    */
-  link?: Array<
-    any[] | boolean | BundleLinkClass | number | number | null | string
-  >;
+  link?: Array<any[] | boolean | BundleLinkClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -996,22 +768,13 @@ export interface BundleEntryClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Additional information about how this entry should be processed as part of a transaction
    * or batch.  For history, it shows how the entry was processed to create the version
    * contained in the entry.
    */
-  request?:
-    | any[]
-    | boolean
-    | BundleRequestClass
-    | number
-    | number
-    | null
-    | string;
+  request?: any[] | boolean | BundleRequestClass | number | number | null | string;
   /**
    * The Resource for the entry. The purpose/meaning of the resource is determined by the
    * Bundle.type.
@@ -1022,25 +785,11 @@ export interface BundleEntryClass {
    * transaction being responded to or what the results of an operation where when returning
    * history.
    */
-  response?:
-    | any[]
-    | boolean
-    | BundleResponseClass
-    | number
-    | number
-    | null
-    | string;
+  response?: any[] | boolean | BundleResponseClass | number | number | null | string;
   /**
    * Information about the search process that lead to the creation of this entry.
    */
-  search?:
-    | any[]
-    | boolean
-    | BundleSearchClass
-    | number
-    | number
-    | null
-    | string;
+  search?: any[] | boolean | BundleSearchClass | number | number | null | string;
 }
 
 export interface UsageContextClass {
@@ -1055,9 +804,7 @@ export interface UsageContextClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1067,26 +814,12 @@ export interface UsageContextClass {
    * A value that defines the context specified in this context of use. The interpretation of
    * the value is defined by the code.
    */
-  valueCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  valueCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * A value that defines the context specified in this context of use. The interpretation of
    * the value is defined by the code.
    */
-  valueQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  valueQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * A value that defines the context specified in this context of use. The interpretation of
    * the value is defined by the code.
@@ -1096,14 +829,7 @@ export interface UsageContextClass {
    * A value that defines the context specified in this context of use. The interpretation of
    * the value is defined by the code.
    */
-  valueReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  valueReference?: any[] | boolean | ReferenceClass | number | number | null | string;
 }
 
 export interface TriggerDefinitionClass {
@@ -1111,21 +837,12 @@ export interface TriggerDefinitionClass {
    * A boolean-valued expression that is evaluated in the context of the container of the
    * trigger definition and returns whether or not the trigger fires.
    */
-  condition?:
-    | any[]
-    | boolean
-    | ExpressionClass
-    | number
-    | number
-    | null
-    | string;
+  condition?: any[] | boolean | ExpressionClass | number | number | null | string;
   /**
    * The triggering data of the event (if this is a data trigger). If more than one data is
    * requirement is specified, then all the data requirements must be true.
    */
-  data?: Array<
-    any[] | boolean | DataRequirementClass | number | number | null | string
-  >;
+  data?: Array<any[] | boolean | DataRequirementClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -1133,9 +850,7 @@ export interface TriggerDefinitionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1158,25 +873,11 @@ export interface TriggerDefinitionClass {
   /**
    * The timing of the event (if this is a periodic trigger).
    */
-  timingReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  timingReference?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The timing of the event (if this is a periodic trigger).
    */
-  timingTiming?:
-    | any[]
-    | boolean
-    | TimingClass
-    | number
-    | number
-    | null
-    | string;
+  timingTiming?: any[] | boolean | TimingClass | number | number | null | string;
   /**
    * The type of triggering event.
    */
@@ -1196,9 +897,7 @@ export interface SignatureClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1208,14 +907,7 @@ export interface SignatureClass {
    * A reference to an application-usable description of the identity that is represented by
    * the signature.
    */
-  onBehalfOf?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  onBehalfOf?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * A mime type that indicates the technical format of the signature. Important mime types
    * are application/signature+xml for X ML DigSig, application/jose for JWS, and image/* for
@@ -1264,9 +956,7 @@ export interface SampledDataClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A correction factor that is applied to the sampled data points before they are added to
    * the origin.
@@ -1313,14 +1003,7 @@ export interface RelatedArtifactClass {
    * The document being referenced, represented as an attachment. This is exclusive with the
    * resource element.
    */
-  document?:
-    | any[]
-    | boolean
-    | AttachmentClass
-    | number
-    | number
-    | null
-    | string;
+  document?: any[] | boolean | AttachmentClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -1328,9 +1011,7 @@ export interface RelatedArtifactClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1367,9 +1048,7 @@ export interface ParameterDefinitionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1416,9 +1095,7 @@ export interface MoneyClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1438,9 +1115,7 @@ export interface MetaClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1459,9 +1134,7 @@ export interface MetaClass {
    * Security labels applied to this resource. These tags connect specific resources to the
    * overall security policy and infrastructure.
    */
-  security?: Array<
-    any[] | boolean | CodingClass | number | number | null | string
-  >;
+  security?: Array<any[] | boolean | CodingClass | number | number | null | string>;
   /**
    * A uri that identifies the source system of the resource. This provides a minimal amount
    * of [[[Provenance]]] information that can be used to track or differentiate the source of
@@ -1490,9 +1163,7 @@ export interface HumanNameClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the
    * family name of a son is the first name of his father.
@@ -1549,9 +1220,7 @@ export interface ExpressionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1577,26 +1246,12 @@ export interface TimingRepeatClass {
    * Either a duration for the length of the timing schedule, a range of possible length, or
    * outer bounds for start and/or end limits of the timing schedule.
    */
-  boundsDuration?:
-    | any[]
-    | boolean
-    | DurationClass
-    | number
-    | number
-    | null
-    | string;
+  boundsDuration?: any[] | boolean | DurationClass | number | number | null | string;
   /**
    * Either a duration for the length of the timing schedule, a range of possible length, or
    * outer bounds for start and/or end limits of the timing schedule.
    */
-  boundsPeriod?:
-    | any[]
-    | boolean
-    | PeriodClass
-    | number
-    | number
-    | null
-    | string;
+  boundsPeriod?: any[] | boolean | PeriodClass | number | number | null | string;
   /**
    * Either a duration for the length of the timing schedule, a range of possible length, or
    * outer bounds for start and/or end limits of the timing schedule.
@@ -1639,9 +1294,7 @@ export interface TimingRepeatClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The number of times to repeat the action within the specified period. If frequencyMax is
    * present, this element indicates the lower bound of the allowed range of the frequency.
@@ -1670,9 +1323,7 @@ export interface TimingRepeatClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The number of minutes from the event. If the event code does not indicate whether the
    * minutes is before or after the event, then the offset is assumed to be after the event.
@@ -1713,14 +1364,7 @@ export interface TimingClass {
    * Timing, with the exception that .repeat.bounds still applies over the code (and is not
    * contained in the code).
    */
-  code?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  code?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Identifies specific times when the event occurs.
    */
@@ -1732,9 +1376,7 @@ export interface TimingClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1753,34 +1395,18 @@ export interface TimingClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A set of rules that describe when the event is scheduled.
    */
-  repeat?:
-    | any[]
-    | boolean
-    | TimingRepeatClass
-    | number
-    | number
-    | null
-    | string;
+  repeat?: any[] | boolean | TimingRepeatClass | number | number | null | string;
 }
 
 export interface RatioClass {
   /**
    * The value of the denominator.
    */
-  denominator?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  denominator?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -1788,9 +1414,7 @@ export interface RatioClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1810,9 +1434,7 @@ export interface RangeClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The high limit. The boundary is inclusive.
    */
@@ -1846,9 +1468,7 @@ export interface QuantityClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1873,14 +1493,7 @@ export interface DosageDoseAndRateClass {
   /**
    * Amount of medication per dose.
    */
-  doseQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  doseQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * Amount of medication per dose.
    */
@@ -1892,9 +1505,7 @@ export interface DosageDoseAndRateClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -1913,20 +1524,11 @@ export interface DosageDoseAndRateClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Amount of medication per unit of time.
    */
-  rateQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  rateQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * Amount of medication per unit of time.
    */
@@ -1938,14 +1540,7 @@ export interface DosageDoseAndRateClass {
   /**
    * The kind of dose or rate specified, for example, ordered or calculated.
    */
-  type?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type?: any[] | boolean | CodeableConceptClass | number | number | null | string;
 }
 
 export interface DosageClass {
@@ -1955,9 +1550,7 @@ export interface DosageClass {
    * medication (e.g. "may cause drowsiness" or "avoid exposure of skin to direct sunlight or
    * sunlamps").
    */
-  additionalInstruction?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  additionalInstruction?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * Indicates whether the Medication is only taken when needed within a specific dosing
    * schedule (Boolean option), or it indicates the precondition for taking the Medication
@@ -1969,20 +1562,11 @@ export interface DosageClass {
    * schedule (Boolean option), or it indicates the precondition for taking the Medication
    * (CodeableConcept).
    */
-  asNeededCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  asNeededCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The amount of medication administered.
    */
-  doseAndRate?: Array<
-    any[] | boolean | DosageDoseAndRateClass | number | number | null | string
-  >;
+  doseAndRate?: Array<any[] | boolean | DosageDoseAndRateClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -1990,9 +1574,7 @@ export interface DosageClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2001,47 +1583,19 @@ export interface DosageClass {
   /**
    * Upper limit on medication per administration.
    */
-  maxDosePerAdministration?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  maxDosePerAdministration?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * Upper limit on medication per lifetime of the patient.
    */
-  maxDosePerLifetime?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  maxDosePerLifetime?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * Upper limit on medication per unit of time.
    */
-  maxDosePerPeriod?:
-    | any[]
-    | boolean
-    | RatioClass
-    | number
-    | number
-    | null
-    | string;
+  maxDosePerPeriod?: any[] | boolean | RatioClass | number | number | null | string;
   /**
    * Technique for administering medication.
    */
-  method?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  method?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -2055,9 +1609,7 @@ export interface DosageClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Instructions in terms that are understood by the patient or consumer.
    */
@@ -2065,14 +1617,7 @@ export interface DosageClass {
   /**
    * How drug should enter body.
    */
-  route?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  route?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Indicates the order in which the dosage instructions should be applied or interpreted.
    */
@@ -2080,14 +1625,7 @@ export interface DosageClass {
   /**
    * Body site to administer to.
    */
-  site?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  site?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Free text dosage instructions e.g. SIG.
    */
@@ -2116,9 +1654,7 @@ export interface DistanceClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2151,9 +1687,7 @@ export interface DataRequirementSortClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2172,9 +1706,7 @@ export interface DataRequirementSortClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The attribute of the sort. The specified path must be resolvable from the type of the
    * required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as
@@ -2202,9 +1734,7 @@ export interface DurationClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2233,9 +1763,7 @@ export interface DataRequirementDateFilterClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2254,9 +1782,7 @@ export interface DataRequirementDateFilterClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The date-valued attribute of the filter. The specified path SHALL be a FHIRPath
    * resolveable on the specified type of the DataRequirement, and SHALL consist only of
@@ -2288,14 +1814,7 @@ export interface DataRequirementDateFilterClass {
    * are equal to the specified dateTime. If a Duration is specified, the filter will return
    * only those data items that fall within Duration before now.
    */
-  valueDuration?:
-    | any[]
-    | boolean
-    | DurationClass
-    | number
-    | number
-    | null
-    | string;
+  valueDuration?: any[] | boolean | DurationClass | number | number | null | string;
   /**
    * The value of the filter. If period is specified, the filter will return only those data
    * items that fall within the bounds determined by the Period, inclusive of the period
@@ -2321,9 +1840,7 @@ export interface DataRequirementCodeFilterClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2342,9 +1859,7 @@ export interface DataRequirementCodeFilterClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The code-valued attribute of the filter. The specified path SHALL be a FHIRPath
    * resolveable on the specified type of the DataRequirement, and SHALL consist only of
@@ -2374,29 +1889,13 @@ export interface DataRequirementClass {
    * interest for a particular element of the data. Each code filter defines an additional
    * constraint on the data, i.e. code filters are AND'ed, not OR'ed.
    */
-  codeFilter?: Array<
-    | any[]
-    | boolean
-    | DataRequirementCodeFilterClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  codeFilter?: Array<any[] | boolean | DataRequirementCodeFilterClass | number | number | null | string>;
   /**
    * Date filters specify additional constraints on the data in terms of the applicable date
    * range for specific elements. Each date filter specifies an additional constraint on the
    * data, i.e. date filters are AND'ed, not OR'ed.
    */
-  dateFilter?: Array<
-    | any[]
-    | boolean
-    | DataRequirementDateFilterClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  dateFilter?: Array<any[] | boolean | DataRequirementDateFilterClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -2404,9 +1903,7 @@ export interface DataRequirementClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2435,33 +1932,17 @@ export interface DataRequirementClass {
   /**
    * Specifies the order of the results to be returned.
    */
-  sort?: Array<
-    any[] | boolean | DataRequirementSortClass | number | number | null | string
-  >;
+  sort?: Array<any[] | boolean | DataRequirementSortClass | number | number | null | string>;
   /**
    * The intended subjects of the data requirement. If this element is not provided, a Patient
    * subject is assumed.
    */
-  subjectCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  subjectCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The intended subjects of the data requirement. If this element is not provided, a Patient
    * subject is assumed.
    */
-  subjectReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  subjectReference?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The type of the required data, specified as the type name of a resource. For profiles,
    * this value is set to the type of the base resource of the profile.
@@ -2487,9 +1968,7 @@ export interface CountClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2514,9 +1993,7 @@ export interface ContributorClass {
   /**
    * Contact details to assist a user in finding and communicating with the contributor.
    */
-  contact?: Array<
-    any[] | boolean | ContactDetailClass | number | number | null | string
-  >;
+  contact?: Array<any[] | boolean | ContactDetailClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -2524,9 +2001,7 @@ export interface ContributorClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2550,9 +2025,7 @@ export interface ContactPointClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2591,9 +2064,7 @@ export interface ContactDetailClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2606,9 +2077,7 @@ export interface ContactDetailClass {
   /**
    * The contact details for the individual (if a name was provided) or the organization.
    */
-  telecom?: Array<
-    any[] | boolean | ContactPointClass | number | number | null | string
-  >;
+  telecom?: Array<any[] | boolean | ContactPointClass | number | number | null | string>;
 }
 
 export interface AttachmentClass {
@@ -2633,9 +2102,7 @@ export interface AttachmentClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The calculated hash of the data using SHA-1. Represented using base64.
    */
@@ -2682,9 +2149,7 @@ export interface CodingClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2712,9 +2177,7 @@ export interface CodeableConceptClass {
   /**
    * A reference to a code defined by a terminology system.
    */
-  coding?: Array<
-    any[] | boolean | CodingClass | number | number | null | string
-  >;
+  coding?: Array<any[] | boolean | CodingClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -2722,9 +2185,7 @@ export interface CodeableConceptClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2749,9 +2210,7 @@ export interface IdentifierClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2770,14 +2229,7 @@ export interface IdentifierClass {
    * A coded type for the identifier that can be used to determine which identifier to use for
    * a specific purpose.
    */
-  type?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The purpose of this identifier.
    */
@@ -2801,9 +2253,7 @@ export interface ReferenceClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2819,14 +2269,7 @@ export interface ReferenceClass {
    * instance, and that instance would need to be of a FHIR resource type allowed by the
    * reference.
    */
-  identifier?:
-    | any[]
-    | boolean
-    | IdentifierClass
-    | number
-    | number
-    | null
-    | string;
+  identifier?: any[] | boolean | IdentifierClass | number | number | null | string;
   /**
    * A reference to a location at which the other resource is found. The reference may be a
    * relative reference, in which case it is relative to the service base URL, or an absolute
@@ -2854,14 +2297,7 @@ export interface AnnotationClass {
   /**
    * The individual responsible for making the annotation.
    */
-  authorReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  authorReference?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The individual responsible for making the annotation.
    */
@@ -2873,9 +2309,7 @@ export interface AnnotationClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2909,9 +2343,7 @@ export interface AgeClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2946,9 +2378,7 @@ export interface PeriodClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -2980,9 +2410,7 @@ export interface AddressClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -3030,9 +2458,7 @@ export interface ExtensionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -3046,14 +2472,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueAddress?:
-    | any[]
-    | boolean
-    | AddressClass
-    | number
-    | number
-    | null
-    | string;
+  valueAddress?: any[] | boolean | AddressClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3063,26 +2482,12 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueAnnotation?:
-    | any[]
-    | boolean
-    | AnnotationClass
-    | number
-    | number
-    | null
-    | string;
+  valueAnnotation?: any[] | boolean | AnnotationClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueAttachment?:
-    | any[]
-    | boolean
-    | AttachmentClass
-    | number
-    | number
-    | null
-    | string;
+  valueAttachment?: any[] | boolean | AttachmentClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3107,14 +2512,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  valueCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3124,38 +2522,17 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueContactDetail?:
-    | any[]
-    | boolean
-    | ContactDetailClass
-    | number
-    | number
-    | null
-    | string;
+  valueContactDetail?: any[] | boolean | ContactDetailClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueContactPoint?:
-    | any[]
-    | boolean
-    | ContactPointClass
-    | number
-    | number
-    | null
-    | string;
+  valueContactPoint?: any[] | boolean | ContactPointClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueContributor?:
-    | any[]
-    | boolean
-    | ContributorClass
-    | number
-    | number
-    | null
-    | string;
+  valueContributor?: any[] | boolean | ContributorClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3165,14 +2542,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueDataRequirement?:
-    | any[]
-    | boolean
-    | DataRequirementClass
-    | number
-    | number
-    | null
-    | string;
+  valueDataRequirement?: any[] | boolean | DataRequirementClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3192,14 +2562,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueDistance?:
-    | any[]
-    | boolean
-    | DistanceClass
-    | number
-    | number
-    | null
-    | string;
+  valueDistance?: any[] | boolean | DistanceClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3209,38 +2572,17 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueDuration?:
-    | any[]
-    | boolean
-    | DurationClass
-    | number
-    | number
-    | null
-    | string;
+  valueDuration?: any[] | boolean | DurationClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueExpression?:
-    | any[]
-    | boolean
-    | ExpressionClass
-    | number
-    | number
-    | null
-    | string;
+  valueExpression?: any[] | boolean | ExpressionClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueHumanName?:
-    | any[]
-    | boolean
-    | HumanNameClass
-    | number
-    | number
-    | null
-    | string;
+  valueHumanName?: any[] | boolean | HumanNameClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3250,14 +2592,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueIdentifier?:
-    | any[]
-    | boolean
-    | IdentifierClass
-    | number
-    | number
-    | null
-    | string;
+  valueIdentifier?: any[] | boolean | IdentifierClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3292,14 +2627,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueParameterDefinition?:
-    | any[]
-    | boolean
-    | ParameterDefinitionClass
-    | number
-    | number
-    | null
-    | string;
+  valueParameterDefinition?: any[] | boolean | ParameterDefinitionClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3314,14 +2642,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  valueQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3336,50 +2657,22 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  valueReference?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueRelatedArtifact?:
-    | any[]
-    | boolean
-    | RelatedArtifactClass
-    | number
-    | number
-    | null
-    | string;
+  valueRelatedArtifact?: any[] | boolean | RelatedArtifactClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueSampledData?:
-    | any[]
-    | boolean
-    | SampledDataClass
-    | number
-    | number
-    | null
-    | string;
+  valueSampledData?: any[] | boolean | SampledDataClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueSignature?:
-    | any[]
-    | boolean
-    | SignatureClass
-    | number
-    | number
-    | null
-    | string;
+  valueSignature?: any[] | boolean | SignatureClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3399,14 +2692,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueTriggerDefinition?:
-    | any[]
-    | boolean
-    | TriggerDefinitionClass
-    | number
-    | number
-    | null
-    | string;
+  valueTriggerDefinition?: any[] | boolean | TriggerDefinitionClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3426,14 +2712,7 @@ export interface ExtensionClass {
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
    */
-  valueUsageContext?:
-    | any[]
-    | boolean
-    | UsageContextClass
-    | number
-    | number
-    | null
-    | string;
+  valueUsageContext?: any[] | boolean | UsageContextClass | number | number | null | string;
   /**
    * Value of extension - must be one of a constrained set of the data types (see
    * [Extensibility](extensibility.html) for a list).
@@ -3452,7 +2731,7 @@ export enum TriggerDefinitionType {
   DataModified = "data-modified",
   DataRemoved = "data-removed",
   NamedEvent = "named-event",
-  Periodic = "periodic",
+  Periodic = "periodic"
 }
 
 /**
@@ -3466,7 +2745,7 @@ export enum RelatedArtifactType {
   Documentation = "documentation",
   Justification = "justification",
   Predecessor = "predecessor",
-  Successor = "successor",
+  Successor = "successor"
 }
 
 /**
@@ -3479,7 +2758,7 @@ export enum HumanNameUse {
   Official = "official",
   Old = "old",
   Temp = "temp",
-  Usual = "usual",
+  Usual = "usual"
 }
 
 /**
@@ -3488,7 +2767,7 @@ export enum HumanNameUse {
 export enum Language {
   ApplicationXFhirQuery = "application/x-fhir-query",
   TextCql = "text/cql",
-  TextFhirpath = "text/fhirpath",
+  TextFhirpath = "text/fhirpath"
 }
 
 /**
@@ -3503,7 +2782,7 @@ export enum Unit {
   Min = "min",
   Mo = "mo",
   S = "s",
-  Wk = "wk",
+  Wk = "wk"
 }
 
 export enum When {
@@ -3532,7 +2811,7 @@ export enum When {
   Pcd = "PCD",
   Pcv = "PCV",
   Phs = "PHS",
-  Wake = "WAKE",
+  Wake = "WAKE"
 }
 
 /**
@@ -3544,7 +2823,7 @@ export enum Comparator {
   Comparator = "<=",
   Empty = "<",
   Fluffy = ">",
-  Purple = ">=",
+  Purple = ">="
 }
 
 /**
@@ -3552,7 +2831,7 @@ export enum Comparator {
  */
 export enum Direction {
   Ascending = "ascending",
-  Descending = "descending",
+  Descending = "descending"
 }
 
 /**
@@ -3562,7 +2841,7 @@ export enum ContributorType {
   Author = "author",
   Editor = "editor",
   Endorser = "endorser",
-  Reviewer = "reviewer",
+  Reviewer = "reviewer"
 }
 
 /**
@@ -3576,7 +2855,7 @@ export enum System {
   Pager = "pager",
   Phone = "phone",
   Sms = "sms",
-  Url = "url",
+  Url = "url"
 }
 
 /**
@@ -3587,7 +2866,7 @@ export enum ContactPointUse {
   Mobile = "mobile",
   Old = "old",
   Temp = "temp",
-  Work = "work",
+  Work = "work"
 }
 
 /**
@@ -3598,7 +2877,7 @@ export enum IdentifierUse {
   Old = "old",
   Secondary = "secondary",
   Temp = "temp",
-  Usual = "usual",
+  Usual = "usual"
 }
 
 /**
@@ -3608,7 +2887,7 @@ export enum IdentifierUse {
 export enum AddressType {
   Both = "both",
   Physical = "physical",
-  Postal = "postal",
+  Postal = "postal"
 }
 
 /**
@@ -3619,7 +2898,7 @@ export enum AddressUse {
   Home = "home",
   Old = "old",
   Temp = "temp",
-  Work = "work",
+  Work = "work"
 }
 
 export interface SpecimenCollectionClass {
@@ -3627,14 +2906,7 @@ export interface SpecimenCollectionClass {
    * Anatomical location from which the specimen was collected (if subject is a patient). This
    * is the target site.  This element is not used for environmental specimens.
    */
-  bodySite?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  bodySite?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
@@ -3642,25 +2914,11 @@ export interface SpecimenCollectionClass {
   /**
    * Time when specimen was collected from subject - the physiologically relevant time.
    */
-  collectedPeriod?:
-    | any[]
-    | boolean
-    | PeriodClass
-    | number
-    | number
-    | null
-    | string;
+  collectedPeriod?: any[] | boolean | PeriodClass | number | number | null | string;
   /**
    * Person who collected the specimen.
    */
-  collector?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  collector?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The span of time over which the collection of a specimen occurred.
    */
@@ -3672,33 +2930,17 @@ export interface SpecimenCollectionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Abstinence or reduction from some or all food, drink, or both, for a period of time prior
    * to sample collection.
    */
-  fastingStatusCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  fastingStatusCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Abstinence or reduction from some or all food, drink, or both, for a period of time prior
    * to sample collection.
    */
-  fastingStatusDuration?:
-    | any[]
-    | boolean
-    | DurationClass
-    | number
-    | number
-    | null
-    | string;
+  fastingStatusDuration?: any[] | boolean | DurationClass | number | number | null | string;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -3707,14 +2949,7 @@ export interface SpecimenCollectionClass {
   /**
    * A coded value specifying the technique that is used to perform the procedure.
    */
-  method?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  method?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -3728,9 +2963,7 @@ export interface SpecimenCollectionClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The quantity of specimen collected; for instance the volume of a blood sample, or the
    * physical measurement of an anatomic pathology sample.
@@ -3746,9 +2979,7 @@ export interface CommunicationClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -3759,14 +2990,7 @@ export interface CommunicationClass {
    * hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for
    * English, or "en-US" for American English versus "en-EN" for England English.
    */
-  language?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  language?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -3780,9 +3004,7 @@ export interface CommunicationClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Indicates whether or not the patient prefers this language (over other languages he
    * masters up a certain level).
@@ -3791,9 +3013,7 @@ export interface CommunicationClass {
   /**
    * A reference to a code defined by a terminology system.
    */
-  coding?: Array<
-    any[] | boolean | CodingClass | number | number | null | string
-  >;
+  coding?: Array<any[] | boolean | CodingClass | number | number | null | string>;
   /**
    * A human language representation of the concept as seen/selected/uttered by the user who
    * entered the data and/or which represents the intended meaning of the user.
@@ -3805,26 +3025,12 @@ export interface ObservationComponentClass {
   /**
    * Describes what was observed. Sometimes this is called the observation "code".
    */
-  code:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  code: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Provides a reason why the expected value in the element Observation.component.value[x] is
    * missing.
    */
-  dataAbsentReason?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  dataAbsentReason?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -3832,9 +3038,7 @@ export interface ObservationComponentClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -3843,9 +3047,7 @@ export interface ObservationComponentClass {
   /**
    * A categorical assessment of an observation value.  For example, high, low, normal.
    */
-  interpretation?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  interpretation?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -3859,21 +3061,11 @@ export interface ObservationComponentClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Guidance on how to interpret the value by comparison to a normal or recommended range.
    */
-  referenceRange?: Array<
-    | any[]
-    | boolean
-    | ObservationReferenceRangeClass
-    | number
-    | number
-    | null
-    | string
-  >;
+  referenceRange?: Array<any[] | boolean | ObservationReferenceRangeClass | number | number | null | string>;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -3883,14 +3075,7 @@ export interface ObservationComponentClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  valueCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -3910,14 +3095,7 @@ export interface ObservationComponentClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  valueQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -3932,14 +3110,7 @@ export interface ObservationComponentClass {
    * The information determined as a result of making the observation, if the information has
    * a simple value.
    */
-  valueSampledData?:
-    | any[]
-    | boolean
-    | SampledDataClass
-    | number
-    | number
-    | null
-    | string;
+  valueSampledData?: any[] | boolean | SampledDataClass | number | number | null | string;
   /**
    * The information determined as a result of making the observation, if the information has
    * a simple value.
@@ -3965,9 +3136,7 @@ export interface ObservationReferenceRangeClass {
    * example, to represent a target population of African American females, both a code of
    * female and a code for African American would be used.
    */
-  appliesTo?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  appliesTo?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -3975,9 +3144,7 @@ export interface ObservationReferenceRangeClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The value of the high bound of the reference range.  The high bound of the reference
    * range endpoint is inclusive of the value (e.g.  reference range is >=5 - <=9). If the
@@ -4008,9 +3175,7 @@ export interface ObservationReferenceRangeClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Text based reference range in an observation which may be used when a quantitative range
    * is not appropriate for an observation.  An example would be a reference value of
@@ -4021,14 +3186,7 @@ export interface ObservationReferenceRangeClass {
    * Codes to indicate the what part of the targeted reference population it applies to. For
    * example, the normal or therapeutic range.
    */
-  type?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type?: any[] | boolean | CodeableConceptClass | number | number | null | string;
 }
 
 export interface ContactClass {
@@ -4039,9 +3197,7 @@ export interface ContactClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4092,9 +3248,7 @@ export interface ContactClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A name associated with the contact.
    *
@@ -4104,23 +3258,14 @@ export interface ContactClass {
   /**
    * Indicates a purpose for which the contact can be reached.
    */
-  purpose?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  purpose?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * A contact detail (e.g. a telephone number or an email address) by which the party may be
    * contacted.
    *
    * A contact detail for the person, e.g. a telephone number or an email address.
    */
-  telecom?: Array<
-    any[] | boolean | ContactPointClass | number | number | null | string
-  >;
+  telecom?: Array<any[] | boolean | ContactPointClass | number | number | null | string>;
   /**
    * Administrative Gender - the gender that the contact person is considered to have for
    * administration and record keeping purposes.
@@ -4129,20 +3274,11 @@ export interface ContactClass {
   /**
    * Organization on behalf of which the contact is acting or for which the contact is working.
    */
-  organization?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  organization?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The nature of the relationship between the patient and the contact person.
    */
-  relationship?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  relationship?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
 }
 
 /**
@@ -4159,7 +3295,7 @@ export enum Gender {
   Female = "female",
   Male = "male",
   Other = "other",
-  Unknown = "unknown",
+  Unknown = "unknown"
 }
 
 export interface SpecimenContainerClass {
@@ -4167,26 +3303,12 @@ export interface SpecimenContainerClass {
    * Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin,
    * Citrate, EDTA.
    */
-  additiveCodeableConcept?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  additiveCodeableConcept?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin,
    * Citrate, EDTA.
    */
-  additiveReference?:
-    | any[]
-    | boolean
-    | ReferenceClass
-    | number
-    | number
-    | null
-    | string;
+  additiveReference?: any[] | boolean | ReferenceClass | number | number | null | string;
   /**
    * The capacity (volume or other measure) the container may contain.
    */
@@ -4202,9 +3324,7 @@ export interface SpecimenContainerClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4214,9 +3334,7 @@ export interface SpecimenContainerClass {
    * Id for container. There may be multiple; a manufacturer's bar code, lab assigned
    * identifier, etc. The container ID may differ from the specimen id in some circumstances.
    */
-  identifier?: Array<
-    any[] | boolean | IdentifierClass | number | number | null | string
-  >;
+  identifier?: Array<any[] | boolean | IdentifierClass | number | number | null | string>;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element and that modifies the understanding of the element in which it is
@@ -4230,32 +3348,16 @@ export interface SpecimenContainerClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The quantity of specimen in the container; may be volume, dimensions, or other
    * appropriate measurements, depending on the specimen type.
    */
-  specimenQuantity?:
-    | any[]
-    | boolean
-    | QuantityClass
-    | number
-    | number
-    | null
-    | string;
+  specimenQuantity?: any[] | boolean | QuantityClass | number | number | null | string;
   /**
    * The type of container associated with the specimen (e.g. slide, aliquot, etc.).
    */
-  type?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type?: any[] | boolean | CodeableConceptClass | number | number | null | string;
 }
 
 export interface DeviceDeviceNameClass {
@@ -4266,9 +3368,7 @@ export interface DeviceDeviceNameClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4287,9 +3387,7 @@ export interface DeviceDeviceNameClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The name of the device.
    */
@@ -4311,7 +3409,7 @@ export enum DeviceDeviceNameType {
   Other = "other",
   PatientReportedName = "patient-reported-name",
   UdiLabelName = "udi-label-name",
-  UserFriendlyName = "user-friendly-name",
+  UserFriendlyName = "user-friendly-name"
 }
 
 export interface LinkClass {
@@ -4322,9 +3420,7 @@ export interface LinkClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4343,9 +3439,7 @@ export interface LinkClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A name which details the functional use for this link - see
    * [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
@@ -4372,16 +3466,14 @@ export enum LinkType {
   Refer = "refer",
   ReplacedBy = "replaced-by",
   Replaces = "replaces",
-  Seealso = "seealso",
+  Seealso = "seealso"
 }
 
 export interface SpecimenProcessingClass {
   /**
    * Material used in the processing step.
    */
-  additive?: Array<
-    any[] | boolean | ReferenceClass | number | number | null | string
-  >;
+  additive?: Array<any[] | boolean | ReferenceClass | number | number | null | string>;
   /**
    * Textual description of procedure.
    */
@@ -4393,9 +3485,7 @@ export interface SpecimenProcessingClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4414,20 +3504,11 @@ export interface SpecimenProcessingClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A coded value specifying the procedure used to process the specimen.
    */
-  procedure?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  procedure?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * A record of the time or period when the specimen processing occurred.  For example the
    * time of sample fixation or the period of time the sample was in formalin.
@@ -4448,9 +3529,7 @@ export interface DevicePropertyClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4469,46 +3548,26 @@ export interface DevicePropertyClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Code that specifies the property DeviceDefinitionPropetyCode (Extensible).
    */
-  type:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * Property value as a code, e.g., NTP4 (synced to NTP).
    */
-  valueCode?: Array<
-    any[] | boolean | CodeableConceptClass | number | number | null | string
-  >;
+  valueCode?: Array<any[] | boolean | CodeableConceptClass | number | number | null | string>;
   /**
    * Property value as a quantity.
    */
-  valueQuantity?: Array<
-    any[] | boolean | QuantityClass | number | number | null | string
-  >;
+  valueQuantity?: Array<any[] | boolean | QuantityClass | number | number | null | string>;
 }
 
 export interface PractitionerQualificationClass {
   /**
    * Coded representation of the qualification.
    */
-  code:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  code: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -4516,9 +3575,7 @@ export interface PractitionerQualificationClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4527,9 +3584,7 @@ export interface PractitionerQualificationClass {
   /**
    * An identifier that applies to this person's qualification in this role.
    */
-  identifier?: Array<
-    any[] | boolean | IdentifierClass | number | number | null | string
-  >;
+  identifier?: Array<any[] | boolean | IdentifierClass | number | number | null | string>;
   /**
    * Organization that regulates and issues the qualification.
    */
@@ -4547,9 +3602,7 @@ export interface PractitionerQualificationClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Period during which the qualification is valid.
    */
@@ -4564,9 +3617,7 @@ export interface DeviceSpecializationClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4585,20 +3636,11 @@ export interface DeviceSpecializationClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The standard that is used to operate and communicate.
    */
-  systemType:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  systemType: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The version of the standard that is used to operate and communicate.
    */
@@ -4625,7 +3667,7 @@ export enum ResourceListStatus {
   Registered = "registered",
   Unavailable = "unavailable",
   Unknown = "unknown",
-  Unsatisfactory = "unsatisfactory",
+  Unsatisfactory = "unsatisfactory"
 }
 
 export interface NarrativeClass {
@@ -4640,9 +3682,7 @@ export interface NarrativeClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4663,7 +3703,7 @@ export enum NarrativeStatus {
   Additional = "additional",
   Empty = "empty",
   Extensions = "extensions",
-  Generated = "generated",
+  Generated = "generated"
 }
 
 export interface DeviceUdiCarrierClass {
@@ -4695,9 +3735,7 @@ export interface DeviceUdiCarrierClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4736,9 +3774,7 @@ export interface DeviceUdiCarrierClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
 }
 
 /**
@@ -4750,21 +3786,14 @@ export enum EntryType {
   Manual = "manual",
   Rfid = "rfid",
   SelfReported = "self-reported",
-  Unknown = "unknown",
+  Unknown = "unknown"
 }
 
 export interface DeviceVersionClass {
   /**
    * A single component of the device version.
    */
-  component?:
-    | any[]
-    | boolean
-    | IdentifierClass
-    | number
-    | number
-    | null
-    | string;
+  component?: any[] | boolean | IdentifierClass | number | number | null | string;
   /**
    * May be used to represent additional information that is not part of the basic definition
    * of the element. To make the use of extensions safe and manageable, there is a strict set
@@ -4772,9 +3801,7 @@ export interface DeviceVersionClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4793,20 +3820,11 @@ export interface DeviceVersionClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The type of the device version.
    */
-  type?:
-    | any[]
-    | boolean
-    | CodeableConceptClass
-    | number
-    | number
-    | null
-    | string;
+  type?: any[] | boolean | CodeableConceptClass | number | number | null | string;
   /**
    * The version text.
    */
@@ -4821,9 +3839,7 @@ export interface BundleLinkClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4842,9 +3858,7 @@ export interface BundleLinkClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * A name which details the functional use for this link - see
    * [http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1](http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1).
@@ -4864,9 +3878,7 @@ export interface BundleRequestClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4912,9 +3924,7 @@ export interface BundleRequestClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * The URL for this entry, relative to the root (the address to which the request is posted).
    */
@@ -4931,7 +3941,7 @@ export enum Method {
   Head = "HEAD",
   Patch = "PATCH",
   Post = "POST",
-  Put = "PUT",
+  Put = "PUT"
 }
 
 export interface BundleSearchClass {
@@ -4942,9 +3952,7 @@ export interface BundleSearchClass {
    * can define an extension, there is a set of requirements that SHALL be met as part of the
    * definition of the extension.
    */
-  extension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  extension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * Unique id for the element within a resource (for internal references). This may be any
    * string value that does not contain spaces.
@@ -4969,9 +3977,7 @@ export interface BundleSearchClass {
    * Modifier extensions SHALL NOT change the meaning of any elements on Resource or
    * DomainResource (including cannot change the meaning of modifierExtension itself).
    */
-  modifierExtension?: Array<
-    any[] | boolean | ExtensionClass | number | number | null | string
-  >;
+  modifierExtension?: Array<any[] | boolean | ExtensionClass | number | number | null | string>;
   /**
    * When searching, the server's search ranking score for the entry.
    */
@@ -4986,7 +3992,7 @@ export interface BundleSearchClass {
 export enum Mode {
   Include = "include",
   Match = "match",
-  Outcome = "outcome",
+  Outcome = "outcome"
 }
 
 /**
@@ -5001,15 +4007,15 @@ export enum BundleType {
   Message = "message",
   Searchset = "searchset",
   Transaction = "transaction",
-  TransactionResponse = "transaction-response",
+  TransactionResponse = "transaction-response"
 }
 
 export enum PDTHealthCertV2Type {
   Art = "ART",
   Pcr = "PCR",
-  Ser = "SER",
+  Ser = "SER"
 }
 
 export enum Version {
-  PdtHealthcertV20 = "pdt-healthcert-v2.0",
+  PdtHealthcertV20 = "pdt-healthcert-v2.0"
 }

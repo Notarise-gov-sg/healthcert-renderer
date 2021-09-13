@@ -1,10 +1,4 @@
-import {
-  Meta,
-  Preview,
-  Props,
-  Description,
-  Story,
-} from "@storybook/addon-docs/blocks";
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
 import { VaccinationCertTemplate } from "./vaccinationCertTemplate";
 import { vaccinationCertSample as sampleWithMultipleDose } from "./fixtures/vaccSampleMultiDose.ts";
@@ -24,13 +18,9 @@ import { vaccinationMultiQrCertSample as sampleWithMultipleDoseMultiQr } from ".
 
 <Preview>
   <Story name="VAC v1.0 with multi-dose">
-    <VaccinationCertTemplate
-      document={object("document", sampleWithMultipleDose)}
-    />
+    <VaccinationCertTemplate document={object("document", sampleWithMultipleDose)} />
   </Story>
   <Story name="VAC v1.0 with multi-dose, multi-qr">
-    <VaccinationCertTemplate
-      document={object("document", sampleWithMultipleDoseMultiQr)}
-    />
+    <VaccinationCertTemplate document={object("document", sampleWithMultipleDoseMultiQr)} />
   </Story>
 </Preview>

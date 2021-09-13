@@ -4,5 +4,5 @@ import { vaccinationCertTemplates } from "./healthcert";
 
 export const registry: TemplateRegistry<any> = {
   HEALTH_CERT: healthCertTemplates,
-  VACCINATION_CERT: vaccinationCertTemplates,
+  VACCINATION_CERT: vaccinationCertTemplates
 };

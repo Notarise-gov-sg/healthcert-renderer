@@ -1,10 +1,4 @@
-import {
-  Meta,
-  Preview,
-  Props,
-  Description,
-  Story,
-} from "@storybook/addon-docs/blocks";
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
 import { HealthCertTemplate } from "./healthCertTemplate";
 import { healthCertSample as sampleWithNric } from "./fixtures/sampleWithNric";
@@ -46,9 +40,7 @@ import v2SerMultiMemo from "./fixtures/pdtHealthCertV2/pdt_ser_notarised_multi_m
     <HealthCertTemplate document={object("document", sampleArtWithNric)} />
   </Story>
   <Story name="PDT v1.0 ART with NRIC, multi-qr">
-    <HealthCertTemplate
-      document={object("document", sampleArtWithNricMultiQr)}
-    />
+    <HealthCertTemplate document={object("document", sampleArtWithNricMultiQr)} />
   </Story>
   <Story name="PDT v1.0 multi-memo">
     <HealthCertTemplate document={object("document", multiMemoSample)} />
