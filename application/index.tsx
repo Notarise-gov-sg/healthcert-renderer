@@ -10,7 +10,7 @@ ReactDOM.render(
     documents={[
       { name: "Multi Memo document", document: multiMemoSample },
       { name: "Single Memo document", document: healthCertSample },
-      { name: "Vaccination document", document: vaccinationCertSample }
+      { name: "Vaccination document", document: vaccinationCertSample },
     ]}
   />,
   document.getElementById("root")
