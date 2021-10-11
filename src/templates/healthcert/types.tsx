@@ -1,9 +1,9 @@
 import { v2 } from "@govtechsg/open-attestation";
 import {
   pdtHealthCertV1 as healthcert,
+  pdtHealthCertV2,
   notarise,
 } from "@govtechsg/oa-schemata";
-import { PDTHealthCertV2 } from "./tempTypes";
 
 /**
  * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
@@ -113,7 +113,7 @@ export interface NotarisedHealthCert extends HealthCertDocument {
 }
 
 export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument &
-  PDTHealthCertV2 &
+  pdtHealthCertV2.PDTHealthCertV2 &
   notarise.Notarise;
 
 // TODO: Add NotarisedVaccinationHealthCertUnwrappedV2 type and deprecate the above manually defined types
