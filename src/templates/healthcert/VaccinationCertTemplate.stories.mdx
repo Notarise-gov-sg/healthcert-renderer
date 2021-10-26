@@ -7,6 +7,7 @@ import {
 } from "@storybook/addon-docs/blocks";
 import { object } from "@storybook/addon-knobs";
 import { VaccinationCertTemplate } from "./vaccinationCertTemplate";
+import { vaccinationCertWithoutNricSample as sampleWithoutNric } from "./fixtures/vaccSampleWithoutNric.ts";
 import { vaccinationCertSample as sampleWithMultipleDose } from "./fixtures/vaccSampleMultiDose.ts";
 import { vaccinationMultiQrCertSample as sampleWithMultipleDoseMultiQr } from "./fixtures/vaccSampleMultiDoseMultiQr.ts";
 
@@ -23,6 +24,9 @@ import { vaccinationMultiQrCertSample as sampleWithMultipleDoseMultiQr } from ".
 # Usage
 
 <Preview>
+  <Story name="VAC v1.0 without nric">
+    <VaccinationCertTemplate document={object("document", sampleWithoutNric)} />
+  </Story>
   <Story name="VAC v1.0 with multi-dose">
     <VaccinationCertTemplate
       document={object("document", sampleWithMultipleDose)}
