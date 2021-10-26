@@ -35,7 +35,7 @@ export const generateMemoSections = (
   const onlineUrl = document.notarisationMetadata?.url;
   const patientName =
     typeof patient?.name?.[0] === "object" ? patient?.name[0]?.text : "";
-  const patientNric = patient?.identifier?.find(isNric)?.value || "";
+  const patientNric = patient?.identifier?.find(isNric)?.value;
   const patientNationalityCode =
     patient?.extension?.find(
       (extension) =>

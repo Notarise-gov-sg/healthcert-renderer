@@ -33,7 +33,7 @@ export interface SimpleImmunizationObject {
 
 export interface VaccinationMemoInfo {
   patientName: string;
-  patientNric: string;
+  patientNric?: string;
   patientNationalityCode: string;
   patientBirthDate: string;
   passportNumber: string;
@@ -103,10 +103,12 @@ export const MemoSection: React.FC<{
           <FirstCol>Name of Person:</FirstCol>
           <SecondCol>{vaccinationMemoInfo.patientName}</SecondCol>
         </Row>
-        <Row>
-          <FirstCol>NRIC/FIN Number:</FirstCol>
-          <SecondCol>{vaccinationMemoInfo.patientNric}</SecondCol>
-        </Row>
+        {vaccinationMemoInfo.patientNric && (
+          <Row>
+            <FirstCol>NRIC/FIN Number:</FirstCol>
+            <SecondCol>{vaccinationMemoInfo.patientNric}</SecondCol>
+          </Row>
+        )}
         <Row>
           <FirstCol>Passport/Travel Document Number:</FirstCol>
           <SecondCol>{vaccinationMemoInfo.passportNumber}</SecondCol>
