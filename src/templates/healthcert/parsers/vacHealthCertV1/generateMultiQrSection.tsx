@@ -9,6 +9,8 @@ import {
   ResultSection,
   QrRowCenter,
   QrColCenter,
+  QrTitle,
+  StyledMemoSection,
 } from "../../styled-components";
 interface GroupedOfflineQr {
   manufacturer: string;
@@ -19,9 +21,9 @@ const OfflineQrGroup: React.FC<{
   groupedOfflineQr: GroupedOfflineQr;
 }> = ({ groupedOfflineQr }) => {
   return (
-    <>
+    <StyledMemoSection>
+      <QrTitle>{groupedOfflineQr.manufacturer}</QrTitle>
       <QrRowCenter>
-        <Bold>{groupedOfflineQr.manufacturer}</Bold>
         {groupedOfflineQr.signedEuHealthCerts.map((signedEuHealthCert, i) => (
           <QrColCenter key={i}>
             <QrCodeContainerWithBorder key={i}>
@@ -32,7 +34,7 @@ const OfflineQrGroup: React.FC<{
         ))}
       </QrRowCenter>
       <br />
-    </>
+    </StyledMemoSection>
   );
 };
 

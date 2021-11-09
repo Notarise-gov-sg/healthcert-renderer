@@ -67,6 +67,7 @@ export const Title = styled.h1`
 export const PatientDetails = styled.section``;
 export const ImmunizationDetails = styled.section`
   padding-top: 20px;
+  page-break-inside: avoid;
 `;
 export const Row = styled.div`
   display: flex;
@@ -200,4 +201,9 @@ export const QrColCenter = styled.div`
   text-align: center;
   margin: 10px;
   padding: 0px 30px;
+`;
+
+export const QrTitle = styled.p`
+  font-weight: bold;
+  text-align: center;
 `;
