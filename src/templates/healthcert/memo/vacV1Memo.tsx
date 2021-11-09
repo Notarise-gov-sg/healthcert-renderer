@@ -10,6 +10,7 @@ import {
   FirstCol,
   SecondCol,
   ResultSection,
+  StyledMemoSection,
   TravellerInfoSection,
   Bold,
   QrCodeContainerWithBorder,
@@ -95,7 +96,7 @@ export const MemoSection: React.FC<{
   );
   const groupedVaccineCode = Object.keys(groupedImmunizations);
   return (
-    <>
+    <StyledMemoSection>
       <Title>Vaccination Certificate</Title>
       <PatientDetails>
         <Row>
@@ -159,6 +160,6 @@ export const MemoSection: React.FC<{
         ))
       )}
       {memoResultSection}
-    </>
+    </StyledMemoSection>
   );
 };
