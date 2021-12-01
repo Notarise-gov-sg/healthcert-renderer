@@ -67,7 +67,7 @@ export const generateMultiQrSection = (
   return (
     <>
       <ResultSection>
-        <Bold>Offline QR Verification</Bold>
+        <Bold>Offline QR Verification (EU DCC-compatible)</Bold>
         <p>
           This QR Code does not require an internet connection to verify.
           Currently only the European Union (EU) supports this option of
