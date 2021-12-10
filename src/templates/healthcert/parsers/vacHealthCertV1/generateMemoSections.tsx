@@ -33,6 +33,17 @@ export const generateMemoSections = (
 
   const passportNumber = document.notarisationMetadata?.passportNumber;
   const onlineUrl = document.notarisationMetadata?.url;
+  const signedEuHealthCerts =
+    (document.notarisationMetadata as any)?.signedEuHealthCerts || [];
+  let expiryDateTime = "";
+  if (signedEuHealthCerts[0]?.expiryDateTime) {
+    expiryDateTime =
+      isoToDateOnlyString(signedEuHealthCerts[0].expiryDateTime, {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }) ?? "";
+  }
   const patientName =
     typeof patient?.name?.[0] === "object" ? patient?.name[0]?.text : "";
   const patientNric = patient?.identifier?.find(isNric)?.value;
@@ -61,6 +72,7 @@ export const generateMemoSections = (
     patientBirthDate,
     passportNumber,
     onlineUrl,
+    expiryDateTime,
   };
 
   memoSections.push(
