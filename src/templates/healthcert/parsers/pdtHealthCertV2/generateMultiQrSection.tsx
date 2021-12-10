@@ -59,11 +59,22 @@ export const generateMultiQrSection = (
         <u>destination country</u>.
         {expiryDateTime && (
           <>
-            {/* This message will be update after the confirmation */}
-            {/* <br />
             <br />
-            The QR codes in this HealthCert is valid until{" "}
-            <b>{expiryDateTime}</b>. */}
+            <br />
+            The QR codes in this PDT HealthCert is valid until{" "}
+            <b>{expiryDateTime}</b>. You may visit{" "}
+            <a
+              className="hyperlink"
+              target="_blank"
+              href="https://notarise.gov.sg/"
+              rel="noreferrer"
+            >
+              Notαrise.gov.sg
+            </a>{" "}
+            at any time to obtain a new PDT HealthCert to extend the cert expiry
+            date. Please note that expiry of your PDT HealthCert does not
+            constitute the expiry of your PDT records or PDT status in
+            Singapore.
           </>
         )}
       </TravellerInfoSection>
