@@ -39,6 +39,7 @@ export interface VaccinationMemoInfo {
   immunizations: SimpleImmunizationObject[];
   effectiveDate?: string;
   onlineUrl: string;
+  expiryDateTime: string;
 }
 
 const MemoResultSection: React.FC<{
@@ -59,6 +60,26 @@ const MemoResultSection: React.FC<{
             Note: Travellers are subject to the country or region&apos;s
             requirements prior to travel. The QR code used for verification is
             based on your <u>destination country</u>.
+            {vaccinationMemoInfo.expiryDateTime && (
+              <>
+                <br />
+                <br />
+                The QR codes in this Vaccination HealthCert is valid until{" "}
+                <b>{vaccinationMemoInfo.expiryDateTime}</b>. You may visit{" "}
+                <a
+                  className="hyperlink"
+                  target="_blank"
+                  href="https://notarise.gov.sg/"
+                  rel="noreferrer"
+                >
+                  Notαrise.gov.sg
+                </a>{" "}
+                at any time to obtain a new Vaccination HealthCert to extend the
+                cert expiry date. Please note that expiry of your Vaccination
+                HealthCert does not constitute the expiry of your vaccination
+                records or vaccination status in Singapore.
+              </>
+            )}
           </TravellerInfoSection>
         )}
       </ResultSection>

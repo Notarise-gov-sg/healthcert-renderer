@@ -11,7 +11,10 @@ import {
   TravellerInfoSection,
 } from "../../styled-components";
 import fhirHelper from "../../../../models/fhirHelper";
-import { isoToLocaleString } from "../../../../util/datetime";
+import {
+  isoToDateOnlyString,
+  isoToLocaleString,
+} from "../../../../util/datetime";
 
 import { R4 } from "@ahryman40k/ts-fhir-types";
 
@@ -33,6 +36,15 @@ export const generateMultiQrSection = (
   const signedEuHealthCert =
     document.notarisationMetadata.signedEuHealthCerts?.[0];
 
+  let expiryDateTime = "";
+  if (signedEuHealthCert?.expiryDateTime) {
+    expiryDateTime = isoToDateOnlyString(signedEuHealthCert.expiryDateTime, {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
   return (
     <>
       <ResultSection>
@@ -45,6 +57,15 @@ export const generateMultiQrSection = (
         <br />
         The QR code used for verification is based on your{" "}
         <u>destination country</u>.
+        {expiryDateTime && (
+          <>
+            {/* This message will be update after the confirmation */}
+            {/* <br />
+            <br />
+            The QR codes in this HealthCert is valid until{" "}
+            <b>{expiryDateTime}</b>. */}
+          </>
+        )}
       </TravellerInfoSection>
       <br />
       <QrRow>

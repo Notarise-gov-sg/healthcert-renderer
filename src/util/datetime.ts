@@ -23,7 +23,14 @@ export const isoToLocaleString = (iso = ""): string =>
  * @param iso "2020-09-28T06:15:00Z"
  * @returns "28 September 2020"
  */
-export const isoToDateOnlyString = (iso = ""): string =>
+export const isoToDateOnlyString = (
+  iso = "",
+  dateFormat: Intl.DateTimeFormatOptions = {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }
+): string =>
   // Remove time if present
   new Date(iso.split("T")[0]).toLocaleString(SG_LOCALE, {
     /**
@@ -32,7 +39,5 @@ export const isoToDateOnlyString = (iso = ""): string =>
      * Explanation: https://github.com/Notarise-gov-sg/healthcert-renderer/pull/52
      **/
     timeZone: "UTC",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
+    ...dateFormat,
   });
