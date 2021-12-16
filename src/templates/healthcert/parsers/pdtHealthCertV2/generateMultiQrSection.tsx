@@ -79,6 +79,22 @@ export const generateMultiQrSection = (
         )}
       </TravellerInfoSection>
       <br />
+      {url && (
+        <>
+          <QrRow>
+            <QrCol info rightAlign>
+              <Bold>Online QR verification</Bold>
+              <p>This QR Code requires an internet connection to verify.</p>
+            </QrCol>
+            <QrCol>
+              <QrCodeContainerWithBorder>
+                <QRCode value={url} level={"M"} size={200} />
+              </QrCodeContainerWithBorder>
+            </QrCol>
+          </QrRow>
+          <QrBreakLine />
+        </>
+      )}
       <QrRow>
         <QrCol info>
           <Bold>Offline QR Verification (EU DCC-compatible)</Bold>
@@ -100,20 +116,6 @@ export const generateMultiQrSection = (
           )}
         </QrCol>
       </QrRow>
-      <QrBreakLine />
-      {url && (
-        <QrRow>
-          <QrCol info rightAlign>
-            <Bold>Online QR verification</Bold>
-            <p>This QR Code requires an internet connection to verify.</p>
-          </QrCol>
-          <QrCol>
-            <QrCodeContainerWithBorder>
-              <QRCode value={url} level={"M"} size={200} />
-            </QrCodeContainerWithBorder>
-          </QrCol>
-        </QrRow>
-      )}
     </>
   );
 };
