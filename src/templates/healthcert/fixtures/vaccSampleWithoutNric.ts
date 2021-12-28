@@ -22,7 +22,7 @@ export const vaccinationCertWithoutNricSample: NotarisedHealthCert = {
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
             code: {
-              text: "SG",
+              text: "SGP",
             },
           },
         ],
