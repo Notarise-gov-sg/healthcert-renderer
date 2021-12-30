@@ -30,9 +30,18 @@ export const isoToDateOnlyString = (
     month: "long",
     year: "numeric",
   }
-): string =>
+): string => {
+  const isoDate = iso.split("-");
+  // Remove day format when iso foramat is `YYYY-MM` or `YYYY`
+  if (isoDate.length <= 2) {
+    delete dateFormat.day;
+  }
+  // Remove month format when iso foramat is `YYYY`
+  if (isoDate.length <= 1) {
+    delete dateFormat.month;
+  }
   // Remove time if present
-  new Date(iso.split("T")[0]).toLocaleString(SG_LOCALE, {
+  return new Date(iso.split("T")[0]).toLocaleString(SG_LOCALE, {
     /**
      * Should not respect provided timezone. Instead, should force "UTC" timezone
      * because this generated date object is always going to be ...T00:00:00.000Z
@@ -41,3 +50,4 @@ export const isoToDateOnlyString = (
     timeZone: "UTC",
     ...dateFormat,
   });
+};
