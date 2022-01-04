@@ -113,7 +113,6 @@ export const generateMultiQrSection = (
         </QrCol>
         <QrCol>
           {signedEuHealthCert && (
-            <div style={{ border: "1px solid black" }}>
               <QrCodeContainerWithBorder>
                 <QRCode
                   value={signedEuHealthCert?.qr}
@@ -126,7 +125,6 @@ export const generateMultiQrSection = (
                   }}
                 />
               </QrCodeContainerWithBorder>
-            </div>
           )}
         </QrCol>
       </QrRow>
