@@ -113,18 +113,18 @@ export const generateMultiQrSection = (
         </QrCol>
         <QrCol>
           {signedEuHealthCert && (
-              <QrCodeContainerWithBorder>
-                <QRCode
-                  value={signedEuHealthCert?.qr}
-                  level={"M"}
-                  size={200}
-                  imageSettings={{
-                    src: EULogo,
-                    width: logoWidth,
-                    height: logoHeight,
-                  }}
-                />
-              </QrCodeContainerWithBorder>
+            <QrCodeContainerWithBorder>
+              <QRCode
+                value={signedEuHealthCert?.qr}
+                level={"M"}
+                size={200}
+                imageSettings={{
+                  src: EULogo,
+                  width: logoWidth,
+                  height: logoHeight,
+                }}
+              />
+            </QrCodeContainerWithBorder>
           )}
         </QrCol>
       </QrRow>
