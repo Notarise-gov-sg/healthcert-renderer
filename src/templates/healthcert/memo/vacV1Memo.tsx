@@ -16,8 +16,8 @@ import {
   QrRowCenter,
 } from "../styled-components";
 import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
-import countries from "i18n-iso-countries";
-import englishCountries from "i18n-iso-countries/langs/en.json";
+import countries from "@notarise-gov-sg/i18n-iso-countries";
+import englishCountries from "@notarise-gov-sg/i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
 
 export interface SimpleImmunizationObject {

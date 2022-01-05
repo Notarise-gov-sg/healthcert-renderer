@@ -1,5 +1,5 @@
-import countries from "i18n-iso-countries";
-import englishCountries from "i18n-iso-countries/langs/en.json";
+import countries from "@notarise-gov-sg/i18n-iso-countries";
+import englishCountries from "@notarise-gov-sg/i18n-iso-countries/langs/en.json";
 import { getNationality } from "./nationality";
 countries.registerLocale(englishCountries);
 
