@@ -148,8 +148,7 @@
       "react/self-closing-comp": "error",
       "array-callback-return": "error",
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error",
-      "prettier/prettier": [1, { "endOfLine": "auto"}]
+      "react-hooks/exhaustive-deps": "error"
     },
     "overrides": [
       {
