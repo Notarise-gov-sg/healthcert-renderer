@@ -12,6 +12,8 @@ import {
   QrTitle,
   StyledMemoSection,
 } from "../../styled-components";
+import EULogo from "../../eu-dcc-tag-big.png";
+
 interface GroupedOfflineQr {
   manufacturer: string;
   signedEuHealthCerts: notarise.SignedEuHealthCert[];
@@ -20,6 +22,8 @@ interface GroupedOfflineQr {
 const OfflineQrGroup: React.FC<{
   groupedOfflineQr: GroupedOfflineQr;
 }> = ({ groupedOfflineQr }) => {
+  const logoWidth = 130;
+  const logoHeight = logoWidth / 5;
   return (
     <StyledMemoSection>
       <QrTitle>{groupedOfflineQr.manufacturer}</QrTitle>
@@ -27,7 +31,16 @@ const OfflineQrGroup: React.FC<{
         {groupedOfflineQr.signedEuHealthCerts.map((signedEuHealthCert, i) => (
           <QrColCenter key={i}>
             <QrCodeContainerWithBorder key={i}>
-              <QRCode value={signedEuHealthCert.qr} level={"M"} size={200} />
+              <QRCode
+                value={signedEuHealthCert.qr}
+                level={"M"}
+                size={200}
+                imageSettings={{
+                  src: EULogo,
+                  width: logoWidth,
+                  height: logoHeight,
+                }}
+              />
             </QrCodeContainerWithBorder>
             DOSE {signedEuHealthCert.dose}
           </QrColCenter>

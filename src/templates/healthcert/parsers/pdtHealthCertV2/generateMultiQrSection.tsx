@@ -15,6 +15,7 @@ import {
   isoToDateOnlyString,
   isoToLocaleString,
 } from "../../../../util/datetime";
+import EULogo from "../../eu-dcc-tag-big.png";
 
 import { R4 } from "@ahryman40k/ts-fhir-types";
 
@@ -44,6 +45,9 @@ export const generateMultiQrSection = (
       year: "numeric",
     });
   }
+
+  const logoWidth = 130;
+  const logoHeight = logoWidth / 5;
 
   return (
     <>
@@ -110,7 +114,16 @@ export const generateMultiQrSection = (
         <QrCol>
           {signedEuHealthCert && (
             <QrCodeContainerWithBorder>
-              <QRCode value={signedEuHealthCert?.qr} level={"M"} size={200} />
+              <QRCode
+                value={signedEuHealthCert?.qr}
+                level={"M"}
+                size={200}
+                imageSettings={{
+                  src: EULogo,
+                  width: logoWidth,
+                  height: logoHeight,
+                }}
+              />
             </QrCodeContainerWithBorder>
           )}
         </QrCol>
