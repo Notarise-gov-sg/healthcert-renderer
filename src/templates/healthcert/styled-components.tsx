@@ -202,8 +202,3 @@ export const QrColCenter = styled.div`
   margin: 10px;
   padding: 0px 30px;
 `;
-
-export const QrTitle = styled.p`
-  font-weight: bold;
-  text-align: center;
-`;
