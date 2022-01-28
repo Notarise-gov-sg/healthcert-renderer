@@ -78,5 +78,9 @@
     "1021941000133107": {
         "short_name": "NUVAXOVID",
         "name": "NUVAXOVID COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] 50 microgram/ 5 mL Injection"
+    },
+    "3418091000133101": {
+        "short_name": "MODERNA",
+        "name": "MODERNA COVID-19 Vaccine [mRNA-1273] 1 mg/ 5 mL Injection"
     }
 }
