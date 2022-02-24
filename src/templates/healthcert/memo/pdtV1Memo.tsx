@@ -12,7 +12,7 @@ import {
   Bold,
   StyledMemoSection,
 } from "../styled-components";
-import { getNationality } from "../../../util/nationality";
+import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
 import countries from "@notarise-gov-sg/i18n-iso-countries";
 import englishCountries from "@notarise-gov-sg/i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
@@ -133,7 +133,7 @@ export const MemoSection: React.FC<{
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
           <SecondCol>
-            {getNationality(memoInfo.patientNationalityCode)}
+            {getNationalityCitizenship(memoInfo.patientNationalityCode)}
           </SecondCol>
         </Row>
         <Row>

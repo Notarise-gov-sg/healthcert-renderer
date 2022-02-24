@@ -12,7 +12,6 @@
     "@govtechsg/oa-schemata": "^1.15.10",
     "@hot-loader/react-dom": "^17.0.1",
     "@notarise-gov-sg/i18n-iso-countries": "^7.3.1",
-    "@notarise-gov-sg/i18n-nationality": "^1.2.2",
     "debug": "^4.3.2",
     "fhir": "^4.10.0",
     "react": "^17.0.2",
@@ -149,7 +148,12 @@
       "array-callback-return": "error",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
-      "prettier/prettier": [1, { "endOfLine": "auto"}]
+      "prettier/prettier": [
+        1,
+        {
+          "endOfLine": "auto"
+        }
+      ]
     },
     "overrides": [
       {
