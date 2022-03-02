@@ -1,5 +1,5 @@
 import React from "react";
-import { getNationality } from "../../../util/nationality";
+import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
 import {
   Title,
   PatientDetails,
@@ -121,7 +121,7 @@ export const MemoSection: React.FC<{
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
           <SecondCol>
-            {getNationality(memoInfo.patientNationalityCode)}
+            {getNationalityCitizenship(memoInfo.patientNationalityCode)}
           </SecondCol>
         </Row>
         <Row>
