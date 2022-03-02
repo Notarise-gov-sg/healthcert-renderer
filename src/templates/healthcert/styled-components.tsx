@@ -51,6 +51,7 @@ export const Page = styled.div`
     min-height: 27cm;
     padding-bottom: 2mm;
     border: none;
+    page-break-before: always;
   }
 `;
 export const Logo = styled.img`
