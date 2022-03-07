@@ -49,12 +49,16 @@ const MemoResultSection: React.FC<{
   return (
     <>
       <ResultSection>
-        <p>
-          Based on Singapore&apos;s requirement,{" "}
-          {vaccinationMemoInfo.patientName} has been fully vaccinated against
-          COVID-19.
-        </p>
-        {!multiQr && <p>Thank you.</p>}
+        {!multiQr && (
+          <>
+            <p>
+              Based on Singapore&apos;s requirement,{" "}
+              {vaccinationMemoInfo.patientName} has been fully vaccinated
+              against COVID-19.
+            </p>
+            <p>Thank you.</p>
+          </>
+        )}
         {multiQr && (
           <TravellerInfoSection>
             Note: Travellers are subject to the country or region&apos;s
