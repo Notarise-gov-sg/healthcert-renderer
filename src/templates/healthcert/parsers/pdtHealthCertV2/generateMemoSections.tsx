@@ -30,6 +30,7 @@ export const generateMemoSections = (
           observation.effectiveDateTime
         ),
         observationResultDisplay: observation.result.display || "",
+        modality: observation.modality?.toLowerCase() || "",
         specimenSwabTypeDisplay: specimen.swabType.display || "",
         specimenCollectionDateTime: isoToLocaleString(
           specimen.collectionDateTime

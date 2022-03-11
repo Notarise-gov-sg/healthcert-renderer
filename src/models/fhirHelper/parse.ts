@@ -76,6 +76,7 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
         result: resource.valueCodeableConcept?.coding?.[0],
         effectiveDateTime: resource.effectiveDateTime,
         status: resource.status,
+        modality: resource.note?.find((item) => item.id === "MODALITY")?.text,
       } as Observation;
 
     case "Practitioner":
