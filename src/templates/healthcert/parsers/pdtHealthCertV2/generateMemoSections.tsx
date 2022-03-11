@@ -16,7 +16,6 @@ export const generateMemoSections = (
   const { patient, observations } = fhirHelper.parse(
     document.fhirBundle as R4.IBundle
   );
-  console.log(observations[0].observation);
 
   return observations.map(
     ({ observation, organization, practitioner, specimen }, i) => {
