@@ -22,6 +22,7 @@ interface MemoInfo {
   observationTestTypeDisplay: string;
   observationEffectiveDateTime: string; // Optional?
   observationResultDisplay: string;
+  modality?: string;
   specimenSwabTypeDisplay: string;
   specimenCollectionDateTime: string;
   organizationLhpName: string;
@@ -40,8 +41,8 @@ const MemoResultSection: React.FC<{
       <p>
         The above-mentioned has undergone {memoInfo.observationTestTypeDisplay}{" "}
         for COVID-19 using a {memoInfo.specimenSwabTypeDisplay} on{" "}
-        {memoInfo.specimenCollectionDateTime}, by {memoInfo.organizationLhpName}{" "}
-        and has tested{" "}
+        {memoInfo.specimenCollectionDateTime}, {memoInfo.modality ?? ""} by{" "}
+        {memoInfo.organizationLhpName} and has tested{" "}
         <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
         {memoInfo.organizationAlName &&
           ` This test result was reported by ${memoInfo.organizationAlName} on ${memoInfo.observationEffectiveDateTime}.`}

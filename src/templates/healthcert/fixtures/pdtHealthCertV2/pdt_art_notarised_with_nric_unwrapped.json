@@ -113,7 +113,13 @@
             ]
           },
           "effectiveDateTime": "2020-09-28T06:15:00Z",
-          "status": "final"
+          "status": "final",
+          "note": [
+            {
+                "id": "MODALITY",
+                "text": "Administered"
+            }
+          ]
         }
       },
       {

@@ -16,6 +16,7 @@ export const generateMemoSections = (
   const { patient, observations } = fhirHelper.parse(
     document.fhirBundle as R4.IBundle
   );
+  console.log(observations[0].observation);
 
   return observations.map(
     ({ observation, organization, practitioner, specimen }, i) => {
@@ -30,6 +31,7 @@ export const generateMemoSections = (
           observation.effectiveDateTime
         ),
         observationResultDisplay: observation.result.display || "",
+        modality: observation.modality?.toLowerCase() || "",
         specimenSwabTypeDisplay: specimen.swabType.display || "",
         specimenCollectionDateTime: isoToLocaleString(
           specimen.collectionDateTime
