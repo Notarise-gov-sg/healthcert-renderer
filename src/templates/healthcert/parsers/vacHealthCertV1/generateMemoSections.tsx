@@ -1,17 +1,17 @@
 import React from "react";
-import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import {
   NotarisedHealthCert,
-  Patient,
+  VacPatient,
   Immunization,
   ImmunizationRecommendation,
   Location,
+  Identifier,
 } from "../../types";
 import { MemoSection } from "../../memo/vacV1Memo";
 import { simplifyImmunizationObjectWithLocation } from "./parseInfo";
 import { isoToDateOnlyString } from "../../../../util/datetime";
 
-const isNric = (value: pdtHealthcert.Identifier): boolean =>
+const isNric = (value: Identifier): boolean =>
   typeof value.type !== "string" && value.type.text === "NRIC";
 
 export const generateMemoSections = (
@@ -20,7 +20,7 @@ export const generateMemoSections = (
 ): JSX.Element[] => {
   const patient = document.fhirBundle.entry.find(
     (entry) => entry.resourceType === "Patient"
-  ) as Patient;
+  ) as VacPatient;
   const locations = document.fhirBundle.entry.filter(
     (entry) => entry.resourceType === "Location"
   ) as Location[];

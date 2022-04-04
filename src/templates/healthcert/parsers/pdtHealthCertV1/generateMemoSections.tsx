@@ -1,11 +1,10 @@
 import React from "react";
-import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
-import { NotarisedHealthCert } from "../../types";
+import { PdtPatient, Identifier, NotarisedHealthCert } from "../../types";
 import { MemoSection } from "../../memo/pdtV1Memo";
 import { extractInfo } from "./parseInfo";
 
 const SG_LOCALE = "en-sg";
-const isNric = (value: any): value is pdtHealthcert.Identifier =>
+const isNric = (value: any): value is Identifier =>
   value?.type?.text === "NRIC";
 
 export const generateMemoSections = (
@@ -14,7 +13,7 @@ export const generateMemoSections = (
 ): JSX.Element[] => {
   const patient = document.fhirBundle.entry.find(
     (entry) => entry.resourceType === "Patient"
-  ) as pdtHealthcert.Patient;
+  ) as PdtPatient;
   const observations = document.fhirBundle.entry.filter(
     (entry) => entry.resourceType === "Observation"
   );

@@ -1,13 +1,15 @@
 import { R4 } from "@ahryman40k/ts-fhir-types";
 import {
-  Bundle,
   Patient,
   Specimen,
   Observation,
   Practitioner,
   Organization,
-  GroupedObservation,
   Device,
+  PdtBundle,
+  PdtGroupedObservation,
+  RecBundle,
+  RecGroupedObservation,
 } from "./types";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -110,12 +112,12 @@ export const parsers = (resource: R4.IResourceList | undefined) => {
 };
 
 /**
- * Parses a Bundle of resources into a simplified format.
+ * Parses a Pdt Bundle of resources into a simplified format.
  *
- * @param fhirBundle Raw FHIR Bundle resource
+ * @param fhirBundle Raw Pdt FHIR Bundle resource
  * @returns An object containing all the parsed resources in the bundle (simplified)
  */
-export const parse = (fhirBundle: R4.IBundle): Bundle => {
+export const pdtParse = (fhirBundle: R4.IBundle): PdtBundle => {
   //  0. Bundle resource
   parsers(fhirBundle);
 
@@ -168,7 +170,7 @@ export const parse = (fhirBundle: R4.IBundle): Bundle => {
         practitioner,
         organization: { lhp, al },
       };
-    }) as GroupedObservation[];
+    }) as PdtGroupedObservation[];
 
   // 3. Organization (MOH) resource
   const fhirOrganizationMoh = fhirBundle.entry?.find(
@@ -176,6 +178,53 @@ export const parse = (fhirBundle: R4.IBundle): Bundle => {
       entry.fullUrl ===
       observations?.[0].practitioner.organizationMohResourceUuid
   )?.resource;
+  const moh = parsers(fhirOrganizationMoh) as Organization;
+
+  return {
+    patient,
+    observations,
+    organization: { moh },
+  };
+};
+
+/**
+ * Parses a Rec Bundle of resources into a simplified format.
+ *
+ * @param fhirBundle Raw Rec FHIR Bundle resource
+ * @returns An object containing all the parsed resources in the bundle (simplified)
+ */
+export const recParse = (fhirBundle: R4.IBundle): RecBundle => {
+  //  0. Bundle resource
+  parsers(fhirBundle);
+
+  // 1. Patient resource
+  const fhirPatient = fhirBundle.entry?.find(
+    (entry) => entry.resource?.resourceType === "Patient"
+  )?.resource;
+  const patient = parsers(fhirPatient) as Patient;
+
+  // 2. Observation resource(s)
+  const observations = fhirBundle.entry
+    ?.filter((entry) => entry.resource?.resourceType === "Observation")
+    ?.map((o) => {
+      const observation = parsers(o.resource) as Observation;
+
+      // 2a. Specimen resource
+      const fhirSpecimen = fhirBundle.entry?.find(
+        (entry) => entry.fullUrl === observation.specimenResourceUuid
+      )?.resource;
+      const specimen = parsers(fhirSpecimen) as Specimen;
+
+      return {
+        observation,
+        specimen,
+      };
+    }) as RecGroupedObservation[];
+
+  // 3. Organization (MOH) resource
+  const fhirOrganizationMoh = fhirBundle.entry?.filter(
+    (entry) => entry.resource?.resourceType === "Organization"
+  )[0]?.resource;
   const moh = parsers(fhirOrganizationMoh) as Organization;
 
   return {

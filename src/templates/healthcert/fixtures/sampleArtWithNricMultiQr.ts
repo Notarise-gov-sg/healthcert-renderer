@@ -1,17 +1,5 @@
-import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
-
-const {
-  AddressType,
-  FhirBundleType,
-  Gender,
-  FhirBundleResourceType,
-  Status,
-  System,
-  Use,
-  EntryResourceType,
-} = healthcert;
 
 export const healthCertMultiQrSample: NotarisedHealthCert = {
   id: "TEST001",
@@ -19,11 +7,11 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
   validFrom: "2020-11-20T06:43:12.152Z",
   fhirVersion: "4.0.1",
   fhirBundle: {
-    resourceType: FhirBundleResourceType.Bundle,
-    type: FhirBundleType.Collection,
+    resourceType: "Bundle",
+    type: "collection",
     entry: [
       {
-        resourceType: EntryResourceType.Patient,
+        resourceType: "Patient",
         extension: [
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
@@ -49,11 +37,11 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
             text: "Tan Chen Chen",
           },
         ],
-        gender: Gender.Female,
+        gender: "female",
         birthDate: "1990-01-15",
       },
       {
-        resourceType: EntryResourceType.Specimen,
+        resourceType: "Specimen",
         type: {
           coding: [
             {
@@ -68,7 +56,7 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
         },
       },
       {
-        resourceType: EntryResourceType.Observation,
+        resourceType: "Observation",
         identifier: [
           {
             value: "123456789",
@@ -95,7 +83,7 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
           ],
         },
         effectiveDateTime: "2020-09-28T06:15:00Z",
-        status: Status.Final,
+        status: "final",
         performer: {
           name: [
             {
@@ -111,7 +99,7 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
         ],
       },
       {
-        resourceType: EntryResourceType.Organization,
+        resourceType: "Organization",
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
@@ -120,13 +108,13 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
         contact: {
           telecom: [
             {
-              system: System.Phone,
+              system: "phone",
               value: "+6563113111",
             },
           ],
           address: {
-            type: AddressType.Physical,
-            use: Use.Work,
+            type: "physical",
+            use: "work",
             text: "MacRitchie Hospital Thomson Road Singapore 123000",
           },
         },
@@ -158,6 +146,8 @@ export const healthCertMultiQrSample: NotarisedHealthCert = {
         type: "ART",
         qr: "HC1:6BFOXN%TSMAHN-HWWK2J2YWO4VKY.R/R8C.E4FCCJ9.4E:-P .IRFIR:P1T2B0E/GPWBI*EDUDBQEAJJKKKMEC8.-BP7U3-SY$N- RE09+K3C.1X31SZJ:A45OI9YI:8D+FD%PD5DL3ADDAB*CNAHLW 70SO:GOLIROGO3T5ZXKWUPWGO8IQ/HQBK8M47:/6F0PQHPE65V776K82HPPEPHCR6W95EPT*ON*O0IQJSP/88ECOK594%I7ZC/FJ:439J3323M*4E303SVF 4-$C4R4QWCKJ523LXTC:15 35GBTV5T2$4SZ46J0$7KGDB*C4TM19:2UP20J5/5LEBFD-48YI*452P057TG.4Q$S1-K0$4D4DB%05PN8$G5HB%UNPA7ME75J7TEN 8E6/DEF95PIEQKHT61ESJMIXKMXSP+UPCB96PPK+9SPU0VLDCGG-RI64OGO0F1G%UON1:QKDC1%SHSIG7/IY.I%*4$%2/SNJI0+PD6NJDKBRPASCACIA3XD+5MDS1O*P8K9V/UTI65VSU01H4O:KTTHJ.JADZ9GOV3L9GR7$N9*IMTCTHS6PETQWL.$1*7Q:6AE75*QS$A2Z CHWI9/UCNO8BL72U//0:TIAENF+2H678P8Y3VF+1TX15GK",
         expiryDateTime: "2021-12-25T01:27:50.263Z",
+        appleCovidCardUrl:
+          "https://redirect.health.apple.com/EU-DCC/#6BFOXN%25TSMAHN-HWWK2J2YWO4VKY.R%2FR8C.E4FCCJ9.4E%3A-P%20.IRFIR%3AP1T2B0E%2FGPWBI*EDUDBQEAJJKKKMEC8.-BP7U3-SY%24N-%20RE09%2BK3C.1X31SZJ%3AA45OI9YI%3A8D%2BFD%25PD5DL3ADDAB*CNAHLW%2070SO%3AGOLIROGO3T5ZXKWUPWGO8IQ%2FHQBK8M47%3A%2F6F0PQHPE65V776K82HPPEPHCR6W95EPT*ON*O0IQJSP%2F88ECOK594%25I7ZC%2FFJ%3A439J3323M*4E303SVF%204-%24C4R4QWCKJ523LXTC%3A15%2035GBTV5T2%244SZ46J0%247KGDB*C4TM19%3A2UP20J5%2F5LEBFD-48YI*452P057TG.4Q%24S1-K0%244D4DB%2505PN8%24G5HB%25UNPA7ME75J7TEN%208E6%2FDEF95PIEQKHT61ESJMIXKMXSP%2BUPCB96PPK%2B9SPU0VLDCGG-RI64OGO0F1G%25UON1%3AQKDC1%25SHSIG7%2FIY.I%25*4%24%252%2FSNJI0%2BPD6NJDKBRPASCACIA3XD%2B5MDS1O*P8K9V%2FUTI65VSU01H4O%3AKTTHJ.JADZ9GOV3L9GR7%24N9*IMTCTHS6PETQWL.%241*7Q%3A6AE75*QS%24A2Z%20CHWI9%2FUCNO8BL72U%2F%2F0%3ATIAENF%2B2H678P8Y3VF%2B1TX15GK",
       },
     ],
   },

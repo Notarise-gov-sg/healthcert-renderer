@@ -13,7 +13,7 @@ export const generateMemoSections = (
   document: NotarisedPDTHealthCertUnwrappedV2,
   multiQr = false
 ): JSX.Element[] => {
-  const { patient, observations } = fhirHelper.parse(
+  const { patient, observations } = fhirHelper.pdtParse(
     document.fhirBundle as R4.IBundle
   );
 

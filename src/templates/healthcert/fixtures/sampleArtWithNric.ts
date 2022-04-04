@@ -1,17 +1,5 @@
-import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
-
-const {
-  AddressType,
-  FhirBundleType,
-  Gender,
-  FhirBundleResourceType,
-  Status,
-  System,
-  Use,
-  EntryResourceType,
-} = healthcert;
 
 export const healthCertSample: NotarisedHealthCert = {
   id: "TEST001",
@@ -19,11 +7,11 @@ export const healthCertSample: NotarisedHealthCert = {
   validFrom: "2020-11-20T06:43:12.152Z",
   fhirVersion: "4.0.1",
   fhirBundle: {
-    resourceType: FhirBundleResourceType.Bundle,
-    type: FhirBundleType.Collection,
+    resourceType: "Bundle",
+    type: "collection",
     entry: [
       {
-        resourceType: EntryResourceType.Patient,
+        resourceType: "Patient",
         extension: [
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
@@ -49,11 +37,11 @@ export const healthCertSample: NotarisedHealthCert = {
             text: "Tan Chen Chen",
           },
         ],
-        gender: Gender.Female,
+        gender: "female",
         birthDate: "1990-01-15",
       },
       {
-        resourceType: EntryResourceType.Specimen,
+        resourceType: "Specimen",
         type: {
           coding: [
             {
@@ -68,7 +56,7 @@ export const healthCertSample: NotarisedHealthCert = {
         },
       },
       {
-        resourceType: EntryResourceType.Observation,
+        resourceType: "Observation",
         identifier: [
           {
             value: "123456789",
@@ -95,7 +83,7 @@ export const healthCertSample: NotarisedHealthCert = {
           ],
         },
         effectiveDateTime: "2020-09-28T06:15:00Z",
-        status: Status.Final,
+        status: "final",
         performer: {
           name: [
             {
@@ -111,7 +99,7 @@ export const healthCertSample: NotarisedHealthCert = {
         ],
       },
       {
-        resourceType: EntryResourceType.Organization,
+        resourceType: "Organization",
         name: "MacRitchie Medical Clinic",
         type: "Licensed Healthcare Provider",
         endpoint: {
@@ -120,13 +108,13 @@ export const healthCertSample: NotarisedHealthCert = {
         contact: {
           telecom: [
             {
-              system: System.Phone,
+              system: "phone",
               value: "+6563113111",
             },
           ],
           address: {
-            type: AddressType.Physical,
-            use: Use.Work,
+            type: "physical",
+            use: "work",
             text: "MacRitchie Hospital Thomson Road Singapore 123000",
           },
         },

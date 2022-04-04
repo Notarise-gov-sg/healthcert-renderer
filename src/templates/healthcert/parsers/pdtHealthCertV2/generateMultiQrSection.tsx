@@ -22,7 +22,7 @@ import { R4 } from "@ahryman40k/ts-fhir-types";
 export const generateMultiQrSection = (
   document: NotarisedPDTHealthCertUnwrappedV2
 ): JSX.Element => {
-  const { patient, observations } = fhirHelper.parse(
+  const { patient, observations } = fhirHelper.pdtParse(
     document.fhirBundle as R4.IBundle
   );
   const patientName = patient.fullName || "";

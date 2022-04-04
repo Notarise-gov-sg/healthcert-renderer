@@ -1,7 +1,6 @@
 import React from "react";
 import QRCode from "qrcode.react";
-import { pdtHealthCertV1 } from "@govtechsg/oa-schemata";
-import { NotarisedHealthCert } from "../../types";
+import { PdtPatient, NotarisedHealthCert } from "../../types";
 import { extractInfo } from "./parseInfo";
 import {
   Bold,
@@ -20,7 +19,7 @@ export const generateMultiQrSection = (
 ): JSX.Element => {
   const patient = document.fhirBundle.entry.find(
     (entry) => entry.resourceType === "Patient"
-  ) as pdtHealthCertV1.Patient;
+  ) as PdtPatient;
   const observations = document.fhirBundle.entry.filter(
     (entry) => entry.resourceType === "Observation"
   );
