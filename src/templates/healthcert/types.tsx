@@ -55,7 +55,6 @@ export interface PdtPatient {
   };
   type?: {
     coding?: Array<Coding>;
-    "coding:"?: Array<Coding>;
   };
   code?: {
     coding: Array<Coding>;
