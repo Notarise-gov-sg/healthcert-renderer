@@ -1,5 +1,4 @@
-import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
-import { HealthCertDocument } from "../../types";
+import { PdtPatient, HealthCertDocument } from "../../types";
 import { MemoInfo } from "../../memo/pdtV1Memo";
 
 const isLegacy = (document: HealthCertDocument): boolean => {
@@ -39,7 +38,7 @@ export const getDateTime = (dateString: string | undefined): string => {
     : "";
 };
 
-export const getTestResult = (observation: healthcert.Patient): string => {
+export const getTestResult = (observation: PdtPatient): string => {
   let testResult = observation?.valueCodeableConcept?.coding[0]?.display;
   const codesDict: Record<string, string> = {
     "260385009": "Negative",
@@ -77,7 +76,7 @@ const extractSpecimenProvierLabFromLegacyCert = (
 };
 
 const extractSpecimenProvierLabFromCert = (
-  observation: healthcert.Patient,
+  observation: PdtPatient,
   document: HealthCertDocument
 ): Pick<MemoInfo, "provider" | "lab" | "specimen"> => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -120,7 +119,7 @@ const extractSpecimenProvierLabFromCert = (
 };
 
 export const extractInfo = (
-  observation: healthcert.Patient,
+  observation: PdtPatient,
   document: HealthCertDocument
 ): ParsedInfo => {
   const { specimen, provider, lab } = isLegacy(document)

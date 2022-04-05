@@ -1,10 +1,6 @@
-import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import { v2 } from "@govtechsg/open-attestation";
 import { NotarisedHealthCert } from "../types";
 import mohHeader from "./moh-header.base64.txt";
-
-const { FhirBundleType, Gender, FhirBundleResourceType, EntryResourceType } =
-  healthcert;
 
 export const vaccinationCertSample: NotarisedHealthCert = {
   id: "3749314a-0f99-432d-9b9e-4d9446bff38c",
@@ -12,12 +8,12 @@ export const vaccinationCertSample: NotarisedHealthCert = {
   validFrom: "2021-03-30T03:22:06.031Z",
   fhirVersion: "4.0.1",
   fhirBundle: {
-    resourceType: FhirBundleResourceType.Bundle,
-    type: FhirBundleType.Collection,
+    resourceType: "Bundle",
+    type: "collection",
     entry: [
       {
         fullUrl: "urn:uuid:824ea5fe-3b1f-4ec2-bde0-40e62d476ef3",
-        resourceType: EntryResourceType.Patient,
+        resourceType: "Patient",
         extension: [
           {
             url: "http://hl7.org/fhir/StructureDefinition/patient-nationality",
@@ -43,7 +39,7 @@ export const vaccinationCertSample: NotarisedHealthCert = {
             text: "Foo Bar Baz",
           },
         ],
-        gender: Gender.Female,
+        gender: "female",
         birthDate: "2010-03-18",
       },
       {

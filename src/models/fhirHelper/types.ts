@@ -51,7 +51,7 @@ export interface Device {
   type: R4.ICoding;
 }
 
-export interface GroupedObservation {
+export interface PdtGroupedObservation {
   observation: Observation;
   specimen: Specimen;
   device?: Device;
@@ -59,8 +59,19 @@ export interface GroupedObservation {
   organization: { lhp: Organization; al?: Organization };
 }
 
-export interface Bundle {
+export interface PdtBundle {
   patient: Patient;
-  observations: GroupedObservation[];
+  observations: PdtGroupedObservation[];
+  organization: { moh: Organization };
+}
+
+export interface RecGroupedObservation {
+  observation: Observation;
+  specimen: Specimen;
+}
+
+export interface RecBundle {
+  patient: Patient;
+  observations: RecGroupedObservation[];
   organization: { moh: Organization };
 }

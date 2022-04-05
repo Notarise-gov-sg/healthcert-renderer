@@ -65,6 +65,14 @@ export const Title = styled.h1`
   font-size: 22px;
   line-height: 1.2;
 `;
+
+export const TitleInfo = styled.p`
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+`;
+
 export const PatientDetails = styled.section``;
 export const ImmunizationDetails = styled.section`
   padding-top: 20px;

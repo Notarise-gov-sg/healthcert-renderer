@@ -1,6 +1,6 @@
 import { v2 } from "@govtechsg/open-attestation";
 import {
-  pdtHealthCertV1 as healthcert,
+  recHealthCertV2,
   pdtHealthCertV2,
   notarise,
 } from "@govtechsg/oa-schemata";
@@ -10,7 +10,92 @@ import {
  *
  * Retained for backwards compatibility.
  */
-export interface Patient {
+export interface Identifier {
+  type:
+    | {
+        text: string;
+      }
+    | string;
+  value: string;
+}
+
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
+export interface Coding {
+  code: string;
+  display: string;
+  system: string;
+}
+
+/**
+ * @deprecated Please use types generated from `@govtechsg/oa-schemata` (e.g. `PDTHealthCertV2`) or `@govtechsg/decentralized-renderer-react-components` (e.g. `OpenAttestationDocument`).
+ *
+ * Retained for backwards compatibility.
+ */
+export interface PdtPatient {
+  birthDate?: string;
+  extension?: Array<{
+    url: string;
+    code: {
+      text: string;
+    };
+  }>;
+  fullUrl?: string;
+  gender?: string;
+  identifier?: Identifier[];
+  name?: Array<{
+    text: string;
+  }>;
+  resourceType: string;
+  collection?: {
+    collectedDateTime: string;
+  };
+  type?: {
+    coding?: Array<Coding>;
+  };
+  code?: {
+    coding: Array<Coding>;
+  };
+  effectiveDateTime?: string;
+  performer?: {
+    name: Array<{
+      text: string;
+    }>;
+  };
+  performerReference?: Array<{
+    reference: string;
+  }>;
+  qualification?: Array<{
+    identifier: string;
+    issuer: string;
+  }>;
+  specimen?: {
+    reference: string;
+  };
+  status?: string;
+  valueCodeableConcept?: {
+    coding: Array<Coding>;
+  };
+  contact?: {
+    address: {
+      text: string;
+      type: string;
+      use: string;
+    };
+    telecom: Array<{
+      system: string;
+      value: string;
+    }>;
+  };
+  endpoint?: {
+    address: string;
+  };
+}
+
+export interface VacPatient {
   fullUrl?: string;
   resourceType: string;
   extension: Array<{
@@ -97,8 +182,8 @@ export interface HealthCertDocument extends v2.OpenAttestationDocument {
   fhirVersion: string;
   logo: string;
   fhirBundle: {
-    resourceType: healthcert.FhirBundleResourceType.Bundle;
-    type: healthcert.FhirBundleType.Collection;
+    resourceType: "Bundle";
+    type: "collection";
     entry: Array<any>;
   };
 }
@@ -114,6 +199,10 @@ export interface NotarisedHealthCert extends HealthCertDocument {
 
 export type NotarisedPDTHealthCertUnwrappedV2 = v2.OpenAttestationDocument &
   pdtHealthCertV2.PDTHealthCertV2 &
+  notarise.Notarise;
+
+export type NotarisedRECHealthCertUnwrappedV2 = v2.OpenAttestationDocument &
+  recHealthCertV2.RECHealthCertV2 &
   notarise.Notarise;
 
 // TODO: Add NotarisedVaccinationHealthCertUnwrappedV2 type and deprecate the above manually defined types

@@ -1,3 +1,3 @@
-import { parse } from "./parse";
+import { pdtParse, recParse } from "./parse";
 
-export default { parse };
+export default { pdtParse, recParse };

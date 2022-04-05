@@ -1,10 +1,10 @@
+import { pdtHealthCertV2 } from "@govtechsg/oa-schemata";
 import { HealthCertTemplate } from "../healthCertTemplate";
 import { healthCertSample } from "../fixtures/sampleWithNric";
 import { render } from "@testing-library/react";
 import React from "react";
 import { multiMemoSample } from "../fixtures/multiMemo";
 import cloneDeep from "lodash.clonedeep";
-import { pdtHealthCertV1 as pdtHealthcert } from "@govtechsg/oa-schemata";
 import "jest-canvas-mock";
 
 describe("customTemplate", () => {
@@ -46,7 +46,7 @@ describe("customTemplate", () => {
       (ent) => ent.valueCodeableConcept
     );
     const coding = observationEntry?.valueCodeableConcept
-      ?.coding[0] as pdtHealthcert.Coding;
+      ?.coding[0] as pdtHealthCertV2.CodingClass;
     coding.code = "260385009";
     coding.display = "Not Detected";
 
@@ -65,7 +65,7 @@ describe("customTemplate", () => {
       (ent) => ent.valueCodeableConcept
     );
     const coding = observationEntry?.valueCodeableConcept
-      ?.coding[0] as pdtHealthcert.Coding;
+      ?.coding[0] as pdtHealthCertV2.CodingClass;
     coding.code = "10828004";
     coding.display = "Not Detected";
 

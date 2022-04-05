@@ -1,0 +1,43 @@
+import {
+  Meta,
+  Preview,
+  Props,
+  Description,
+  Story,
+} from "@storybook/addon-docs/blocks";
+import { RecoveryCertTemplate } from "./recoveryCertTemplate";
+import v2PcrWithNric from "./fixtures/recHealthCertV2/rec_pcr_notarised_with_nric_unwrapped.json";
+import v2PcrWithoutNric from "./fixtures/recHealthCertV2/rec_pcr_notarised_without_nric_unwrapped.json";
+import v2ArtWithNric from "./fixtures/recHealthCertV2/rec_art_notarised_with_nric_unwrapped.json";
+import v2ArtWithNricMultiQr from "./fixtures/recHealthCertV2/rec_art_notarised_with_nric_multiqr_unwrapped.json";
+import v2SerWithNric from "./fixtures/recHealthCertV2/rec_ser_notarised_with_nric_unwrapped.json";
+
+<Meta title="RECOVERY_CERT" component={RecoveryCertTemplate} />
+
+# RecoveryCertTemplate component
+
+<Description of={RecoveryCertTemplate} />
+
+# Props
+
+<Props of={RecoveryCertTemplate} />
+
+# Usage
+
+<Preview>
+  <Story name="REC v2.0 PCR with NRIC, multi-qr">
+    <RecoveryCertTemplate document={v2PcrWithNric} />
+  </Story>
+  <Story name="REC v2.0 PCR without NRIC, multi-qr">
+    <RecoveryCertTemplate document={v2PcrWithoutNric} />
+  </Story>
+  <Story name="REC v2.0 ART with NRIC">
+    <RecoveryCertTemplate document={v2ArtWithNric} />
+  </Story>
+  <Story name="REC v2.0 ART with NRIC, multi-qr">
+    <RecoveryCertTemplate document={v2ArtWithNricMultiQr} />
+  </Story>
+  <Story name="REC v2.0 SER with NRIC">
+    <RecoveryCertTemplate document={v2SerWithNric} />
+  </Story>
+</Preview>

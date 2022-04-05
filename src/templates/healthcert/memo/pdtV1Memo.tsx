@@ -1,5 +1,4 @@
 import React from "react";
-import { pdtHealthCertV1 as healthcert } from "@govtechsg/oa-schemata";
 import {
   Title,
   PatientDetails,
@@ -15,11 +14,10 @@ import {
 import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
 import countries from "@notarise-gov-sg/i18n-iso-countries";
 import englishCountries from "@notarise-gov-sg/i18n-iso-countries/langs/en.json";
+import { Identifier, Coding, PdtPatient } from "../types";
 countries.registerLocale(englishCountries);
 
-type Coding = healthcert.Coding;
-type Identifier = healthcert.Identifier;
-type Patient = healthcert.Patient;
+type Patient = PdtPatient;
 
 export interface MemoInfo {
   specimen?: any;
