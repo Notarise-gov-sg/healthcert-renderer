@@ -4,10 +4,12 @@ import { get } from "lodash";
 import { NotarisedHealthCert } from "../../types";
 import {
   Bold,
-  QrCodeContainerWithBorder,
+  EUDCCOfflineQrCodeContainer,
+  EUDCCTag,
+  EUDCCDoseType,
   ResultSection,
   QrRowCenter,
-  QrColCenter,
+  EDUCCQrColCenter,
   StyledMemoSection,
 } from "../../styled-components";
 import EULogo from "../../eu-dcc-tag-big.png";
@@ -28,21 +30,24 @@ const generateOfflineQrSection = (
             ? get(sddInformations, signedEuHealthCert.vaccineCode)
             : { short_name: "" };
           return (
-            <QrColCenter key={i}>
-              <QrCodeContainerWithBorder key={i}>
+            <EDUCCQrColCenter key={i}>
+              <EUDCCOfflineQrCodeContainer key={i}>
+                <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
                 <QRCode
                   value={signedEuHealthCert.qr}
                   level={"M"}
-                  size={200}
+                  size={240}
                   imageSettings={{
                     src: EULogo,
                     width: logoWidth,
                     height: logoHeight,
                   }}
                 />
-              </QrCodeContainerWithBorder>
-              {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
-            </QrColCenter>
+                <EUDCCDoseType>
+                  {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
+                </EUDCCDoseType>
+              </EUDCCOfflineQrCodeContainer>
+            </EDUCCQrColCenter>
           );
         })}
       </QrRowCenter>

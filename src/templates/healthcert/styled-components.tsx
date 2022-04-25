@@ -157,6 +157,37 @@ export const QrCodeContainerWithBorder = styled.div`
   padding: 10px;
 `;
 
+export const EUDCCOfflineQrCodeContainer = styled.div`
+  margin-top: auto;
+  text-align: center;
+  page-break-inside: avoid;
+  border: 4px solid #a3bffa;
+  border-radius: 12px;
+  padding: 8px;
+  width: 250px;
+`;
+
+export const EUDCCTag = styled.p`
+  font-weight: bold;
+  text-align: center;
+  page-break-inside: avoid;
+  color: #4c51bf;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  padding-bottom: 4px;
+`;
+
+export const EUDCCDoseType = styled.p`
+  text-align: center;
+  page-break-inside: avoid;
+  color: #000000;
+  font-size: 12px;
+  padding: 12px 0 0 0;
+  line-height: 1.25;
+  margin: 0;
+`;
+
 export const TravellerInfoSection = styled.section`
   text-align: justify;
   background-color: #f1f5f9;
@@ -210,4 +241,9 @@ export const QrColCenter = styled.div`
   text-align: center;
   margin: 10px;
   padding: 0px 30px;
+`;
+
+export const EDUCCQrColCenter = styled.div`
+  text-align: center;
+  margin: 15px 10px;
 `;
