@@ -12,7 +12,6 @@ import {
   EDUCCQrColCenter,
   StyledMemoSection,
 } from "../../styled-components";
-import EULogo from "../../eu-dcc-tag-big.png";
 import sddInformations from "../../../../../static/SDD.mapping.json";
 
 const generateOfflineQrSection = (
@@ -20,8 +19,6 @@ const generateOfflineQrSection = (
 ): JSX.Element => {
   const signedEuHealthCerts =
     document.notarisationMetadata.signedEuHealthCerts || [];
-  const logoWidth = 130;
-  const logoHeight = logoWidth / 5;
   return (
     <StyledMemoSection>
       <QrRowCenter>
@@ -33,16 +30,7 @@ const generateOfflineQrSection = (
             <EDUCCQrColCenter key={i}>
               <EUDCCOfflineQrCodeContainer key={i}>
                 <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
-                <QRCode
-                  value={signedEuHealthCert.qr}
-                  level={"M"}
-                  size={240}
-                  imageSettings={{
-                    src: EULogo,
-                    width: logoWidth,
-                    height: logoHeight,
-                  }}
-                />
+                <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
                 <EUDCCDoseType>
                   {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
                 </EUDCCDoseType>

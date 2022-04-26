@@ -1,9 +1,14 @@
 import React from "react";
 import QRCode from "qrcode.react";
 import { NotarisedRECHealthCertUnwrappedV2 } from "../../types";
-import { Bold, ResultSection, QrCodeContainer } from "../../styled-components";
+import {
+  Bold,
+  ResultSection,
+  EUDCCOfflineQrCodeContainer,
+  EUDCCTag,
+  QrRowCenter,
+} from "../../styled-components";
 import { isoToDateOnlyString } from "../../../../util/datetime";
-import EULogo from "../../eu-dcc-tag-big.png";
 
 export const generateMultiQrSection = (
   document: NotarisedRECHealthCertUnwrappedV2
@@ -19,9 +24,6 @@ export const generateMultiQrSection = (
       year: "numeric",
     });
   }
-
-  const logoWidth = 130;
-  const logoHeight = logoWidth / 5;
 
   return (
     <>
@@ -44,18 +46,12 @@ export const generateMultiQrSection = (
         )}
       </ResultSection>
       {signedEuHealthCert && (
-        <QrCodeContainer>
-          <QRCode
-            value={signedEuHealthCert?.qr}
-            level={"M"}
-            size={200}
-            imageSettings={{
-              src: EULogo,
-              width: logoWidth,
-              height: logoHeight,
-            }}
-          />
-        </QrCodeContainer>
+        <QrRowCenter>
+          <EUDCCOfflineQrCodeContainer>
+            <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
+            <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+          </EUDCCOfflineQrCodeContainer>
+        </QrRowCenter>
       )}
     </>
   );

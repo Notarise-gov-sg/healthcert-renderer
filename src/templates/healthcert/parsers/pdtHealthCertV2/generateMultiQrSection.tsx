@@ -9,13 +9,15 @@ import {
   QrCol,
   ResultSection,
   TravellerInfoSection,
+  EUDCCOfflineQrCodeContainer,
+  EUDCCTag,
+  QrRowCenter,
 } from "../../styled-components";
 import fhirHelper from "../../../../models/fhirHelper";
 import {
   isoToDateOnlyString,
   isoToLocaleString,
 } from "../../../../util/datetime";
-import EULogo from "../../eu-dcc-tag-big.png";
 
 import { R4 } from "@ahryman40k/ts-fhir-types";
 
@@ -45,9 +47,6 @@ export const generateMultiQrSection = (
       year: "numeric",
     });
   }
-
-  const logoWidth = 130;
-  const logoHeight = logoWidth / 5;
 
   return (
     <>
@@ -85,49 +84,33 @@ export const generateMultiQrSection = (
       <br />
       {url && (
         <>
-          <QrRow>
-            <QrCol info rightAlign>
-              <Bold>Online QR verification</Bold>
-              <p>This QR Code requires an internet connection to verify.</p>
-            </QrCol>
-            <QrCol>
-              <QrCodeContainerWithBorder>
-                <QRCode value={url} level={"M"} size={200} />
-              </QrCodeContainerWithBorder>
-            </QrCol>
-          </QrRow>
+          <Bold>Online QR verification</Bold>
+          <p>This QR Code requires an internet connection to verify.</p>
+          <QrRowCenter>
+            <QrCodeContainerWithBorder>
+              <QRCode value={url} level={"M"} size={200} />
+            </QrCodeContainerWithBorder>
+          </QrRowCenter>
           <QrBreakLine />
         </>
       )}
-      <QrRow>
-        <QrCol info>
-          <Bold>Offline QR Verification (EU DCC-compatible)</Bold>
-          <p>
-            This QR Code does not require an internet connection to verify. Some
-            EU countries may only support this form of verification.
-          </p>
-          <p>
-            This may also be used for public health measures beyond travel
-            within the EU and should be produced to authorities when required.
-          </p>
-        </QrCol>
-        <QrCol>
-          {signedEuHealthCert && (
-            <QrCodeContainerWithBorder>
-              <QRCode
-                value={signedEuHealthCert?.qr}
-                level={"M"}
-                size={200}
-                imageSettings={{
-                  src: EULogo,
-                  width: logoWidth,
-                  height: logoHeight,
-                }}
-              />
-            </QrCodeContainerWithBorder>
-          )}
-        </QrCol>
-      </QrRow>
+      <Bold>Offline QR Verification (EU DCC-compatible)</Bold>
+      <p>
+        This QR Code does not require an internet connection to verify. Some EU
+        countries may only support this form of verification.
+      </p>
+      <p>
+        This may also be used for public health measures beyond travel within
+        the EU and should be produced to authorities when required.
+      </p>
+      {signedEuHealthCert && (
+        <QrRowCenter>
+          <EUDCCOfflineQrCodeContainer>
+            <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
+            <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+          </EUDCCOfflineQrCodeContainer>
+        </QrRowCenter>
+      )}
     </>
   );
 };

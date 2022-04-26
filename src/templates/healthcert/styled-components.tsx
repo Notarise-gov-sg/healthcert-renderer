@@ -245,5 +245,5 @@ export const QrColCenter = styled.div`
 
 export const EDUCCQrColCenter = styled.div`
   text-align: center;
-  margin: 15px 10px;
+  margin: 20px 20px;
 `;
