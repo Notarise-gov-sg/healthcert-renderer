@@ -5,8 +5,6 @@ import {
   Bold,
   QrBreakLine,
   QrCodeContainerWithBorder,
-  QrRow,
-  QrCol,
   ResultSection,
   TravellerInfoSection,
   EUDCCOfflineQrCodeContainer,
