@@ -4,13 +4,14 @@ import { get } from "lodash";
 import { NotarisedHealthCert } from "../../types";
 import {
   Bold,
-  QrCodeContainerWithBorder,
+  EUDCCOfflineQrCodeContainer,
+  EUDCCTag,
+  EUDCCDoseType,
   ResultSection,
   QrRowCenter,
-  QrColCenter,
+  EDUCCQrColCenter,
   StyledMemoSection,
 } from "../../styled-components";
-import EULogo from "../../eu-dcc-tag-big.png";
 import sddInformations from "../../../../../static/SDD.mapping.json";
 
 const generateOfflineQrSection = (
@@ -18,8 +19,6 @@ const generateOfflineQrSection = (
 ): JSX.Element => {
   const signedEuHealthCerts =
     document.notarisationMetadata.signedEuHealthCerts || [];
-  const logoWidth = 130;
-  const logoHeight = logoWidth / 5;
   return (
     <StyledMemoSection>
       <QrRowCenter>
@@ -28,21 +27,15 @@ const generateOfflineQrSection = (
             ? get(sddInformations, signedEuHealthCert.vaccineCode)
             : { short_name: "" };
           return (
-            <QrColCenter key={i}>
-              <QrCodeContainerWithBorder key={i}>
-                <QRCode
-                  value={signedEuHealthCert.qr}
-                  level={"M"}
-                  size={200}
-                  imageSettings={{
-                    src: EULogo,
-                    width: logoWidth,
-                    height: logoHeight,
-                  }}
-                />
-              </QrCodeContainerWithBorder>
-              {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
-            </QrColCenter>
+            <EDUCCQrColCenter key={i}>
+              <EUDCCOfflineQrCodeContainer key={i}>
+                <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
+                <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+                <EUDCCDoseType>
+                  {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
+                </EUDCCDoseType>
+              </EUDCCOfflineQrCodeContainer>
+            </EDUCCQrColCenter>
           );
         })}
       </QrRowCenter>
