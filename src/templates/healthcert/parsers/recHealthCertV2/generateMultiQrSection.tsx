@@ -1,5 +1,5 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QrCode } from "../../../../components/qrcode";
 import { NotarisedRECHealthCertUnwrappedV2 } from "../../types";
 import {
   Bold,
@@ -49,7 +49,7 @@ export const generateMultiQrSection = (
         <QrRowCenter>
           <EUDCCOfflineQrCodeContainer>
             <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
-            <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+            <QrCode value={signedEuHealthCert.qr} width={240} />
           </EUDCCOfflineQrCodeContainer>
         </QrRowCenter>
       )}

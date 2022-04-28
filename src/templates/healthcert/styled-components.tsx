@@ -148,6 +148,9 @@ export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
 `;
 
+/**
+ * @deprecated
+ */
 export const QrCodeContainerWithBorder = styled.div`
   margin-top: auto;
   text-align: center;
@@ -163,8 +166,8 @@ export const EUDCCOfflineQrCodeContainer = styled.div`
   page-break-inside: avoid;
   border: 4px solid #a3bffa;
   border-radius: 12px;
-  padding: 8px;
   width: 250px;
+  padding: 8px 0;
 `;
 
 export const EUDCCTag = styled.p`
@@ -175,7 +178,6 @@ export const EUDCCTag = styled.p`
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
-  padding-bottom: 4px;
 `;
 
 export const EUDCCDoseType = styled.p`
@@ -183,7 +185,6 @@ export const EUDCCDoseType = styled.p`
   page-break-inside: avoid;
   color: #000000;
   font-size: 12px;
-  padding: 12px 0 0 0;
   line-height: 1.25;
   margin: 0;
 `;

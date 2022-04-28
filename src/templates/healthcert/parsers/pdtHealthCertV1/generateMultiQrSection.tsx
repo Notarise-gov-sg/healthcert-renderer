@@ -1,18 +1,18 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QrCode } from "../../../../components/qrcode";
 import { PdtPatient, NotarisedHealthCert } from "../../types";
 import { extractInfo } from "./parseInfo";
 import {
   Bold,
   QrBreakLine,
-  QrCodeContainerWithBorder,
   QrRow,
   QrCol,
   ResultSection,
   TravellerInfoSection,
+  EUDCCOfflineQrCodeContainer,
+  EUDCCTag,
 } from "../../styled-components";
 import { isoToDateOnlyString } from "../../../../util/datetime";
-import EULogo from "../../eu-dcc-tag-big.png";
 
 export const generateMultiQrSection = (
   document: NotarisedHealthCert
@@ -45,9 +45,6 @@ export const generateMultiQrSection = (
       year: "numeric",
     });
   }
-
-  const logoWidth = 130;
-  const logoHeight = logoWidth / 5;
 
   return (
     <>
@@ -91,9 +88,7 @@ export const generateMultiQrSection = (
               <p>This QR Code requires an internet connection to verify.</p>
             </QrCol>
             <QrCol>
-              <QrCodeContainerWithBorder>
-                <QRCode value={url} level={"M"} size={200} />
-              </QrCodeContainerWithBorder>
+              <QrCode value={url} hasBorder />
             </QrCol>
           </QrRow>
           <QrBreakLine />
@@ -113,18 +108,10 @@ export const generateMultiQrSection = (
         </QrCol>
         <QrCol>
           {signedEuHealthCert && (
-            <QrCodeContainerWithBorder>
-              <QRCode
-                value={signedEuHealthCert?.qr}
-                level={"M"}
-                size={200}
-                imageSettings={{
-                  src: EULogo,
-                  width: logoWidth,
-                  height: logoHeight,
-                }}
-              />
-            </QrCodeContainerWithBorder>
+            <EUDCCOfflineQrCodeContainer>
+              <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
+              <QrCode value={signedEuHealthCert.qr} width={240} />
+            </EUDCCOfflineQrCodeContainer>
           )}
         </QrCol>
       </QrRow>

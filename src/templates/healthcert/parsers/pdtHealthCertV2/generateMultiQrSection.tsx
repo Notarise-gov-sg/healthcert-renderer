@@ -1,10 +1,9 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QrCode } from "../../../../components/qrcode";
 import { NotarisedPDTHealthCertUnwrappedV2 } from "../../types";
 import {
   Bold,
   QrBreakLine,
-  QrCodeContainerWithBorder,
   ResultSection,
   TravellerInfoSection,
   EUDCCOfflineQrCodeContainer,
@@ -85,9 +84,7 @@ export const generateMultiQrSection = (
           <Bold>Online QR verification</Bold>
           <p>This QR Code requires an internet connection to verify.</p>
           <QrRowCenter>
-            <QrCodeContainerWithBorder>
-              <QRCode value={url} level={"M"} size={200} />
-            </QrCodeContainerWithBorder>
+            <QrCode value={url} hasBorder />
           </QrRowCenter>
           <QrBreakLine />
         </>
@@ -105,7 +102,7 @@ export const generateMultiQrSection = (
         <QrRowCenter>
           <EUDCCOfflineQrCodeContainer>
             <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
-            <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+            <QrCode value={url} width={240} />
           </EUDCCOfflineQrCodeContainer>
         </QrRowCenter>
       )}
