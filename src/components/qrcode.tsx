@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { ReactElement, useEffect, useRef } from "react";
 import qrcode, { QRCodeRenderersOptions } from "qrcode";
 
 interface QrCodeProps {
@@ -10,7 +10,7 @@ export const QrCode = ({
   value,
   hasBorder,
   ...rest
-}: QrCodeProps & QRCodeRenderersOptions) => {
+}: QrCodeProps & QRCodeRenderersOptions): ReactElement => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export const QrCode = ({
       { width: 200, ...rest },
       (e) => e && console.error(e)
     );
-  }, [value]);
+  }, [value, rest]);
 
   return (
     <canvas
