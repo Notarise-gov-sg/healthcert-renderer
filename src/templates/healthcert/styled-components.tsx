@@ -148,18 +148,6 @@ export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
 `;
 
-/**
- * @deprecated
- */
-export const QrCodeContainerWithBorder = styled.div`
-  margin-top: auto;
-  text-align: center;
-  font-weight: bold;
-  page-break-inside: avoid;
-  border: 1px solid #e2e8f0;
-  padding: 10px;
-`;
-
 export const EUDCCOfflineQrCodeContainer = styled.div`
   margin-top: auto;
   text-align: center;
