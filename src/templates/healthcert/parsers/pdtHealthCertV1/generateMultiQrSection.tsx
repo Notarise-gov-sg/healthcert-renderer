@@ -110,7 +110,7 @@ export const generateMultiQrSection = (
           {signedEuHealthCert && (
             <EUDCCOfflineQrCodeContainer>
               <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
-              <QrCode value={signedEuHealthCert.qr} width={240} />
+              <QrCode value={signedEuHealthCert.qr} />
             </EUDCCOfflineQrCodeContainer>
           )}
         </QrCol>

@@ -19,7 +19,7 @@ export const QrCode = ({
     qrcode.toCanvas(
       canvasRef.current,
       value,
-      { width: 200, ...rest },
+      { scale: 3, ...rest },
       (e) => e && console.error(e)
     );
   }, [value, rest]);
