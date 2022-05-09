@@ -1,5 +1,5 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QrCode } from "../../../components/qrcode";
 import { groupBy } from "lodash";
 import {
   Title,
@@ -12,7 +12,6 @@ import {
   ResultSection,
   TravellerInfoSection,
   Bold,
-  QrCodeContainerWithBorder,
   QrRowCenter,
 } from "../styled-components";
 import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
@@ -95,13 +94,7 @@ const MemoResultSection: React.FC<{
           </ResultSection>
           <br />
           <QrRowCenter>
-            <QrCodeContainerWithBorder>
-              <QRCode
-                value={vaccinationMemoInfo.onlineUrl}
-                level={"M"}
-                size={200}
-              />
-            </QrCodeContainerWithBorder>
+            <QrCode value={vaccinationMemoInfo.onlineUrl} hasBorder />
           </QrRowCenter>
         </>
       )}

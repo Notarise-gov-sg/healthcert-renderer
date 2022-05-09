@@ -1,5 +1,5 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QrCode } from "../../../../components/qrcode";
 import { get } from "lodash";
 import { NotarisedHealthCert } from "../../types";
 import {
@@ -30,7 +30,7 @@ const generateOfflineQrSection = (
             <EDUCCQrColCenter key={i}>
               <EUDCCOfflineQrCodeContainer key={i}>
                 <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
-                <QRCode value={signedEuHealthCert.qr} level={"M"} size={240} />
+                <QrCode value={signedEuHealthCert.qr} scale={2.5} />
                 <EUDCCDoseType>
                   {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
                 </EUDCCDoseType>

@@ -1,6 +1,6 @@
-import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { QrCode } from "../../components/qrcode";
 import { NotarisedHealthCert } from "./types";
 import { Page, Background, Logo, QrCodeContainer } from "./styled-components";
 import {
@@ -27,7 +27,7 @@ export const VaccinationCertTemplate: FunctionComponent<
         {memoSections}
         {!multiQr && url && (
           <QrCodeContainer>
-            <QRCode value={url} level={"M"} size={200} />
+            <QrCode value={url} hasBorder />
           </QrCodeContainer>
         )}
       </Page>

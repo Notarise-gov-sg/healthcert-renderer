@@ -148,23 +148,13 @@ export const StyledMemoSection = styled.div`
   page-break-inside: avoid;
 `;
 
-export const QrCodeContainerWithBorder = styled.div`
-  margin-top: auto;
-  text-align: center;
-  font-weight: bold;
-  page-break-inside: avoid;
-  border: 1px solid #e2e8f0;
-  padding: 10px;
-`;
-
 export const EUDCCOfflineQrCodeContainer = styled.div`
-  margin-top: auto;
+  margin: 10px 10px;
   text-align: center;
   page-break-inside: avoid;
   border: 4px solid #a3bffa;
   border-radius: 12px;
-  padding: 8px;
-  width: 250px;
+  padding: 8px 0 0 0;
 `;
 
 export const EUDCCTag = styled.p`
@@ -175,7 +165,6 @@ export const EUDCCTag = styled.p`
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
-  padding-bottom: 4px;
 `;
 
 export const EUDCCDoseType = styled.p`
@@ -183,9 +172,9 @@ export const EUDCCDoseType = styled.p`
   page-break-inside: avoid;
   color: #000000;
   font-size: 12px;
-  padding: 12px 0 0 0;
   line-height: 1.25;
   margin: 0;
+  padding: 0 0 8px 0;
 `;
 
 export const TravellerInfoSection = styled.section`
@@ -245,5 +234,4 @@ export const QrColCenter = styled.div`
 
 export const EDUCCQrColCenter = styled.div`
   text-align: center;
-  margin: 20px 20px;
 `;

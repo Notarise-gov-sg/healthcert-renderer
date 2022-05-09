@@ -1,7 +1,7 @@
 // TODO: remove ts-ignore after the healthcert schema is updated to include it
-import QRCode from "qrcode.react";
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import { QrCode } from "../../components/qrcode";
 import {
   Page,
   Background,
@@ -53,11 +53,9 @@ export const RecoveryCertTemplate: FunctionComponent<
           )}
         </TravellerInfoSection>
         {url && (
-          <>
-            <QrCodeContainer>
-              <QRCode value={url} level={"M"} size={200} />
-            </QrCodeContainer>
-          </>
+          <QrCodeContainer>
+            <QrCode value={url} hasBorder />
+          </QrCodeContainer>
         )}
       </Page>
       {multiQr && <Page className={className}>{multiQrSection}</Page>}
