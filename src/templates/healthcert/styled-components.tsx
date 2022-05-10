@@ -224,6 +224,7 @@ export const QrRowCenter = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  page-break-inside: avoid;
 `;
 
 export const QrColCenter = styled.div`

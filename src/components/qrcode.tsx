@@ -26,7 +26,11 @@ export const QrCode = ({
 
   return (
     <canvas
-      style={hasBorder ? { border: "1px solid #e2e8f0" } : {}}
+      style={{
+        border: hasBorder ? "1px solid #e2e8f0" : "none",
+        pageBreakInside: "avoid",
+        display: "inline-block",
+      }}
       ref={canvasRef}
     />
   );
