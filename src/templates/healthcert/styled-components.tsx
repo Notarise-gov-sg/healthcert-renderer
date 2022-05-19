@@ -137,6 +137,10 @@ export const Bold = styled.span`
   font-weight: bold;
 `;
 
+export const Italic = styled.span`
+  font-style: italic;
+`;
+
 export const QrCodeContainer = styled.div`
   margin-top: auto;
   text-align: center;

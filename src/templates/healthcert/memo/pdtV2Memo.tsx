@@ -10,6 +10,7 @@ import {
   TestResult,
   Doctor,
   Bold,
+  Italic,
   StyledMemoSection,
 } from "../styled-components";
 
@@ -39,18 +40,15 @@ const MemoResultSection: React.FC<{
     <ResultSection>
       <p>To whom it may concern:</p>
       <p>
-        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay}{" "}
-        for COVID-19 using a {memoInfo.specimenSwabTypeDisplay} on{" "}
-        {memoInfo.specimenCollectionDateTime}, {memoInfo.modality || ""} by{" "}
-        {memoInfo.organizationLhpName} and has tested{" "}
-        <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
+        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay} for COVID-19 using a{" "}
+        {memoInfo.specimenSwabTypeDisplay} on {memoInfo.specimenCollectionDateTime}, {memoInfo.modality || ""} by{" "}
+        {memoInfo.organizationLhpName} and has tested <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
         {memoInfo.organizationAlName &&
           ` This test result was reported by ${memoInfo.organizationAlName} on ${memoInfo.observationEffectiveDateTime}.`}
       </p>
       {!multiQr && (
         <p>
-          Travellers should note that they are subject to the country or
-          region&apos;s requirements prior to travel.
+          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
         </p>
       )}
       <p>Thank you.</p>
@@ -58,34 +56,25 @@ const MemoResultSection: React.FC<{
   );
 };
 
-const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({
-  practitionerName,
-  practitionerMcr,
-}) => {
+const DoctorSection: React.FC<MemoInfo> = ({ practitionerName, practitionerMcr }) => {
   return (
     <Doctor>
+      <Row>
+        <SecondCol>
+          <Bold>Name of Doctor:</Bold> {practitionerName}
+        </SecondCol>
+        <SecondCol>
+          <Bold>MCR No.:</Bold> {practitionerMcr}
+        </SecondCol>
+      </Row>
       <p>
-        <Bold>Name of Doctor:</Bold> {practitionerName}
-        <br />
-        <Bold>MCR No.:</Bold> {practitionerMcr}
+        <Italic>
+          Note: This test was administered or supervised by a medical professional or testing personnel approved by the
+          Ministry of Health. The name of doctor and MCR no. are only required for tests administered or supervised by a
+          medical professional.
+        </Italic>
       </p>
     </Doctor>
-  );
-};
-
-const MultiQrMemoDoctorSection: React.FC<MemoInfo> = ({
-  practitionerName,
-  practitionerMcr,
-}) => {
-  return (
-    <Row>
-      <SecondCol>
-        <Bold>Name of Doctor:</Bold> {practitionerName}
-      </SecondCol>
-      <SecondCol>
-        <Bold>MCR No.:</Bold> {practitionerMcr}
-      </SecondCol>
-    </Row>
   );
 };
 
@@ -93,9 +82,7 @@ export const MemoSection: React.FC<{
   memoInfo: MemoInfo;
   multiQr?: boolean;
 }> = ({ memoInfo, multiQr = false }) => {
-  const memoDoctorSection = multiQr
-    ? MultiQrMemoDoctorSection(memoInfo)
-    : SingleQrMemoDoctorSection(memoInfo);
+  const memoDoctorSection = DoctorSection(memoInfo);
   const memoResultSection = MemoResultSection({ memoInfo, multiQr });
   return (
     <StyledMemoSection>
@@ -121,9 +108,7 @@ export const MemoSection: React.FC<{
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>
-            {getNationalityCitizenship(memoInfo.patientNationalityCode)}
-          </SecondCol>
+          <SecondCol>{getNationalityCitizenship(memoInfo.patientNationalityCode)}</SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
