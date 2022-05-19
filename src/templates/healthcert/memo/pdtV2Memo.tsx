@@ -40,15 +40,18 @@ const MemoResultSection: React.FC<{
     <ResultSection>
       <p>To whom it may concern:</p>
       <p>
-        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay} for COVID-19 using a{" "}
-        {memoInfo.specimenSwabTypeDisplay} on {memoInfo.specimenCollectionDateTime}, {memoInfo.modality || ""} by{" "}
-        {memoInfo.organizationLhpName} and has tested <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
+        The above-mentioned has undergone {memoInfo.observationTestTypeDisplay}{" "}
+        for COVID-19 using a {memoInfo.specimenSwabTypeDisplay} on{" "}
+        {memoInfo.specimenCollectionDateTime}, {memoInfo.modality || ""} by{" "}
+        {memoInfo.organizationLhpName} and has tested{" "}
+        <TestResult>{memoInfo.observationResultDisplay}</TestResult>.
         {memoInfo.organizationAlName &&
           ` This test result was reported by ${memoInfo.organizationAlName} on ${memoInfo.observationEffectiveDateTime}.`}
       </p>
       {!multiQr && (
         <p>
-          Travellers should note that they are subject to the country or region&apos;s requirements prior to travel.
+          Travellers should note that they are subject to the country or
+          region&apos;s requirements prior to travel.
         </p>
       )}
       <p>Thank you.</p>
@@ -56,7 +59,10 @@ const MemoResultSection: React.FC<{
   );
 };
 
-const DoctorSection: React.FC<MemoInfo> = ({ practitionerName, practitionerMcr }) => {
+const DoctorSection: React.FC<MemoInfo> = ({
+  practitionerName,
+  practitionerMcr,
+}) => {
   return (
     <Doctor>
       <Row>
@@ -69,9 +75,10 @@ const DoctorSection: React.FC<MemoInfo> = ({ practitionerName, practitionerMcr }
       </Row>
       <p>
         <Italic>
-          Note: This test was administered or supervised by a medical professional or testing personnel approved by the
-          Ministry of Health. The name of doctor and MCR no. are only required for tests administered or supervised by a
-          medical professional.
+          Note: This test was administered or supervised by a medical
+          professional or testing personnel approved by the Ministry of Health.
+          The name of doctor and MCR no. are only required for tests
+          administered or supervised by a medical professional.
         </Italic>
       </p>
     </Doctor>
@@ -108,7 +115,9 @@ export const MemoSection: React.FC<{
         </Row>
         <Row>
           <FirstCol>Nationality/Citizenship:</FirstCol>
-          <SecondCol>{getNationalityCitizenship(memoInfo.patientNationalityCode)}</SecondCol>
+          <SecondCol>
+            {getNationalityCitizenship(memoInfo.patientNationalityCode)}
+          </SecondCol>
         </Row>
         <Row>
           <FirstCol>Date of Birth:</FirstCol>
