@@ -10,6 +10,7 @@ import {
   TestResult,
   Doctor,
   Bold,
+  Italic,
   StyledMemoSection,
 } from "../styled-components";
 
@@ -58,34 +59,29 @@ const MemoResultSection: React.FC<{
   );
 };
 
-const SingleQrMemoDoctorSection: React.FC<MemoInfo> = ({
+const DoctorSection: React.FC<MemoInfo> = ({
   practitionerName,
   practitionerMcr,
 }) => {
   return (
     <Doctor>
+      <Row>
+        <SecondCol>
+          <Bold>Name of Doctor:</Bold> {practitionerName}
+        </SecondCol>
+        <SecondCol>
+          <Bold>MCR No.:</Bold> {practitionerMcr}
+        </SecondCol>
+      </Row>
       <p>
-        <Bold>Name of Doctor:</Bold> {practitionerName}
-        <br />
-        <Bold>MCR No.:</Bold> {practitionerMcr}
+        <Italic>
+          Note: This test was administered or supervised by a medical
+          professional or testing personnel approved by the Ministry of Health.
+          The name of doctor and MCR no. are only required for tests
+          administered or supervised by a medical professional.
+        </Italic>
       </p>
     </Doctor>
-  );
-};
-
-const MultiQrMemoDoctorSection: React.FC<MemoInfo> = ({
-  practitionerName,
-  practitionerMcr,
-}) => {
-  return (
-    <Row>
-      <SecondCol>
-        <Bold>Name of Doctor:</Bold> {practitionerName}
-      </SecondCol>
-      <SecondCol>
-        <Bold>MCR No.:</Bold> {practitionerMcr}
-      </SecondCol>
-    </Row>
   );
 };
 
@@ -93,9 +89,7 @@ export const MemoSection: React.FC<{
   memoInfo: MemoInfo;
   multiQr?: boolean;
 }> = ({ memoInfo, multiQr = false }) => {
-  const memoDoctorSection = multiQr
-    ? MultiQrMemoDoctorSection(memoInfo)
-    : SingleQrMemoDoctorSection(memoInfo);
+  const memoDoctorSection = DoctorSection(memoInfo);
   const memoResultSection = MemoResultSection({ memoInfo, multiQr });
   return (
     <StyledMemoSection>
