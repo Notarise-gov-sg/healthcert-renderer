@@ -82,5 +82,17 @@
     "3418091000133101": {
         "short_name": "MODERNA",
         "name": "MODERNA COVID-19 Vaccine [mRNA-1273] 1 mg/ 5 mL Injection"
+    },
+    "1452031000133103": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] Injection"
+    },
+    "1452041000133107": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] 50 billion viral particles/0.5mL Injection"
+    },
+    "1452051000133109": {
+        "short_name": "CONVIDECIA",
+        "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] 150 billion viral particles/1.5mL Injection"
     }
 }
