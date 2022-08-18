@@ -94,5 +94,9 @@
     "1452051000133109": {
         "short_name": "CONVIDECIA",
         "name": "CONVIDECIA COVID-19 Vaccine [Ad5.CoV2-S] 150 billion viral particles/1.5mL Injection"
+    },
+    "1748971000133109": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection"
     }
 }
