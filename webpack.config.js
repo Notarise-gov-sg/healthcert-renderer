@@ -70,17 +70,16 @@ module.exports = {
 
   devServer: {
     compress: true,
-    disableHostCheck: true,
+    allowedHosts: "all",
     historyApiFallback: true,
     hot: true,
-    inline: true,
+    // inline: true,
     port: 3000,
-    stats: {
-      colors: true,
+    client: {
       progress: true,
     },
   },
-
+  stats: "normal",
   resolve: {
     extensions: [".js", ".ts", ".tsx"],
     modules: ["node_modules", path.resolve(__dirname, "src")],
