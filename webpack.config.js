@@ -73,7 +73,6 @@ module.exports = {
     allowedHosts: "all",
     historyApiFallback: true,
     hot: true,
-    // inline: true,
     port: 3000,
     client: {
       progress: true,
