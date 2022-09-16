@@ -52,8 +52,8 @@ export const generateMultiQrSection = (
         using a {specimenSwabTypeDisplay} on {specimenCollectionDateTime}
       </ResultSection>
       <TravellerInfoSection>
-        Note: Travellers are subject to the country or region&apos;s
-        requirements prior to travel.
+        Travellers are subject to the country or region&apos;s requirements
+        prior to travel.
         <br />
         The QR code used for verification is based on your{" "}
         <u>destination country</u>.
@@ -61,20 +61,9 @@ export const generateMultiQrSection = (
           <>
             <br />
             <br />
-            The QR codes in this PDT HealthCert is valid until{" "}
-            <b>{expiryDateTime}</b>. You may visit{" "}
-            <a
-              className="hyperlink"
-              target="_blank"
-              href="https://notarise.gov.sg/"
-              rel="noreferrer"
-            >
-              Notαrise.gov.sg
-            </a>{" "}
-            at any time to obtain a new PDT HealthCert to extend the cert expiry
-            date. Please note that expiry of your PDT HealthCert does not
-            constitute the expiry of your PDT records or PDT status in
-            Singapore.
+            The <u>QR codes</u> in the PDT HealthCert are active until{" "}
+            <b>{expiryDateTime}</b>. Please note this is not the expiry date of
+            your PDT records or PDT status.
           </>
         )}
       </TravellerInfoSection>
