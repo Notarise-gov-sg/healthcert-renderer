@@ -37,7 +37,7 @@ export const generateMultiQrSection = (
     document.notarisationMetadata.signedEuHealthCerts?.[0];
 
   // Date that transient storage was increased to 60 days: https://github.com/Notarise-gov-sg/api-transient-storage/actions/runs/3087216953
-  const DATE_OF_INCREASE = new Date("2022-09-23T11:45:00.000+08:00");
+  const DATE_OF_INCREASE = new Date("2022-09-20T11:45:00.000+08:00");
 
   const endorsedDate = new Date(document.notarisationMetadata.notarisedOn);
   let qrExpiryDateString = "";
