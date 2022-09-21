@@ -36,13 +36,30 @@ export const generateMultiQrSection = (
   const signedEuHealthCert =
     document.notarisationMetadata.signedEuHealthCerts?.[0];
 
-  let expiryDateTime = "";
-  if (signedEuHealthCert?.expiryDateTime) {
-    expiryDateTime = isoToDateOnlyString(signedEuHealthCert.expiryDateTime, {
+  // Date that transient storage was increased to 60 days: https://github.com/Notarise-gov-sg/api-transient-storage/actions/runs/3087216953
+  const DATE_OF_INCREASE = new Date("2022-09-23T11:45:00.000+08:00");
+
+  const endorsedDate = new Date(document.notarisationMetadata.notarisedOn);
+  let qrExpiryDateString = "";
+
+  // FIXME: Find a better way to obtain QR TTL instead of hardcoded endorsement date + 60 days
+  if (endorsedDate > DATE_OF_INCREASE) {
+    const expiryDate = new Date(endorsedDate);
+    expiryDate.setDate(expiryDate.getDate() + 60);
+    qrExpiryDateString = isoToDateOnlyString(expiryDate.toISOString(), {
       day: "numeric",
       month: "short",
       year: "numeric",
     });
+  } else if (signedEuHealthCert?.expiryDateTime) {
+    qrExpiryDateString = isoToDateOnlyString(
+      signedEuHealthCert.expiryDateTime,
+      {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }
+    );
   }
 
   return (
@@ -57,13 +74,13 @@ export const generateMultiQrSection = (
         <br />
         The QR code used for verification is based on your{" "}
         <u>destination country</u>.
-        {expiryDateTime && (
+        {qrExpiryDateString && (
           <>
             <br />
             <br />
             The <u>QR codes</u> in the PDT HealthCert are active until{" "}
-            <b>{expiryDateTime}</b>. Please note this is not the expiry date of
-            your PDT records or PDT status.
+            <b>{qrExpiryDateString}</b>. Please note this is not the expiry date
+            of your PDT records or PDT status.
           </>
         )}
       </TravellerInfoSection>
