@@ -78,9 +78,9 @@ export const generateMultiQrSection = (
           <>
             <br />
             <br />
-            The <u>QR codes</u> in the PDT HealthCert are active until{" "}
-            <b>{qrExpiryDateString}</b>. Please note this is not the expiry date
-            of your PDT records or PDT status.
+            The online QR code in the PDT HealthCert is active until{" "}
+            <b>{qrExpiryDateString}</b>. Please note this is <u>not</u> the
+            expiry date of your PDT records or status.
           </>
         )}
       </TravellerInfoSection>
