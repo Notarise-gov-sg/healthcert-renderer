@@ -60,9 +60,9 @@ const MemoResultSection: React.FC<{
         )}
         {multiQr && (
           <TravellerInfoSection>
-            Note: Travellers are subject to the country or region&apos;s
-            requirements prior to travel. The QR code used for verification is
-            based on your <u>destination country</u>.
+            Travellers should note that they are subject to the country or
+            region&apos;s requirements prior to travel. The QR code used for
+            verification is based on your <u>destination country</u>.
             {vaccinationMemoInfo.expiryDateTime && (
               <>
                 <br />
@@ -78,9 +78,9 @@ const MemoResultSection: React.FC<{
                   Notαrise.gov.sg
                 </a>{" "}
                 at any time to obtain a new Vaccination HealthCert to extend the
-                cert expiry date. Please note that expiry of your Vaccination
-                HealthCert does not constitute the expiry of your vaccination
-                records or vaccination status in Singapore.
+                expiry date of the QR codes. Please note that expiry of the QR
+                codes do not constitute the expiry of your vaccination records
+                or vaccination status in Singapore.
               </>
             )}
           </TravellerInfoSection>
