@@ -67,7 +67,7 @@ const MemoResultSection: React.FC<{
               <>
                 <br />
                 <br />
-                The QR codes in this Vaccination HealthCert is valid until{" "}
+                The QR codes in this Vaccination HealthCert are valid until{" "}
                 <b>{vaccinationMemoInfo.expiryDateTime}</b>. You may visit{" "}
                 <a
                   className="hyperlink"
