@@ -1,6 +1,5 @@
 import React from "react";
 import { QrCode } from "../../../components/qrcode";
-import { groupBy } from "lodash";
 import {
   Title,
   PatientDetails,
@@ -15,6 +14,7 @@ import {
   QrRowCenter,
 } from "../styled-components";
 import { getNationalityCitizenship } from "../../../util/nationalityCitizenship";
+import sddMapping from "../../../../static/SDD.mapping.json";
 import countries from "@notarise-gov-sg/i18n-iso-countries";
 import englishCountries from "@notarise-gov-sg/i18n-iso-countries/langs/en.json";
 countries.registerLocale(englishCountries);
@@ -107,11 +107,7 @@ export const MemoSection: React.FC<{
   multiQr?: boolean;
 }> = ({ vaccinationMemoInfo, multiQr = false }) => {
   const memoResultSection = MemoResultSection({ vaccinationMemoInfo, multiQr });
-  const groupedImmunizations = groupBy(
-    vaccinationMemoInfo.immunizations,
-    "vaccineCode"
-  );
-  const groupedVaccineCode = Object.keys(groupedImmunizations);
+
   return (
     <>
       <Title>Vaccination Certificate</Title>
@@ -143,11 +139,25 @@ export const MemoSection: React.FC<{
           <SecondCol>{vaccinationMemoInfo.patientBirthDate}</SecondCol>
         </Row>
       </PatientDetails>
-      {groupedVaccineCode.map((vaccineCode) =>
-        groupedImmunizations[vaccineCode].map((immunization, i) => (
+      {vaccinationMemoInfo.immunizations.map((immunization, i) => {
+        const totalIterator = i + 1;
+        const vaccineShortName =
+          immunization.vaccineCode in sddMapping
+            ? sddMapping[immunization.vaccineCode as keyof typeof sddMapping]
+                .short_name
+            : immunization.vaccineCode;
+        const doseIterator =
+          vaccinationMemoInfo.immunizations
+            .slice(0, i)
+            .filter(
+              ({ vaccineCode }) => vaccineCode === immunization.vaccineCode
+            ).length + 1;
+        return (
           <ImmunizationDetails key={i}>
             <Row>
-              <UnderlinedFirstCol>Dose {i + 1}</UnderlinedFirstCol>
+              <UnderlinedFirstCol>
+                {`${totalIterator}. ${vaccineShortName} (Dose ${doseIterator})`}
+              </UnderlinedFirstCol>
             </Row>
             <Row>
               <FirstCol>Manufacturer/Vaccination Name/Brand/Type:</FirstCol>
@@ -176,8 +186,8 @@ export const MemoSection: React.FC<{
               <SecondCol>{immunization.performer}</SecondCol>
             </Row>
           </ImmunizationDetails>
-        ))
-      )}
+        );
+      })}
       {memoResultSection}
     </>
   );
