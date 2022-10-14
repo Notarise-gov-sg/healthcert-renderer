@@ -28,11 +28,11 @@ const generateOfflineQrSection = (
             : { short_name: "" };
           return (
             <EDUCCQrColCenter key={i}>
-              <EUDCCOfflineQrCodeContainer key={i}>
+              <EUDCCOfflineQrCodeContainer>
                 <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
                 <QrCode value={signedEuHealthCert.qr} scale={2.5} />
                 <EUDCCDoseType>
-                  {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
+                  {i + 1}. {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
                 </EUDCCDoseType>
               </EUDCCOfflineQrCodeContainer>
             </EDUCCQrColCenter>
