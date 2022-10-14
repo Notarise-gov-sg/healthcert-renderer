@@ -17,7 +17,7 @@ const isNric = (value: Identifier): boolean =>
 export const generateMemoSections = (
   document: NotarisedHealthCert,
   multiQr = false
-) => {
+): JSX.Element => {
   const patient = document.fhirBundle.entry.find(
     (entry) => entry.resourceType === "Patient"
   ) as VacPatient;
