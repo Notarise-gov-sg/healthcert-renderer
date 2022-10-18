@@ -1,6 +1,5 @@
 import React from "react";
 import { QrCode } from "../../../../components/qrcode";
-import { get } from "lodash";
 import { NotarisedHealthCert } from "../../types";
 import {
   Bold,
