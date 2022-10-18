@@ -12,7 +12,7 @@ import {
   EDUCCQrColCenter,
   StyledMemoSection,
 } from "../../styled-components";
-import sddInformations from "../../../../../static/SDD.mapping.json";
+import sddMapping from "../../../../../static/SDD.mapping.json";
 
 const generateOfflineQrSection = (
   document: NotarisedHealthCert
@@ -23,16 +23,27 @@ const generateOfflineQrSection = (
     <StyledMemoSection>
       <QrRowCenter>
         {signedEuHealthCerts.map((signedEuHealthCert, i) => {
-          const sddInfo = signedEuHealthCert.vaccineCode
-            ? get(sddInformations, signedEuHealthCert.vaccineCode)
-            : { short_name: "" };
+          const totalIterator = i + 1;
+          const vaccineShortName =
+            signedEuHealthCert.vaccineCode || "" in sddMapping
+              ? sddMapping[
+                  signedEuHealthCert.vaccineCode as keyof typeof sddMapping
+                ].short_name
+              : signedEuHealthCert.vaccineCode;
+          const doseIterator =
+            signedEuHealthCerts
+              .slice(0, i)
+              .filter(
+                ({ vaccineCode }) =>
+                  vaccineCode === signedEuHealthCert.vaccineCode
+              ).length + 1;
           return (
             <EDUCCQrColCenter key={i}>
               <EUDCCOfflineQrCodeContainer>
                 <EUDCCTag>OFFLINE QR (EU DCC)</EUDCCTag>
                 <QrCode value={signedEuHealthCert.qr} scale={2.5} />
                 <EUDCCDoseType>
-                  {i + 1}. {sddInfo.short_name} (DOSE {signedEuHealthCert.dose})
+                  {totalIterator}. {vaccineShortName} (DOSE {doseIterator})
                 </EUDCCDoseType>
               </EUDCCOfflineQrCodeContainer>
             </EDUCCQrColCenter>
