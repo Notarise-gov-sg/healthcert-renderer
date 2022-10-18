@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { debounce } from "lodash";
 
-const getWindowDimensions = () => {
+interface WindowDimension {
+  width: number;
+  height: number;
+}
+
+const getWindowDimensions = (): WindowDimension => {
   const { innerWidth: width, innerHeight: height } = window;
   return {
     width,
@@ -9,13 +14,13 @@ const getWindowDimensions = () => {
   };
 };
 
-export const useWindowDimensions = () => {
+export const useWindowDimensions = (): WindowDimension => {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
 
   useEffect(() => {
-    const handleResize = () => {
+    const handleResize = (): void => {
       setWindowDimensions(getWindowDimensions());
     };
 
