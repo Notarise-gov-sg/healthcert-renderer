@@ -30,7 +30,7 @@ export const QrCode = ({
   useEffect(() => {
     if (!canvasRef.current || !value) return;
 
-    const options: QRCodeRenderersOptions = { scale: 2, ...rest };
+    const options: QRCodeRenderersOptions = { scale: 3, ...rest };
     if (qrWidth) options.width = qrWidth;
 
     qrcode.toCanvas(
