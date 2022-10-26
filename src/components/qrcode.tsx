@@ -1,5 +1,7 @@
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { ReactElement, useEffect, useRef, useState } from "react";
 import qrcode, { QRCodeRenderersOptions } from "qrcode";
+
+import { useWindowDimensions } from "../util/useWindowDimensions";
 
 interface QrCodeProps {
   value: string;
@@ -10,19 +12,34 @@ export const QrCode = ({
   value,
   hasBorder,
   ...rest
-}: QrCodeProps & QRCodeRenderersOptions): ReactElement => {
+}: QrCodeProps & Omit<QRCodeRenderersOptions, "width">): ReactElement => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [qrWidth, setQrWidth] = useState<number>();
+  const { width } = useWindowDimensions();
+
+  /* A hack to make QR code responsive when viewport is <300px */
+  useEffect(() => {
+    if (width <= 300) {
+      const eightyPercentWidth = Math.floor(width * 0.8);
+      setQrWidth(eightyPercentWidth);
+    } else {
+      setQrWidth(undefined);
+    }
+  }, [width]);
 
   useEffect(() => {
     if (!canvasRef.current || !value) return;
 
+    const options: QRCodeRenderersOptions = { scale: 3, ...rest };
+    if (qrWidth) options.width = qrWidth;
+
     qrcode.toCanvas(
       canvasRef.current,
       value,
-      { scale: 3, ...rest },
+      options,
       (e) => e && console.error(e)
     );
-  }, [value, rest]);
+  }, [value, rest, qrWidth]);
 
   return (
     <canvas
