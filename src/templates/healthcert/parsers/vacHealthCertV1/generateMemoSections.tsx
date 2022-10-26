@@ -17,7 +17,7 @@ const isNric = (value: Identifier): boolean =>
 export const generateMemoSections = (
   document: NotarisedHealthCert,
   multiQr = false
-): JSX.Element[] => {
+): JSX.Element => {
   const patient = document.fhirBundle.entry.find(
     (entry) => entry.resourceType === "Patient"
   ) as VacPatient;
@@ -61,7 +61,6 @@ export const generateMemoSections = (
   const mappedImmunizations = immunizations.map(
     simplifyImmunizationObjectWithLocation(locations)
   );
-  const memoSections: JSX.Element[] = [];
 
   const vaccinationMemoInfo = {
     immunizations: mappedImmunizations,
@@ -75,9 +74,7 @@ export const generateMemoSections = (
     expiryDateTime,
   };
 
-  memoSections.push(
+  return (
     <MemoSection vaccinationMemoInfo={vaccinationMemoInfo} multiQr={multiQr} />
   );
-
-  return memoSections;
 };
