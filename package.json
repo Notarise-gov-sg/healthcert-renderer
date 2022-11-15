@@ -6,8 +6,8 @@
   "types": "build/index.d.ts",
   "dependencies": {
     "@ahryman40k/ts-fhir-types": "^4.0.36",
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
+    "@emotion/core": "^10.3.1",
+    "@emotion/styled": "^10.3.0",
     "@govtechsg/decentralized-renderer-react-components": "^3.5.2",
     "@govtechsg/oa-schemata": "^1.18.2",
     "@hot-loader/react-dom": "^17.0.1",
