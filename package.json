@@ -13,7 +13,7 @@
     "@hot-loader/react-dom": "^17.0.1",
     "@notarise-gov-sg/i18n-iso-countries": "^7.3.1",
     "debug": "^4.3.2",
-    "fhir": "^4.10.0",
+    "fhir": "^4.11.1",
     "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
