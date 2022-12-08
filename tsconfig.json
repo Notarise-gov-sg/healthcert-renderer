@@ -16,5 +16,5 @@
     "types": ["jest", "node"],
     "allowJs": true
   },
-  "include": ["src"]
+  "include": ["src","webpack.config.js","application","__mocks__"]
 }
