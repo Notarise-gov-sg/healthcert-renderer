@@ -136,7 +136,7 @@ export const App: React.FunctionComponent<AppProps> = ({
       <FrameContainer>
         <DocumentsContainer>
           <div
-            css={css`
+            style={css`
               text-align: center;
               font-weight: bold;
             `}
@@ -162,7 +162,7 @@ export const App: React.FunctionComponent<AppProps> = ({
         </DocumentsContainer>
         {!document && (
           <div
-            css={css`
+            style={css`
               text-align: center;
               flex-grow: 1;
               align-self: center;
@@ -173,14 +173,14 @@ export const App: React.FunctionComponent<AppProps> = ({
           </div>
         )}
         <div
-          css={css`
+          style={css`
             width: 100%;
             display: ${document ? "block" : "none"};
           `}
         >
           <TemplatesContainer>
             <ul
-              css={css`
+              style={css`
                 display: flex;
                 border-bottom: 1px solid #e2e8f0;
                 list-style: none;
@@ -234,7 +234,7 @@ export const App: React.FunctionComponent<AppProps> = ({
             </ul>
           </TemplatesContainer>
           <div
-            css={css`
+            style={css`
               border: 1px solid #e2e8f0;
               border-top: none;
               padding: 2rem;
@@ -245,7 +245,7 @@ export const App: React.FunctionComponent<AppProps> = ({
               source="http://localhost:3000"
               dispatch={fromFrame}
               onConnected={fn}
-              css={css`
+              style={css`
                 margin: auto;
                 max-width: 1120px;
                 border: 0;
