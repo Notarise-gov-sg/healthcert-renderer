@@ -115,6 +115,7 @@
     "IE >= 11"
   ],
   "jest": {
+    "testEnvironment": "jsdom",
     "coverageDirectory": "coverage",
     "testRegex": "(/__tests__/.*|(\\.|/)(test))\\.tsx?$",
     "moduleNameMapper": {
