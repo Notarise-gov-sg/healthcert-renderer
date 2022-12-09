@@ -11,7 +11,6 @@ module.exports = ({ config }) => {
     }),
     require.resolve("@babel/preset-typescript"),
     require.resolve("@babel/preset-react"),
-    require.resolve("@emotion/babel-preset-css-prop"),
   ];
 
   config.module.rules.push(
