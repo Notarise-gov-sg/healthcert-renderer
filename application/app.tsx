@@ -135,7 +135,12 @@ export const App: React.FunctionComponent<AppProps> = ({
       </ActionsContainer>
       <FrameContainer>
         <DocumentsContainer>
-          <div css={css`text-align: center; font-weight: bold;`}>
+          <div
+            css={css`
+              text-align: center;
+              font-weight: bold;
+            `}
+          >
             Documents
           </div>
           {documents.length === 0 && (

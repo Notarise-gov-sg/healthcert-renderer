@@ -6,6 +6,7 @@
   "types": "build/index.d.ts",
   "dependencies": {
     "@ahryman40k/ts-fhir-types": "^4.0.36",
+    "@emotion/babel-plugin": "^11.10.5",
     "@emotion/css": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@govtechsg/decentralized-renderer-react-components": "^3.5.2",

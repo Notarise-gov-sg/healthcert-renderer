@@ -25,6 +25,7 @@
     }
   },
   "rules": {
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "@typescript-eslint/explicit-function-return-type": [
       "warn",
       {
