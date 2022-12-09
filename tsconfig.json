@@ -6,7 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "inlineSourceMap": false,
     "jsx": "react",
-    "lib": ["es6"],
+    "lib": ["es6","dom"],
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -14,7 +14,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "es6",
-    "types": ["jest", "node","mdx"],
+    "types": ["jest", "node","mdx","@emotion/react/types/css-prop"],
   },
   "include": ["src","webpack.config.js","application","__mocks__"]
 }

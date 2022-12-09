@@ -4,7 +4,7 @@ import {
   FrameConnector,
   HostActionsHandler,
 } from "@govtechsg/decentralized-renderer-react-components";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
 interface AppProps {
@@ -136,7 +136,7 @@ export const App: React.FunctionComponent<AppProps> = ({
       <FrameContainer>
         <DocumentsContainer>
           <div
-            style={css`
+            css={css`
               text-align: center;
               font-weight: bold;
             `}
@@ -162,7 +162,7 @@ export const App: React.FunctionComponent<AppProps> = ({
         </DocumentsContainer>
         {!document && (
           <div
-            style={css`
+            css={css`
               text-align: center;
               flex-grow: 1;
               align-self: center;
@@ -173,14 +173,14 @@ export const App: React.FunctionComponent<AppProps> = ({
           </div>
         )}
         <div
-          style={css`
+          css={css`
             width: 100%;
             display: ${document ? "block" : "none"};
           `}
         >
           <TemplatesContainer>
             <ul
-              style={css`
+              css={css`
                 display: flex;
                 border-bottom: 1px solid #e2e8f0;
                 list-style: none;
@@ -234,7 +234,7 @@ export const App: React.FunctionComponent<AppProps> = ({
             </ul>
           </TemplatesContainer>
           <div
-            style={css`
+            css={css`
               border: 1px solid #e2e8f0;
               border-top: none;
               padding: 2rem;
@@ -245,7 +245,7 @@ export const App: React.FunctionComponent<AppProps> = ({
               source="http://localhost:3000"
               dispatch={fromFrame}
               onConnected={fn}
-              style={css`
+              css={css`
                 margin: auto;
                 max-width: 1120px;
                 border: 0;
