@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "esnext"],
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "inlineSourceMap": false,
+    "jsx": "react",
+    "lib": ["es6","dom"],
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "jsx": "react",
-    "inlineSourceMap": false,
+    "skipLibCheck": true,
     "sourceMap": true,
-    "types": ["jest", "node"],
-    "allowJs": true
+    "strict": true,
+    "target": "es6",
+    "types": ["jest", "node","mdx","@emotion/react/types/css-prop"],
   },
-  "include": ["src"]
+  "include": ["src","webpack.config.js","application","__mocks__"]
 }

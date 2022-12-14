@@ -15,7 +15,6 @@ describe("customTemplate", () => {
         handleObfuscation={() => void 0}
       />
     );
-    // eslint-disable-next-line jest/no-truthy-falsy
     const title = getByTestId("memo-title");
     expect(title.textContent).toContain("MEMO ON");
     expect(title.textContent).toContain(
@@ -29,7 +28,7 @@ describe("customTemplate", () => {
         handleObfuscation={() => void 0}
       />
     );
-    // eslint-disable-next-line jest/no-truthy-falsy
+
     const titles = getAllByTestId("memo-title");
     expect(titles).toHaveLength(2);
     titles.forEach((title) => expect(title.textContent).toContain("MEMO ON"));
@@ -56,7 +55,7 @@ describe("customTemplate", () => {
         handleObfuscation={() => void 0}
       />
     );
-    // eslint-disable-next-line jest/no-truthy-falsy
+
     expect(queryByText("Negative")).toBeTruthy();
   });
   it("should render testresult as 'Positive' based on the valueCodeableConcept code", () => {
@@ -75,7 +74,7 @@ describe("customTemplate", () => {
         handleObfuscation={() => void 0}
       />
     );
-    // eslint-disable-next-line jest/no-truthy-falsy
+
     expect(queryByText("Positive")).toBeTruthy();
   });
 });
