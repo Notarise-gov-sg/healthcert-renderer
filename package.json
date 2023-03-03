@@ -25,7 +25,7 @@
     "npm": ">=9"
   },
   "scripts": {
-    "build": "npm run check-types && cross-env NODE_ENV=production webpack --progress --mode production",
+    "build": "npm run check-types && cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --mode production",
     "check-types": "tsc --sourceMap false --noEmit",
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "example:application": "webpack-dev-server --config application/webpack.config.js",
