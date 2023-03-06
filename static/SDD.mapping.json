@@ -98,5 +98,9 @@
     "1748971000133109": {
         "short_name": "MODERNA/SPIKEVAX",
         "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection"
+    },
+    "2090011000133109": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Tozinameran]"
     }
 }

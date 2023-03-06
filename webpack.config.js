@@ -2,6 +2,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const BrotliPlugin = require("brotli-webpack-plugin");
+const PolyfillWebpackPlugin = require("node-polyfill-webpack-plugin");
 const webpack = require("webpack");
 const path = require("path");
 
@@ -40,11 +41,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.EnvironmentPlugin(["NODE_ENV", "NET"]),
+    new webpack.EnvironmentPlugin(["NODE_ENV"]),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: `${__dirname}/static/index.html`,
     }),
+    new PolyfillWebpackPlugin(),
     ...(IS_PROD
       ? [
           new CompressionPlugin({ test: /\.(js|css|html|svg)$/ }),
