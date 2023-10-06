@@ -1,7 +1,7 @@
 {
     "3339641000133109": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH COVID-19 Vaccine [Tozinameran] Injection"
+        "name": "PFIZER-BIONTECH/COMIRNATY COVID-19 Vaccine [Tozinameran] Injection"
     },
     "3407851000133103": {
         "short_name": "MODERNA",
@@ -57,7 +57,7 @@
     },
     "878571000133104": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 5 to <12 YEARS) COVID-19 Vaccine [Tozinameran] 100 microgram/ 10 dose Injection"
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 5 TO <12 YEARS) COVID-19 Vaccine [Tozinameran] 100 microgram/ 10 dose Injection"
     },
     "991221000133108": {
         "short_name": "COVOVAX",
@@ -101,6 +101,26 @@
     },
     "2090011000133109": {
         "short_name": "PFIZER",
-        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Tozinameran]"
+        "name": "PFIZER-BIONTECH/COMIRNATY (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Tozinameran] 30 microgram/ 10 dose Injection"
+    },
+    "114759641000133104": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY OMICRON XBB.1.5 COVID-19 Vaccine [Raxtozinameran] Injection"
+    },
+    "114760551000133102": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY OMICRON XBB.1.5 (AGE 6 MONTHS TO <5 YEARS) COVID-19 Vaccine [Raxtozinameran] 30 microgram/ 10 dose Injection"
+    },
+    "114765911000133100": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY OMICRON XBB.1.5 (AGE 5 TO <12 YEARS) COVID-19 Vaccine [Raxtozinameran] 60 microgram/ 6 dose Injection"    
+    },
+    "114759211000133101": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY OMICRON XBB.1.5 COVID-19 Vaccine [Raxtozinameran] 180 microgram/ 6 dose Injection"
+    },
+    "3356751000133109": {
+        "short_name": "PFIZER",
+        "name": "PFIZER-BIONTECH/COMIRNATY COVID-19 Vaccine [Tozinameran] 180 microgram/ 6 dose Injection"
     }
 }
