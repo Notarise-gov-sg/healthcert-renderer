@@ -79,6 +79,14 @@
         "short_name": "NUVAXOVID",
         "name": "NUVAXOVID COVID-19 Vaccine [NVX-CoV2373 (adjuvanted)] 50 microgram/ 5 mL Injection"
     },
+    "3428331000133105": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID OMICRON XBB.1.5 COVID-19 Vaccine [NVX-CoV2601 (adjuvanted)] Injection"
+    },
+    "3438571000133100": {
+        "short_name": "NUVAXOVID",
+        "name": "NUVAXOVID OMICRON XBB.1.5 COVID-19 Vaccine [NVX-CoV2601 (adjuvanted)] 25 microgram/ 2.5 mL Injection"
+    },
     "3418091000133101": {
         "short_name": "MODERNA",
         "name": "MODERNA COVID-19 Vaccine [mRNA-1273] 1 mg/ 5 mL Injection"
@@ -98,6 +106,14 @@
     "1748971000133109": {
         "short_name": "MODERNA/SPIKEVAX",
         "name": "MODERNA/SPIKEVAX COVID-19 Vaccine [Elasomeran] 250 microgram/ 2.5 mL Injection"
+    },
+    "3326701000133109": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX OMICRON XBB.1.5 COVID-19 Vaccine [Andusomeran] Injection"
+    },
+    "3324091000133107": {
+        "short_name": "MODERNA/SPIKEVAX",
+        "name": "MODERNA/SPIKEVAX OMICRON XBB.1.5 COVID-19 Vaccine [Andusomeran] 250 microgram/ 2.5 mL Injection"
     },
     "2090011000133109": {
         "short_name": "PFIZER",
