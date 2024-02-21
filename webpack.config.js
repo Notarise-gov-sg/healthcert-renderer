@@ -17,7 +17,7 @@ module.exports = {
   mode: IS_DEV ? "development" : "production",
   target: "web",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "out"),
     filename: "[name].[hash:7].js",
     publicPath: "/",
   },
