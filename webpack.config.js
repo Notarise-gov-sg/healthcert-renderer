@@ -49,6 +49,7 @@ module.exports = {
     new PolyfillWebpackPlugin(),
   ],
   optimization: {
+    minimize: false,
     splitChunks: {
       cacheGroups: {
         vendors: {
