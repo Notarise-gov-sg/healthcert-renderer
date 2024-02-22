@@ -47,12 +47,6 @@ module.exports = {
       template: `${__dirname}/static/index.html`,
     }),
     new PolyfillWebpackPlugin(),
-    ...(IS_PROD
-      ? [
-          new CompressionPlugin({ test: /\.(js|css|html|svg)$/ }),
-          new BrotliPlugin({ test: /\.(js|css|html|svg)$/ }),
-        ]
-      : []),
   ],
   optimization: {
     splitChunks: {
