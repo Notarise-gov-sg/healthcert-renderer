@@ -53,7 +53,7 @@
     "@storybook/addon-knobs": "^6.4.0",
     "@storybook/addon-viewport": "^6.5.14",
     "@storybook/addons": "^6.5.14",
-    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/builder-webpack5": "^8.0.4",
     "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/react": "^7.6.17",
     "@testing-library/react": "^9.3.2",
@@ -114,5 +114,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Open-Attestation/decentralized-renderer-react-template.git"
+  },
+  "overrides": {
+    "glob-parent": "^5.1.2",
+    "webpack-dev-middleware": "^6.1.2"
   }
 }
